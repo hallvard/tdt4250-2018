@@ -1,0 +1,8 @@
+target "emfjson"
+
+location emfjson "http://ghillairet.github.io/p2" {
+	com.fasterxml.jackson.core.jackson-annotations 2.9.0
+	com.fasterxml.jackson.core.jackson-core 2.9.0
+	com.fasterxml.jackson.core.jackson-databind 2.9.0
+	org.emfjson.jackson 1.0.0
+}

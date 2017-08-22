@@ -1,0 +1,14 @@
+package no.hal.pg.http.auth;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.eclipse.emf.ecore.EObject;
+
+public interface AuthenticationHandler<P> extends ISubjectProvider<P> {
+	public boolean acceptsContext(EObject context);
+	public boolean acceptRequest(HttpServletRequest req, EObject context);
+	public void forceAuthentication(HttpServletResponse resp, String message, String engineKey) throws IOException;
+}

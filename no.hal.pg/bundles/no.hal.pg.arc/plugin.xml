@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated arc -->
+      <package
+            uri="platform:/plugin/no.hal.pg.arc/model/arc.ecore"
+            class="no.hal.pg.arc.ArcPackage"
+            genModel="model/arc.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated arc -->
+      <parser
+            type="arc"
+            class="no.hal.pg.arc.util.ArcResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

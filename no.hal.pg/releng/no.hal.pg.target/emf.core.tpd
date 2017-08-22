@@ -1,0 +1,10 @@
+target "emf.core"
+
+location oxygen "http://download.eclipse.org/releases/oxygen" {
+	org.eclipse.emf.ecore
+	org.eclipse.emf.ecore.xmi
+	org.eclipse.emf.common
+	org.eclipse.emf.ecore.change
+	org.eclipse.emf.ecore.edit
+	org.eclipse.emf.edit
+}

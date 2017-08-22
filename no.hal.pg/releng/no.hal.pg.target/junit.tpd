@@ -1,0 +1,6 @@
+target "junit"
+
+location oxygen "http://download.eclipse.org/releases/oxygen" {
+	org.junit
+	org.hamcrest.core
+}

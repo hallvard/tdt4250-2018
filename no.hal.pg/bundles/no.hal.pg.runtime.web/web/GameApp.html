@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>Game</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="GameApp.css">
+</head>
+<body>
+
+<div id="game"></div>
+
+<script src="https://fb.me/react-0.13.3.js"></script>
+
+<script src="AppHelper.js"></script>
+
+<script src="GameComponent.js"></script>
+<script src="PlayerComponent.js"></script>
+<script src="TaskComponent.js"></script>
+<script src="TaskListComponent.js"></script>
+
+<script type="text/javascript">
+var game = {
+		players: [ {
+			name: "Hallvard Trætteberg", ids: [ "hal@idi.ntnu.no", "hallvard.traetteberg@gmail.com", "https://www.facebook.com/hallvard.traetteberg" ]
+		} ],
+		tasks: [
+		    "???", "???"
+		]
+	};
+
+React.render(React.createElement(GameComponent,
+		AppHelper.appProps({ players: game.players, tasks: game.tasks })
+ 		), document.getElementById('game')
+ );
+</script>
+</body>  
+</html>

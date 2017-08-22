@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.http.impl.tests/src-gen" editDirectory="/no.hal.pg.http.impl.tests.edit/src"
+    editorDirectory="/no.hal.pg.http.impl.tests.editor/src" modelPluginID="no.hal.pg.http.impl.tests"
+    modelName="PgHttpTest" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore" suppressNotification="true"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>PgHttpTest.ecore</foreignModel>
+  <genPackages prefix="Pghttptest" disposableProviderFactory="true" ecorePackage="PgHttpTest.ecore#/">
+    <genClasses ecoreClass="PgHttpTest.ecore#//Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PgHttpTest.ecore#//Root/as"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PgHttpTest.ecore#//Root/b"/>
+    </genClasses>
+    <genClasses ecoreClass="PgHttpTest.ecore#//A">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PgHttpTest.ecore#//A/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PgHttpTest.ecore#//A/value"/>
+    </genClasses>
+    <genClasses ecoreClass="PgHttpTest.ecore#//B">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference PgHttpTest.ecore#//B/cs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PgHttpTest.ecore#//B/priv1"/>
+      <genOperations ecoreOperation="PgHttpTest.ecore#//B/lastC"/>
+      <genOperations ecoreOperation="PgHttpTest.ecore#//B/priv2"/>
+    </genClasses>
+    <genClasses ecoreClass="PgHttpTest.ecore#//C">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PgHttpTest.ecore#//C/name"/>
+      <genOperations ecoreOperation="PgHttpTest.ecore#//C/rotName">
+        <genParameters ecoreParameter="PgHttpTest.ecore#//C/rotName/distance"/>
+        <genParameters ecoreParameter="PgHttpTest.ecore#//C/rotName/update"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="PgHttpTest.ecore#//D"/>
+    <genClasses ecoreClass="PgHttpTest.ecore#//Priv">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute PgHttpTest.ecore#//Priv/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

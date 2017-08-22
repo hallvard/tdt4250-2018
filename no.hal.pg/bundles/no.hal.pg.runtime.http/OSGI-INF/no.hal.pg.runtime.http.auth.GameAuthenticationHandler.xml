@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="no.hal.pg.runtime.http.auth.GameAuthenticationHandler">
+   <service>
+      <provide interface="no.hal.pg.http.auth.ISubjectProvider"/>
+      <provide interface="no.hal.pg.http.auth.AuthenticationHandler"/>
+   </service>
+   <implementation class="no.hal.pg.runtime.http.auth.GameAuthenticationHandler"/>
+</scr:component>

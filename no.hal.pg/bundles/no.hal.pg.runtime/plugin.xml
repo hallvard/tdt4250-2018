@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated runtime -->
+      <package
+            uri="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
+            class="no.hal.pg.runtime.RuntimePackage"
+            genModel="model/runtime.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated runtime -->
+      <parser
+            type="runtime"
+            class="no.hal.pg.runtime.util.RuntimeResourceFactoryImpl"/>
+   </extension>
+
+</plugin>

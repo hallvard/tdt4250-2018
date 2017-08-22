@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.arc/src" editDirectory="/no.hal.pg.arc.edit/src"
+    modelPluginID="no.hal.pg.arc" modelName="Arc" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="no.hal.pg.arc.edit" operationReflection="true" importOrganizing="true">
+  <foreignModel>arc.ecore</foreignModel>
+  <genPackages prefix="Arc" basePackage="no.hal.pg" resource="XMI" disposableProviderFactory="true"
+      ecorePackage="arc.ecore#/">
+    <genClasses ecoreClass="arc.ecore#//Arc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Arc/actors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Arc/roles"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arc.ecore#//Named">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arc.ecore#//Named/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arc.ecore#//Capable">
+      <genOperations ecoreOperation="arc.ecore#//Capable/hasCapability">
+        <genParameters ecoreParameter="arc.ecore#//Capable/hasCapability/capability"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="arc.ecore#//Capabilities">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Capabilities/capabilities"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arc.ecore#//Actor">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arc.ecore#//Actor/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="arc.ecore#//Person">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arc.ecore#//Person/group"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arc.ecore#//Person/ids"/>
+    </genClasses>
+    <genClasses ecoreClass="arc.ecore#//Group">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Group/members"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference arc.ecore#//Group/parent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Group/groups"/>
+    </genClasses>
+    <genClasses ecoreClass="arc.ecore#//Role">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arc.ecore#//Role/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Capabilities/capabilities"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="arc.ecore#//Capability"/>
+    <genClasses ecoreClass="arc.ecore#//SimpleCapability">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arc.ecore#//SimpleCapability/qualifiedName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute arc.ecore#//SimpleCapability/segments"/>
+    </genClasses>
+    <genClasses ecoreClass="arc.ecore#//ScopeCapability">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference arc.ecore#//ScopeCapability/elements"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

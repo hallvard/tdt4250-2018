@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.http.impl.JsonSerializer">
+   <service>
+      <provide interface="no.hal.pg.http.IResponseSerializer"/>
+   </service>
+   <reference bind="addJsonSerializerHelper" cardinality="0..n" interface="no.hal.pg.http.impl.JsonSerializerHelper" name="JsonSerializerHelper" policy="dynamic" unbind="removeJsonSerializerHelper"/>
+   <implementation class="no.hal.pg.http.impl.JsonSerializer"/>
+</scr:component>

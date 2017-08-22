@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<arc:Arc xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:arc="platform:/plugin/no.hal.pg.arc/model/arc.ecore"
+    xsi:schemaLocation="platform:/plugin/no.hal.pg.arc/model/arc.ecore ../../../../../../../no.hal.pg.arc/model/arc.ecore"
+    >
+  <actors xsi:type="arc:Group"
+      name="Developers"
+      roles="//@roles.1">
+    <members
+        name="Hallvard Trætteberg"
+        roles="//@roles.0"/>
+  </actors>
+  <roles name="User"
+      inherits="//@roles.2">
+    <capabilities
+        xsi:type="arc:SimpleCapability">
+      <segments>a</segments>
+      <segments>b</segments>
+      <segments>c</segments>
+    </capabilities>
+  </roles>
+  <roles name="Developer"
+      inherits="//@roles.2">
+    <capabilities
+        xsi:type="arc:SimpleCapability">
+      <segments>can</segments>
+      <segments>code</segments>
+    </capabilities>
+  </roles>
+  <roles name="All">
+    <capabilities
+        xsi:type="arc:SimpleCapability">
+      <segments>think</segments>
+    </capabilities>
+  </roles>
+</arc:Arc>
