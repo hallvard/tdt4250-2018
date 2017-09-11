@@ -33,6 +33,8 @@
       <requirement
           name="org.eclipse.pde.feature.group"/>
       <requirement
+          name="org.eclipse.pde.visualization.dependency_feature.feature.group"/>
+      <requirement
           name="org.eclipse.egit.feature.group"/>
       <requirement
           name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
@@ -79,6 +81,8 @@
           url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
       <repository
           url="http://macbadge-updates.s3.amazonaws.com/"/>
+      <repository
+          url="http://download.eclipse.org/eclipse/pde/incubator/visualization/site"/>
     </setupTask>
     <description>TDT4250 for Oxygen.</description>
   </version>
