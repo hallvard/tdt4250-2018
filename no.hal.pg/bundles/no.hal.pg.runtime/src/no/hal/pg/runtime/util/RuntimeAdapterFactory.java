@@ -2,7 +2,11 @@
  */
 package no.hal.pg.runtime.util;
 
+import no.hal.pg.arc.Arc;
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -11,14 +15,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
-import no.hal.pg.runtime.Players;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,16 +85,16 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createGameAdapter();
 			}
 			@Override
-			public Adapter caseTeam(Team object) {
-				return createTeamAdapter();
-			}
-			@Override
 			public Adapter casePlayer(Player object) {
 				return createPlayerAdapter();
 			}
 			@Override
-			public Adapter casePlayers(Players object) {
-				return createPlayersAdapter();
+			public Adapter caseItem(Item object) {
+				return createItemAdapter();
+			}
+			@Override
+			public Adapter caseInfoItem(InfoItem object) {
+				return createInfoItemAdapter();
 			}
 			@Override
 			public <R> Adapter caseTask(Task<R> object) {
@@ -117,8 +121,24 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createIsTaskFinishedAdapter();
 			}
 			@Override
+			public Adapter caseAcceptTask(AcceptTask object) {
+				return createAcceptTaskAdapter();
+			}
+			@Override
 			public Adapter caseRuntime(no.hal.pg.runtime.Runtime object) {
 				return createRuntimeAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocated(GeoLocated object) {
+				return createGeoLocatedAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocation(GeoLocation object) {
+				return createGeoLocationAdapter();
+			}
+			@Override
+			public Adapter caseArc(Arc object) {
+				return createArcAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -155,20 +175,6 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Team <em>Team</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.Team
-	 * @generated
-	 */
-	public Adapter createTeamAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Player <em>Player</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -183,16 +189,30 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Players <em>Players</em>}'.
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.Players
+	 * @see no.hal.pg.runtime.Item
 	 * @generated
 	 */
-	public Adapter createPlayersAdapter() {
+	public Adapter createItemAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.InfoItem <em>Info Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.InfoItem
+	 * @generated
+	 */
+	public Adapter createInfoItemAdapter() {
 		return null;
 	}
 
@@ -281,6 +301,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.AcceptTask <em>Accept Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.AcceptTask
+	 * @generated
+	 */
+	public Adapter createAcceptTaskAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Runtime <em>Runtime</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -291,6 +325,48 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createRuntimeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.osm.GeoLocated <em>Geo Located</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.osm.GeoLocated
+	 * @generated
+	 */
+	public Adapter createGeoLocatedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.osm.GeoLocation <em>Geo Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.osm.GeoLocation
+	 * @generated
+	 */
+	public Adapter createGeoLocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.arc.Arc <em>Arc</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.arc.Arc
+	 * @generated
+	 */
+	public Adapter createArcAdapter() {
 		return null;
 	}
 

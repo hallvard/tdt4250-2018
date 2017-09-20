@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Runtime Http Tests
+Bundle-SymbolicName: no.hal.pg.runtime.http.tests
+Bundle-Version: 0.0.1.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: no.hal
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: no.hal.pg.runtime.http.tests
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.emf.common,
+ no.hal.pg.runtime;bundle-version="0.0.1",
+ no.hal.pg.http;bundle-version="0.0.1",
+ no.hal.pg.http.impl;bundle-version="0.0.1",
+ no.hal.pg.runtime.http;bundle-version="0.0.1",
+ com.fasterxml.jackson.core.jackson-core;bundle-version="2.9.0",
+ com.fasterxml.jackson.core.jackson-databind;bundle-version="2.9.0"
+Bundle-ActivationPolicy: lazy
+Import-Package: org.junit;version="4.12.0",
+ org.osgi.service.component.annotations
+Service-Component: OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeTestResourceProvider.xml

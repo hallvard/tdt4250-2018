@@ -2,43 +2,54 @@ package no.hal.pg.runtime.tests;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 
 public class RuntimeTest {
 
-	private Resource load(URI uri) {
+	private URI uri;
+
+	@Before
+	public void setUp() {
+		uri = URI.createURI(getClass().getResource("RuntimeTest.xmi").toString());
+	}
+
+	protected Collection<EObject> loadRootObjects() {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			resource.load(null);
-			Assert.assertFalse(resourceSet.getResources().isEmpty());
+			return resource.getContents();
 		} catch (IOException e) {
-			Assert.fail(e.getMessage());
+			Assert.fail();
 		}
-		return resource;
+		return null;
 	}
-
+	
 	@Test
 	public void testLoad() {
-		URI uri = URI.createPlatformPluginURI("/no.hal.pg.runtime.tests/src/no/hal/pg/runtime/tests/RuntimeTest.xmi", true);
-		load(uri);
+		loadRootObjects();
 	}
 
 	public List<Task<?>> getTasks(int... taskNums) {
-		Resource resource = load(URI.createPlatformPluginURI("/no.hal.pg.runtime.tests/src/no/hal/pg/runtime/tests/RuntimeTest.xmi", true));
-		no.hal.pg.runtime.Runtime runtime = (no.hal.pg.runtime.Runtime) EcoreUtil.getObjectByType(resource.getContents(), RuntimePackage.eINSTANCE.getRuntime());
+		Collection<? extends Object> rootObjects = loadRootObjects();
+		no.hal.pg.runtime.Runtime runtime = (no.hal.pg.runtime.Runtime) EcoreUtil.getObjectByType(rootObjects, RuntimePackage.eINSTANCE.getRuntime());
 		Assert.assertFalse(runtime.getGames().isEmpty());
 		Game<?> game = runtime.getGames().get(0);
 		List<Task<?>> tasks = new ArrayList<>(taskNums.length);
@@ -68,8 +79,22 @@ public class RuntimeTest {
 		Assert.assertFalse(task0.isFinished());
 		Assert.assertFalse(task.canStart());
 
-		task0.finish(new Object());
+		task0.finish(Boolean.TRUE);
 		Assert.assertTrue(task.canStart());
+	}
+
+	@Test
+	public void testAcceptTask() {
+		AcceptTask task = RuntimeFactory.eINSTANCE.createAcceptTask();
+		Assert.assertFalse(task.isStarted());
+		Assert.assertFalse(task.isFinished());
+		Assert.assertTrue(task.canStart());
+		
+		task.start();
+		task.accept();
+
+		Assert.assertTrue(task.isFinished());
+		Assert.assertTrue(task.getResult());
 	}
 
 	@Test
@@ -83,7 +108,7 @@ public class RuntimeTest {
 		task0.start();
 		Assert.assertFalse(task.canStart());
 
-		task0.finish(new Object());
+		task0.finish(Boolean.TRUE);
 		Assert.assertTrue(task.canStart());
 	}
 	

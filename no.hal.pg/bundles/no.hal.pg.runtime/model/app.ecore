@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="app" nsURI="platform:/plugin/no.hal.pg.runtime/model/app.ecore"
+    nsPrefix="app">
+  <eClassifiers xsi:type="ecore:EClass" name="View" abstract="true">
+    <eTypeParameters name="U"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="user" lowerBound="1" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eGenericType eTypeParameter="#//View/U"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="View1" abstract="true">
+    <eTypeParameters name="U"/>
+    <eTypeParameters name="M"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1">
+      <eGenericType eTypeParameter="#//View1/M"/>
+    </eStructuralFeatures>
+    <eGenericSuperTypes eClassifier="#//View">
+      <eTypeArguments eTypeParameter="#//View1/U"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="View2" abstract="true">
+    <eTypeParameters name="U"/>
+    <eTypeParameters name="M1"/>
+    <eTypeParameters name="M2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model1" lowerBound="1">
+      <eGenericType eTypeParameter="#//View2/M1"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model2" lowerBound="1">
+      <eGenericType eTypeParameter="#//View2/M2"/>
+    </eStructuralFeatures>
+    <eGenericSuperTypes eClassifier="#//View">
+      <eTypeArguments eTypeParameter="#//View2/U"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameView">
+    <eTypeParameters name="T">
+      <eBounds eClassifier="ecore:EClass runtime.ecore#//Task">
+        <eTypeArguments/>
+      </eBounds>
+    </eTypeParameters>
+    <eOperations name="createTaskView">
+      <eGenericType eClassifier="#//TaskView">
+        <eTypeArguments eTypeParameter="#//GameView/T"/>
+      </eGenericType>
+      <eParameters name="task">
+        <eGenericType eTypeParameter="#//GameView/T"/>
+      </eParameters>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="player" eType="ecore:EClass runtime.ecore#//Player"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskViews" upperBound="-1"
+        containment="true" eOpposite="#//TaskView/gameView">
+      <eGenericType eClassifier="#//TaskView">
+        <eTypeArguments eTypeParameter="#//GameView/T"/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eGenericSuperTypes eClassifier="#//View1">
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Game">
+        <eTypeArguments eTypeParameter="#//GameView/T"/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskView">
+    <eTypeParameters name="T">
+      <eBounds eClassifier="ecore:EClass runtime.ecore#//Task">
+        <eTypeArguments/>
+      </eBounds>
+    </eTypeParameters>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gameView" eOpposite="#//GameView/taskViews">
+      <eGenericType eClassifier="#//GameView">
+        <eTypeArguments eTypeParameter="#//TaskView/T"/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eGenericSuperTypes eClassifier="#//View1">
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
+      <eTypeArguments eTypeParameter="#//TaskView/T"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+</ecore:EPackage>

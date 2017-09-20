@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.CompositeCondition#isLogic <em>Logic</em>}</li>
- *   <li>{@link no.hal.pg.runtime.CompositeCondition#getPredicates <em>Predicates</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.CompositeCondition#getConditions <em>Conditions</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.runtime.RuntimePackage#getCompositeCondition()
@@ -50,7 +50,7 @@ public interface CompositeCondition<E> extends Condition {
 	void setLogic(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Predicates</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Conditions</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.runtime.Condition}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -58,11 +58,11 @@ public interface CompositeCondition<E> extends Condition {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Predicates</em>' containment reference list.
-	 * @see no.hal.pg.runtime.RuntimePackage#getCompositeCondition_Predicates()
+	 * @return the value of the '<em>Conditions</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getCompositeCondition_Conditions()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Condition> getPredicates();
+	EList<Condition> getConditions();
 
 } // CompositePredicate

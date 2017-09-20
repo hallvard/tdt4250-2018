@@ -2,6 +2,8 @@
  */
 package no.hal.pg.runtime.impl;
 
+import java.net.URI;
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -10,13 +12,14 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,12 +66,14 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case RuntimePackage.GAME: return createGame();
-			case RuntimePackage.TEAM: return createTeam();
 			case RuntimePackage.PLAYER: return createPlayer();
+			case RuntimePackage.ITEM: return createItem();
+			case RuntimePackage.INFO_ITEM: return createInfoItem();
 			case RuntimePackage.TASK: return createTask();
 			case RuntimePackage.COMPOSITE_CONDITION: return createCompositeCondition();
 			case RuntimePackage.IS_TASK_STARTED: return createIsTaskStarted();
 			case RuntimePackage.IS_TASK_FINISHED: return createIsTaskFinished();
+			case RuntimePackage.ACCEPT_TASK: return createAcceptTask();
 			case RuntimePackage.RUNTIME: return createRuntime();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -83,6 +88,8 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case RuntimePackage.EURI:
+				return createEURIFromString(eDataType, initialValue);
 			case RuntimePackage.TIMESTAMP:
 				return createTimestampFromString(eDataType, initialValue);
 			default:
@@ -98,6 +105,8 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case RuntimePackage.EURI:
+				return convertEURIToString(eDataType, instanceValue);
 			case RuntimePackage.TIMESTAMP:
 				return convertTimestampToString(eDataType, instanceValue);
 			default:
@@ -122,9 +131,9 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * @generated
 	 */
 	@Override
-	public Team createTeam() {
-		TeamImpl team = new TeamImpl();
-		return team;
+	public Player createPlayer() {
+		PlayerImpl player = new PlayerImpl();
+		return player;
 	}
 
 	/**
@@ -133,9 +142,20 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * @generated
 	 */
 	@Override
-	public Player createPlayer() {
-		PlayerImpl player = new PlayerImpl();
-		return player;
+	public Item createItem() {
+		ItemImpl item = new ItemImpl();
+		return item;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public InfoItem createInfoItem() {
+		InfoItemImpl infoItem = new InfoItemImpl();
+		return infoItem;
 	}
 
 	/**
@@ -154,6 +174,7 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public <E> CompositeCondition<E> createCompositeCondition() {
 		CompositeConditionImpl<E> compositeCondition = new CompositeConditionImpl<E>();
 		return compositeCondition;
@@ -164,6 +185,7 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IsTaskStarted createIsTaskStarted() {
 		IsTaskStartedImpl isTaskStarted = new IsTaskStartedImpl();
 		return isTaskStarted;
@@ -174,9 +196,20 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IsTaskFinished createIsTaskFinished() {
 		IsTaskFinishedImpl isTaskFinished = new IsTaskFinishedImpl();
 		return isTaskFinished;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AcceptTask createAcceptTask() {
+		AcceptTaskImpl acceptTask = new AcceptTaskImpl();
+		return acceptTask;
 	}
 
 	/**
@@ -188,6 +221,24 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public no.hal.pg.runtime.Runtime createRuntime() {
 		RuntimeImpl runtime = new RuntimeImpl();
 		return runtime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public URI createEURIFromString(EDataType eDataType, String initialValue) {
+		return URI.create(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEURIToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

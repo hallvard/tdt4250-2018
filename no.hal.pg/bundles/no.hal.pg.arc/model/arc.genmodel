@@ -6,7 +6,7 @@
     editPluginID="no.hal.pg.arc.edit" operationReflection="true" importOrganizing="true">
   <foreignModel>arc.ecore</foreignModel>
   <genPackages prefix="Arc" basePackage="no.hal.pg" resource="XMI" disposableProviderFactory="true"
-      ecorePackage="arc.ecore#/">
+      extensibleProviderFactory="true" ecorePackage="arc.ecore#/">
     <genClasses ecoreClass="arc.ecore#//Arc">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Arc/actors"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference arc.ecore#//Arc/roles"/>

@@ -20,17 +20,17 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
-import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
-import org.osgi.framework.ServiceReference;
+import org.osgi.framework.ServiceRegistration;
 
-import no.hal.pg.http.IResourceEndPointProvider;
+import no.hal.pg.http.IResourceProvider;
 import no.hal.pg.http.util.ResourceProvider;
 
 public class EditorResourceProvidersView extends AbstractSelectionView {
 
 	private Map<IEditingDomainProvider, String> resources = new HashMap<>();
 	private Map<String, ResourceProvider> resourceProviders = new HashMap<>();
+	private Map<ResourceProvider, ServiceRegistration<IResourceProvider>> resourceRegistrations = new HashMap<>();
 
 	protected Resource getResource(IEditingDomainProvider element) {
 		return element.getEditingDomain().getResourceSet().getResources().get(0);
@@ -178,12 +178,6 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 		return resourceProviders.containsKey(resources.get(editingDomainProvider));
 	}
 
-	private IResourceEndPointProvider getResourceEndPointProvider() {
-		BundleContext bundleContext = FrameworkUtil.getBundle(getClass()).getBundleContext();
-		ServiceReference<IResourceEndPointProvider> serviceReference = bundleContext.getServiceReference(IResourceEndPointProvider.class);
-		return (serviceReference != null ? bundleContext.getService(serviceReference) : null);
-	}
-
 	protected void changeResourceName(IEditingDomainProvider editingDomainProvider, String newName) {
 		if (hasResourceProvider(editingDomainProvider)) {
 			removeResourceProvider(editingDomainProvider);
@@ -197,12 +191,13 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 
 	protected void addResourceProvider(IEditingDomainProvider editingDomainProvider) {
 		Resource resource = getResource(editingDomainProvider);
-		IResourceEndPointProvider endPointProvider = getResourceEndPointProvider();
-		if (endPointProvider != null && resource != null) {
+		if (resource != null) {
 			ResourceProvider resourceProvider = new ResourceProvider(resource);
 			String name = resources.get(editingDomainProvider);
 			resourceProvider.setName(name);
-			endPointProvider.addResourceProvider(resourceProvider);
+			// register IResourceProvider, so it will be served by the ResourceServlet
+			ServiceRegistration<IResourceProvider> serviceRegistration = FrameworkUtil.getBundle(getClass()).getBundleContext().registerService(IResourceProvider.class, resourceProvider, null);
+			resourceRegistrations.put(resourceProvider, serviceRegistration);
 			String key = name;
 			resourceProviders.put(key, resourceProvider);
 		}
@@ -210,12 +205,12 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 	}
 
 	protected void removeResourceProvider(IEditingDomainProvider editingDomainProvider) {
-		IResourceEndPointProvider endPointProvider = getResourceEndPointProvider();
-		if (endPointProvider != null) {
-			String key = resources.get(editingDomainProvider);
-			endPointProvider.removeResourceProvider(resourceProviders.get(key));
-			resourceProviders.remove(key);
-		}
+		String key = resources.get(editingDomainProvider);
+		ResourceProvider resourceProvider = resourceProviders.get(key);
+		ServiceRegistration<IResourceProvider> serviceRegistration = resourceRegistrations.get(resourceProvider);
+		// unregister IResourceProvider, so it no longer will be servered by the ResourceServlet
+		serviceRegistration.unregister();
+		resourceProviders.remove(key);
 		updateView(editingDomainProvider);
 	}
 

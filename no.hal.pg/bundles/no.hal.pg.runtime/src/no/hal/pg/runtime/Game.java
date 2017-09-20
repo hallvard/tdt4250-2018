@@ -3,6 +3,7 @@
 package no.hal.pg.runtime;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.Game#getPlayers <em>Players</em>}</li>
- *   <li>{@link no.hal.pg.runtime.Game#getTeams <em>Teams</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Game#getItems <em>Items</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Game#getTasks <em>Tasks</em>}</li>
  * </ul>
  *
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Game<T extends Task<?>> extends Players {
+public interface Game<T extends Task<?>> extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Players</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.runtime.Player}.
@@ -40,22 +41,20 @@ public interface Game<T extends Task<?>> extends Players {
 	EList<Player> getPlayers();
 
 	/**
-	 * Returns the value of the '<em><b>Teams</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.runtime.Team}.
-	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Team#getGame <em>Game</em>}'.
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.runtime.Item}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Teams</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Teams</em>' containment reference list.
-	 * @see no.hal.pg.runtime.RuntimePackage#getGame_Teams()
-	 * @see no.hal.pg.runtime.Team#getGame
-	 * @model opposite="game" containment="true"
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getGame_Items()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Team> getTeams();
+	EList<Item> getItems();
 
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.

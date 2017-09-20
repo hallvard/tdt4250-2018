@@ -1,11 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: Runtime Tests
 Bundle-SymbolicName: no.hal.pg.runtime.tests
 Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
-Bundle-Localization: plugin
+Bundle-Vendor: no.hal
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: no.hal.pg.runtime.tests
 Require-Bundle: org.eclipse.emf.ecore,

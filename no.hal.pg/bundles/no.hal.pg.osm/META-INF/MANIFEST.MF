@@ -11,7 +11,7 @@ Export-Package: no.hal.pg.osm,
  no.hal.pg.osm.geoutil,
  no.hal.pg.osm.impl,
  no.hal.pg.osm.util
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport
 Bundle-ActivationPolicy: lazy

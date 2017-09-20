@@ -2,9 +2,8 @@
  */
 package no.hal.pg.runtime;
 
+import no.hal.pg.arc.Arc;
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,10 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Runtime extends EObject {
+public interface Runtime extends Arc {
 	/**
 	 * Returns the value of the '<em><b>Games</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.runtime.Game}.
+	 * The list contents are of type {@link no.hal.pg.runtime.Game}<code>&lt;?&gt;</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Games</em>' reference list isn't clear,
@@ -37,6 +36,6 @@ public interface Runtime extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Game> getGames();
+	EList<Game<?>> getGames();
 
 } // Runtime

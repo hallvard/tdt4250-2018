@@ -28,7 +28,7 @@ import no.hal.pg.runtime.RuntimePackage;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.impl.CompositeConditionImpl#isLogic <em>Logic</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.CompositeConditionImpl#getPredicates <em>Predicates</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.CompositeConditionImpl#getConditions <em>Conditions</em>}</li>
  * </ul>
  *
  * @generated
@@ -55,14 +55,14 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 	protected boolean logic = LOGIC_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPredicates() <em>Predicates</em>}' containment reference list.
+	 * The cached value of the '{@link #getConditions() <em>Conditions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPredicates()
+	 * @see #getConditions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Condition> predicates;
+	protected EList<Condition> conditions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,11 +112,11 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
-	public EList<Condition> getPredicates() {
-		if (predicates == null) {
-			predicates = new EObjectContainmentEList<Condition>(Condition.class, this, RuntimePackage.COMPOSITE_CONDITION__PREDICATES);
+	public EList<Condition> getConditions() {
+		if (conditions == null) {
+			conditions = new EObjectContainmentEList<Condition>(Condition.class, this, RuntimePackage.COMPOSITE_CONDITION__CONDITIONS);
 		}
-		return predicates;
+		return conditions;
 	}
 
 	/**
@@ -128,8 +128,8 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 	public boolean test() {
 		// short-circuit when the test value becomes logic
 		// use logic == true for || and logic == false for &&
-		for (Condition predicate : getPredicates()) {
-			if (predicate.test() == logic) {
+		for (Condition cond : getConditions()) {
+			if (cond.test() == logic) {
 				return logic;
 			}
 		}
@@ -144,8 +144,8 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case RuntimePackage.COMPOSITE_CONDITION__PREDICATES:
-				return ((InternalEList<?>)getPredicates()).basicRemove(otherEnd, msgs);
+			case RuntimePackage.COMPOSITE_CONDITION__CONDITIONS:
+				return ((InternalEList<?>)getConditions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -160,8 +160,8 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case RuntimePackage.COMPOSITE_CONDITION__LOGIC:
 				return isLogic();
-			case RuntimePackage.COMPOSITE_CONDITION__PREDICATES:
-				return getPredicates();
+			case RuntimePackage.COMPOSITE_CONDITION__CONDITIONS:
+				return getConditions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -178,9 +178,9 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 			case RuntimePackage.COMPOSITE_CONDITION__LOGIC:
 				setLogic((Boolean)newValue);
 				return;
-			case RuntimePackage.COMPOSITE_CONDITION__PREDICATES:
-				getPredicates().clear();
-				getPredicates().addAll((Collection<? extends Condition>)newValue);
+			case RuntimePackage.COMPOSITE_CONDITION__CONDITIONS:
+				getConditions().clear();
+				getConditions().addAll((Collection<? extends Condition>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,8 +197,8 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 			case RuntimePackage.COMPOSITE_CONDITION__LOGIC:
 				setLogic(LOGIC_EDEFAULT);
 				return;
-			case RuntimePackage.COMPOSITE_CONDITION__PREDICATES:
-				getPredicates().clear();
+			case RuntimePackage.COMPOSITE_CONDITION__CONDITIONS:
+				getConditions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -214,8 +214,8 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case RuntimePackage.COMPOSITE_CONDITION__LOGIC:
 				return logic != LOGIC_EDEFAULT;
-			case RuntimePackage.COMPOSITE_CONDITION__PREDICATES:
-				return predicates != null && !predicates.isEmpty();
+			case RuntimePackage.COMPOSITE_CONDITION__CONDITIONS:
+				return conditions != null && !conditions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

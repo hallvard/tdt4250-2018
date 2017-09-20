@@ -21,4 +21,19 @@
             class="no.hal.pg.runtime.util.RuntimeResourceFactoryImpl"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated app -->
+      <package
+            uri="platform:/plugin/no.hal.pg.runtime/model/app.ecore"
+            class="no.hal.pg.app.AppPackage"
+            genModel="model/app.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated app -->
+      <parser
+            type="app"
+            class="no.hal.pg.app.util.AppResourceFactoryImpl"/>
+   </extension>
+
 </plugin>

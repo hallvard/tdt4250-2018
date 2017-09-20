@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.AppServlet">
+   <property name="osgi.http.whiteboard.servlet.name" type="String" value="app"/>
+   <property name="osgi.http.whiteboard.servlet.pattern" type="String" value="/app/*"/>
+   <service scope="prototype">
+      <provide interface="javax.servlet.Servlet"/>
+   </service>
+   <reference cardinality="0..n" field="authenticationHandlers" interface="no.hal.pg.http.auth.AuthenticationHandler" name="authenticationHandlers" policy="dynamic"/>
+   <reference cardinality="0..n" field="configs" interface="no.hal.pg.http.AppConfig" name="configs" policy="dynamic"/>
+   <reference cardinality="1..1" field="logger" interface="org.osgi.service.log.LogService" name="logger" policy="dynamic"/>
+   <reference cardinality="1..1" field="requestPathResolver" interface="no.hal.pg.http.IRequestPathResolver" name="requestPathResolver" policy="dynamic"/>
+   <reference cardinality="0..n" field="resourceProviders" interface="no.hal.pg.http.IResourceProvider" name="resourceProviders" policy="dynamic"/>
+   <implementation class="no.hal.pg.http.AppServlet"/>
+</scr:component>

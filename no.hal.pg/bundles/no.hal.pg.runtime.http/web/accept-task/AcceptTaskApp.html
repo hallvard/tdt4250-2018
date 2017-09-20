@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Game</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="AcceptTask.css">
+</head>
+<body>
+
+<div id="task"></div>
+
+<script src="https://fb.me/react-0.13.3.js"></script>
+
+<script src="/js/AppHelper.js"></script>
+
+<script src="AcceptTaskComponent.js"></script>
+
+<script type="text/javascript">
+var task = {
+	};
+
+React.render(React.createElement(AcceptTaskComponent,
+		AppHelper.appProps({})
+ 		), document.getElementById('task')
+ );
+</script>
+</body>  
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.runtime.http.JsConfig">
+   <property name="osgi.http.whiteboard.resource.prefix" type="String" value="/web/js"/>
+   <property name="osgi.http.whiteboard.resource.pattern" type="String" value="/js/*"/>
+   <service>
+      <provide interface="no.hal.pg.runtime.http.JsConfig"/>
+   </service>
+   <implementation class="no.hal.pg.runtime.http.JsConfig"/>
+</scr:component>

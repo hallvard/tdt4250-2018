@@ -2,6 +2,8 @@
  */
 package no.hal.pg.runtime;
 
+import no.hal.pg.arc.ArcPackage;
+import no.hal.pg.osm.OsmPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -59,43 +61,6 @@ public interface RuntimePackage extends EPackage {
 	RuntimePackage eINSTANCE = no.hal.pg.runtime.impl.RuntimePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link no.hal.pg.runtime.Players <em>Players</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.runtime.Players
-	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getPlayers()
-	 * @generated
-	 */
-	int PLAYERS = 3;
-
-	/**
-	 * The number of structural features of the '<em>Players</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLAYERS_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Get All Players</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLAYERS___GET_ALL_PLAYERS = 0;
-
-	/**
-	 * The number of operations of the '<em>Players</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLAYERS_OPERATION_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.GameImpl <em>Game</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -112,16 +77,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GAME__PLAYERS = PLAYERS_FEATURE_COUNT + 0;
+	int GAME__PLAYERS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Teams</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME__TEAMS = PLAYERS_FEATURE_COUNT + 1;
+	int GAME__ITEMS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -130,7 +95,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GAME__TASKS = PLAYERS_FEATURE_COUNT + 2;
+	int GAME__TASKS = 2;
 
 	/**
 	 * The number of structural features of the '<em>Game</em>' class.
@@ -139,16 +104,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_FEATURE_COUNT = PLAYERS_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>Get All Players</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GAME___GET_ALL_PLAYERS = PLAYERS___GET_ALL_PLAYERS;
+	int GAME_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Game</em>' class.
@@ -157,62 +113,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_OPERATION_COUNT = PLAYERS_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link no.hal.pg.runtime.impl.TeamImpl <em>Team</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.runtime.impl.TeamImpl
-	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTeam()
-	 * @generated
-	 */
-	int TEAM = 1;
-
-	/**
-	 * The feature id for the '<em><b>Game</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEAM__GAME = PLAYERS_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Players</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEAM__PLAYERS = PLAYERS_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Team</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEAM_FEATURE_COUNT = PLAYERS_FEATURE_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>Get All Players</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEAM___GET_ALL_PLAYERS = PLAYERS___GET_ALL_PLAYERS;
-
-	/**
-	 * The number of operations of the '<em>Team</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEAM_OPERATION_COUNT = PLAYERS_OPERATION_COUNT + 0;
+	int GAME_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.PlayerImpl <em>Player</em>}' class.
@@ -222,16 +123,45 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getPlayer()
 	 * @generated
 	 */
-	int PLAYER = 2;
+	int PLAYER = 1;
 
 	/**
-	 * The feature id for the '<em><b>Game</b></em>' reference.
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.ItemImpl <em>Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.ItemImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getItem()
+	 * @generated
+	 */
+	int ITEM = 2;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.InfoItemImpl <em>Info Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.InfoItemImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfoItem()
+	 * @generated
+	 */
+	int INFO_ITEM = 3;
+
+	/**
+	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER__GAME = 0;
+	int PLAYER__LATITUDE = OsmPackage.GEO_LOCATION__LATITUDE;
+
+	/**
+	 * The feature id for the '<em><b>Longitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER__LONGITUDE = OsmPackage.GEO_LOCATION__LONGITUDE;
 
 	/**
 	 * The feature id for the '<em><b>Person</b></em>' reference.
@@ -240,7 +170,25 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER__PERSON = 1;
+	int PLAYER__PERSON = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Game</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER__GAME = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER__ITEMS = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Player</em>' class.
@@ -249,7 +197,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER_FEATURE_COUNT = 2;
+	int PLAYER_FEATURE_COUNT = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER___GET_LAT_LONG = OsmPackage.GEO_LOCATION___GET_LAT_LONG;
 
 	/**
 	 * The number of operations of the '<em>Player</em>' class.
@@ -258,7 +215,124 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER_OPERATION_COUNT = 0;
+	int PLAYER_OPERATION_COUNT = OsmPackage.GEO_LOCATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__OWNER = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Own Location</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__OWN_LOCATION = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_FEATURE_COUNT = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_LAT_LONG = OsmPackage.GEO_LOCATED___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_OPERATION_COUNT = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Owner</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM__OWNER = ITEM__OWNER;
+
+	/**
+	 * The feature id for the '<em><b>Own Location</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM__OWN_LOCATION = ITEM__OWN_LOCATION;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM__TEXT = ITEM_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM__URL = ITEM_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Image Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM__IMAGE_URL = ITEM_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Info Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM_FEATURE_COUNT = ITEM_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM___GET_LAT_LONG = ITEM___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Info Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM_OPERATION_COUNT = ITEM_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.TaskImpl <em>Task</em>}' class.
@@ -277,16 +351,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__GAME = PLAYERS_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Team</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__TEAM = PLAYERS_FEATURE_COUNT + 1;
+	int TASK__GAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Players</b></em>' reference list.
@@ -295,7 +360,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PLAYERS = PLAYERS_FEATURE_COUNT + 2;
+	int TASK__PLAYERS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Result</b></em>' attribute.
@@ -304,7 +369,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RESULT = PLAYERS_FEATURE_COUNT + 3;
+	int TASK__RESULT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
@@ -313,7 +378,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__START_TIME = PLAYERS_FEATURE_COUNT + 4;
+	int TASK__START_TIME = 3;
 
 	/**
 	 * The feature id for the '<em><b>Finish Time</b></em>' attribute.
@@ -322,7 +387,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__FINISH_TIME = PLAYERS_FEATURE_COUNT + 5;
+	int TASK__FINISH_TIME = 4;
 
 	/**
 	 * The feature id for the '<em><b>Start Conditions</b></em>' containment reference list.
@@ -331,7 +396,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__START_CONDITIONS = PLAYERS_FEATURE_COUNT + 6;
+	int TASK__START_CONDITIONS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Finish Conditions</b></em>' containment reference list.
@@ -340,7 +405,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__FINISH_CONDITIONS = PLAYERS_FEATURE_COUNT + 7;
+	int TASK__FINISH_CONDITIONS = 6;
+
+	/**
+	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__REWARDS = 7;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -349,16 +423,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = PLAYERS_FEATURE_COUNT + 8;
+	int TASK_FEATURE_COUNT = 8;
 
 	/**
-	 * The operation id for the '<em>Get All Players</em>' operation.
+	 * The operation id for the '<em>Get Description</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___GET_ALL_PLAYERS = PLAYERS___GET_ALL_PLAYERS;
+	int TASK___GET_DESCRIPTION = 0;
 
 	/**
 	 * The operation id for the '<em>Can Start</em>' operation.
@@ -367,7 +441,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___CAN_START = PLAYERS_OPERATION_COUNT + 0;
+	int TASK___CAN_START = 1;
 
 	/**
 	 * The operation id for the '<em>Is Started</em>' operation.
@@ -376,7 +450,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___IS_STARTED = PLAYERS_OPERATION_COUNT + 1;
+	int TASK___IS_STARTED = 2;
 
 	/**
 	 * The operation id for the '<em>Is Finished</em>' operation.
@@ -385,7 +459,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___IS_FINISHED = PLAYERS_OPERATION_COUNT + 2;
+	int TASK___IS_FINISHED = 3;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -394,7 +468,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___START = PLAYERS_OPERATION_COUNT + 3;
+	int TASK___START = 4;
 
 	/**
 	 * The operation id for the '<em>Finish</em>' operation.
@@ -403,7 +477,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___FINISH__OBJECT = PLAYERS_OPERATION_COUNT + 4;
+	int TASK___FINISH__OBJECT = 5;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -412,7 +486,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = PLAYERS_OPERATION_COUNT + 5;
+	int TASK_OPERATION_COUNT = 6;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.Condition <em>Condition</em>}' class.
@@ -517,13 +591,13 @@ public interface RuntimePackage extends EPackage {
 	int COMPOSITE_CONDITION__LOGIC = CONDITION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Predicates</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPOSITE_CONDITION__PREDICATES = CONDITION_FEATURE_COUNT + 1;
+	int COMPOSITE_CONDITION__CONDITIONS = CONDITION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Composite Condition</em>' class.
@@ -645,6 +719,169 @@ public interface RuntimePackage extends EPackage {
 	int IS_TASK_FINISHED_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.AcceptTaskImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
+	 * @generated
+	 */
+	int ACCEPT_TASK = 10;
+
+	/**
+	 * The feature id for the '<em><b>Game</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__GAME = TASK__GAME;
+
+	/**
+	 * The feature id for the '<em><b>Players</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__PLAYERS = TASK__PLAYERS;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__RESULT = TASK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__START_TIME = TASK__START_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Finish Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__FINISH_TIME = TASK__FINISH_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Start Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__START_CONDITIONS = TASK__START_CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Finish Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__FINISH_CONDITIONS = TASK__FINISH_CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK__REWARDS = TASK__REWARDS;
+
+	/**
+	 * The number of structural features of the '<em>Accept Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___GET_DESCRIPTION = TASK___GET_DESCRIPTION;
+
+	/**
+	 * The operation id for the '<em>Can Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___CAN_START = TASK___CAN_START;
+
+	/**
+	 * The operation id for the '<em>Is Started</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___IS_STARTED = TASK___IS_STARTED;
+
+	/**
+	 * The operation id for the '<em>Is Finished</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___IS_FINISHED = TASK___IS_FINISHED;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___START = TASK___START;
+
+	/**
+	 * The operation id for the '<em>Finish</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___FINISH__OBJECT = TASK___FINISH__OBJECT;
+
+	/**
+	 * The operation id for the '<em>Accept</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___ACCEPT = TASK_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Accept Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.RuntimeImpl <em>Runtime</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -652,7 +889,25 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 10;
+	int RUNTIME = 11;
+
+	/**
+	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNTIME__ACTORS = ArcPackage.ARC__ACTORS;
+
+	/**
+	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNTIME__ROLES = ArcPackage.ARC__ROLES;
 
 	/**
 	 * The feature id for the '<em><b>Games</b></em>' containment reference list.
@@ -661,7 +916,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNTIME__GAMES = 0;
+	int RUNTIME__GAMES = ArcPackage.ARC_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Runtime</em>' class.
@@ -670,7 +925,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNTIME_FEATURE_COUNT = 1;
+	int RUNTIME_FEATURE_COUNT = ArcPackage.ARC_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Runtime</em>' class.
@@ -679,7 +934,17 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RUNTIME_OPERATION_COUNT = 0;
+	int RUNTIME_OPERATION_COUNT = ArcPackage.ARC_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '<em>EURI</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.net.URI
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
+	 * @generated
+	 */
+	int EURI = 12;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -689,7 +954,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 11;
+	int TIMESTAMP = 13;
 
 
 	/**
@@ -714,15 +979,15 @@ public interface RuntimePackage extends EPackage {
 	EReference getGame_Players();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Game#getTeams <em>Teams</em>}'.
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Game#getItems <em>Items</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Teams</em>'.
-	 * @see no.hal.pg.runtime.Game#getTeams()
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see no.hal.pg.runtime.Game#getItems()
 	 * @see #getGame()
 	 * @generated
 	 */
-	EReference getGame_Teams();
+	EReference getGame_Items();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Game#getTasks <em>Tasks</em>}'.
@@ -734,38 +999,6 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getGame_Tasks();
-
-	/**
-	 * Returns the meta object for class '{@link no.hal.pg.runtime.Team <em>Team</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Team</em>'.
-	 * @see no.hal.pg.runtime.Team
-	 * @generated
-	 */
-	EClass getTeam();
-
-	/**
-	 * Returns the meta object for the container reference '{@link no.hal.pg.runtime.Team#getGame <em>Game</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Game</em>'.
-	 * @see no.hal.pg.runtime.Team#getGame()
-	 * @see #getTeam()
-	 * @generated
-	 */
-	EReference getTeam_Game();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Team#getPlayers <em>Players</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Players</em>'.
-	 * @see no.hal.pg.runtime.Team#getPlayers()
-	 * @see #getTeam()
-	 * @generated
-	 */
-	EReference getTeam_Players();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Player <em>Player</em>}'.
@@ -789,6 +1022,92 @@ public interface RuntimePackage extends EPackage {
 	EReference getPlayer_Game();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Player#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see no.hal.pg.runtime.Player#getItems()
+	 * @see #getPlayer()
+	 * @generated
+	 */
+	EReference getPlayer_Items();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.Item <em>Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Item</em>'.
+	 * @see no.hal.pg.runtime.Item
+	 * @generated
+	 */
+	EClass getItem();
+
+	/**
+	 * Returns the meta object for the container reference '{@link no.hal.pg.runtime.Item#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Owner</em>'.
+	 * @see no.hal.pg.runtime.Item#getOwner()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_Owner();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link no.hal.pg.runtime.Item#getOwnLocation <em>Own Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Own Location</em>'.
+	 * @see no.hal.pg.runtime.Item#getOwnLocation()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EReference getItem_OwnLocation();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.InfoItem <em>Info Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Info Item</em>'.
+	 * @see no.hal.pg.runtime.InfoItem
+	 * @generated
+	 */
+	EClass getInfoItem();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see no.hal.pg.runtime.InfoItem#getText()
+	 * @see #getInfoItem()
+	 * @generated
+	 */
+	EAttribute getInfoItem_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getUrl <em>Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Url</em>'.
+	 * @see no.hal.pg.runtime.InfoItem#getUrl()
+	 * @see #getInfoItem()
+	 * @generated
+	 */
+	EAttribute getInfoItem_Url();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getImageUrl <em>Image Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image Url</em>'.
+	 * @see no.hal.pg.runtime.InfoItem#getImageUrl()
+	 * @see #getInfoItem()
+	 * @generated
+	 */
+	EAttribute getInfoItem_ImageUrl();
+
+	/**
 	 * Returns the meta object for the reference '{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -798,26 +1117,6 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPlayer_Person();
-
-	/**
-	 * Returns the meta object for class '{@link no.hal.pg.runtime.Players <em>Players</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Players</em>'.
-	 * @see no.hal.pg.runtime.Players
-	 * @generated
-	 */
-	EClass getPlayers();
-
-	/**
-	 * Returns the meta object for the '{@link no.hal.pg.runtime.Players#getAllPlayers() <em>Get All Players</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get All Players</em>' operation.
-	 * @see no.hal.pg.runtime.Players#getAllPlayers()
-	 * @generated
-	 */
-	EOperation getPlayers__GetAllPlayers();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Task <em>Task</em>}'.
@@ -839,17 +1138,6 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTask_Game();
-
-	/**
-	 * Returns the meta object for the reference '{@link no.hal.pg.runtime.Task#getTeam <em>Team</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Team</em>'.
-	 * @see no.hal.pg.runtime.Task#getTeam()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EReference getTask_Team();
 
 	/**
 	 * Returns the meta object for the reference list '{@link no.hal.pg.runtime.Task#getPlayers <em>Players</em>}'.
@@ -916,6 +1204,27 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTask_FinishConditions();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Task#getRewards <em>Rewards</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Rewards</em>'.
+	 * @see no.hal.pg.runtime.Task#getRewards()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_Rewards();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#getDescription() <em>Get Description</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Description</em>' operation.
+	 * @see no.hal.pg.runtime.Task#getDescription()
+	 * @generated
+	 */
+	EOperation getTask__GetDescription();
 
 	/**
 	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#canStart() <em>Can Start</em>}' operation.
@@ -1000,15 +1309,15 @@ public interface RuntimePackage extends EPackage {
 	EAttribute getCompositeCondition_Logic();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.CompositeCondition#getPredicates <em>Predicates</em>}'.
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.CompositeCondition#getConditions <em>Conditions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Predicates</em>'.
-	 * @see no.hal.pg.runtime.CompositeCondition#getPredicates()
+	 * @return the meta object for the containment reference list '<em>Conditions</em>'.
+	 * @see no.hal.pg.runtime.CompositeCondition#getConditions()
 	 * @see #getCompositeCondition()
 	 * @generated
 	 */
-	EReference getCompositeCondition_Predicates();
+	EReference getCompositeCondition_Conditions();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsTaskStarted <em>Is Task Started</em>}'.
@@ -1031,6 +1340,26 @@ public interface RuntimePackage extends EPackage {
 	EClass getIsTaskFinished();
 
 	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.AcceptTask <em>Accept Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Accept Task</em>'.
+	 * @see no.hal.pg.runtime.AcceptTask
+	 * @generated
+	 */
+	EClass getAcceptTask();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.AcceptTask#accept() <em>Accept</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Accept</em>' operation.
+	 * @see no.hal.pg.runtime.AcceptTask#accept()
+	 * @generated
+	 */
+	EOperation getAcceptTask__Accept();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Runtime <em>Runtime</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1050,6 +1379,17 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getRuntime_Games();
+
+	/**
+	 * Returns the meta object for data type '{@link java.net.URI <em>EURI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>EURI</em>'.
+	 * @see java.net.URI
+	 * @model instanceClass="java.net.URI"
+	 * @generated
+	 */
+	EDataType getEURI();
 
 	/**
 	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#isStarted() <em>Is Started</em>}' operation.
@@ -1134,12 +1474,12 @@ public interface RuntimePackage extends EPackage {
 		EReference GAME__PLAYERS = eINSTANCE.getGame_Players();
 
 		/**
-		 * The meta object literal for the '<em><b>Teams</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GAME__TEAMS = eINSTANCE.getGame_Teams();
+		EReference GAME__ITEMS = eINSTANCE.getGame_Items();
 
 		/**
 		 * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
@@ -1148,32 +1488,6 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference GAME__TASKS = eINSTANCE.getGame_Tasks();
-
-		/**
-		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.TeamImpl <em>Team</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.runtime.impl.TeamImpl
-		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTeam()
-		 * @generated
-		 */
-		EClass TEAM = eINSTANCE.getTeam();
-
-		/**
-		 * The meta object literal for the '<em><b>Game</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEAM__GAME = eINSTANCE.getTeam_Game();
-
-		/**
-		 * The meta object literal for the '<em><b>Players</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEAM__PLAYERS = eINSTANCE.getTeam_Players();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.PlayerImpl <em>Player</em>}' class.
@@ -1194,30 +1508,80 @@ public interface RuntimePackage extends EPackage {
 		EReference PLAYER__GAME = eINSTANCE.getPlayer_Game();
 
 		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAYER__ITEMS = eINSTANCE.getPlayer_Items();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.ItemImpl <em>Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.ItemImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getItem()
+		 * @generated
+		 */
+		EClass ITEM = eINSTANCE.getItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Owner</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__OWNER = eINSTANCE.getItem_Owner();
+
+		/**
+		 * The meta object literal for the '<em><b>Own Location</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ITEM__OWN_LOCATION = eINSTANCE.getItem_OwnLocation();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.InfoItemImpl <em>Info Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.InfoItemImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfoItem()
+		 * @generated
+		 */
+		EClass INFO_ITEM = eINSTANCE.getInfoItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO_ITEM__TEXT = eINSTANCE.getInfoItem_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO_ITEM__URL = eINSTANCE.getInfoItem_Url();
+
+		/**
+		 * The meta object literal for the '<em><b>Image Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO_ITEM__IMAGE_URL = eINSTANCE.getInfoItem_ImageUrl();
+
+		/**
 		 * The meta object literal for the '<em><b>Person</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PLAYER__PERSON = eINSTANCE.getPlayer_Person();
-
-		/**
-		 * The meta object literal for the '{@link no.hal.pg.runtime.Players <em>Players</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.runtime.Players
-		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getPlayers()
-		 * @generated
-		 */
-		EClass PLAYERS = eINSTANCE.getPlayers();
-
-		/**
-		 * The meta object literal for the '<em><b>Get All Players</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation PLAYERS___GET_ALL_PLAYERS = eINSTANCE.getPlayers__GetAllPlayers();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.TaskImpl <em>Task</em>}' class.
@@ -1236,14 +1600,6 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK__GAME = eINSTANCE.getTask_Game();
-
-		/**
-		 * The meta object literal for the '<em><b>Team</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK__TEAM = eINSTANCE.getTask_Team();
 
 		/**
 		 * The meta object literal for the '<em><b>Players</b></em>' reference list feature.
@@ -1292,6 +1648,22 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK__FINISH_CONDITIONS = eINSTANCE.getTask_FinishConditions();
+
+		/**
+		 * The meta object literal for the '<em><b>Rewards</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__REWARDS = eINSTANCE.getTask_Rewards();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Description</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TASK___GET_DESCRIPTION = eINSTANCE.getTask__GetDescription();
 
 		/**
 		 * The meta object literal for the '<em><b>Can Start</b></em>' operation.
@@ -1364,12 +1736,12 @@ public interface RuntimePackage extends EPackage {
 		EAttribute COMPOSITE_CONDITION__LOGIC = eINSTANCE.getCompositeCondition_Logic();
 
 		/**
-		 * The meta object literal for the '<em><b>Predicates</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Conditions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPOSITE_CONDITION__PREDICATES = eINSTANCE.getCompositeCondition_Predicates();
+		EReference COMPOSITE_CONDITION__CONDITIONS = eINSTANCE.getCompositeCondition_Conditions();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsTaskStartedImpl <em>Is Task Started</em>}' class.
@@ -1392,6 +1764,24 @@ public interface RuntimePackage extends EPackage {
 		EClass IS_TASK_FINISHED = eINSTANCE.getIsTaskFinished();
 
 		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.AcceptTaskImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
+		 * @generated
+		 */
+		EClass ACCEPT_TASK = eINSTANCE.getAcceptTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Accept</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACCEPT_TASK___ACCEPT = eINSTANCE.getAcceptTask__Accept();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.RuntimeImpl <em>Runtime</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1408,6 +1798,16 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference RUNTIME__GAMES = eINSTANCE.getRuntime_Games();
+
+		/**
+		 * The meta object literal for the '<em>EURI</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.net.URI
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
+		 * @generated
+		 */
+		EDataType EURI = eINSTANCE.getEURI();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Started</b></em>' operation.

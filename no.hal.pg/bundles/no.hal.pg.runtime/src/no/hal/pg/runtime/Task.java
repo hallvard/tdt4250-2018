@@ -3,6 +3,7 @@
 package no.hal.pg.runtime;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,20 +15,20 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.Task#getGame <em>Game</em>}</li>
- *   <li>{@link no.hal.pg.runtime.Task#getTeam <em>Team</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getPlayers <em>Players</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getResult <em>Result</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getStartTime <em>Start Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getFinishTime <em>Finish Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getStartConditions <em>Start Conditions</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getFinishConditions <em>Finish Conditions</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Task#getRewards <em>Rewards</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.runtime.RuntimePackage#getTask()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PlayerIsContainedInGame IsFinishedImpliesIsStarted FinishTimeGEStartTime'"
  * @generated
  */
-public interface Task<R> extends Players {
+public interface Task<R> extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Game</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Game#getTasks <em>Tasks</em>}'.
@@ -44,7 +45,7 @@ public interface Task<R> extends Players {
 	 * @model opposite="tasks" transient="false"
 	 * @generated
 	 */
-	Game getGame();
+	Game<?> getGame();
 
 	/**
 	 * Sets the value of the '{@link no.hal.pg.runtime.Task#getGame <em>Game</em>}' container reference.
@@ -54,33 +55,7 @@ public interface Task<R> extends Players {
 	 * @see #getGame()
 	 * @generated
 	 */
-	void setGame(Game value);
-
-	/**
-	 * Returns the value of the '<em><b>Team</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Team</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Team</em>' reference.
-	 * @see #setTeam(Team)
-	 * @see no.hal.pg.runtime.RuntimePackage#getTask_Team()
-	 * @model
-	 * @generated
-	 */
-	Team getTeam();
-
-	/**
-	 * Sets the value of the '{@link no.hal.pg.runtime.Task#getTeam <em>Team</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Team</em>' reference.
-	 * @see #getTeam()
-	 * @generated
-	 */
-	void setTeam(Team value);
+	void setGame(Game<?> value);
 
 	/**
 	 * Returns the value of the '<em><b>Players</b></em>' reference list.
@@ -207,6 +182,30 @@ public interface Task<R> extends Players {
 	 * @generated
 	 */
 	EList<Condition> getFinishConditions();
+
+	/**
+	 * Returns the value of the '<em><b>Rewards</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.runtime.Item}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Rewards</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Rewards</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getTask_Rewards()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Item> getRewards();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getDescription();
 
 	/**
 	 * <!-- begin-user-doc -->

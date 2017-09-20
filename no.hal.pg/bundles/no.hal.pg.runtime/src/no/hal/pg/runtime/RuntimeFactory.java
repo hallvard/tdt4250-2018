@@ -31,15 +31,6 @@ public interface RuntimeFactory extends EFactory {
 	<T extends Task<?>> Game<T> createGame();
 
 	/**
-	 * Returns a new object of class '<em>Team</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Team</em>'.
-	 * @generated
-	 */
-	Team createTeam();
-
-	/**
 	 * Returns a new object of class '<em>Player</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -47,6 +38,24 @@ public interface RuntimeFactory extends EFactory {
 	 * @generated
 	 */
 	Player createPlayer();
+
+	/**
+	 * Returns a new object of class '<em>Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Item</em>'.
+	 * @generated
+	 */
+	Item createItem();
+
+	/**
+	 * Returns a new object of class '<em>Info Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Info Item</em>'.
+	 * @generated
+	 */
+	InfoItem createInfoItem();
 
 	/**
 	 * Returns a new object of class '<em>Task</em>'.
@@ -83,6 +92,15 @@ public interface RuntimeFactory extends EFactory {
 	 * @generated
 	 */
 	IsTaskFinished createIsTaskFinished();
+
+	/**
+	 * Returns a new object of class '<em>Accept Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Accept Task</em>'.
+	 * @generated
+	 */
+	AcceptTask createAcceptTask();
 
 	/**
 	 * Returns a new object of class '<em>Runtime</em>'.

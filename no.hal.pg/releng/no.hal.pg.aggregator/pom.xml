@@ -16,7 +16,6 @@
 		<module>../../bundles/no.hal.pg.arc</module>
 		<module>../../tests/no.hal.pg.arc.tests</module>
 		
-		<module>../../bundles/no.hal.pg.config</module>
 		<module>../../bundles/no.hal.pg.runtime</module>
 		<module>../../tests/no.hal.pg.runtime.tests</module>
 
@@ -24,17 +23,20 @@
 		<module>../../bundles/no.hal.pg.http.impl</module>
 		<module>../../tests/no.hal.pg.http.impl.tests</module>
 
-		<module>../../bundles/no.hal.pg.runtime.http</module>
-
 		<module>../../bundles/no.hal.pg.ui</module>
 
 		<module>../../bundles/no.hal.pg.osm</module>
 		<module>../../tests/no.hal.pg.osm.tests</module>
 
+		<module>../../bundles/no.hal.pg.runtime.http</module>
+		<module>../../tests/no.hal.pg.runtime.http.tests</module>
+
 		<module>../../bundles/no.hal.pg.osm.geomap</module>
 
 		<module>../../features/no.hal.pg.runtime.feature</module>
 		<module>../../features/no.hal.pg.feature</module>
+
+		<module>../../bundles/no.hal.pg.config</module>
 
 		<module>../no.hal.pg.repository</module>
 	</modules>

@@ -4,6 +4,7 @@ package no.hal.pg.runtime.impl;
 
 import java.util.Collection;
 
+import no.hal.pg.arc.impl.ArcImpl;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.RuntimePackage;
 
@@ -13,8 +14,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,7 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class RuntimeImpl extends MinimalEObjectImpl.Container implements no.hal.pg.runtime.Runtime {
+public class RuntimeImpl extends ArcImpl implements no.hal.pg.runtime.Runtime {
 	/**
 	 * The cached value of the '{@link #getGames() <em>Games</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -40,7 +39,7 @@ public class RuntimeImpl extends MinimalEObjectImpl.Container implements no.hal.
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Game> games;
+	protected EList<Game<?>> games;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -66,9 +65,9 @@ public class RuntimeImpl extends MinimalEObjectImpl.Container implements no.hal.
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Game> getGames() {
+	public EList<Game<?>> getGames() {
 		if (games == null) {
-			games = new EObjectContainmentEList<Game>(Game.class, this, RuntimePackage.RUNTIME__GAMES);
+			games = new EObjectContainmentEList<Game<?>>(Game.class, this, RuntimePackage.RUNTIME__GAMES);
 		}
 		return games;
 	}
@@ -112,7 +111,7 @@ public class RuntimeImpl extends MinimalEObjectImpl.Container implements no.hal.
 		switch (featureID) {
 			case RuntimePackage.RUNTIME__GAMES:
 				getGames().clear();
-				getGames().addAll((Collection<? extends Game>)newValue);
+				getGames().addAll((Collection<? extends Game<?>>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

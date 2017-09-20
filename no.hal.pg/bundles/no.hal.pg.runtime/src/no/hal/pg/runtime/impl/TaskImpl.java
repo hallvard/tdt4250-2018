@@ -3,13 +3,10 @@
 package no.hal.pg.runtime.impl;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -22,10 +19,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,27 +33,18 @@ import no.hal.pg.runtime.Team;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getGame <em>Game</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getTeam <em>Team</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getPlayers <em>Players</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getResult <em>Result</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getStartTime <em>Start Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getFinishTime <em>Finish Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getStartConditions <em>Start Conditions</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getFinishConditions <em>Finish Conditions</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getRewards <em>Rewards</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R> {
-	/**
-	 * The cached value of the '{@link #getTeam() <em>Team</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTeam()
-	 * @generated
-	 * @ordered
-	 */
-	protected Team team;
 	/**
 	 * The cached value of the '{@link #getPlayers() <em>Players</em>}' reference list.
 	 * <!-- begin-user-doc -->
@@ -130,6 +118,15 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	protected EList<Condition> finishConditions;
 	/**
+	 * The cached value of the '{@link #getRewards() <em>Rewards</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRewards()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Item> rewards;
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -154,9 +151,9 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 * @generated
 	 */
 	@Override
-	public Game getGame() {
+	public Game<?> getGame() {
 		if (eContainerFeatureID() != RuntimePackage.TASK__GAME) return null;
-		return (Game)eInternalContainer();
+		return (Game<?>)eInternalContainer();
 	}
 
 	/**
@@ -164,7 +161,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGame(Game newGame, NotificationChain msgs) {
+	public NotificationChain basicSetGame(Game<?> newGame, NotificationChain msgs) {
 		msgs = eBasicSetContainer((InternalEObject)newGame, RuntimePackage.TASK__GAME, msgs);
 		return msgs;
 	}
@@ -175,7 +172,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 * @generated
 	 */
 	@Override
-	public void setGame(Game newGame) {
+	public void setGame(Game<?> newGame) {
 		if (newGame != eInternalContainer() || (eContainerFeatureID() != RuntimePackage.TASK__GAME && newGame != null)) {
 			if (EcoreUtil.isAncestor(this, newGame))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
@@ -197,65 +194,11 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 * @generated
 	 */
 	@Override
-	public Team getTeam() {
-		if (team != null && team.eIsProxy()) {
-			InternalEObject oldTeam = (InternalEObject)team;
-			team = (Team)eResolveProxy(oldTeam);
-			if (team != oldTeam) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, RuntimePackage.TASK__TEAM, oldTeam, team));
-			}
-		}
-		return team;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Team basicGetTeam() {
-		return team;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTeam(Team newTeam) {
-		Team oldTeam = team;
-		team = newTeam;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.TASK__TEAM, oldTeam, team));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Player> getPlayers() {
 		if (players == null) {
 			players = new EObjectResolvingEList<Player>(Player.class, this, RuntimePackage.TASK__PLAYERS);
 		}
 		return players;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<Player> getAllPlayers() {
-		List<Player> allPlayers = new ArrayList<Player>(getPlayers());
-		if (getTeam() != null) {
-			allPlayers.addAll(getTeam().getAllPlayers());
-		}
-		return ECollections.unmodifiableEList(allPlayers);
 	}
 
 	/**
@@ -354,6 +297,33 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		return finishConditions;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Item> getRewards() {
+		if (rewards == null) {
+			rewards = new EObjectContainmentEList<Item>(Item.class, this, RuntimePackage.TASK__REWARDS);
+		}
+		return rewards;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getDescription() {
+		if (getGame() != null) {
+			int pos = getGame().getTasks().indexOf(this);
+			return "Task #" + (pos + 1);
+		}
+		return "A task";
+	}
+
 	static boolean test(Iterable<Condition> conditions) {
 		for (Condition predicate : conditions) {
 			if (! predicate.test()) {
@@ -422,7 +392,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	@Override
 	public void finish(R result) {
 		if (! isStarted()) {
-			throw new IllegalStateException("Cannot start a task that isn't started");
+			throw new IllegalStateException("Cannot finish a task that isn't started");
 		}
 		if (TaskImpl.test(getFinishConditions())) {
 			setResult(result);
@@ -442,7 +412,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			case RuntimePackage.TASK__GAME:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetGame((Game)otherEnd, msgs);
+				return basicSetGame((Game<?>)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -461,6 +431,8 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return ((InternalEList<?>)getStartConditions()).basicRemove(otherEnd, msgs);
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return ((InternalEList<?>)getFinishConditions()).basicRemove(otherEnd, msgs);
+			case RuntimePackage.TASK__REWARDS:
+				return ((InternalEList<?>)getRewards()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -489,9 +461,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		switch (featureID) {
 			case RuntimePackage.TASK__GAME:
 				return getGame();
-			case RuntimePackage.TASK__TEAM:
-				if (resolve) return getTeam();
-				return basicGetTeam();
 			case RuntimePackage.TASK__PLAYERS:
 				return getPlayers();
 			case RuntimePackage.TASK__RESULT:
@@ -504,6 +473,8 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return getStartConditions();
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return getFinishConditions();
+			case RuntimePackage.TASK__REWARDS:
+				return getRewards();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -518,10 +489,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case RuntimePackage.TASK__GAME:
-				setGame((Game)newValue);
-				return;
-			case RuntimePackage.TASK__TEAM:
-				setTeam((Team)newValue);
+				setGame((Game<?>)newValue);
 				return;
 			case RuntimePackage.TASK__PLAYERS:
 				getPlayers().clear();
@@ -544,6 +512,10 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				getFinishConditions().clear();
 				getFinishConditions().addAll((Collection<? extends Condition>)newValue);
 				return;
+			case RuntimePackage.TASK__REWARDS:
+				getRewards().clear();
+				getRewards().addAll((Collection<? extends Item>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -557,10 +529,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case RuntimePackage.TASK__GAME:
-				setGame((Game)null);
-				return;
-			case RuntimePackage.TASK__TEAM:
-				setTeam((Team)null);
+				setGame((Game<?>)null);
 				return;
 			case RuntimePackage.TASK__PLAYERS:
 				getPlayers().clear();
@@ -580,6 +549,9 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				getFinishConditions().clear();
 				return;
+			case RuntimePackage.TASK__REWARDS:
+				getRewards().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -594,8 +566,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		switch (featureID) {
 			case RuntimePackage.TASK__GAME:
 				return getGame() != null;
-			case RuntimePackage.TASK__TEAM:
-				return team != null;
 			case RuntimePackage.TASK__PLAYERS:
 				return players != null && !players.isEmpty();
 			case RuntimePackage.TASK__RESULT:
@@ -608,6 +578,8 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return startConditions != null && !startConditions.isEmpty();
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return finishConditions != null && !finishConditions.isEmpty();
+			case RuntimePackage.TASK__REWARDS:
+				return rewards != null && !rewards.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -620,6 +592,8 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case RuntimePackage.TASK___GET_DESCRIPTION:
+				return getDescription();
 			case RuntimePackage.TASK___CAN_START:
 				return canStart();
 			case RuntimePackage.TASK___IS_STARTED:
@@ -632,8 +606,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			case RuntimePackage.TASK___FINISH__OBJECT:
 				finish((R)arguments.get(0));
 				return null;
-			case RuntimePackage.TASK___GET_ALL_PLAYERS:
-				return getAllPlayers();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

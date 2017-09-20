@@ -14,8 +14,12 @@ Import-Package: javax.servlet;version="3.1.0",
  no.hal.pg.http.auth.util,
  org.eclipse.emf.ecore,
  org.osgi.service.component;version="1.2.0",
- org.osgi.service.component.annotations;version="1.2.0"
+ org.osgi.service.component.annotations;version="1.2.0",
+ org.osgi.service.http.whiteboard;version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Service-Component: OSGI-INF/no.hal.pg.runtime.http.auth.GameAuthenticationHandler.xml
+Service-Component: OSGI-INF/no.hal.pg.runtime.http.auth.GameAuthenticationHandler.xml,
+ OSGI-INF/no.hal.pg.runtime.http.AcceptTaskConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.GameAppConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.JsConfig.xml
 Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
  no.hal.pg.runtime;bundle-version="0.0.1"

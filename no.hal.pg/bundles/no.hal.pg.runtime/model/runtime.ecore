@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="runtime" nsURI="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
     nsPrefix="runtime">
-  <eClassifiers xsi:type="ecore:EClass" name="Game" eSuperTypes="#//Players">
+  <eClassifiers xsi:type="ecore:EClass" name="Game">
     <eTypeParameters name="T">
       <eBounds eClassifier="#//Task">
         <eTypeArguments/>
@@ -10,8 +10,8 @@
     </eTypeParameters>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
         eType="#//Player" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="teams" upperBound="-1"
-        eType="#//Team" containment="true" eOpposite="#//Team/game"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//Item" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         containment="true" eOpposite="#//Task/game">
       <eGenericType eClassifier="#//Task">
@@ -19,24 +19,35 @@
       </eGenericType>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Team" eSuperTypes="#//Players">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eType="#//Game" eOpposite="#//Game/teams"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
-        eType="#//Player" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Player">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eType="#//Game" changeable="false"
-        volatile="true" transient="true" derived="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Player" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocation">
     <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Person"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="game" changeable="false"
+        volatile="true" transient="true" derived="true">
+      <eGenericType eClassifier="#//Game">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//Item" containment="true" eOpposite="#//Item/owner"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Players" abstract="true" interface="true">
-    <eOperations name="getAllPlayers" upperBound="-1" eType="#//Player"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocated">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Player"
+        eOpposite="#//Player/items"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownLocation" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocation"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//Players">
+  <eClassifiers xsi:type="ecore:EClass" name="InfoItem" eSuperTypes="#//Item">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="#//EURI"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageUrl" eType="#//EURI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="EURI" instanceClassName="java.net.URI"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PlayerIsContainedInGame IsFinishedImpliesIsStarted FinishTimeGEStartTime"/>
     </eAnnotations>
     <eTypeParameters name="R"/>
+    <eOperations name="getDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="canStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isStarted" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="isFinished" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -46,8 +57,11 @@
         <eGenericType eTypeParameter="#//Task/R"/>
       </eParameters>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eType="#//Game" eOpposite="#//Game/tasks"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="team" eType="#//Team"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="game" eOpposite="#//Game/tasks">
+      <eGenericType eClassifier="#//Game">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
         eType="#//Player"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="result">
@@ -59,6 +73,8 @@
         eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finishConditions" upperBound="-1"
         eType="#//Condition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rewards" upperBound="-1"
+        eType="#//Item" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" interface="true">
     <eOperations name="test" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -72,7 +88,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CompositeCondition" eSuperTypes="#//Condition">
     <eTypeParameters name="E"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="predicates" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
         eType="#//Condition" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IsTaskStarted">
@@ -89,9 +105,19 @@
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AcceptTask">
+    <eOperations name="accept"/>
+    <eGenericSuperTypes eClassifier="#//Task">
+      <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Timestamp" instanceClassName="java.lang.Long"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Runtime">
+  <eClassifiers xsi:type="ecore:EClass" name="Runtime" eSuperTypes="../../no.hal.pg.arc/model/arc.ecore#//Arc">
     <eStructuralFeatures xsi:type="ecore:EReference" name="games" upperBound="-1"
-        eType="#//Game" containment="true"/>
+        containment="true">
+      <eGenericType eClassifier="#//Game">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
 </ecore:EPackage>

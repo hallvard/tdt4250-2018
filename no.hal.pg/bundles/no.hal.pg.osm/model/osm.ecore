@@ -16,7 +16,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="LatLong" instanceClassName="no.hal.pgo.osm.geoutil.LatLong"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="LatLong" instanceClassName="no.hal.pg.osm.geoutil.LatLong"/>
   <eClassifiers xsi:type="ecore:EClass" name="GeoLocated" abstract="true" interface="true">
     <eOperations name="getLatLong" eType="#//LatLong"/>
   </eClassifiers>

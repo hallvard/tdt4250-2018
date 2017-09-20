@@ -2,8 +2,11 @@
  */
 package no.hal.pg.runtime.impl;
 
+import java.net.URI;
 import no.hal.pg.arc.ArcPackage;
+import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -16,15 +19,15 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
-import no.hal.pg.runtime.Players;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 import no.hal.pg.runtime.util.RuntimeValidator;
 
 /**
@@ -46,13 +49,6 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass teamEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass playerEClass = null;
 
 	/**
@@ -60,7 +56,14 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass playersEClass = null;
+	private EClass itemEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass infoItemEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,7 +112,21 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass acceptTaskEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass runtimeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType euriEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -166,6 +183,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		// Initialize simple dependencies
 		ArcPackage.eINSTANCE.eClass();
+		OsmPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theRuntimePackage.createPackageContents();
@@ -216,8 +234,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EReference getGame_Teams() {
+	public EReference getGame_Items() {
 		return (EReference)gameEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -237,36 +254,6 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	@Override
-	public EClass getTeam() {
-		return teamEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTeam_Game() {
-		return (EReference)teamEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTeam_Players() {
-		return (EReference)teamEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getPlayer() {
 		return playerEClass;
 	}
@@ -278,7 +265,79 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EReference getPlayer_Game() {
-		return (EReference)playerEClass.getEStructuralFeatures().get(0);
+		return (EReference)playerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlayer_Items() {
+		return (EReference)playerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getItem() {
+		return itemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_Owner() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getItem_OwnLocation() {
+		return (EReference)itemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInfoItem() {
+		return infoItemEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfoItem_Text() {
+		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfoItem_Url() {
+		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfoItem_ImageUrl() {
+		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -288,27 +347,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EReference getPlayer_Person() {
-		return (EReference)playerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getPlayers() {
-		return playersEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getPlayers__GetAllPlayers() {
-		return playersEClass.getEOperations().get(0);
+		return (EReference)playerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -337,7 +376,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getTask_Team() {
+	public EReference getTask_Players() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -347,18 +386,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	@Override
-	public EReference getTask_Players() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getTask_Result() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -367,7 +396,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	public EAttribute getTask_StartTime() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -376,7 +405,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	public EAttribute getTask_FinishTime() {
-		return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -385,7 +414,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	public EReference getTask_StartConditions() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(6);
+		return (EReference)taskEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -394,6 +423,15 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	public EReference getTask_FinishConditions() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_Rewards() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -402,8 +440,17 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTask__CanStart() {
+	public EOperation getTask__GetDescription() {
 		return taskEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getTask__CanStart() {
+		return taskEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -413,7 +460,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__Finish__Object() {
-		return taskEClass.getEOperations().get(4);
+		return taskEClass.getEOperations().get(5);
 	}
 
 	/**
@@ -475,7 +522,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCompositeCondition_Predicates() {
+	public EReference getCompositeCondition_Conditions() {
 		return (EReference)compositeConditionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -502,6 +549,24 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAcceptTask() {
+		return acceptTaskEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAcceptTask__Accept() {
+		return acceptTaskEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRuntime() {
 		return runtimeEClass;
 	}
@@ -520,9 +585,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EOperation getTask__IsStarted() {
-		return taskEClass.getEOperations().get(1);
+	public EDataType getEURI() {
+		return euriEDataType;
 	}
 
 	/**
@@ -531,7 +595,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	@Override
-	public EOperation getTask__IsFinished() {
+	public EOperation getTask__IsStarted() {
 		return taskEClass.getEOperations().get(2);
 	}
 
@@ -541,8 +605,18 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	@Override
-	public EOperation getTask__Start() {
+	public EOperation getTask__IsFinished() {
 		return taskEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getTask__Start() {
+		return taskEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -586,29 +660,33 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		// Create classes and their features
 		gameEClass = createEClass(GAME);
 		createEReference(gameEClass, GAME__PLAYERS);
-		createEReference(gameEClass, GAME__TEAMS);
+		createEReference(gameEClass, GAME__ITEMS);
 		createEReference(gameEClass, GAME__TASKS);
 
-		teamEClass = createEClass(TEAM);
-		createEReference(teamEClass, TEAM__GAME);
-		createEReference(teamEClass, TEAM__PLAYERS);
-
 		playerEClass = createEClass(PLAYER);
-		createEReference(playerEClass, PLAYER__GAME);
 		createEReference(playerEClass, PLAYER__PERSON);
+		createEReference(playerEClass, PLAYER__GAME);
+		createEReference(playerEClass, PLAYER__ITEMS);
 
-		playersEClass = createEClass(PLAYERS);
-		createEOperation(playersEClass, PLAYERS___GET_ALL_PLAYERS);
+		itemEClass = createEClass(ITEM);
+		createEReference(itemEClass, ITEM__OWNER);
+		createEReference(itemEClass, ITEM__OWN_LOCATION);
+
+		infoItemEClass = createEClass(INFO_ITEM);
+		createEAttribute(infoItemEClass, INFO_ITEM__TEXT);
+		createEAttribute(infoItemEClass, INFO_ITEM__URL);
+		createEAttribute(infoItemEClass, INFO_ITEM__IMAGE_URL);
 
 		taskEClass = createEClass(TASK);
 		createEReference(taskEClass, TASK__GAME);
-		createEReference(taskEClass, TASK__TEAM);
 		createEReference(taskEClass, TASK__PLAYERS);
 		createEAttribute(taskEClass, TASK__RESULT);
 		createEAttribute(taskEClass, TASK__START_TIME);
 		createEAttribute(taskEClass, TASK__FINISH_TIME);
 		createEReference(taskEClass, TASK__START_CONDITIONS);
 		createEReference(taskEClass, TASK__FINISH_CONDITIONS);
+		createEReference(taskEClass, TASK__REWARDS);
+		createEOperation(taskEClass, TASK___GET_DESCRIPTION);
 		createEOperation(taskEClass, TASK___CAN_START);
 		createEOperation(taskEClass, TASK___IS_STARTED);
 		createEOperation(taskEClass, TASK___IS_FINISHED);
@@ -623,16 +701,20 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		compositeConditionEClass = createEClass(COMPOSITE_CONDITION);
 		createEAttribute(compositeConditionEClass, COMPOSITE_CONDITION__LOGIC);
-		createEReference(compositeConditionEClass, COMPOSITE_CONDITION__PREDICATES);
+		createEReference(compositeConditionEClass, COMPOSITE_CONDITION__CONDITIONS);
 
 		isTaskStartedEClass = createEClass(IS_TASK_STARTED);
 
 		isTaskFinishedEClass = createEClass(IS_TASK_FINISHED);
 
+		acceptTaskEClass = createEClass(ACCEPT_TASK);
+		createEOperation(acceptTaskEClass, ACCEPT_TASK___ACCEPT);
+
 		runtimeEClass = createEClass(RUNTIME);
 		createEReference(runtimeEClass, RUNTIME__GAMES);
 
 		// Create data types
+		euriEDataType = createEDataType(EURI);
 		timestampEDataType = createEDataType(TIMESTAMP);
 	}
 
@@ -660,6 +742,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		OsmPackage theOsmPackage = (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
 		ArcPackage theArcPackage = (ArcPackage)EPackage.Registry.INSTANCE.getEPackage(ArcPackage.eNS_URI);
 
 		// Create type parameters
@@ -675,9 +758,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		gameEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
-		gameEClass.getESuperTypes().add(this.getPlayers());
-		teamEClass.getESuperTypes().add(this.getPlayers());
-		taskEClass.getESuperTypes().add(this.getPlayers());
+		playerEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
+		itemEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
+		infoItemEClass.getESuperTypes().add(this.getItem());
 		abstractConditionEClass.getESuperTypes().add(this.getCondition());
 		compositeConditionEClass.getESuperTypes().add(this.getCondition());
 		g1 = createEGenericType(this.getAbstractCondition());
@@ -692,31 +775,43 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		isTaskFinishedEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getTask());
+		g2 = createEGenericType(ecorePackage.getEBooleanObject());
+		g1.getETypeArguments().add(g2);
+		acceptTaskEClass.getEGenericSuperTypes().add(g1);
+		runtimeEClass.getESuperTypes().add(theArcPackage.getArc());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGame_Players(), this.getPlayer(), null, "players", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGame_Teams(), this.getTeam(), this.getTeam_Game(), "teams", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGame_Items(), this.getItem(), null, "items", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getTask());
 		g2 = createEGenericType(gameEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getGame_Tasks(), g1, this.getTask_Game(), "tasks", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(teamEClass, Team.class, "Team", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTeam_Game(), this.getGame(), this.getGame_Teams(), "game", null, 0, 1, Team.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTeam_Players(), this.getPlayer(), null, "players", null, 0, -1, Team.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(playerEClass, Player.class, "Player", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlayer_Game(), this.getGame(), null, "game", null, 0, 1, Player.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPlayer_Person(), theArcPackage.getPerson(), null, "person", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getGame());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getPlayer_Game(), g1, null, "game", null, 0, 1, Player.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPlayer_Items(), this.getItem(), this.getItem_Owner(), "items", null, 0, -1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(playersEClass, Players.class, "Players", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getItem_Owner(), this.getPlayer(), this.getPlayer_Items(), "owner", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItem_OwnLocation(), theOsmPackage.getGeoLocation(), null, "ownLocation", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getPlayers__GetAllPlayers(), this.getPlayer(), "getAllPlayers", 0, -1, IS_UNIQUE, IS_ORDERED);
+		initEClass(infoItemEClass, InfoItem.class, "InfoItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInfoItem_Text(), ecorePackage.getEString(), "text", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInfoItem_Url(), this.getEURI(), "url", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInfoItem_ImageUrl(), this.getEURI(), "imageUrl", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTask_Game(), this.getGame(), this.getGame_Tasks(), "game", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Team(), this.getTeam(), null, "team", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getGame());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getTask_Game(), g1, this.getGame_Tasks(), "game", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_Players(), this.getPlayer(), null, "players", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(taskEClass_R);
 		initEAttribute(getTask_Result(), g1, "result", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -724,6 +819,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEAttribute(getTask_FinishTime(), this.getTimestamp(), "finishTime", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_StartConditions(), this.getCondition(), null, "startConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_FinishConditions(), this.getCondition(), null, "finishConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Rewards(), this.getItem(), null, "rewards", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getTask__GetDescription(), ecorePackage.getEString(), "getDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getTask__CanStart(), ecorePackage.getEBoolean(), "canStart", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -747,16 +845,24 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		initEClass(compositeConditionEClass, CompositeCondition.class, "CompositeCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompositeCondition_Logic(), ecorePackage.getEBoolean(), "logic", null, 0, 1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCompositeCondition_Predicates(), this.getCondition(), null, "predicates", null, 0, -1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCompositeCondition_Conditions(), this.getCondition(), null, "conditions", null, 0, -1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(isTaskStartedEClass, IsTaskStarted.class, "IsTaskStarted", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isTaskFinishedEClass, IsTaskFinished.class, "IsTaskFinished", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+		initEClass(acceptTaskEClass, AcceptTask.class, "AcceptTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getAcceptTask__Accept(), null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(runtimeEClass, no.hal.pg.runtime.Runtime.class, "Runtime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRuntime_Games(), this.getGame(), null, "games", null, 0, -1, no.hal.pg.runtime.Runtime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getGame());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getRuntime_Games(), g1, null, "games", null, 0, -1, no.hal.pg.runtime.Runtime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
+		initEDataType(euriEDataType, URI.class, "EURI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(timestampEDataType, Long.class, "Timestamp", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.runtime/src" modelPluginID="no.hal.pg.runtime"
+    modelName="App" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../no.hal.pg.arc/model/arc.genmodel#//arc ../../no.hal.pg.osm/model/osm.genmodel#//osm runtime.genmodel#//runtime"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>app.ecore</foreignModel>
+  <genPackages prefix="App" basePackage="no.hal.pg" resource="XMI" disposableProviderFactory="true"
+      extensibleProviderFactory="true" ecorePackage="app.ecore#/">
+    <genClasses image="false" ecoreClass="app.ecore#//View">
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View/U"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference app.ecore#//View/user"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="app.ecore#//View1">
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View1/U"/>
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View1/M"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference app.ecore#//View1/model"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="app.ecore#//View2">
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View2/U"/>
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View2/M1"/>
+      <genTypeParameters ecoreTypeParameter="app.ecore#//View2/M2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference app.ecore#//View2/model1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference app.ecore#//View2/model2"/>
+    </genClasses>
+    <genClasses ecoreClass="app.ecore#//GameView">
+      <genTypeParameters ecoreTypeParameter="app.ecore#//GameView/T"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference app.ecore#//GameView/player"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

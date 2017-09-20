@@ -2,18 +2,20 @@
  */
 package no.hal.pg.runtime.util;
 
+import java.net.URI;
 import java.util.Map;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
-import no.hal.pg.runtime.Players;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 import no.hal.pg.runtime.impl.TaskImpl;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -96,12 +98,12 @@ public class RuntimeValidator extends EObjectValidator {
 		switch (classifierID) {
 			case RuntimePackage.GAME:
 				return validateGame((Game<?>)value, diagnostics, context);
-			case RuntimePackage.TEAM:
-				return validateTeam((Team)value, diagnostics, context);
 			case RuntimePackage.PLAYER:
 				return validatePlayer((Player)value, diagnostics, context);
-			case RuntimePackage.PLAYERS:
-				return validatePlayers((Players)value, diagnostics, context);
+			case RuntimePackage.ITEM:
+				return validateItem((Item)value, diagnostics, context);
+			case RuntimePackage.INFO_ITEM:
+				return validateInfoItem((InfoItem)value, diagnostics, context);
 			case RuntimePackage.TASK:
 				return validateTask((Task<?>)value, diagnostics, context);
 			case RuntimePackage.CONDITION:
@@ -114,8 +116,12 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateIsTaskStarted((IsTaskStarted)value, diagnostics, context);
 			case RuntimePackage.IS_TASK_FINISHED:
 				return validateIsTaskFinished((IsTaskFinished)value, diagnostics, context);
+			case RuntimePackage.ACCEPT_TASK:
+				return validateAcceptTask((AcceptTask)value, diagnostics, context);
 			case RuntimePackage.RUNTIME:
 				return validateRuntime((no.hal.pg.runtime.Runtime)value, diagnostics, context);
+			case RuntimePackage.EURI:
+				return validateEURI((URI)value, diagnostics, context);
 			case RuntimePackage.TIMESTAMP:
 				return validateTimestamp((Long)value, diagnostics, context);
 			default:
@@ -137,15 +143,6 @@ public class RuntimeValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateTeam(Team team, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(team, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validatePlayer(Player player, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(player, diagnostics, context);
 	}
@@ -155,8 +152,17 @@ public class RuntimeValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePlayers(Players players, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(players, diagnostics, context);
+	public boolean validateItem(Item item, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(item, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInfoItem(InfoItem infoItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(infoItem, diagnostics, context);
 	}
 
 	/**
@@ -187,7 +193,7 @@ public class RuntimeValidator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validateTask_PlayerIsContainedInGame(Task<?> task, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (! task.getGame().getAllPlayers().containsAll(task.getAllPlayers())) {
+		if (! task.getGame().getPlayers().containsAll(task.getPlayers())) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
@@ -302,8 +308,38 @@ public class RuntimeValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean validateAcceptTask(AcceptTask acceptTask, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(acceptTask, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_PlayerIsContainedInGame(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_IsFinishedImpliesIsStarted(acceptTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_FinishTimeGEStartTime(acceptTask, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean validateRuntime(no.hal.pg.runtime.Runtime runtime, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(runtime, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateEURI(URI euri, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

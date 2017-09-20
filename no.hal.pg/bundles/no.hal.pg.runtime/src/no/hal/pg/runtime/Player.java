@@ -3,7 +3,8 @@
 package no.hal.pg.runtime;
 
 import no.hal.pg.arc.Person;
-import org.eclipse.emf.ecore.EObject;
+import no.hal.pg.osm.GeoLocation;
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,15 +15,16 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Player#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.runtime.RuntimePackage#getPlayer()
  * @model
  * @generated
  */
-public interface Player extends EObject {
+public interface Player extends GeoLocation {
 	/**
 	 * Returns the value of the '<em><b>Game</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -36,7 +38,25 @@ public interface Player extends EObject {
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	Game getGame();
+	Game<?> getGame();
+
+	/**
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.runtime.Item}.
+	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Item#getOwner <em>Owner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getPlayer_Items()
+	 * @see no.hal.pg.runtime.Item#getOwner
+	 * @model opposite="owner" containment="true"
+	 * @generated
+	 */
+	EList<Item> getItems();
 
 	/**
 	 * Returns the value of the '<em><b>Person</b></em>' reference.

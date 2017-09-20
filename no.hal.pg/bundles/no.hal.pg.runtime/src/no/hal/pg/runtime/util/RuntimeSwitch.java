@@ -2,21 +2,25 @@
  */
 package no.hal.pg.runtime.util;
 
+import no.hal.pg.arc.Arc;
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
-import no.hal.pg.runtime.Players;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
-import no.hal.pg.runtime.Team;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,33 +82,35 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 			case RuntimePackage.GAME: {
 				Game<?> game = (Game<?>)theEObject;
 				T1 result = caseGame(game);
-				if (result == null) result = casePlayers(game);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case RuntimePackage.TEAM: {
-				Team team = (Team)theEObject;
-				T1 result = caseTeam(team);
-				if (result == null) result = casePlayers(team);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RuntimePackage.PLAYER: {
 				Player player = (Player)theEObject;
 				T1 result = casePlayer(player);
+				if (result == null) result = caseGeoLocation(player);
+				if (result == null) result = caseGeoLocated(player);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RuntimePackage.PLAYERS: {
-				Players players = (Players)theEObject;
-				T1 result = casePlayers(players);
+			case RuntimePackage.ITEM: {
+				Item item = (Item)theEObject;
+				T1 result = caseItem(item);
+				if (result == null) result = caseGeoLocated(item);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.INFO_ITEM: {
+				InfoItem infoItem = (InfoItem)theEObject;
+				T1 result = caseInfoItem(infoItem);
+				if (result == null) result = caseItem(infoItem);
+				if (result == null) result = caseGeoLocated(infoItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RuntimePackage.TASK: {
 				Task<?> task = (Task<?>)theEObject;
 				T1 result = caseTask(task);
-				if (result == null) result = casePlayers(task);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -144,9 +150,17 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RuntimePackage.ACCEPT_TASK: {
+				AcceptTask acceptTask = (AcceptTask)theEObject;
+				T1 result = caseAcceptTask(acceptTask);
+				if (result == null) result = caseTask(acceptTask);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RuntimePackage.RUNTIME: {
 				no.hal.pg.runtime.Runtime runtime = (no.hal.pg.runtime.Runtime)theEObject;
 				T1 result = caseRuntime(runtime);
+				if (result == null) result = caseArc(runtime);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -170,21 +184,6 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Team</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Team</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseTeam(Team object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Player</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -200,17 +199,32 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Players</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Players</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 casePlayers(Players object) {
+	public T1 caseItem(Item object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Info Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Info Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInfoItem(InfoItem object) {
 		return null;
 	}
 
@@ -305,6 +319,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Accept Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Accept Task</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAcceptTask(AcceptTask object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Runtime</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -316,6 +345,51 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseRuntime(no.hal.pg.runtime.Runtime object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Located</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Located</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocated(GeoLocated object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Location</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocation(GeoLocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseArc(Arc object) {
 		return null;
 	}
 

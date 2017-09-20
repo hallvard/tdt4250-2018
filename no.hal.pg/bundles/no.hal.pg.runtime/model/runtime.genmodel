@@ -3,39 +3,44 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.runtime/src" modelPluginID="no.hal.pg.runtime"
     modelName="Runtime" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    usedGenPackages="../../no.hal.pg.arc/model/arc.genmodel#//arc" operationReflection="true"
-    importOrganizing="true">
+    usedGenPackages="../../no.hal.pg.arc/model/arc.genmodel#//arc ../../no.hal.pg.osm/model/osm.genmodel#//osm"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>runtime.ecore</foreignModel>
   <genPackages prefix="Runtime" basePackage="no.hal.pg" resource="XMI" disposableProviderFactory="true"
-      ecorePackage="runtime.ecore#/">
+      extensibleProviderFactory="true" ecorePackage="runtime.ecore#/">
+    <genDataTypes ecoreDataType="runtime.ecore#//EURI"/>
     <genDataTypes ecoreDataType="runtime.ecore#//Timestamp"/>
     <genClasses ecoreClass="runtime.ecore#//Game">
+      <genTypeParameters ecoreTypeParameter="runtime.ecore#//Game/T"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Game/players"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Game/teams"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Game/items"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Game/tasks"/>
     </genClasses>
-    <genClasses ecoreClass="runtime.ecore#//Team">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Team/game"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Team/players"/>
-    </genClasses>
     <genClasses ecoreClass="runtime.ecore#//Player">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Player/game"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Player/person"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Player/game"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Player/items"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="runtime.ecore#//Players">
-      <genOperations ecoreOperation="runtime.ecore#//Players/getAllPlayers"/>
+    <genClasses ecoreClass="runtime.ecore#//Item">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Item/owner"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Item/ownLocation"/>
+    </genClasses>
+    <genClasses ecoreClass="runtime.ecore#//InfoItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//InfoItem/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//InfoItem/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//InfoItem/imageUrl"/>
     </genClasses>
     <genClasses ecoreClass="runtime.ecore#//Task">
       <genTypeParameters ecoreTypeParameter="runtime.ecore#//Task/R"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Task/game"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/team"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/players"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//Task/result"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//Task/startTime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//Task/finishTime"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/startConditions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/finishConditions"/>
-      <genOperations ecoreOperation="runtime.ecore#//Task/isEnabled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/rewards"/>
+      <genOperations ecoreOperation="runtime.ecore#//Task/canStart"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/isStarted"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/isFinished"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/start"/>
@@ -43,10 +48,17 @@
         <genParameters ecoreParameter="runtime.ecore#//Task/finish/result"/>
       </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="runtime.ecore#//Predicate">
-      <genTypeParameters ecoreTypeParameter="runtime.ecore#//Predicate/E"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Predicate/context"/>
-      <genOperations ecoreOperation="runtime.ecore#//Predicate/test"/>
+    <genClasses image="false" ecoreClass="runtime.ecore#//Condition">
+      <genOperations ecoreOperation="runtime.ecore#//Condition/test"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="runtime.ecore#//AbstractCondition">
+      <genTypeParameters ecoreTypeParameter="runtime.ecore#//AbstractCondition/E"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//AbstractCondition/context"/>
+    </genClasses>
+    <genClasses ecoreClass="runtime.ecore#//CompositeCondition">
+      <genTypeParameters ecoreTypeParameter="runtime.ecore#//CompositeCondition/E"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//CompositeCondition/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//CompositeCondition/predicates"/>
     </genClasses>
     <genClasses ecoreClass="runtime.ecore#//IsTaskStarted"/>
     <genClasses ecoreClass="runtime.ecore#//IsTaskFinished"/>
