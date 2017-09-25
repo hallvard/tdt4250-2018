@@ -33,6 +33,15 @@ public interface AppFactory extends EFactory {
 	<T extends Task<?>> GameView<T> createGameView();
 
 	/**
+	 * Returns a new object of class '<em>App</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>App</em>'.
+	 * @generated
+	 */
+	App createApp();
+
+	/**
 	 * Returns a new object of class '<em>Task View</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -40,6 +49,15 @@ public interface AppFactory extends EFactory {
 	 * @generated
 	 */
 	<T extends Task<?>> TaskView<T> createTaskView();
+
+	/**
+	 * Returns a new object of class '<em>Accept Task View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Accept Task View</em>'.
+	 * @generated
+	 */
+	AcceptTaskView createAcceptTaskView();
 
 	/**
 	 * Returns the package supported by this factory.

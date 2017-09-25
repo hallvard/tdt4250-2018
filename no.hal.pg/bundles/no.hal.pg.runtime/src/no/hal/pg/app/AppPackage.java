@@ -2,6 +2,7 @@
  */
 package no.hal.pg.app;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -250,23 +251,60 @@ public interface AppPackage extends EPackage {
 	int GAME_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>Create Task View</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GAME_VIEW___CREATE_TASK_VIEW__TASK = VIEW1_OPERATION_COUNT + 0;
-
-	/**
 	 * The number of operations of the '<em>Game View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 1;
+	int GAME_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 0;
 
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.AppImpl <em>App</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.AppImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getApp()
+	 * @generated
+	 */
+	int APP = 4;
+
+	/**
+	 * The feature id for the '<em><b>Game</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APP__GAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Game Views</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APP__GAME_VIEWS = 1;
+
+	/**
+	 * The number of structural features of the '<em>App</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APP_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>App</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APP_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.app.impl.TaskViewImpl <em>Task View</em>}' class.
@@ -276,7 +314,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getTaskView()
 	 * @generated
 	 */
-	int TASK_VIEW = 4;
+	int TASK_VIEW = 5;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' reference.
@@ -306,13 +344,31 @@ public interface AppPackage extends EPackage {
 	int TASK_VIEW__GAME_VIEW = VIEW1_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Started</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_VIEW__STARTED = VIEW1_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Finished</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_VIEW__FINISHED = VIEW1_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Task View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 1;
+	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Task View</em>' class.
@@ -322,6 +378,89 @@ public interface AppPackage extends EPackage {
 	 * @ordered
 	 */
 	int TASK_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.AcceptTaskViewImpl <em>Accept Task View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.AcceptTaskViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getAcceptTaskView()
+	 * @generated
+	 */
+	int ACCEPT_TASK_VIEW = 6;
+
+	/**
+	 * The feature id for the '<em><b>User</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__USER = TASK_VIEW__USER;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__MODEL = TASK_VIEW__MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Game View</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__GAME_VIEW = TASK_VIEW__GAME_VIEW;
+
+	/**
+	 * The feature id for the '<em><b>Started</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__STARTED = TASK_VIEW__STARTED;
+
+	/**
+	 * The feature id for the '<em><b>Finished</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__FINISHED = TASK_VIEW__FINISHED;
+
+	/**
+	 * The number of structural features of the '<em>Accept Task View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW_FEATURE_COUNT = TASK_VIEW_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Accept</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW___ACCEPT = TASK_VIEW_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Accept Task View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW_OPERATION_COUNT = TASK_VIEW_OPERATION_COUNT + 1;
 
 
 	/**
@@ -431,14 +570,36 @@ public interface AppPackage extends EPackage {
 	EReference getGameView_TaskViews();
 
 	/**
-	 * Returns the meta object for the '{@link no.hal.pg.app.GameView#createTaskView(no.hal.pg.runtime.Task) <em>Create Task View</em>}' operation.
+	 * Returns the meta object for class '{@link no.hal.pg.app.App <em>App</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Create Task View</em>' operation.
-	 * @see no.hal.pg.app.GameView#createTaskView(no.hal.pg.runtime.Task)
+	 * @return the meta object for class '<em>App</em>'.
+	 * @see no.hal.pg.app.App
 	 * @generated
 	 */
-	EOperation getGameView__CreateTaskView__Task();
+	EClass getApp();
+
+	/**
+	 * Returns the meta object for the reference '{@link no.hal.pg.app.App#getGame <em>Game</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Game</em>'.
+	 * @see no.hal.pg.app.App#getGame()
+	 * @see #getApp()
+	 * @generated
+	 */
+	EReference getApp_Game();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.App#getGameViews <em>Game Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Game Views</em>'.
+	 * @see no.hal.pg.app.App#getGameViews()
+	 * @see #getApp()
+	 * @generated
+	 */
+	EReference getApp_GameViews();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.TaskView <em>Task View</em>}'.
@@ -460,6 +621,48 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTaskView_GameView();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#isStarted <em>Started</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Started</em>'.
+	 * @see no.hal.pg.app.TaskView#isStarted()
+	 * @see #getTaskView()
+	 * @generated
+	 */
+	EAttribute getTaskView_Started();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#isFinished <em>Finished</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Finished</em>'.
+	 * @see no.hal.pg.app.TaskView#isFinished()
+	 * @see #getTaskView()
+	 * @generated
+	 */
+	EAttribute getTaskView_Finished();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.AcceptTaskView <em>Accept Task View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Accept Task View</em>'.
+	 * @see no.hal.pg.app.AcceptTaskView
+	 * @generated
+	 */
+	EClass getAcceptTaskView();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.app.AcceptTaskView#accept() <em>Accept</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Accept</em>' operation.
+	 * @see no.hal.pg.app.AcceptTaskView#accept()
+	 * @generated
+	 */
+	EOperation getAcceptTaskView__Accept();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -573,12 +776,30 @@ public interface AppPackage extends EPackage {
 		EReference GAME_VIEW__TASK_VIEWS = eINSTANCE.getGameView_TaskViews();
 
 		/**
-		 * The meta object literal for the '<em><b>Create Task View</b></em>' operation.
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.AppImpl <em>App</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.AppImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getApp()
+		 * @generated
+		 */
+		EClass APP = eINSTANCE.getApp();
+
+		/**
+		 * The meta object literal for the '<em><b>Game</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation GAME_VIEW___CREATE_TASK_VIEW__TASK = eINSTANCE.getGameView__CreateTaskView__Task();
+		EReference APP__GAME = eINSTANCE.getApp_Game();
+
+		/**
+		 * The meta object literal for the '<em><b>Game Views</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APP__GAME_VIEWS = eINSTANCE.getApp_GameViews();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.TaskViewImpl <em>Task View</em>}' class.
@@ -597,6 +818,40 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK_VIEW__GAME_VIEW = eINSTANCE.getTaskView_GameView();
+
+		/**
+		 * The meta object literal for the '<em><b>Started</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK_VIEW__STARTED = eINSTANCE.getTaskView_Started();
+
+		/**
+		 * The meta object literal for the '<em><b>Finished</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK_VIEW__FINISHED = eINSTANCE.getTaskView_Finished();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.AcceptTaskViewImpl <em>Accept Task View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.AcceptTaskViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getAcceptTaskView()
+		 * @generated
+		 */
+		EClass ACCEPT_TASK_VIEW = eINSTANCE.getAcceptTaskView();
+
+		/**
+		 * The meta object literal for the '<em><b>Accept</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACCEPT_TASK_VIEW___ACCEPT = eINSTANCE.getAcceptTaskView__Accept();
 
 	}
 

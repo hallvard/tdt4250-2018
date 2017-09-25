@@ -9,24 +9,22 @@
       </eBounds>
     </eTypeParameters>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
-        eType="#//Player" containment="true"/>
+        eType="#//Player" containment="true" eOpposite="#//Player/game"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         containment="true" eOpposite="#//Task/game">
-      <eGenericType eClassifier="#//Task">
-        <eTypeArguments eTypeParameter="#//Game/T"/>
-      </eGenericType>
+      <eGenericType eTypeParameter="#//Game/T"/>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Player" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="game" changeable="false"
-        volatile="true" transient="true" derived="true">
+        eOpposite="#//Game/players">
       <eGenericType eClassifier="#//Game">
         <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="person" eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Person"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" eOpposite="#//Item/owner"/>
   </eClassifiers>

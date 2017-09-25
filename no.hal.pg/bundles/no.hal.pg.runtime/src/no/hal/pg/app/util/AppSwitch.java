@@ -96,11 +96,26 @@ public class AppSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AppPackage.APP: {
+				App app = (App)theEObject;
+				T1 result = caseApp(app);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AppPackage.TASK_VIEW: {
 				TaskView<?> taskView = (TaskView<?>)theEObject;
 				T1 result = caseTaskView(taskView);
 				if (result == null) result = caseView1(taskView);
 				if (result == null) result = caseView(taskView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.ACCEPT_TASK_VIEW: {
+				AcceptTaskView acceptTaskView = (AcceptTaskView)theEObject;
+				T1 result = caseAcceptTaskView(acceptTaskView);
+				if (result == null) result = caseTaskView(acceptTaskView);
+				if (result == null) result = caseView1(acceptTaskView);
+				if (result == null) result = caseView(acceptTaskView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -169,6 +184,21 @@ public class AppSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>App</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>App</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseApp(App object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Task View</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -180,6 +210,21 @@ public class AppSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public <T extends Task<?>> T1 caseTaskView(TaskView<T> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Accept Task View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Accept Task View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAcceptTaskView(AcceptTaskView object) {
 		return null;
 	}
 

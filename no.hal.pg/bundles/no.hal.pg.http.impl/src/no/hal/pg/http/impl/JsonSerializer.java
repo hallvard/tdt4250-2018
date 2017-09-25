@@ -106,7 +106,10 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 					for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
 						boolean include = true;
 						if (feature instanceof EReference) {
-							if (((EReference) feature).isContainer()) {
+							EReference ref = (EReference) feature;
+							if (ref.isContainment()) {
+								include = true;
+							} else if (ref.isContainer()) {
 								include = false;
 							} else {
 								include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE);

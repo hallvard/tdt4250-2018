@@ -59,7 +59,9 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AppPackage.GAME_VIEW: return createGameView();
+			case AppPackage.APP: return createApp();
 			case AppPackage.TASK_VIEW: return createTaskView();
+			case AppPackage.ACCEPT_TASK_VIEW: return createAcceptTaskView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,9 +82,29 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public App createApp() {
+		AppImpl app = new AppImpl();
+		return app;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public <T extends Task<?>> TaskView<T> createTaskView() {
 		TaskViewImpl<T> taskView = new TaskViewImpl<T>();
 		return taskView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AcceptTaskView createAcceptTaskView() {
+		AcceptTaskViewImpl acceptTaskView = new AcceptTaskViewImpl();
+		return acceptTaskView;
 	}
 
 	/**

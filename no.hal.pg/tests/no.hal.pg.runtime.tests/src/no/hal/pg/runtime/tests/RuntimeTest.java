@@ -32,6 +32,7 @@ public class RuntimeTest {
 
 	protected Collection<EObject> loadRootObjects() {
 		ResourceSet resourceSet = new ResourceSetImpl();
+		resourceSet.getPackageRegistry().put(RuntimePackage.eNS_URI, RuntimePackage.eINSTANCE);
 		Resource resource = resourceSet.createResource(uri);
 		try {
 			resource.load(null);

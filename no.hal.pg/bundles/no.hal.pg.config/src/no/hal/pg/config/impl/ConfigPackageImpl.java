@@ -16,6 +16,7 @@ import no.hal.pg.config.GameConfig;
 import no.hal.pg.config.ConfigFactory;
 import no.hal.pg.config.ConfigPackage;
 import no.hal.pg.config.TaskConfig;
+import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.config.Config;
 
@@ -96,6 +97,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		// Initialize simple dependencies
 		ArcPackage.eINSTANCE.eClass();
 		RuntimePackage.eINSTANCE.eClass();
+		OsmPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theConfigPackage.createPackageContents();
@@ -171,7 +173,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGameConfig_Participants() {
+	public EReference getGameConfig_Players() {
 		return (EReference)gameConfigEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -237,7 +239,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(gameConfigEClass, GAME_CONFIG__TASKS);
 		createEReference(gameConfigEClass, GAME_CONFIG__TASK_REFS);
 		createEReference(gameConfigEClass, GAME_CONFIG__ALL_TASKS);
-		createEReference(gameConfigEClass, GAME_CONFIG__PARTICIPANTS);
+		createEReference(gameConfigEClass, GAME_CONFIG__PLAYERS);
 		createEOperation(gameConfigEClass, GAME_CONFIG___CREATE_GAME);
 
 		taskConfigEClass = createEClass(TASK_CONFIG);
@@ -307,7 +309,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEReference(getGameConfig_AllTasks(), g1, null, "allTasks", null, 0, -1, GameConfig.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getGameConfig_Participants(), theArcPackage.getGroup(), null, "participants", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameConfig_Players(), theArcPackage.getPerson(), null, "players", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getGameConfig__CreateGame(), theRuntimePackage.getGame(), "createGame", 0, 1, IS_UNIQUE, IS_ORDERED);
 

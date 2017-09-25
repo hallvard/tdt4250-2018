@@ -164,22 +164,22 @@ public interface RuntimePackage extends EPackage {
 	int PLAYER__LONGITUDE = OsmPackage.GEO_LOCATION__LONGITUDE;
 
 	/**
+	 * The feature id for the '<em><b>Game</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER__GAME = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Person</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER__PERSON = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Game</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLAYER__GAME = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
+	int PLAYER__PERSON = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -1011,10 +1011,10 @@ public interface RuntimePackage extends EPackage {
 	EClass getPlayer();
 
 	/**
-	 * Returns the meta object for the reference '{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}'.
+	 * Returns the meta object for the container reference '{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Game</em>'.
+	 * @return the meta object for the container reference '<em>Game</em>'.
 	 * @see no.hal.pg.runtime.Player#getGame()
 	 * @see #getPlayer()
 	 * @generated
@@ -1500,7 +1500,7 @@ public interface RuntimePackage extends EPackage {
 		EClass PLAYER = eINSTANCE.getPlayer();
 
 		/**
-		 * The meta object literal for the '<em><b>Game</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Game</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

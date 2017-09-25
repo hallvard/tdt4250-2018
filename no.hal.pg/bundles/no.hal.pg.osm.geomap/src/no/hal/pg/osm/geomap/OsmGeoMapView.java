@@ -37,7 +37,7 @@ public class OsmGeoMapView extends AbstractSelectionView {
 				getGeoMap().redraw();
 			}
 		};
-		viewer.setMoveSelectionMode(GeoMapViewer.MOVE_SELECTION_NONE);
+		viewer.setMoveSelectionMode(GeoMapViewer.MOVE_SELECTION_ALLOW_CHECK_IMMEDIATE);
 		viewer.setLocationProvider(new OsmLocationProvider());
 		viewer.setContentProvider(contentProvider);
 		viewer.setLabelProvider(new OsmLabelProvider());

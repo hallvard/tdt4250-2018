@@ -15,8 +15,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Player#getItems <em>Items</em>}</li>
  * </ul>
  *
@@ -26,16 +26,18 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Player extends GeoLocation {
 	/**
-	 * Returns the value of the '<em><b>Game</b></em>' reference.
+	 * Returns the value of the '<em><b>Game</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Game#getPlayers <em>Players</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Game</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Game</em>' reference.
+	 * @return the value of the '<em>Game</em>' container reference.
 	 * @see no.hal.pg.runtime.RuntimePackage#getPlayer_Game()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @see no.hal.pg.runtime.Game#getPlayers
+	 * @model opposite="players" transient="false" changeable="false"
 	 * @generated
 	 */
 	Game<?> getGame();

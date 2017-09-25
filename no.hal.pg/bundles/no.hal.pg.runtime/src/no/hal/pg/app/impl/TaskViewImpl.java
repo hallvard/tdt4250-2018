@@ -28,11 +28,32 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#getGameView <em>Game View</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#isStarted <em>Started</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#isFinished <em>Finished</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implements TaskView<T> {
+	/**
+	 * The default value of the '{@link #isStarted() <em>Started</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isStarted()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean STARTED_EDEFAULT = false;
+	/**
+	 * The default value of the '{@link #isFinished() <em>Finished</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isFinished()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean FINISHED_EDEFAULT = false;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,6 +89,7 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public GameView<T> getGameView() {
 		if (eContainerFeatureID() != AppPackage.TASK_VIEW__GAME_VIEW) return null;
@@ -89,6 +111,7 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGameView(GameView<T> newGameView) {
 		if (newGameView != eInternalContainer() || (eContainerFeatureID() != AppPackage.TASK_VIEW__GAME_VIEW && newGameView != null)) {
 			if (EcoreUtil.isAncestor(this, newGameView))
@@ -103,6 +126,26 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.TASK_VIEW__GAME_VIEW, newGameView, newGameView));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean isStarted() {
+		return getModel().isStarted();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean isFinished() {
+		return getModel().isFinished();
 	}
 
 	/**
@@ -160,6 +203,10 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 		switch (featureID) {
 			case AppPackage.TASK_VIEW__GAME_VIEW:
 				return getGameView();
+			case AppPackage.TASK_VIEW__STARTED:
+				return isStarted();
+			case AppPackage.TASK_VIEW__FINISHED:
+				return isFinished();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +252,10 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 		switch (featureID) {
 			case AppPackage.TASK_VIEW__GAME_VIEW:
 				return getGameView() != null;
+			case AppPackage.TASK_VIEW__STARTED:
+				return isStarted() != STARTED_EDEFAULT;
+			case AppPackage.TASK_VIEW__FINISHED:
+				return isFinished() != FINISHED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

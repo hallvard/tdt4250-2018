@@ -4,8 +4,7 @@ package no.hal.pg.config.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-
-import no.hal.pg.arc.Group;
+import no.hal.pg.arc.Person;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -32,7 +31,7 @@ import no.hal.pg.runtime.Game;
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTaskRefs <em>Task Refs</em>}</li>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getAllTasks <em>All Tasks</em>}</li>
- *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getParticipants <em>Participants</em>}</li>
+ *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getPlayers <em>Players</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,14 +58,14 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	protected EList<TaskConfig<?, ?>> taskRefs;
 
 	/**
-	 * The cached value of the '{@link #getParticipants() <em>Participants</em>}' reference list.
+	 * The cached value of the '{@link #getPlayers() <em>Players</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParticipants()
+	 * @see #getPlayers()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Group> participants;
+	protected EList<Person> players;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -128,12 +127,11 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<Group> getParticipants() {
-		if (participants == null) {
-			participants = new EObjectResolvingEList<Group>(Group.class, this, ConfigPackage.GAME_CONFIG__PARTICIPANTS);
+	public EList<Person> getPlayers() {
+		if (players == null) {
+			players = new EObjectResolvingEList<Person>(Person.class, this, ConfigPackage.GAME_CONFIG__PLAYERS);
 		}
-		return participants;
+		return players;
 	}
 
 	/**
@@ -175,8 +173,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				return getTaskRefs();
 			case ConfigPackage.GAME_CONFIG__ALL_TASKS:
 				return getAllTasks();
-			case ConfigPackage.GAME_CONFIG__PARTICIPANTS:
-				return getParticipants();
+			case ConfigPackage.GAME_CONFIG__PLAYERS:
+				return getPlayers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,9 +196,9 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				getTaskRefs().clear();
 				getTaskRefs().addAll((Collection<? extends TaskConfig<?, ?>>)newValue);
 				return;
-			case ConfigPackage.GAME_CONFIG__PARTICIPANTS:
-				getParticipants().clear();
-				getParticipants().addAll((Collection<? extends Group>)newValue);
+			case ConfigPackage.GAME_CONFIG__PLAYERS:
+				getPlayers().clear();
+				getPlayers().addAll((Collection<? extends Person>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,8 +218,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 			case ConfigPackage.GAME_CONFIG__TASK_REFS:
 				getTaskRefs().clear();
 				return;
-			case ConfigPackage.GAME_CONFIG__PARTICIPANTS:
-				getParticipants().clear();
+			case ConfigPackage.GAME_CONFIG__PLAYERS:
+				getPlayers().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -241,8 +239,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				return taskRefs != null && !taskRefs.isEmpty();
 			case ConfigPackage.GAME_CONFIG__ALL_TASKS:
 				return !getAllTasks().isEmpty();
-			case ConfigPackage.GAME_CONFIG__PARTICIPANTS:
-				return participants != null && !participants.isEmpty();
+			case ConfigPackage.GAME_CONFIG__PLAYERS:
+				return players != null && !players.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

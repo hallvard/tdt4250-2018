@@ -91,7 +91,7 @@ public class GameImpl<T extends Task<?>> extends MinimalEObjectImpl.Container im
 	@Override
 	public EList<Player> getPlayers() {
 		if (players == null) {
-			players = new EObjectContainmentEList<Player>(Player.class, this, RuntimePackage.GAME__PLAYERS);
+			players = new EObjectContainmentWithInverseEList<Player>(Player.class, this, RuntimePackage.GAME__PLAYERS, RuntimePackage.PLAYER__GAME);
 		}
 		return players;
 	}
@@ -130,6 +130,8 @@ public class GameImpl<T extends Task<?>> extends MinimalEObjectImpl.Container im
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case RuntimePackage.GAME__PLAYERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPlayers()).basicAdd(otherEnd, msgs);
 			case RuntimePackage.GAME__TASKS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
 		}

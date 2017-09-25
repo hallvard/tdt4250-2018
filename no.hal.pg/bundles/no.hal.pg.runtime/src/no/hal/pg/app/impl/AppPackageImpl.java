@@ -2,6 +2,8 @@
  */
 package no.hal.pg.app.impl;
 
+import no.hal.pg.app.AcceptTaskView;
+import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameView;
@@ -16,6 +18,7 @@ import no.hal.pg.osm.OsmPackage;
 
 import no.hal.pg.runtime.RuntimePackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
@@ -65,7 +68,21 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass appEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass taskViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass acceptTaskViewEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -228,8 +245,26 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getGameView__CreateTaskView__Task() {
-		return gameViewEClass.getEOperations().get(0);
+	public EClass getApp() {
+		return appEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApp_Game() {
+		return (EReference)appEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApp_GameViews() {
+		return (EReference)appEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -248,6 +283,42 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 */
 	public EReference getTaskView_GameView() {
 		return (EReference)taskViewEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTaskView_Started() {
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTaskView_Finished() {
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAcceptTaskView() {
+		return acceptTaskViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAcceptTaskView__Accept() {
+		return acceptTaskViewEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -291,10 +362,18 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		gameViewEClass = createEClass(GAME_VIEW);
 		createEReference(gameViewEClass, GAME_VIEW__PLAYER);
 		createEReference(gameViewEClass, GAME_VIEW__TASK_VIEWS);
-		createEOperation(gameViewEClass, GAME_VIEW___CREATE_TASK_VIEW__TASK);
+
+		appEClass = createEClass(APP);
+		createEReference(appEClass, APP__GAME);
+		createEReference(appEClass, APP__GAME_VIEWS);
 
 		taskViewEClass = createEClass(TASK_VIEW);
 		createEReference(taskViewEClass, TASK_VIEW__GAME_VIEW);
+		createEAttribute(taskViewEClass, TASK_VIEW__STARTED);
+		createEAttribute(taskViewEClass, TASK_VIEW__FINISHED);
+
+		acceptTaskViewEClass = createEClass(ACCEPT_TASK_VIEW);
+		createEOperation(acceptTaskViewEClass, ACCEPT_TASK_VIEW___ACCEPT);
 	}
 
 	/**
@@ -366,6 +445,10 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType(taskViewEClass_T);
 		g1.getETypeArguments().add(g2);
 		taskViewEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getTaskView());
+		g2 = createEGenericType(theRuntimePackage.getAcceptTask());
+		g1.getETypeArguments().add(g2);
+		acceptTaskViewEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(viewEClass, View.class, "View", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -389,19 +472,27 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g1.getETypeArguments().add(g2);
 		initEReference(getGameView_TaskViews(), g1, this.getTaskView_GameView(), "taskViews", null, 0, -1, GameView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getGameView__CreateTaskView__Task(), null, "createTaskView", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(gameViewEClass_T);
-		addEParameter(op, g1, "task", 0, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(this.getTaskView());
-		g2 = createEGenericType(gameViewEClass_T);
+		initEClass(appEClass, App.class, "App", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(theRuntimePackage.getGame());
+		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEOperation(op, g1);
+		initEReference(getApp_Game(), g1, null, "game", null, 0, 1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(this.getGameView());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getApp_GameViews(), g1, null, "gameViews", null, 0, -1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskViewEClass, TaskView.class, "TaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getGameView());
 		g2 = createEGenericType(taskViewEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getTaskView_GameView(), g1, this.getGameView_TaskViews(), "gameView", null, 0, 1, TaskView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTaskView_Started(), ecorePackage.getEBoolean(), "started", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTaskView_Finished(), ecorePackage.getEBoolean(), "finished", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+
+		initEClass(acceptTaskViewEClass, AcceptTaskView.class, "AcceptTaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getAcceptTaskView__Accept(), null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

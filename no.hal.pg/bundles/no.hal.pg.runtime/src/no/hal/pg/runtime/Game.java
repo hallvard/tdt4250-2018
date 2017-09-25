@@ -27,6 +27,7 @@ public interface Game<T extends Task<?>> extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Players</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.runtime.Player}.
+	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Players</em>' containment reference list isn't clear,
@@ -35,7 +36,8 @@ public interface Game<T extends Task<?>> extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Players</em>' containment reference list.
 	 * @see no.hal.pg.runtime.RuntimePackage#getGame_Players()
-	 * @model containment="true"
+	 * @see no.hal.pg.runtime.Player#getGame
+	 * @model opposite="game" containment="true"
 	 * @generated
 	 */
 	EList<Player> getPlayers();

@@ -74,7 +74,7 @@
       <repository
           url="http://repo1.maven.org/maven2/.m2e/connectors/m2eclipse-tycho/0.8.0/N/0.8.0.201409231215/"/>
       <repository
-          url="http://download.eclipse.org/nebula/releases/1.1.0/"/>
+          url="http://download.eclipse.org/nebula/releases/1.2.0/"/>
       <repository
           url="http://files.idi.ntnu.no/publish/plantuml/repository/"/>
       <repository

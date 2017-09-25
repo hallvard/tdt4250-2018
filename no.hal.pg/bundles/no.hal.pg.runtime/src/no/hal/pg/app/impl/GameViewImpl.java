@@ -2,7 +2,6 @@
  */
 package no.hal.pg.app.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -10,7 +9,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import no.hal.pg.app.AppPackage;
@@ -128,24 +126,14 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
+	@Override
 	public EList<TaskView<T>> getTaskViews() {
 		if (taskViews == null) {
 			taskViews = new EObjectContainmentWithInverseEList<TaskView<T>>(TaskView.class, this, AppPackage.GAME_VIEW__TASK_VIEWS, AppPackage.TASK_VIEW__GAME_VIEW);
 		}
 		return taskViews;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TaskView<T> createTaskView(T task) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -248,21 +236,6 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 		return super.eIsSet(featureID);
 	}
 	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case AppPackage.GAME_VIEW___CREATE_TASK_VIEW__TASK:
-				return createTaskView((T)arguments.get(0));
-		}
-		return super.eInvoke(operationID, arguments);
-	}
-
 	@Override
 	public Player basicGetUser() {
 		return getPlayer();

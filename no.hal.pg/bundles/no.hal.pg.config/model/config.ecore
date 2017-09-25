@@ -28,8 +28,8 @@
         <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="participants" upperBound="-1"
-        eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Group"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
+        eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Person"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskConfig">
     <eTypeParameters name="T">

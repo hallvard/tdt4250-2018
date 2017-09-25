@@ -265,7 +265,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EReference getPlayer_Game() {
-		return (EReference)playerEClass.getEStructuralFeatures().get(1);
+		return (EReference)playerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -347,7 +347,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EReference getPlayer_Person() {
-		return (EReference)playerEClass.getEStructuralFeatures().get(0);
+		return (EReference)playerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -664,8 +664,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEReference(gameEClass, GAME__TASKS);
 
 		playerEClass = createEClass(PLAYER);
-		createEReference(playerEClass, PLAYER__PERSON);
 		createEReference(playerEClass, PLAYER__GAME);
+		createEReference(playerEClass, PLAYER__PERSON);
 		createEReference(playerEClass, PLAYER__ITEMS);
 
 		itemEClass = createEClass(ITEM);
@@ -783,7 +783,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(gameEClass, Game.class, "Game", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGame_Players(), this.getPlayer(), null, "players", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGame_Players(), this.getPlayer(), this.getPlayer_Game(), "players", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGame_Items(), this.getItem(), null, "items", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getTask());
 		g2 = createEGenericType(gameEClass_T);
@@ -791,11 +791,11 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEReference(getGame_Tasks(), g1, this.getTask_Game(), "tasks", null, 0, -1, Game.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(playerEClass, Player.class, "Player", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlayer_Person(), theArcPackage.getPerson(), null, "person", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getGame());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getPlayer_Game(), g1, null, "game", null, 0, 1, Player.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getPlayer_Game(), g1, this.getGame_Players(), "game", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlayer_Person(), theArcPackage.getPerson(), null, "person", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlayer_Items(), this.getItem(), this.getItem_Owner(), "items", null, 0, -1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

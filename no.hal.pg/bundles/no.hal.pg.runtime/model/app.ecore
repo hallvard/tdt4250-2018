@@ -39,14 +39,6 @@
         <eTypeArguments/>
       </eBounds>
     </eTypeParameters>
-    <eOperations name="createTaskView">
-      <eGenericType eClassifier="#//TaskView">
-        <eTypeArguments eTypeParameter="#//GameView/T"/>
-      </eGenericType>
-      <eParameters name="task">
-        <eGenericType eTypeParameter="#//GameView/T"/>
-      </eParameters>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="player" eType="ecore:EClass runtime.ecore#//Player"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskViews" upperBound="-1"
         containment="true" eOpposite="#//TaskView/gameView">
@@ -61,6 +53,19 @@
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="App">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="game">
+      <eGenericType eClassifier="ecore:EClass runtime.ecore#//Game">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gameViews" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="#//GameView">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskView">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass runtime.ecore#//Task">
@@ -72,9 +77,19 @@
         <eTypeArguments eTypeParameter="#//TaskView/T"/>
       </eGenericType>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="started" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finished" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eGenericSuperTypes eClassifier="#//View1">
       <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
       <eTypeArguments eTypeParameter="#//TaskView/T"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AcceptTaskView">
+    <eOperations name="accept"/>
+    <eGenericSuperTypes eClassifier="#//TaskView">
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//AcceptTask"/>
     </eGenericSuperTypes>
   </eClassifiers>
 </ecore:EPackage>

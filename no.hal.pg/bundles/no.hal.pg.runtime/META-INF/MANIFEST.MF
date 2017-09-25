@@ -7,21 +7,25 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: no.hal.pg.runtime,
- no.hal.pg.runtime.impl,
- no.hal.pg.runtime.util,
- no.hal.pg.app,
+Export-Package: no.hal.pg.app,
  no.hal.pg.app.impl,
- no.hal.pg.app.util
+ no.hal.pg.app.util,
+ no.hal.pg.runtime,
+ no.hal.pg.runtime.impl,
+ no.hal.pg.runtime.util
 Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  no.hal.pg.arc;visibility:=reexport,
- no.hal.pg.osm;visibility:=reexport
+ no.hal.pg.osm;visibility:=reexport,
+ no.hal.pg.runtime;visibility:=reexport
 Import-Package: no.hal.pg.arc,
  no.hal.pg.arc.impl,
  no.hal.pg.arc.util,
  no.hal.pg.osm,
+ no.hal.pg.osm.geoutil,
  no.hal.pg.osm.impl,
- no.hal.pg.osm.geoutil
+ org.osgi.service.component;version="1.3.0",
+ org.osgi.service.component.annotations;version="1.3.0"
 Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/no.hal.pg.app.util.DefaultViewFactory.xml

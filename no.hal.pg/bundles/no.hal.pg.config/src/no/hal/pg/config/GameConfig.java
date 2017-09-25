@@ -2,7 +2,7 @@
  */
 package no.hal.pg.config;
 
-import no.hal.pg.arc.Group;
+import no.hal.pg.arc.Person;
 import no.hal.pg.runtime.Game;
 import org.eclipse.emf.common.util.EList;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.hal.pg.config.GameConfig#getTasks <em>Tasks</em>}</li>
  *   <li>{@link no.hal.pg.config.GameConfig#getTaskRefs <em>Task Refs</em>}</li>
  *   <li>{@link no.hal.pg.config.GameConfig#getAllTasks <em>All Tasks</em>}</li>
- *   <li>{@link no.hal.pg.config.GameConfig#getParticipants <em>Participants</em>}</li>
+ *   <li>{@link no.hal.pg.config.GameConfig#getPlayers <em>Players</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.config.ConfigPackage#getGameConfig()
@@ -77,20 +77,20 @@ public interface GameConfig extends EObject {
 	EList<TaskConfig<?, ?>> getAllTasks();
 
 	/**
-	 * Returns the value of the '<em><b>Participants</b></em>' reference list.
-	 * The list contents are of type {@link no.hal.pg.arc.Group}.
+	 * Returns the value of the '<em><b>Players</b></em>' reference list.
+	 * The list contents are of type {@link no.hal.pg.arc.Person}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Participants</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Players</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Participants</em>' reference list.
-	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_Participants()
+	 * @return the value of the '<em>Players</em>' reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_Players()
 	 * @model
 	 * @generated
 	 */
-	EList<Group> getParticipants();
+	EList<Person> getPlayers();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -150,13 +150,13 @@ public interface ConfigPackage extends EPackage {
 	int GAME_CONFIG__ALL_TASKS = 2;
 
 	/**
-	 * The feature id for the '<em><b>Participants</b></em>' reference list.
+	 * The feature id for the '<em><b>Players</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_CONFIG__PARTICIPANTS = 3;
+	int GAME_CONFIG__PLAYERS = 3;
 
 	/**
 	 * The number of structural features of the '<em>Game Config</em>' class.
@@ -288,15 +288,15 @@ public interface ConfigPackage extends EPackage {
 	EReference getGameConfig_AllTasks();
 
 	/**
-	 * Returns the meta object for the reference list '{@link no.hal.pg.config.GameConfig#getParticipants <em>Participants</em>}'.
+	 * Returns the meta object for the reference list '{@link no.hal.pg.config.GameConfig#getPlayers <em>Players</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Participants</em>'.
-	 * @see no.hal.pg.config.GameConfig#getParticipants()
+	 * @return the meta object for the reference list '<em>Players</em>'.
+	 * @see no.hal.pg.config.GameConfig#getPlayers()
 	 * @see #getGameConfig()
 	 * @generated
 	 */
-	EReference getGameConfig_Participants();
+	EReference getGameConfig_Players();
 
 	/**
 	 * Returns the meta object for the '{@link no.hal.pg.config.GameConfig#createGame() <em>Create Game</em>}' operation.
@@ -404,12 +404,12 @@ public interface ConfigPackage extends EPackage {
 		EReference GAME_CONFIG__ALL_TASKS = eINSTANCE.getGameConfig_AllTasks();
 
 		/**
-		 * The meta object literal for the '<em><b>Participants</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Players</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GAME_CONFIG__PARTICIPANTS = eINSTANCE.getGameConfig_Participants();
+		EReference GAME_CONFIG__PLAYERS = eINSTANCE.getGameConfig_Players();
 
 		/**
 		 * The meta object literal for the '<em><b>Create Game</b></em>' operation.

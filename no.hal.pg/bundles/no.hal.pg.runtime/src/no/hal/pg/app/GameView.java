@@ -69,12 +69,4 @@ public interface GameView<T extends Task<?>> extends View1<Player, Game<T>> {
 	 */
 	EList<TaskView<T>> getTaskViews();
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model
-	 * @generated
-	 */
-	TaskView<T> createTaskView(T task);
-
 } // GameView
