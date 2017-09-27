@@ -62,7 +62,7 @@ public class GameImpl<T extends Task<?>> extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Task<T>> tasks;
+	protected EList<T> tasks;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,9 +114,9 @@ public class GameImpl<T extends Task<?>> extends MinimalEObjectImpl.Container im
 	 * @generated
 	 */
 	@Override
-	public EList<Task<T>> getTasks() {
+	public EList<T> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentWithInverseEList<Task<T>>(Task.class, this, RuntimePackage.GAME__TASKS, RuntimePackage.TASK__GAME);
+			tasks = new EObjectContainmentWithInverseEList<T>(Task.class, this, RuntimePackage.GAME__TASKS, RuntimePackage.TASK__GAME);
 		}
 		return tasks;
 	}
@@ -193,7 +193,7 @@ public class GameImpl<T extends Task<?>> extends MinimalEObjectImpl.Container im
 				return;
 			case RuntimePackage.GAME__TASKS:
 				getTasks().clear();
-				getTasks().addAll((Collection<? extends Task<T>>)newValue);
+				getTasks().addAll((Collection<? extends T>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

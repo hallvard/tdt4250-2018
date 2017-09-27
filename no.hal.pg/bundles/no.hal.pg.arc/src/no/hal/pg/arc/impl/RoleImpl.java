@@ -5,14 +5,18 @@ package no.hal.pg.arc.impl;
 import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import no.hal.pg.arc.ArcPackage;
 import no.hal.pg.arc.Capability;
 import no.hal.pg.arc.Named;
 import no.hal.pg.arc.Role;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +28,7 @@ import org.eclipse.emf.common.notify.Notification;
  * <ul>
  *   <li>{@link no.hal.pg.arc.impl.RoleImpl#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.arc.impl.RoleImpl#getInherits <em>Inherits</em>}</li>
+ *   <li>{@link no.hal.pg.arc.impl.RoleImpl#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +63,16 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 	 * @ordered
 	 */
 	protected EList<Role> inherits;
+
+	/**
+	 * The cached value of the '{@link #getCapabilities() <em>Capabilities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCapabilities()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Capability> capabilities;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,6 +132,32 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Capability> getCapabilities() {
+		if (capabilities == null) {
+			capabilities = new EObjectContainmentEList<Capability>(Capability.class, this, ArcPackage.ROLE__CAPABILITIES);
+		}
+		return capabilities;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ArcPackage.ROLE__CAPABILITIES:
+				return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -144,6 +185,8 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 				return getName();
 			case ArcPackage.ROLE__INHERITS:
 				return getInherits();
+			case ArcPackage.ROLE__CAPABILITIES:
+				return getCapabilities();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,6 +207,10 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 				getInherits().clear();
 				getInherits().addAll((Collection<? extends Role>)newValue);
 				return;
+			case ArcPackage.ROLE__CAPABILITIES:
+				getCapabilities().clear();
+				getCapabilities().addAll((Collection<? extends Capability>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -182,6 +229,9 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 			case ArcPackage.ROLE__INHERITS:
 				getInherits().clear();
 				return;
+			case ArcPackage.ROLE__CAPABILITIES:
+				getCapabilities().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,6 +248,8 @@ public class RoleImpl extends CapabilitiesImpl implements Role {
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ArcPackage.ROLE__INHERITS:
 				return inherits != null && !inherits.isEmpty();
+			case ArcPackage.ROLE__CAPABILITIES:
+				return capabilities != null && !capabilities.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

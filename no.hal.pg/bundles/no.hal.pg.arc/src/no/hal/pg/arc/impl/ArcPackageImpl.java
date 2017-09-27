@@ -354,6 +354,15 @@ public class ArcPackageImpl extends EPackageImpl implements ArcPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getRole_Capabilities() {
+		return (EReference)roleEClass.getEStructuralFeatures().get(-1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -458,6 +467,7 @@ public class ArcPackageImpl extends EPackageImpl implements ArcPackage {
 
 		roleEClass = createEClass(ROLE);
 		createEReference(roleEClass, ROLE__INHERITS);
+		createEReference(roleEClass, ROLE__CAPABILITIES);
 
 		capabilityEClass = createEClass(CAPABILITY);
 
@@ -538,6 +548,7 @@ public class ArcPackageImpl extends EPackageImpl implements ArcPackage {
 
 		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getRole_Inherits(), this.getRole(), null, "inherits", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRole_Capabilities(), this.getCapability(), null, "capabilities", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -499,13 +499,22 @@ public interface ArcPackage extends EPackage {
 	int ROLE__INHERITS = CAPABILITIES_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__CAPABILITIES = CAPABILITIES_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_FEATURE_COUNT = CAPABILITIES_FEATURE_COUNT + 2;
+	int ROLE_FEATURE_COUNT = CAPABILITIES_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Has Capability</em>' operation.
@@ -876,6 +885,17 @@ public interface ArcPackage extends EPackage {
 	EReference getRole_Inherits();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.arc.Role#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
+	 * @see no.hal.pg.arc.Role#getCapabilities()
+	 * @see #getRole()
+	 * @generated
+	 */
+	EReference getRole_Capabilities();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.arc.Capability <em>Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1136,6 +1156,14 @@ public interface ArcPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ROLE__INHERITS = eINSTANCE.getRole_Inherits();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ROLE__CAPABILITIES = eINSTANCE.getRole_Capabilities();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.arc.impl.CapabilityImpl <em>Capability</em>}' class.
