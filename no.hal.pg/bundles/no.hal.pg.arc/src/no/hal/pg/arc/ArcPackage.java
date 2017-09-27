@@ -499,22 +499,13 @@ public interface ArcPackage extends EPackage {
 	int ROLE__INHERITS = CAPABILITIES_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__CAPABILITIES = CAPABILITIES_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE_FEATURE_COUNT = CAPABILITIES_FEATURE_COUNT + 3;
+	int ROLE_FEATURE_COUNT = CAPABILITIES_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Has Capability</em>' operation.
