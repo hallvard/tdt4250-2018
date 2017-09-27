@@ -17,8 +17,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Game/tasks"/>
     </genClasses>
     <genClasses ecoreClass="runtime.ecore#//Player">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Player/person"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference runtime.ecore#//Player/game"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Player/person"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Player/items"/>
     </genClasses>
     <genClasses ecoreClass="runtime.ecore#//Item">
@@ -40,6 +40,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/startConditions"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/finishConditions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//Task/rewards"/>
+      <genOperations ecoreOperation="runtime.ecore#//Task/getDescription"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/canStart"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/isStarted"/>
       <genOperations ecoreOperation="runtime.ecore#//Task/isFinished"/>
@@ -58,10 +59,13 @@
     <genClasses ecoreClass="runtime.ecore#//CompositeCondition">
       <genTypeParameters ecoreTypeParameter="runtime.ecore#//CompositeCondition/E"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute runtime.ecore#//CompositeCondition/logic"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//CompositeCondition/predicates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference runtime.ecore#//CompositeCondition/conditions"/>
     </genClasses>
     <genClasses ecoreClass="runtime.ecore#//IsTaskStarted"/>
     <genClasses ecoreClass="runtime.ecore#//IsTaskFinished"/>
+    <genClasses ecoreClass="runtime.ecore#//AcceptTask">
+      <genOperations ecoreOperation="runtime.ecore#//AcceptTask/accept"/>
+    </genClasses>
     <genClasses ecoreClass="runtime.ecore#//Runtime">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference runtime.ecore#//Runtime/games"/>
     </genClasses>

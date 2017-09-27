@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.arc.Role#getInherits <em>Inherits</em>}</li>
- *   <li>{@link no.hal.pg.arc.Role#getCapabilities <em>Capabilities</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.arc.ArcPackage#getRole()
@@ -37,21 +36,5 @@ public interface Role extends Capabilities, Named {
 	 * @generated
 	 */
 	EList<Role> getInherits();
-
-	/**
-	 * Returns the value of the '<em><b>Capabilities</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.arc.Capability}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Capabilities</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capabilities</em>' containment reference list.
-	 * @see no.hal.pg.arc.ArcPackage#getRole_Capabilities()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Capability> getCapabilities();
 
 } // Role
