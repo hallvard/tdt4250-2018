@@ -76,6 +76,10 @@ public class OsmAdapterFactory extends AdapterFactoryImpl {
 				return createGeoLocationAdapter();
 			}
 			@Override
+			public Adapter caseGeoLatLong(GeoLatLong object) {
+				return createGeoLatLongAdapter();
+			}
+			@Override
 			public Adapter caseGeoLocated(GeoLocated object) {
 				return createGeoLocatedAdapter();
 			}
@@ -172,6 +176,20 @@ public class OsmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGeoLocationAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.osm.GeoLatLong <em>Geo Lat Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.osm.GeoLatLong
+	 * @generated
+	 */
+	public Adapter createGeoLatLongAdapter() {
 		return null;
 	}
 

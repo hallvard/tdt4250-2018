@@ -40,6 +40,15 @@ public interface OsmFactory extends EFactory {
 	GeoLocation createGeoLocation();
 
 	/**
+	 * Returns a new object of class '<em>Geo Lat Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Geo Lat Long</em>'.
+	 * @generated
+	 */
+	GeoLatLong createGeoLatLong();
+
+	/**
 	 * Returns a new object of class '<em>Way</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

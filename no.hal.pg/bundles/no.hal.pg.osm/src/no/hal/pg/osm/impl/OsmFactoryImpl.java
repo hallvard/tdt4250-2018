@@ -58,6 +58,7 @@ public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 		switch (eClass.getClassifierID()) {
 			case OsmPackage.NODE: return createNode();
 			case OsmPackage.GEO_LOCATION: return createGeoLocation();
+			case OsmPackage.GEO_LAT_LONG: return createGeoLatLong();
 			case OsmPackage.WAY: return createWay();
 			case OsmPackage.NODE_REF: return createNodeRef();
 			case OsmPackage.TAGS: return createTags();
@@ -123,6 +124,16 @@ public class OsmFactoryImpl extends EFactoryImpl implements OsmFactory {
 	public GeoLocation createGeoLocation() {
 		GeoLocationImpl geoLocation = new GeoLocationImpl();
 		return geoLocation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeoLatLong createGeoLatLong() {
+		GeoLatLongImpl geoLatLong = new GeoLatLongImpl();
+		return geoLatLong;
 	}
 
 	/**

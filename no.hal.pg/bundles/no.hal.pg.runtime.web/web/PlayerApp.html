@@ -14,14 +14,14 @@
 
 <script src="https://fb.me/react-0.13.3.js"></script>
 
-<script src="AppHelper.js"></script>
+<script src="AppUtils.js"></script>
 
 <script src="PlayerComponent.js"></script>
 <script src="TaskComponent.js"></script>
 <script src="TaskListComponent.js"></script>
 
 <script type="text/javascript">
-var appProps = AppHelper.appProps({});
+var appProps = AppUtils.appProps({});
 
 var taskList = React.render(React.createElement(TaskListComponent,
 	{ serviceUrl: appProps.serviceUrl + '/tasks', player: appProps.player, tasks: [] }

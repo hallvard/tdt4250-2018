@@ -66,7 +66,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getTagged()
 	 * @generated
 	 */
-	int TAGGED = 6;
+	int TAGGED = 7;
 
 	/**
 	 * The number of structural features of the '<em>Tagged</em>' class.
@@ -121,7 +121,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getTags()
 	 * @generated
 	 */
-	int TAGS = 7;
+	int TAGS = 8;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -194,7 +194,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getOSMElement()
 	 * @generated
 	 */
-	int OSM_ELEMENT = 5;
+	int OSM_ELEMENT = 6;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -493,7 +493,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getGeoLocated()
 	 * @generated
 	 */
-	int GEO_LOCATED = 2;
+	int GEO_LOCATED = 3;
 
 	/**
 	 * The number of structural features of the '<em>Geo Located</em>' class.
@@ -578,6 +578,52 @@ public interface OsmPackage extends EPackage {
 	int GEO_LOCATION_OPERATION_COUNT = GEO_LOCATED_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.osm.impl.GeoLatLongImpl <em>Geo Lat Long</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.osm.impl.GeoLatLongImpl
+	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getGeoLatLong()
+	 * @generated
+	 */
+	int GEO_LAT_LONG = 2;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LAT_LONG__LOCATION = GEO_LOCATED_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Geo Lat Long</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LAT_LONG_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LAT_LONG___GET_LAT_LONG = GEO_LOCATED___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Geo Lat Long</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LAT_LONG_OPERATION_COUNT = GEO_LOCATED_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.osm.impl.WayImpl <em>Way</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -585,7 +631,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getWay()
 	 * @generated
 	 */
-	int WAY = 3;
+	int WAY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -730,7 +776,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getNodeRef()
 	 * @generated
 	 */
-	int NODE_REF = 4;
+	int NODE_REF = 5;
 
 	/**
 	 * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -776,7 +822,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getTag()
 	 * @generated
 	 */
-	int TAG = 8;
+	int TAG = 9;
 
 	/**
 	 * The feature id for the '<em><b>Key</b></em>' attribute.
@@ -822,7 +868,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getRelation()
 	 * @generated
 	 */
-	int RELATION = 9;
+	int RELATION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Tags</b></em>' containment reference list.
@@ -967,7 +1013,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getMember()
 	 * @generated
 	 */
-	int MEMBER = 10;
+	int MEMBER = 11;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1022,7 +1068,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getBounds()
 	 * @generated
 	 */
-	int BOUNDS = 11;
+	int BOUNDS = 12;
 
 	/**
 	 * The feature id for the '<em><b>Min Latitute</b></em>' attribute.
@@ -1086,7 +1132,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getOSM()
 	 * @generated
 	 */
-	int OSM = 12;
+	int OSM = 13;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
@@ -1196,7 +1242,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getNote()
 	 * @generated
 	 */
-	int NOTE = 13;
+	int NOTE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' attribute.
@@ -1233,7 +1279,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getMetaData()
 	 * @generated
 	 */
-	int META_DATA = 14;
+	int META_DATA = 15;
 
 	/**
 	 * The feature id for the '<em><b>Osm Base</b></em>' attribute.
@@ -1271,7 +1317,7 @@ public interface OsmPackage extends EPackage {
 	 * @see no.hal.pg.osm.impl.OsmPackageImpl#getLatLong()
 	 * @generated
 	 */
-	int LAT_LONG = 15;
+	int LAT_LONG = 16;
 
 
 	/**
@@ -1315,6 +1361,27 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getGeoLocation_Longitude();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.osm.GeoLatLong <em>Geo Lat Long</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Geo Lat Long</em>'.
+	 * @see no.hal.pg.osm.GeoLatLong
+	 * @generated
+	 */
+	EClass getGeoLatLong();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.GeoLatLong#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Location</em>'.
+	 * @see no.hal.pg.osm.GeoLatLong#getLocation()
+	 * @see #getGeoLatLong()
+	 * @generated
+	 */
+	EAttribute getGeoLatLong_Location();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.osm.GeoLocated <em>Geo Located</em>}'.
@@ -1843,7 +1910,7 @@ public interface OsmPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Lat Long</em>'.
 	 * @see no.hal.pg.osm.geoutil.LatLong
-	 * @model instanceClass="no.hal.pgo.osm.geoutil.LatLong"
+	 * @model instanceClass="no.hal.pg.osm.geoutil.LatLong"
 	 * @generated
 	 */
 	EDataType getLatLong();
@@ -1906,6 +1973,24 @@ public interface OsmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute GEO_LOCATION__LONGITUDE = eINSTANCE.getGeoLocation_Longitude();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.osm.impl.GeoLatLongImpl <em>Geo Lat Long</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.osm.impl.GeoLatLongImpl
+		 * @see no.hal.pg.osm.impl.OsmPackageImpl#getGeoLatLong()
+		 * @generated
+		 */
+		EClass GEO_LAT_LONG = eINSTANCE.getGeoLatLong();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEO_LAT_LONG__LOCATION = eINSTANCE.getGeoLatLong_Location();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.osm.GeoLocated <em>Geo Located</em>}' class.

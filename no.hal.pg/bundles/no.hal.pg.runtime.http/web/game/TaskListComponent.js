@@ -3,7 +3,7 @@
 /*
 this.props:
 {
-	serviceUrl: service URL
+	dataUrl: service URL
 	tasks: task list 
 	[]
 }
@@ -18,7 +18,7 @@ var TaskListComponent = React.createClass({
 	
 	getInitialState : function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, true, function(response) {
+		AppUtils.loadData(this.props.dataUrl, true, function(response) {
 			comp.setState({
 				tasks : response
 			});
@@ -35,7 +35,7 @@ var TaskListComponent = React.createClass({
 //	},
 
   	render: function render() {
-  		AppHelper.log("Task count: " + this.state.tasks.length, AppHelper.INFO);
+  		AppUtils.log("Task count: " + this.state.tasks.length, AppUtils.INFO);
   		var props = this.props;
   		var state = this.state;
   		var rows = this.state.tasks.map(function(task, idx) {
@@ -44,7 +44,7 @@ var TaskListComponent = React.createClass({
     	    	React.createElement(
     	      		"td", { className: "taskItem" },
     		    	React.createElement(
-    	 	    		TaskComponent, { serviceUrl: props.serviceUrl + '/' + idx, // player: state.player,
+    	 	    		TaskComponent, { dataUrl: props.dataUrl + '/' + idx, // player: state.player,
     	 	    							task: task, taskNum: (idx + 1)}
     	 	    	)
     	 		)

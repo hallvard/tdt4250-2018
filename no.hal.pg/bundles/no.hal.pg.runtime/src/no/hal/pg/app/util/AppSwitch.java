@@ -4,6 +4,8 @@ package no.hal.pg.app.util;
 
 import no.hal.pg.app.*;
 
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.Task;
 
 import org.eclipse.emf.ecore.EObject;
@@ -119,6 +121,20 @@ public class AppSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AppPackage.MAP_VIEW: {
+				MapView mapView = (MapView)theEObject;
+				T1 result = caseMapView(mapView);
+				if (result == null) result = caseGeoLocation(mapView);
+				if (result == null) result = caseGeoLocated(mapView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.MAP_MARKER: {
+				MapMarker mapMarker = (MapMarker)theEObject;
+				T1 result = caseMapMarker(mapMarker);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -225,6 +241,66 @@ public class AppSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseAcceptTaskView(AcceptTaskView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMapView(MapView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Marker</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Marker</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMapMarker(MapMarker object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Located</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Located</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocated(GeoLocated object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Location</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Location</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocation(GeoLocation object) {
 		return null;
 	}
 

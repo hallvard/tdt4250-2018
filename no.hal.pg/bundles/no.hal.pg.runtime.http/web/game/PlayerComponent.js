@@ -3,7 +3,7 @@
 /*
 this.props:
 {
-	serviceUrl: the url that returns the current Player object
+	dataUrl: the url that returns the current Player object
 	player : the player
 	{
 		name: player name
@@ -23,7 +23,7 @@ var PlayerComponent = React.createClass({
 	
 	getInitialState : function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, false, function(response) {
+		AppUtils.loadData(this.props.dataUrl, false, function(response) {
 			var person = {
 					name : response.name,
 					ids : response.ids
@@ -52,7 +52,7 @@ var PlayerComponent = React.createClass({
     	 		)
           	);
   		}));
-  		var playerLink = AppHelper.appUrl(this.props.serviceUrl);
+  		var playerLink = AppUtils.appUrl(this.props.dataUrl);
     	return React.createElement("table", { className: "player" },
       		React.createElement("tbody", null,
 	    			React.createElement("tr", null,

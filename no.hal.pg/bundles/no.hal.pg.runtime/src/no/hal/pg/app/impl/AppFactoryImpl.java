@@ -62,6 +62,8 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 			case AppPackage.APP: return createApp();
 			case AppPackage.TASK_VIEW: return createTaskView();
 			case AppPackage.ACCEPT_TASK_VIEW: return createAcceptTaskView();
+			case AppPackage.MAP_VIEW: return createMapView();
+			case AppPackage.MAP_MARKER: return createMapMarker();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -105,6 +107,26 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	public AcceptTaskView createAcceptTaskView() {
 		AcceptTaskViewImpl acceptTaskView = new AcceptTaskViewImpl();
 		return acceptTaskView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapView createMapView() {
+		MapViewImpl mapView = new MapViewImpl();
+		return mapView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MapMarker createMapMarker() {
+		MapMarkerImpl mapMarker = new MapMarkerImpl();
+		return mapMarker;
 	}
 
 	/**

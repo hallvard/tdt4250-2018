@@ -140,7 +140,7 @@ public class RequestSupport {
 
 	protected EStructuralFeature findEStructuralFeature(EObject target, String featureName) {
 		EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
-		return (feature != null && AnnotationUtil.includeTypedElement(feature, REQUEST_SUPPORT_ANNOTATION_SOURCE) ? feature : null);
+		return (feature != null && AnnotationUtil.includeTypedElement(feature, REQUEST_SUPPORT_ANNOTATION_SOURCE, true) ? feature : null);
 	}
 	
 	protected Object getFeatureValue(EObject target, EStructuralFeature feature) {
@@ -157,7 +157,7 @@ public class RequestSupport {
 					}
 					continue nextOp;
 				}
-				if (AnnotationUtil.includeTypedElement(op, REQUEST_SUPPORT_ANNOTATION_SOURCE)) {
+				if (AnnotationUtil.includeTypedElement(op, REQUEST_SUPPORT_ANNOTATION_SOURCE, true)) {
 					return op;
 				}
 			}

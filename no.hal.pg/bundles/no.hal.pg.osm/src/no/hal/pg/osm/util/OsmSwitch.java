@@ -84,6 +84,13 @@ public class OsmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case OsmPackage.GEO_LAT_LONG: {
+				GeoLatLong geoLatLong = (GeoLatLong)theEObject;
+				T result = caseGeoLatLong(geoLatLong);
+				if (result == null) result = caseGeoLocated(geoLatLong);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case OsmPackage.GEO_LOCATED: {
 				GeoLocated geoLocated = (GeoLocated)theEObject;
 				T result = caseGeoLocated(geoLocated);
@@ -203,6 +210,21 @@ public class OsmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseGeoLocation(GeoLocation object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Lat Long</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Lat Long</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGeoLatLong(GeoLatLong object) {
 		return null;
 	}
 

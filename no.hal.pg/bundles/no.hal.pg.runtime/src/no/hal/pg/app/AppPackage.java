@@ -2,6 +2,7 @@
  */
 package no.hal.pg.app;
 
+import no.hal.pg.osm.OsmPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -464,6 +465,162 @@ public interface AppPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.MapViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapView()
+	 * @generated
+	 */
+	int MAP_VIEW = 7;
+
+	/**
+	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW__LATITUDE = OsmPackage.GEO_LOCATION__LATITUDE;
+
+	/**
+	 * The feature id for the '<em><b>Longitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW__LONGITUDE = OsmPackage.GEO_LOCATION__LONGITUDE;
+
+	/**
+	 * The feature id for the '<em><b>Zoom</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW__ZOOM = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW__MARKERS = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Map View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW_FEATURE_COUNT = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW___GET_LAT_LONG = OsmPackage.GEO_LOCATION___GET_LAT_LONG;
+
+	/**
+	 * The operation id for the '<em>Navigate</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW___NAVIGATE__FLOAT_FLOAT_INT = OsmPackage.GEO_LOCATION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Map View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW_OPERATION_COUNT = OsmPackage.GEO_LOCATION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.MapMarkerImpl <em>Map Marker</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.MapMarkerImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarker()
+	 * @generated
+	 */
+	int MAP_MARKER = 8;
+
+	/**
+	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER__LATITUDE = 0;
+
+	/**
+	 * The feature id for the '<em><b>Longitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER__LONGITUDE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER__TEXT = 2;
+
+	/**
+	 * The feature id for the '<em><b>Radius</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER__RADIUS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER__COLOR = 4;
+
+	/**
+	 * The number of structural features of the '<em>Map Marker</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Map Marker</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_MARKER_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.View <em>View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -665,6 +822,113 @@ public interface AppPackage extends EPackage {
 	EOperation getAcceptTaskView__Accept();
 
 	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.MapView <em>Map View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map View</em>'.
+	 * @see no.hal.pg.app.MapView
+	 * @generated
+	 */
+	EClass getMapView();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapView#getZoom <em>Zoom</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Zoom</em>'.
+	 * @see no.hal.pg.app.MapView#getZoom()
+	 * @see #getMapView()
+	 * @generated
+	 */
+	EAttribute getMapView_Zoom();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.MapView#getMarkers <em>Markers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Markers</em>'.
+	 * @see no.hal.pg.app.MapView#getMarkers()
+	 * @see #getMapView()
+	 * @generated
+	 */
+	EReference getMapView_Markers();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.app.MapView#navigate(float, float, int) <em>Navigate</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Navigate</em>' operation.
+	 * @see no.hal.pg.app.MapView#navigate(float, float, int)
+	 * @generated
+	 */
+	EOperation getMapView__Navigate__float_float_int();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.MapMarker <em>Map Marker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Marker</em>'.
+	 * @see no.hal.pg.app.MapMarker
+	 * @generated
+	 */
+	EClass getMapMarker();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getLatitude <em>Latitude</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Latitude</em>'.
+	 * @see no.hal.pg.app.MapMarker#getLatitude()
+	 * @see #getMapMarker()
+	 * @generated
+	 */
+	EAttribute getMapMarker_Latitude();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getLongitude <em>Longitude</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Longitude</em>'.
+	 * @see no.hal.pg.app.MapMarker#getLongitude()
+	 * @see #getMapMarker()
+	 * @generated
+	 */
+	EAttribute getMapMarker_Longitude();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see no.hal.pg.app.MapMarker#getText()
+	 * @see #getMapMarker()
+	 * @generated
+	 */
+	EAttribute getMapMarker_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getRadius <em>Radius</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Radius</em>'.
+	 * @see no.hal.pg.app.MapMarker#getRadius()
+	 * @see #getMapMarker()
+	 * @generated
+	 */
+	EAttribute getMapMarker_Radius();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getColor <em>Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Color</em>'.
+	 * @see no.hal.pg.app.MapMarker#getColor()
+	 * @see #getMapMarker()
+	 * @generated
+	 */
+	EAttribute getMapMarker_Color();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -852,6 +1116,90 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation ACCEPT_TASK_VIEW___ACCEPT = eINSTANCE.getAcceptTaskView__Accept();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.MapViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getMapView()
+		 * @generated
+		 */
+		EClass MAP_VIEW = eINSTANCE.getMapView();
+
+		/**
+		 * The meta object literal for the '<em><b>Zoom</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_VIEW__ZOOM = eINSTANCE.getMapView_Zoom();
+
+		/**
+		 * The meta object literal for the '<em><b>Markers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAP_VIEW__MARKERS = eINSTANCE.getMapView_Markers();
+
+		/**
+		 * The meta object literal for the '<em><b>Navigate</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MAP_VIEW___NAVIGATE__FLOAT_FLOAT_INT = eINSTANCE.getMapView__Navigate__float_float_int();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapMarkerImpl <em>Map Marker</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.MapMarkerImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarker()
+		 * @generated
+		 */
+		EClass MAP_MARKER = eINSTANCE.getMapMarker();
+
+		/**
+		 * The meta object literal for the '<em><b>Latitude</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_MARKER__LATITUDE = eINSTANCE.getMapMarker_Latitude();
+
+		/**
+		 * The meta object literal for the '<em><b>Longitude</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_MARKER__LONGITUDE = eINSTANCE.getMapMarker_Longitude();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_MARKER__TEXT = eINSTANCE.getMapMarker_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_MARKER__RADIUS = eINSTANCE.getMapMarker_Radius();
+
+		/**
+		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAP_MARKER__COLOR = eINSTANCE.getMapMarker_Color();
 
 	}
 

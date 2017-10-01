@@ -7,6 +7,8 @@ import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameView;
+import no.hal.pg.app.MapMarker;
+import no.hal.pg.app.MapView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.View;
 import no.hal.pg.app.View1;
@@ -83,6 +85,20 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	private EClass acceptTaskViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapMarkerEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -326,6 +342,96 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMapView() {
+		return mapViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapView_Zoom() {
+		return (EAttribute)mapViewEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMapView_Markers() {
+		return (EReference)mapViewEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getMapView__Navigate__float_float_int() {
+		return mapViewEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getMapMarker() {
+		return mapMarkerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarker_Latitude() {
+		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarker_Longitude() {
+		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarker_Text() {
+		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarker_Radius() {
+		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarker_Color() {
+		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public AppFactory getAppFactory() {
 		return (AppFactory)getEFactoryInstance();
 	}
@@ -374,6 +480,18 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		acceptTaskViewEClass = createEClass(ACCEPT_TASK_VIEW);
 		createEOperation(acceptTaskViewEClass, ACCEPT_TASK_VIEW___ACCEPT);
+
+		mapViewEClass = createEClass(MAP_VIEW);
+		createEAttribute(mapViewEClass, MAP_VIEW__ZOOM);
+		createEReference(mapViewEClass, MAP_VIEW__MARKERS);
+		createEOperation(mapViewEClass, MAP_VIEW___NAVIGATE__FLOAT_FLOAT_INT);
+
+		mapMarkerEClass = createEClass(MAP_MARKER);
+		createEAttribute(mapMarkerEClass, MAP_MARKER__LATITUDE);
+		createEAttribute(mapMarkerEClass, MAP_MARKER__LONGITUDE);
+		createEAttribute(mapMarkerEClass, MAP_MARKER__TEXT);
+		createEAttribute(mapMarkerEClass, MAP_MARKER__RADIUS);
+		createEAttribute(mapMarkerEClass, MAP_MARKER__COLOR);
 	}
 
 	/**
@@ -401,6 +519,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		// Obtain other dependent packages
 		RuntimePackage theRuntimePackage = (RuntimePackage)EPackage.Registry.INSTANCE.getEPackage(RuntimePackage.eNS_URI);
+		OsmPackage theOsmPackage = (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter viewEClass_U = addETypeParameter(viewEClass, "U");
@@ -449,6 +568,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType(theRuntimePackage.getAcceptTask());
 		g1.getETypeArguments().add(g2);
 		acceptTaskViewEClass.getEGenericSuperTypes().add(g1);
+		mapViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(viewEClass, View.class, "View", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -494,8 +614,52 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		initEOperation(getAcceptTaskView__Accept(), null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
 
+		initEClass(mapViewEClass, MapView.class, "MapView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapView_Zoom(), ecorePackage.getEInt(), "zoom", "10", 0, 1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMapView_Markers(), this.getMapMarker(), null, "markers", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = initEOperation(getMapView__Navigate__float_float_int(), null, "navigate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEFloat(), "latitude", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEFloat(), "longitude", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "zoom", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(mapMarkerEClass, MapMarker.class, "MapMarker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapMarker_Latitude(), ecorePackage.getEFloat(), "latitude", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarker_Longitude(), ecorePackage.getEFloat(), "longitude", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarker_Text(), ecorePackage.getEString(), "text", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarker_Radius(), ecorePackage.getEIntegerObject(), "radius", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarker_Color(), ecorePackage.getEString(), "color", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
+		createExtendedMetaDataAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createExtendedMetaDataAnnotations() {
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
+		addAnnotation
+		  (getMapMarker_Latitude(), 
+		   source, 
+		   new String[] {
+			 "name", "lat",
+			 "kind", "attribute"
+		   });	
+		addAnnotation
+		  (getMapMarker_Longitude(), 
+		   source, 
+		   new String[] {
+			 "name", "lon",
+			 "kind", "attribute"
+		   });
 	}
 
 } //AppPackageImpl

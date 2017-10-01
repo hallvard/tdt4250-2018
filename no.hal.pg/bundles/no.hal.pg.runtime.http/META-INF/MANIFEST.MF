@@ -7,11 +7,14 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: no.hal.pg.runtime.http.auth
-Import-Package: javax.servlet;version="3.1.0",
+Export-Package: no.hal.pg.runtime.http,
+ no.hal.pg.runtime.http.auth
+Import-Package: com.fasterxml.jackson.core;version="2.9.0.pr3-SNAPSHOT",
+ javax.servlet;version="3.1.0",
  javax.servlet.http;version="3.1.0",
  no.hal.pg.arc,
  no.hal.pg.http.auth.util,
+ no.hal.pg.http.impl,
  org.eclipse.emf.ecore,
  org.osgi.service.component;version="1.2.0",
  org.osgi.service.component.annotations;version="1.2.0",
@@ -20,6 +23,7 @@ Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/no.hal.pg.runtime.http.auth.GameAuthenticationHandler.xml,
  OSGI-INF/no.hal.pg.runtime.http.JsServletConfig.xml,
  OSGI-INF/no.hal.pg.runtime.http.AcceptTaskServletConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.GameAppServletConfig.xml
+ OSGI-INF/no.hal.pg.runtime.http.GameAppServletConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.OsmJsonSerializer.xml
 Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
  no.hal.pg.runtime;bundle-version="0.0.1"

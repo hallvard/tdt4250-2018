@@ -23,7 +23,7 @@ var GameComponent = React.createClass({
 	
 	getInitialState : function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, false, function(response) {
+		AppUtils.loadData(this.props.serviceUrl, false, function(response) {
 			comp.setState({
 				players : response.players,
 				tasks : response.tasks

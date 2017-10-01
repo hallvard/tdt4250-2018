@@ -3,7 +3,7 @@
 /*
 this.props:
 {
-	serviceUrl: service URL
+	datarUrl: service URL
 	task: task
 	taskNum: task number
 }
@@ -19,7 +19,7 @@ var TaskComponent = React.createClass({
 
 	getInitialState: function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, true, function(response) {
+		AppUtils.loadData(this.props.datarUrl, true, function(response) {
 			comp.setState({
 				tasks : response
 			});
@@ -37,8 +37,8 @@ var TaskComponent = React.createClass({
   		} else if (this.state.started) {
   			divClass = "startedTask";
   		}
-  		var serviceUrl = this.props.serviceUrl; 
-  		var taskLink = AppHelper.appUrl(serviceUrl);
+  		var datarUrl = this.props.datarUrl; 
+  		var taskLink = AppUtils.appUrl(datarUrl);
 //  		var player = this.props.player;
 //  		if (typeof player === 'object') {
 //  			taskLink = taskLink + '?player=' + player.ids[0];

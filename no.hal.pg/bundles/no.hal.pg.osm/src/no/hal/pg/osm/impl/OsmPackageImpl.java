@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import no.hal.pg.osm.Bounds;
+import no.hal.pg.osm.GeoLatLong;
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.Member;
@@ -49,6 +50,13 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 * @generated
 	 */
 	private EClass geoLocationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass geoLatLongEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -243,6 +251,24 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 */
 	public EAttribute getGeoLocation_Longitude() {
 		return (EAttribute)geoLocationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGeoLatLong() {
+		return geoLatLongEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeoLatLong_Location() {
+		return (EAttribute)geoLatLongEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -729,6 +755,9 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		createEAttribute(geoLocationEClass, GEO_LOCATION__LATITUDE);
 		createEAttribute(geoLocationEClass, GEO_LOCATION__LONGITUDE);
 
+		geoLatLongEClass = createEClass(GEO_LAT_LONG);
+		createEAttribute(geoLatLongEClass, GEO_LAT_LONG__LOCATION);
+
 		geoLocatedEClass = createEClass(GEO_LOCATED);
 		createEOperation(geoLocatedEClass, GEO_LOCATED___GET_LAT_LONG);
 
@@ -826,6 +855,7 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		nodeEClass.getESuperTypes().add(this.getOSMElement());
 		nodeEClass.getESuperTypes().add(this.getGeoLocation());
 		geoLocationEClass.getESuperTypes().add(this.getGeoLocated());
+		geoLatLongEClass.getESuperTypes().add(this.getGeoLocated());
 		wayEClass.getESuperTypes().add(this.getOSMElement());
 		nodeRefEClass.getESuperTypes().add(this.getGeoLocated());
 		osmElementEClass.getESuperTypes().add(this.getTags());
@@ -838,6 +868,9 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		initEClass(geoLocationEClass, GeoLocation.class, "GeoLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGeoLocation_Latitude(), ecorePackage.getEFloat(), "latitude", null, 0, 1, GeoLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getGeoLocation_Longitude(), ecorePackage.getEFloat(), "longitude", null, 0, 1, GeoLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(geoLatLongEClass, GeoLatLong.class, "GeoLatLong", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getGeoLatLong_Location(), this.getLatLong(), "location", null, 0, 1, GeoLatLong.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(geoLocatedEClass, GeoLocated.class, "GeoLocated", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -941,6 +974,13 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		   source, 
 		   new String[] {
 			 "name", "lon",
+			 "kind", "attribute"
+		   });	
+		addAnnotation
+		  (getGeoLatLong_Location(), 
+		   source, 
+		   new String[] {
+			 "name", "lat",
 			 "kind", "attribute"
 		   });	
 		addAnnotation

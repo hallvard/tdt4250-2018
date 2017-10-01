@@ -1,4 +1,4 @@
-// App Helper object
+// App Utilities object
 
 var AppUtils = {
 	
@@ -17,63 +17,51 @@ var AppUtils = {
 			console.log(message);
 		}
 	},
-
-	appProps: function getQueryVariable(props, defaultProp, search) {
-		if (typeof defaultProp != 'string') {
-			defaultProp = 'serviceUrl';
-		}
-		if (typeof search != 'string') {
-			search = window.location.search;
-		}
-		if (search.indexOf("?") === 0) {
-			search = search.substring(1);
-		}
-	    var vars = search.split('&');
-	    for (var i = 0; i < vars.length; i++) {
-	        var pair = vars[i].split('=');
-	        var argName = decodeURIComponent(pair[0]);
-	        if (pair.length == 1) {
-	        	if (vars.length == 1) {
-	        		props[defaultProp] = search;
-	        		break;
-	        	} else {
-	        		props[argName] = true;
-	        	}
-	        } else { 
-	        	var argValue = decodeURIComponent(pair[1]);
-	        	props[argName] = argValue;
-	    	}
-	    }
-	    return props;
-	},
 	
-	serviceUrl: function(serviceUrl) {
-		if (serviceUrl.indexOf("?") === 0) {
-			serviceUrl = serviceUrl.substring(1);
+	dataUrl: function(dataUrl) {
+		if (dataUrl.indexOf("?") === 0) {
+			dataUrl = dataUrl.substring(1);
 		}
-		if (serviceUrl.indexOf(":") > 5) {
-			serviceUrl = window.location.origin + serviceUrl;
+		if (dataUrl.indexOf(":") > 5) {
+			dataUrl = window.location.origin + dataUrl;
 		}
-		return serviceUrl;
+		return dataUrl;
 	},
 
-	appUrl: function(serviceUrl) {
-		return serviceUrl.replace("/data/", "/app/");
+	appUrl: function(dataUrl) {
+		return dataUrl.replace("/data/", "/app/");
 	},
 	
-	loadData : function(theUrl, asArray, callback) {
+	resolveUrl(relativeUrl) {
+		if (relativeUrl.charAt(0) != '/') {
+			relativeUrl = "/" + relativeUrl;
+		}
+		var baseUrl = document.URL;
+		return baseUrl.substring(0, baseUrl.lastIndexOf("/")) + relativeUrl;
+	},
+
+	submitData : function(theUrl) {
+		this.loadData(theUrl, false, null, function() {});
+	},
+
+	loadData : function(theUrl, asArray, def, callback) {
 		var isAsync = typeof callback === 'function';
 		var xmlHttp = new XMLHttpRequest();
 		if (isAsync) {
 			var responseObject = this.responseObject;
 			var self = this;
 			xmlHttp.onreadystatechange = function() {
-				if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-					callback(self.responseObject(xmlHttp.responseText, asArray));
+				if (xmlHttp.readyState == 4) {
+					var result = def;
+					if (xmlHttp.status == 200) {
+						result = self.responseObject(xmlHttp.responseText, asArray);
+					}
+					callback(result);
 				}
 			}
 		}
 		xmlHttp.open("GET", theUrl, isAsync);
+		this.log("Sent request: " + theUrl);
 		xmlHttp.send(null);
 		return (isAsync ? null : this.responseObject(xmlHttp.responseText, asArray));
 	},

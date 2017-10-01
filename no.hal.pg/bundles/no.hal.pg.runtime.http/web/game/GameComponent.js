@@ -3,7 +3,7 @@
 /*
 this.props:
 {
-	serviceUrl: the url that returns the current Game object
+	dataUrl: the url that returns the current Game object
 	players:
 	[]
 	tasks:
@@ -23,7 +23,7 @@ var GameComponent = React.createClass({
 	
 	getInitialState : function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, false, function(response) {
+		AppUtils.loadData(this.props.dataUrl, false, function(response) {
 			comp.setState({
 				players : response.players,
 				tasks : response.tasks
@@ -36,12 +36,12 @@ var GameComponent = React.createClass({
 	},
 
   	render: function render() {
-  		var serviceUrl = this.props.serviceUrl;
+  		var dataUrl = this.props.dataUrl;
   		var playerComponents = this.state.players.map(function(player) {
       		return React.createElement(PlayerComponent,
       				(typeof player === 'string' ? 
-      				  { serviceUrl: serviceUrl + '/' + player, player: player, compact: true } :
-      				  { serviceUrl: serviceUrl + '/' + player.ids[0], player: { name: player.name, ids: player.ids }, compact: true }
+      				  { dataUrl: dataUrl + '/' + player, player: player, compact: true } :
+      				  { dataUrl: dataUrl + '/' + player.ids[0], player: { name: player.name, ids: player.ids }, compact: true }
       				)
           		)
   		});
@@ -52,7 +52,7 @@ var GameComponent = React.createClass({
     		),
     		React.createElement("h2", null, "Tasks"),
     		React.createElement(TaskListComponent,
-    				{ serviceUrl: this.props.serviceUrl + '/tasks', tasks: []}
+    				{ dataUrl: this.props.dataUrl + '/tasks', tasks: []}
     		)    		
     	);
   	}

@@ -20,7 +20,7 @@ public interface GeoLocated extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="no.hal.pgo.osm.LatLong"
+	 * @model kind="operation" dataType="no.hal.pg.osm.LatLong"
 	 * @generated
 	 */
 	LatLong getLatLong();

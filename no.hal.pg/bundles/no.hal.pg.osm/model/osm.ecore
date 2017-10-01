@@ -16,6 +16,14 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoLatLong" eSuperTypes="#//GeoLocated">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="#//LatLong">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="lat"/>
+        <details key="kind" value="attribute"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="LatLong" instanceClassName="no.hal.pg.osm.geoutil.LatLong"/>
   <eClassifiers xsi:type="ecore:EClass" name="GeoLocated" abstract="true" interface="true">
     <eOperations name="getLatLong" eType="#//LatLong"/>

@@ -4,6 +4,8 @@ package no.hal.pg.app.util;
 
 import no.hal.pg.app.*;
 
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.Task;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -96,6 +98,22 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseAcceptTaskView(AcceptTaskView object) {
 				return createAcceptTaskViewAdapter();
+			}
+			@Override
+			public Adapter caseMapView(MapView object) {
+				return createMapViewAdapter();
+			}
+			@Override
+			public Adapter caseMapMarker(MapMarker object) {
+				return createMapMarkerAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocated(GeoLocated object) {
+				return createGeoLocatedAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocation(GeoLocation object) {
+				return createGeoLocationAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -212,6 +230,62 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAcceptTaskViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.MapView <em>Map View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.MapView
+	 * @generated
+	 */
+	public Adapter createMapViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.MapMarker <em>Map Marker</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.MapMarker
+	 * @generated
+	 */
+	public Adapter createMapMarkerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.osm.GeoLocated <em>Geo Located</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.osm.GeoLocated
+	 * @generated
+	 */
+	public Adapter createGeoLocatedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.osm.GeoLocation <em>Geo Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.osm.GeoLocation
+	 * @generated
+	 */
+	public Adapter createGeoLocationAdapter() {
 		return null;
 	}
 

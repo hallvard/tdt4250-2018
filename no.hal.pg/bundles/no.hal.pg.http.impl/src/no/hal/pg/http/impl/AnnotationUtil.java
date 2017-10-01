@@ -10,7 +10,11 @@ public class AnnotationUtil {
 
 	public static boolean includeElement(EModelElement element, String annotationKey, boolean defaultInclude) {
 		String include = EcoreUtil.getAnnotation(element, annotationKey, "include"), exclude = EcoreUtil.getAnnotation(element, annotationKey, "exclude");
-		return (exclude != null && Boolean.valueOf(exclude) != defaultInclude) || (include != null && Boolean.valueOf(include) == defaultInclude);
+		if (defaultInclude) {
+			return (include == null || Boolean.valueOf(include)) && (exclude == null || (! Boolean.valueOf(exclude)));
+		} else {
+			return (include != null && Boolean.valueOf(include)) || (exclude != null && (! Boolean.valueOf(exclude)));			
+		}
 	}
 	
 	public static boolean excludeElement(EModelElement element, String annotationKey) {
@@ -21,23 +25,23 @@ public class AnnotationUtil {
 		return AnnotationUtil.includeElement(element, annotationKey, true);
 	}
 	
-	public static <T extends ETypedElement> boolean includeTypedElement(T element, String annotationKey) {
-		// if explicit exclude of element, return null
-		if (AnnotationUtil.excludeElement(element, annotationKey)) {
-			return false;
+	public static <T extends ETypedElement> boolean includeTypedElement(T element, String annotationKey, boolean defaultInclude) {
+		boolean explicitInclude = AnnotationUtil.includeElement(element, annotationKey, defaultInclude);
+		if (explicitInclude != defaultInclude) {
+			return explicitInclude;
 		}
-		// if explicit exclude of type, return null
 		EClassifier type = element.getEType();
 		if (type != null) {
-			if (AnnotationUtil.excludeElement(type, annotationKey)) {
-				return false;
+			explicitInclude = AnnotationUtil.includeElement(type, annotationKey, defaultInclude);
+			if (explicitInclude != defaultInclude) {
+				return explicitInclude;
 			}
-			// if explicit exclude of package, and not explicit include of type, return null 
 			EPackage ePackage = type.getEPackage();
-			if (AnnotationUtil.excludeElement(ePackage, annotationKey) && (! AnnotationUtil.includeElement(type, annotationKey))) {
-				return false;
+			explicitInclude = AnnotationUtil.includeElement(ePackage, annotationKey, defaultInclude);
+			if (explicitInclude != defaultInclude) {
+				return explicitInclude;
 			}
 		}
-		return true;
+		return defaultInclude;
 	}
 }

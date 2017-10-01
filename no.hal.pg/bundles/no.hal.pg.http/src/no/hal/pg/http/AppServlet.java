@@ -102,7 +102,7 @@ public class AppServlet extends AbstractResourceServlet implements Servlet {
 			throw new ServletException("No main location for " + object);
 		}
 		String location = req.getServletContext().getContextPath();
-		location = location + mainLocation + "?serviceUrl=";
+		location = location + mainLocation + "?dataUrl=";
 		location = location + "/data/" + resourceProvider.getName();
 		for (String segment : resourcePath) {
 			location = location + "/" + segment;

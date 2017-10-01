@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.http.impl.JsonSerializer">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.impl.JsonSerializer">
    <service>
       <provide interface="no.hal.pg.http.IResponseSerializer"/>
    </service>
-   <reference bind="addJsonSerializerHelper" cardinality="0..n" interface="no.hal.pg.http.impl.JsonSerializerHelper" name="JsonSerializerHelper" policy="dynamic" unbind="removeJsonSerializerHelper"/>
+   <reference cardinality="0..n" field="jsonEAttributeSerializers" interface="no.hal.pg.http.impl.JsonEAttributeSerializer" name="jsonEAttributeSerializers" policy="dynamic"/>
+   <reference cardinality="0..n" field="jsonEObjectSerializers" interface="no.hal.pg.http.impl.JsonEObjectSerializer" name="jsonEObjectSerializers" policy="dynamic"/>
    <implementation class="no.hal.pg.http.impl.JsonSerializer"/>
 </scr:component>

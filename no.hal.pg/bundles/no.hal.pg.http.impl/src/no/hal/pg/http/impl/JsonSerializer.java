@@ -2,17 +2,16 @@ package no.hal.pg.http.impl;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Stack;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
 import org.osgi.service.component.annotations.ReferencePolicy;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -40,15 +39,32 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		objectMapper.registerModule(module);
 	}
 
-	private Collection<JsonSerializerHelper> jsonSerializerHelpers = new ArrayList<JsonSerializerHelper>();
-	
-	@Reference(cardinality=ReferenceCardinality.MULTIPLE, policy=ReferencePolicy.DYNAMIC, unbind="removeJsonSerializerHelper")
-	public void addJsonSerializerHelper(JsonSerializerHelper helper) {
-		jsonSerializerHelpers.add(helper);
-	}
+	@Reference(policy=ReferencePolicy.DYNAMIC)
+	protected volatile Collection<JsonEObjectSerializer> jsonEObjectSerializers;
 
-	public void removeJsonSerializerHelper(JsonSerializerHelper helper) {
-		jsonSerializerHelpers.remove(helper);
+	protected JsonEObjectSerializer getEObjectSerializer(EObject eObject) {
+		if (jsonEObjectSerializers != null) {
+			for (JsonEObjectSerializer serializer : jsonEObjectSerializers) {
+				if (serializer.accept(eObject)) {
+					return serializer;
+				}
+			}
+		}
+		return null;
+	}
+	
+	@Reference(policy=ReferencePolicy.DYNAMIC)
+	protected volatile Collection<JsonEAttributeSerializer> jsonEAttributeSerializers;
+	
+	protected JsonEAttributeSerializer getEAttributeSerializer(EObject eObject, EAttribute attr, Object value) {
+		if (jsonEAttributeSerializers != null) {
+			for (JsonEAttributeSerializer serializer : jsonEAttributeSerializers) {
+				if (serializer.accept(eObject, attr, value)) {
+					return serializer;
+				}
+			}
+		}
+		return null;
 	}
 	
 	private Stack<EObject> occurStack;
@@ -62,17 +78,6 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		} finally {
 			this.occurStack = null;
 		}
-	}
-
-	protected JsonSerializerHelper getJsonSerializerHelper(EObject eObject) {
-		if (jsonSerializerHelpers != null) {
-			for (JsonSerializerHelper helper : jsonSerializerHelpers) {
-				if (helper.accept(eObject)) {
-					return helper;
-				}
-			}
-		}
-		return null;
 	}
 	
 	public static final String JSON_SERIALIZER_ANNOTATION_SOURCE = JsonSerializer.class.getName();
@@ -97,27 +102,34 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		}
 		occurStack.push(eObject);
 		try {
-			JsonSerializerHelper helper = getJsonSerializerHelper(eObject);
-			if (helper != null) {
-				helper.serialize(eObject, generator);
+			JsonEObjectSerializer eObjectSerializer = getEObjectSerializer(eObject);
+			if (eObjectSerializer != null) {
+				eObjectSerializer.serialize(eObject, generator);
 			} else {
 				try {
 					generator.writeStartObject();
 					for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
-						boolean include = true;
+						boolean include = feature instanceof EAttribute;
 						if (feature instanceof EReference) {
 							EReference ref = (EReference) feature;
 							if (ref.isContainment()) {
 								include = true;
-							} else if (ref.isContainer()) {
-								include = false;
-							} else {
-								include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE);
+							} else if (! ref.isContainer()) {
+								include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, false);
 							}
 						}
 						if (include) {
 							String name = getFieldName(feature);
 							Object value = eObject.eGet(feature);
+							if (feature instanceof EAttribute) {
+								EAttribute attr = (EAttribute) feature;
+								JsonEAttributeSerializer attrSerializer = getEAttributeSerializer(eObject, attr, value);
+								if (attrSerializer != null) {
+									attrSerializer.serialize(eObject, attr, value, name, generator);
+									// avoid default serialization
+									value = null;
+								}
+							}
 							if (value != null) {
 								generator.writeFieldName(name);
 								generator.writeObject(value);

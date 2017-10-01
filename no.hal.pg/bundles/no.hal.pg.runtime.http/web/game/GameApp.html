@@ -10,7 +10,7 @@
 
 <script src="https://fb.me/react-0.13.3.js"></script>
 
-<script src="/js/AppHelper.js"></script>
+<script src="/js/AppUtils.js"></script>
 
 <script src="GameComponent.js"></script>
 <script src="PlayerComponent.js"></script>
@@ -28,7 +28,7 @@ var game = {
 	};
 
 React.render(React.createElement(GameComponent,
-		AppHelper.appProps({ players: game.players, tasks: game.tasks })
+		AppUtils.appProps({ players: game.players, tasks: game.tasks })
  		), document.getElementById('game')
  );
 </script>

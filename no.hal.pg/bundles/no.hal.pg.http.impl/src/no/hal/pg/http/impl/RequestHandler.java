@@ -12,6 +12,7 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 import no.hal.pg.http.IReferenceResolver;
 import no.hal.pg.http.IRequestPathResolver;
 import no.hal.pg.http.IRequestQueryExecutor;
+import no.hal.pg.http.auth.ISubjectProvider;
 import no.hal.pg.http.util.CompositeReferenceResolver;
 
 @Component
@@ -31,10 +32,10 @@ public class RequestHandler extends CompositeReferenceResolver implements IReque
 		super.removeReferenceResolver(referenceResolver);
 	}
 	
-	private no.hal.pg.http.auth.ISubjectProvider<?> subjectProvider;
+	private ISubjectProvider<?> subjectProvider;
 	
 	@Override
-	public void setSubjectProvider(no.hal.pg.http.auth.ISubjectProvider<?> subjectProvider) {
+	public void setSubjectProvider(ISubjectProvider<?> subjectProvider) {
 		this.subjectProvider = subjectProvider;
 	}
 

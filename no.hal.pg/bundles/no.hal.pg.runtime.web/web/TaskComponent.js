@@ -19,7 +19,7 @@ var TaskComponent = React.createClass({
 
 	getInitialState: function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, true, function(response) {
+		AppUtils.loadData(this.props.serviceUrl, true, function(response) {
 			comp.setState({
 				tasks : response
 			});
@@ -38,7 +38,7 @@ var TaskComponent = React.createClass({
   			divClass = "startedTask";
   		}
   		var serviceUrl = this.props.serviceUrl; 
-  		var taskLink = AppHelper.appUrl(serviceUrl);
+  		var taskLink = AppUtils.appUrl(serviceUrl);
 //  		var player = this.props.player;
 //  		if (typeof player === 'object') {
 //  			taskLink = taskLink + '?player=' + player.ids[0];

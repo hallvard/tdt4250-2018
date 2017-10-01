@@ -15,7 +15,7 @@ var AcceptTaskComponent = React.createClass({
 
 	getInitialState: function() {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, true, function(response) {
+		AppUtils.loadData(this.props.serviceUrl, true, function(response) {
 			comp.setState({
 				result : response.result
 			});
@@ -29,7 +29,7 @@ var AcceptTaskComponent = React.createClass({
   	render: function render() {
   		var divClass = "accept-task";
 //  		var serviceUrl = this.props.serviceUrl; 
-// 		var taskLink = AppHelper.appUrl(serviceUrl);
+// 		var taskLink = AppUtils.appUrl(serviceUrl);
 //  		var player = this.props.player;
 //  		if (typeof player === 'object') {
 //  			taskLink = taskLink + '?player=' + player.ids[0];

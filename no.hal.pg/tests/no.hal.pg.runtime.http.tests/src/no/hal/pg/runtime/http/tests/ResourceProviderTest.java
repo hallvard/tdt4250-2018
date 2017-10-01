@@ -86,7 +86,7 @@ public class ResourceProviderTest {
 		testAcceptTaskStart(getRequest("/tasks/0/start"));
 		testAcceptTaskAccept(getRequest("/tasks/0/accept"));
 		testAcceptTaskFinished(getRequest("/tasks/0"));
-	
+		
 //		HttpURLConnection con2 = (HttpURLConnection) new URL(urlString).openConnection();
 //		con2.setRequestMethod("POST");
 //		addAuthorization(con2);
@@ -127,7 +127,7 @@ public class ResourceProviderTest {
 		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
-		checkObjectNode(rootNode.get(0), "players", "startConditions", "finishConditions", "rewards");
+		checkObjectNode(rootNode.get(0), "startConditions", "finishConditions");
 	}
 	
 	protected void testAcceptTaskStart(HttpURLConnection con) throws IOException {
@@ -170,7 +170,7 @@ public class ResourceProviderTest {
 		Assert.assertTrue(node instanceof ObjectNode);
 		ObjectNode objectNode = (ObjectNode) node;
 		for (int i = 0; i < fields.length; i++) {
-			Assert.assertNotNull(objectNode.get(fields[i]));
+			Assert.assertNotNull("Missing field: " + fields[i], objectNode.get(fields[i]));
 		}
 		return (ObjectNode) node;
 	}
@@ -181,7 +181,7 @@ public class ResourceProviderTest {
 		ObjectMapper mapper = new ObjectMapper();
 		for (int i = 0; i < fieldsAndValues.length; i += 2) {
 			JsonNode value = objectNode.get(String.valueOf(fieldsAndValues[i]));
-			Assert.assertNotNull(value);
+			Assert.assertNotNull("Missing value: " + fieldsAndValues[i], value);
 			try {
 				Assert.assertEquals(String.valueOf(fieldsAndValues[i + 1]), mapper.writeValueAsString(value));
 			} catch (JsonProcessingException e) {

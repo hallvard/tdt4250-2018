@@ -32,4 +32,14 @@
             restorable="true">
       </view>
    </extension>
+
+   <extension point="org.eclipse.ui.views">
+      <view
+            category="no.hal.pg.ui.category"
+            class="no.hal.pg.ui.ResourceRequestView"
+            id="no.hal.pg.ui.ResourceRequestView"
+            name="Resource request view"
+            restorable="true">
+      </view>
+   </extension>
 </plugin>
