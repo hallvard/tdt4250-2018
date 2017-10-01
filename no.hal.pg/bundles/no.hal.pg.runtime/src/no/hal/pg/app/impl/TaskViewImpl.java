@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#getGameView <em>Game View</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#isStarted <em>Started</em>}</li>
  *   <li>{@link no.hal.pg.app.impl.TaskViewImpl#isFinished <em>Finished</em>}</li>
  * </ul>
@@ -35,6 +37,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * @generated
  */
 public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implements TaskView<T> {
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+	/**
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = false;
 	/**
 	 * The default value of the '{@link #isStarted() <em>Started</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -134,6 +154,26 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 	 * @generated NOT
 	 */
 	@Override
+	public String getDescription() {
+		return getModel().getDescription();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean isEnabled() {
+		return getModel().canStart();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
 	public boolean isStarted() {
 		return getModel().isStarted();
 	}
@@ -203,6 +243,10 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 		switch (featureID) {
 			case AppPackage.TASK_VIEW__GAME_VIEW:
 				return getGameView();
+			case AppPackage.TASK_VIEW__DESCRIPTION:
+				return getDescription();
+			case AppPackage.TASK_VIEW__ENABLED:
+				return isEnabled();
 			case AppPackage.TASK_VIEW__STARTED:
 				return isStarted();
 			case AppPackage.TASK_VIEW__FINISHED:
@@ -252,6 +296,10 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 		switch (featureID) {
 			case AppPackage.TASK_VIEW__GAME_VIEW:
 				return getGameView() != null;
+			case AppPackage.TASK_VIEW__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? getDescription() != null : !DESCRIPTION_EDEFAULT.equals(getDescription());
+			case AppPackage.TASK_VIEW__ENABLED:
+				return isEnabled() != ENABLED_EDEFAULT;
 			case AppPackage.TASK_VIEW__STARTED:
 				return isStarted() != STARTED_EDEFAULT;
 			case AppPackage.TASK_VIEW__FINISHED:

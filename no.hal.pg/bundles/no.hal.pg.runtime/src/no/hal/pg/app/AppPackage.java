@@ -345,13 +345,31 @@ public interface AppPackage extends EPackage {
 	int TASK_VIEW__GAME_VIEW = VIEW1_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_VIEW__DESCRIPTION = VIEW1_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_VIEW__ENABLED = VIEW1_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Started</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__STARTED = VIEW1_FEATURE_COUNT + 1;
+	int TASK_VIEW__STARTED = VIEW1_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Finished</b></em>' attribute.
@@ -360,7 +378,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__FINISHED = VIEW1_FEATURE_COUNT + 2;
+	int TASK_VIEW__FINISHED = VIEW1_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Task View</em>' class.
@@ -369,7 +387,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 3;
+	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Task View</em>' class.
@@ -417,6 +435,24 @@ public interface AppPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCEPT_TASK_VIEW__GAME_VIEW = TASK_VIEW__GAME_VIEW;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__DESCRIPTION = TASK_VIEW__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW__ENABLED = TASK_VIEW__ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Started</b></em>' attribute.
@@ -780,6 +816,28 @@ public interface AppPackage extends EPackage {
 	EReference getTaskView_GameView();
 
 	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see no.hal.pg.app.TaskView#getDescription()
+	 * @see #getTaskView()
+	 * @generated
+	 */
+	EAttribute getTaskView_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#isEnabled <em>Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enabled</em>'.
+	 * @see no.hal.pg.app.TaskView#isEnabled()
+	 * @see #getTaskView()
+	 * @generated
+	 */
+	EAttribute getTaskView_Enabled();
+
+	/**
 	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#isStarted <em>Started</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1082,6 +1140,22 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TASK_VIEW__GAME_VIEW = eINSTANCE.getTaskView_GameView();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK_VIEW__DESCRIPTION = eINSTANCE.getTaskView_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK_VIEW__ENABLED = eINSTANCE.getTaskView_Enabled();
 
 		/**
 		 * The meta object literal for the '<em><b>Started</b></em>' attribute feature.

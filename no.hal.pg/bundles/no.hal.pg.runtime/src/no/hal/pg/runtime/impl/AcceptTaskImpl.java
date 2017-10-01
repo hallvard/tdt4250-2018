@@ -73,5 +73,12 @@ public class AcceptTaskImpl extends TaskImpl<Boolean> implements AcceptTask {
 		}
 		return super.eInvoke(operationID, arguments);
 	}
+	
+	//
+	
+	@Override
+	public String getDescription() {
+		return "Just accept the task";
+	}
 
 } //AcceptTaskImpl

@@ -306,7 +306,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTaskView_Started() {
+	public EAttribute getTaskView_Description() {
 		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -315,8 +315,26 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTaskView_Finished() {
+	public EAttribute getTaskView_Enabled() {
 		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTaskView_Started() {
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTaskView_Finished() {
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -475,6 +493,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		taskViewEClass = createEClass(TASK_VIEW);
 		createEReference(taskViewEClass, TASK_VIEW__GAME_VIEW);
+		createEAttribute(taskViewEClass, TASK_VIEW__DESCRIPTION);
+		createEAttribute(taskViewEClass, TASK_VIEW__ENABLED);
 		createEAttribute(taskViewEClass, TASK_VIEW__STARTED);
 		createEAttribute(taskViewEClass, TASK_VIEW__FINISHED);
 
@@ -607,6 +627,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType(taskViewEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEReference(getTaskView_GameView(), g1, this.getGameView_TaskViews(), "gameView", null, 0, 1, TaskView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTaskView_Description(), ecorePackage.getEString(), "description", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTaskView_Enabled(), ecorePackage.getEBoolean(), "enabled", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Started(), ecorePackage.getEBoolean(), "started", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Finished(), ecorePackage.getEBoolean(), "finished", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 

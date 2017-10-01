@@ -15,6 +15,8 @@ import no.hal.pg.runtime.Task;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.app.TaskView#getGameView <em>Game View</em>}</li>
+ *   <li>{@link no.hal.pg.app.TaskView#getDescription <em>Description</em>}</li>
+ *   <li>{@link no.hal.pg.app.TaskView#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link no.hal.pg.app.TaskView#isStarted <em>Started</em>}</li>
  *   <li>{@link no.hal.pg.app.TaskView#isFinished <em>Finished</em>}</li>
  * </ul>
@@ -51,6 +53,36 @@ public interface TaskView<T extends Task<?>> extends View1<Player, T> {
 	 * @generated
 	 */
 	void setGameView(GameView<T> value);
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see no.hal.pg.app.AppPackage#getTaskView_Description()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Returns the value of the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Enabled</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enabled</em>' attribute.
+	 * @see no.hal.pg.app.AppPackage#getTaskView_Enabled()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	boolean isEnabled();
 
 	/**
 	 * Returns the value of the '<em><b>Started</b></em>' attribute.

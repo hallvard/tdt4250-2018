@@ -69,6 +69,17 @@ public class AppTest {
 	}
 	
 	@Test
+	public void testTaskViewDescription() {
+		Collection<EObject> rootObjects = loadRootObjects();
+		Assert.assertTrue(rootObjects.iterator().hasNext());
+		Assert.assertTrue(rootObjects.iterator().next() instanceof GameView<?>);
+		GameView<Task<?>> gameView = (GameView<Task<?>>) rootObjects.iterator().next();
+		for (TaskView<Task<?>> taskView : gameView.getTaskViews()) {
+			Assert.assertEquals(taskView.getModel().getDescription(), taskView.getDescription());
+		}
+	}
+
+	@Test
 	public void testCreateApp() {
 		Collection<EObject> rootObjects = loadRootObjects();
 		Assert.assertTrue(rootObjects.iterator().hasNext());
