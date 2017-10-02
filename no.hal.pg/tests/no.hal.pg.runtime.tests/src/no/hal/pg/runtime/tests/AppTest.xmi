@@ -9,8 +9,14 @@
   <model xsi:type="runtime:Game"
       href="RuntimeTest.xmi#//@games.0"/>
   <player href="RuntimeTest.xmi#//@games.0/@players.0"/>
-  <taskViews>
+  <taskViews
+      xsi:type="app:AcceptTaskView">
     <model xsi:type="runtime:AcceptTask"
         href="RuntimeTest.xmi#//@games.0/@tasks.0"/>
+  </taskViews>
+  <taskViews
+      xsi:type="app:AcceptTaskView">
+    <model xsi:type="runtime:AcceptTask"
+        href="RuntimeTest.xmi#//@games.0/@tasks.1"/>
   </taskViews>
 </app:GameView>

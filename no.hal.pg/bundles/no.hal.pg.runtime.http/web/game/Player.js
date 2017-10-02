@@ -4,40 +4,47 @@
 this.props:
 {
 	dataUrl: the url that returns the current Player object
-	player : the player
-	{
-		name: player name
+	player : {
+    		latitude : 0.0,
+    		longitude : 0.0,
+    		person : {
+      		capabilities" : [ ],
+      		name : "Hallvard Tr�tteberg",
+      		ids : [ "hal@ntnu.no" ]
+    		},
+	    items : [ ]
 	}
 }
 this.state:
 {
-	name: player name
+	player : {
+    		latitude : 0.0,
+    		longitude : 0.0,
+    		person : {
+      		capabilities" : [ ],
+      		name : "Hallvard Tr�tteberg",
+      		ids : [ "hal@ntnu.no" ]
+    		},
+	    items : [ ]
+	}
 }
 */
 
 var emailPattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 var urlPattern = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
 
-var PlayerComponent = React.createClass({
-	displayName: "Player component",
+class PlayerComponent extends React.Component {
 	
-	getInitialState : function() {
-		var comp = this;
-		AppUtils.loadData(this.props.dataUrl, false, function(response) {
-			var person = {
-					name : response.name,
-					ids : response.ids
-				};
-			comp.setState(person);
-//			comp.props.taskList.setPlayer(person);
-		});
-		return {
-			name : "???", // this.props.player.name,
-			ids : [ "???" ] // this.props.player.ids
-		};
-	},
+	constructor(props) {
+		super(props);
+		this.state = props;
+	}
 
-  	render: function render() {
+	displayName() {
+		return "Player component";
+	}
+
+  	render() {
   		var ids = (this.state.ids ? this.state.ids : []);
   		var idRows = (this.props.compact ? [] : ids.map(function(id) {
   			var url = null;
@@ -47,22 +54,22 @@ var PlayerComponent = React.createClass({
   				url = id;
   			}
       		return React.createElement("tr", { key: id },
-    	    	React.createElement("td", { className: "playerId" },
-    		    	(url != null ? React.createElement( "a", { href: url }, id ) : id)
-    	 		)
+    	    			React.createElement("td", { className: "playerId" },
+    		    			(url != null ? React.createElement( "a", { href: url }, id ) : id)
+    	 			)
           	);
   		}));
   		var playerLink = AppUtils.appUrl(this.props.dataUrl);
-    	return React.createElement("table", { className: "player" },
+   	 	return React.createElement("table", { className: "player" },
       		React.createElement("tbody", null,
 	    			React.createElement("tr", null,
 		    	    	React.createElement("td", { className: "playerName" },
 		        		    "Name: ",
-	    	    			React.createElement( "a", { href: playerLink }, this.state.name )
+	    	    			React.createElement( "a", { href: playerLink }, this.state.player.person.name )
 		        	 	)
 	    		),
 	    		idRows
       		)
     	);
   	}
-});
+}

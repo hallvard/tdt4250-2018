@@ -203,6 +203,7 @@ public interface Task<R> extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
+	 *        annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	String getDescription();
@@ -210,7 +211,7 @@ public interface Task<R> extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	boolean canStart();
@@ -227,6 +228,7 @@ public interface Task<R> extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
+	 *        annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	boolean isStarted();
@@ -235,6 +237,7 @@ public interface Task<R> extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
+	 *        annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	boolean isFinished();

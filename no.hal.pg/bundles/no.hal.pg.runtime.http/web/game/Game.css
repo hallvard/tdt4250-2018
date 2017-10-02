@@ -12,8 +12,11 @@ a:link {
 .task {
 	background-color: lightgrey
 }
-.startedTask {
+.enabledTask {
 	background-color: lightblue
+}
+.startedTask {
+	background-color: yellow
 }
 .finishedTask {
 	background-color: lightgreen

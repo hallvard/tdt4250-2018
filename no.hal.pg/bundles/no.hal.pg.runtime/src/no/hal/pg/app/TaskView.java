@@ -114,4 +114,12 @@ public interface TaskView<T extends Task<?>> extends View1<Player, T> {
 	 */
 	boolean isFinished();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	TaskView<?> start();
+
 } // TaskView

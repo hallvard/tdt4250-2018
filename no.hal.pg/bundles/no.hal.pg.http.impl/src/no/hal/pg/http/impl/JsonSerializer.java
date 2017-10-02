@@ -2,11 +2,14 @@ package no.hal.pg.http.impl;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -109,31 +112,13 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 				try {
 					generator.writeStartObject();
 					for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
-						boolean include = feature instanceof EAttribute;
-						if (feature instanceof EReference) {
-							EReference ref = (EReference) feature;
-							if (ref.isContainment()) {
-								include = true;
-							} else if (! ref.isContainer()) {
-								include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, false);
-							}
+						if (includeFeature(feature)) {
+							serializeFeature(eObject, feature, generator);
 						}
-						if (include) {
-							String name = getFieldName(feature);
-							Object value = eObject.eGet(feature);
-							if (feature instanceof EAttribute) {
-								EAttribute attr = (EAttribute) feature;
-								JsonEAttributeSerializer attrSerializer = getEAttributeSerializer(eObject, attr, value);
-								if (attrSerializer != null) {
-									attrSerializer.serialize(eObject, attr, value, name, generator);
-									// avoid default serialization
-									value = null;
-								}
-							}
-							if (value != null) {
-								generator.writeFieldName(name);
-								generator.writeObject(value);
-							}
+					}
+					for (EOperation op : eObject.eClass().getEAllOperations()) {
+						if (includeOperation(op)) {
+							serializeOperation(eObject, op, generator);
 						}
 					}
 				} finally {
@@ -146,8 +131,59 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		}
 	}
 
-	protected String getFieldName(EStructuralFeature feature) {
-		String altName = EcoreUtil.getAnnotation(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, "name");
-		return altName != null ? altName : feature.getName();
+	protected void serializeOperation(EObject eObject, EOperation op, JsonGenerator generator) throws IOException {
+		String name = getFieldName(op);
+		Object value = null;
+		try {
+			value = eObject.eInvoke(op, null);
+		} catch (InvocationTargetException e) {
+		}
+		if (value != null) {
+			generator.writeFieldName(name);
+			generator.writeObject(value);
+		}
+	}
+
+	protected void serializeFeature(EObject eObject, EStructuralFeature feature, JsonGenerator generator)
+			throws IOException {
+		String name = getFieldName(feature);
+		Object value = eObject.eGet(feature);
+		if (feature instanceof EAttribute) {
+			EAttribute attr = (EAttribute) feature;
+			JsonEAttributeSerializer attrSerializer = getEAttributeSerializer(eObject, attr, value);
+			if (attrSerializer != null) {
+				attrSerializer.serialize(eObject, attr, value, name, generator);
+				// avoid default serialization
+				value = null;
+			}
+		}
+		if (value != null) {
+			generator.writeFieldName(name);
+			generator.writeObject(value);
+		}
+	}
+
+	protected boolean includeOperation(EOperation op) {
+		return op.getEParameters().isEmpty() && AnnotationUtil.includeTypedElement(op, JSON_SERIALIZER_ANNOTATION_SOURCE, false);
+	}
+
+	protected boolean includeFeature(EStructuralFeature feature) {
+		boolean include = false;
+		if (feature instanceof EReference) {
+			EReference ref = (EReference) feature;
+			if (ref.isContainment()) {
+				include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, true);
+			} else if (! ref.isContainer()) {
+				include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, false);
+			}
+		} else {
+			include = AnnotationUtil.includeTypedElement(feature, JSON_SERIALIZER_ANNOTATION_SOURCE, true);							
+		}
+		return include;
+	}
+
+	protected String getFieldName(ENamedElement named) {
+		String altName = EcoreUtil.getAnnotation(named, JSON_SERIALIZER_ANNOTATION_SOURCE, "name");
+		return altName != null ? altName : named.getName();
 	}
 }

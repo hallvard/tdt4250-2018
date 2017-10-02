@@ -18,20 +18,39 @@ var AppUtils = {
 		}
 	},
 	
-	dataUrl: function(dataUrl) {
-		if (dataUrl.indexOf("?") === 0) {
-			dataUrl = dataUrl.substring(1);
+	appProps: function(props, defaultProp, search) {
+		if (typeof defaultProp != 'string') {
+			defaultProp = 'dataUrl';
 		}
-		if (dataUrl.indexOf(":") > 5) {
-			dataUrl = window.location.origin + dataUrl;
+		if (typeof search !== 'string') {
+			search = window.location.search;
 		}
-		return dataUrl;
+		if (search.indexOf("?") === 0) {
+			search = search.substring(1);
+		}
+	    var vars = search.split('&');
+	    for (var i = 0; i < vars.length; i++) {
+	        var pair = vars[i].split('=');
+	        var argName = decodeURIComponent(pair[0]);
+	        if (pair.length == 1) {
+		        	if (vars.length == 1) {
+		        		props[defaultProp] = search;
+		        		break;
+		        	} else {
+		        		props[argName] = true;
+		        	}
+	        } else { 
+		        	var argValue = decodeURIComponent(pair[1]);
+		        	props[argName] = argValue;
+		    	}
+	    }
+	    return props;
 	},
 
 	appUrl: function(dataUrl) {
 		return dataUrl.replace("/data/", "/app/");
 	},
-	
+
 	resolveUrl(relativeUrl) {
 		if (relativeUrl.charAt(0) != '/') {
 			relativeUrl = "/" + relativeUrl;
@@ -94,4 +113,3 @@ var AppUtils = {
 		return response;
 	}
 };
-module.exports = AppUtils;

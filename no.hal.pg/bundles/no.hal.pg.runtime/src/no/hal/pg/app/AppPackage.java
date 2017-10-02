@@ -390,13 +390,22 @@ public interface AppPackage extends EPackage {
 	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK_VIEW___START = VIEW1_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Task View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 0;
+	int TASK_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 1;
 
 
 	/**
@@ -480,6 +489,15 @@ public interface AppPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCEPT_TASK_VIEW_FEATURE_COUNT = TASK_VIEW_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK_VIEW___START = TASK_VIEW___START;
 
 	/**
 	 * The operation id for the '<em>Accept</em>' operation.
@@ -860,6 +878,16 @@ public interface AppPackage extends EPackage {
 	EAttribute getTaskView_Finished();
 
 	/**
+	 * Returns the meta object for the '{@link no.hal.pg.app.TaskView#start() <em>Start</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Start</em>' operation.
+	 * @see no.hal.pg.app.TaskView#start()
+	 * @generated
+	 */
+	EOperation getTaskView__Start();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.AcceptTaskView <em>Accept Task View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1172,6 +1200,14 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TASK_VIEW__FINISHED = eINSTANCE.getTaskView_Finished();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TASK_VIEW___START = eINSTANCE.getTaskView__Start();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.AcceptTaskViewImpl <em>Accept Task View</em>}' class.

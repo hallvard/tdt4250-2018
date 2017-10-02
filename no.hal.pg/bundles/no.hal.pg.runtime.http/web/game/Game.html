@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>Game</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="Game.css">
+	
+	<script src="https://unpkg.com/react@^15.6/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@^15.6/dist/react-dom.js"></script>
+</head>
+<body>
+
+<div id="game"></div>
+
+<script src="/js/AppUtils.js"></script>
+
+<script src="Game.js"></script>
+<script src="Player.js"></script>
+<script src="Task.js"></script>
+
+<script type="text/javascript">
+var game = {
+		players: [ {
+			person : { name: "Hallvard Trætteberg", ids: [ "hal@ntnu.no", "hallvard.traetteberg@gmail.com" ] }
+		} ],
+		tasks: [ ]
+	};
+	var appProps = AppUtils.appProps({});
+	AppUtils.loadData(appProps.dataUrl, false, game, function(props) {
+		props['dataUrl'] = appProps.dataUrl;
+		ReactDOM.render(React.createElement(Game, props), document.getElementById('game'));
+	});
+</script>
+</body>
+</html>

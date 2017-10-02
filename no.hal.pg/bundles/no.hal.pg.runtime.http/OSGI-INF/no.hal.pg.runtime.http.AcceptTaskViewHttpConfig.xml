@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.runtime.http.AcceptTaskViewHttpConfig">
+   <service>
+      <provide interface="no.hal.pg.http.AppConfig"/>
+   </service>
+   <implementation class="no.hal.pg.runtime.http.AcceptTaskViewHttpConfig"/>
+</scr:component>

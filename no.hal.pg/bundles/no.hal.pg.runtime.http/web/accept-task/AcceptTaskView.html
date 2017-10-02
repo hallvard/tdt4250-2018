@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Accept task</title>
+	<meta charset="UTF-8"/>
+
+<!--	<link rel="stylesheet" href="AcceptTaskView.css"> -->
+
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+</head>
+<body>
+
+<div id="acceptTask"></div>
+
+
+<script src="/js/AppUtils.js"></script>
+
+<script src="AcceptTaskView.js"></script>
+
+<script type="text/javascript">
+	var acceptTaskViewData = {
+		finished: false
+	};
+	var dataUrl = AppUtils.appProps({}).dataUrl;
+	var returnUrl = document.referrer;
+	AppUtils.loadData(dataUrl + "/start", false, acceptTaskViewData, function(props) {
+		props['dataUrl'] = dataUrl;
+		props['returnUrl'] = returnUrl;
+		ReactDOM.render(React.createElement(AcceptTaskView, props), document.getElementById('acceptTask'));
+	});
+</script>
+</body>  
+</html>

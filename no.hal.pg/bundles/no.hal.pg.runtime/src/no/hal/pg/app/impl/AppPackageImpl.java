@@ -342,6 +342,15 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTaskView__Start() {
+		return taskViewEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAcceptTaskView() {
 		return acceptTaskViewEClass;
 	}
@@ -497,6 +506,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		createEAttribute(taskViewEClass, TASK_VIEW__ENABLED);
 		createEAttribute(taskViewEClass, TASK_VIEW__STARTED);
 		createEAttribute(taskViewEClass, TASK_VIEW__FINISHED);
+		createEOperation(taskViewEClass, TASK_VIEW___START);
 
 		acceptTaskViewEClass = createEClass(ACCEPT_TASK_VIEW);
 		createEOperation(acceptTaskViewEClass, ACCEPT_TASK_VIEW___ACCEPT);
@@ -632,15 +642,21 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		initEAttribute(getTaskView_Started(), ecorePackage.getEBoolean(), "started", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Finished(), ecorePackage.getEBoolean(), "finished", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
+		EOperation op = initEOperation(getTaskView__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(this.getTaskView());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEOperation(op, g1);
+
 		initEClass(acceptTaskViewEClass, AcceptTaskView.class, "AcceptTaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getAcceptTaskView__Accept(), null, "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
+		initEOperation(getAcceptTaskView__Accept(), this.getAcceptTaskView(), "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(mapViewEClass, MapView.class, "MapView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapView_Zoom(), ecorePackage.getEInt(), "zoom", "10", 0, 1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMapView_Markers(), this.getMapMarker(), null, "markers", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getMapView__Navigate__float_float_int(), null, "navigate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getMapView__Navigate__float_float_int(), null, "navigate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEFloat(), "latitude", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEFloat(), "longitude", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "zoom", 0, 1, IS_UNIQUE, IS_ORDERED);

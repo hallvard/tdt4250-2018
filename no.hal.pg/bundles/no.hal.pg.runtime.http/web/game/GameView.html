@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Game</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="Game.css">
+	
+	<script src="https://unpkg.com/react@^15.6/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@^15.6/dist/react-dom.js"></script>
+</head>
+<body>
+
+<div id="game"></div>
+
+<script type="text/javascript">
+function require(mod) {
+	if (mod === 'react') {
+		return React;
+	}
+	return null;
+}
+</script>
+
+<script src="https://unpkg.com/remarkable@^1.7/dist/remarkable.js"></script>
+<script src="https://unpkg.com/remarkable-react"></script>
+
+<script src="/js/AppUtils.js"></script>
+
+<script src="GameView.js"></script>
+<script src="TaskView.js"></script>
+
+<script type="text/javascript">
+	var gameView = {
+		taskViews: [ ]
+	};
+	var appProps = AppUtils.appProps({});
+	AppUtils.loadData(appProps.dataUrl, false, gameView, function(props) {
+		props['dataUrl'] = appProps.dataUrl;
+		ReactDOM.render(React.createElement(GameView, props), document.getElementById('game'));
+	});
+</script>
+</body>
+</html>

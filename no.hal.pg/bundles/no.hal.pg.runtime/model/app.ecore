@@ -72,6 +72,11 @@
         <eTypeArguments/>
       </eBounds>
     </eTypeParameters>
+    <eOperations name="start">
+      <eGenericType eClassifier="#//TaskView">
+        <eTypeArguments/>
+      </eGenericType>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="gameView" eOpposite="#//GameView/taskViews">
       <eGenericType eClassifier="#//GameView">
         <eTypeArguments eTypeParameter="#//TaskView/T"/>
@@ -91,7 +96,7 @@
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptTaskView">
-    <eOperations name="accept"/>
+    <eOperations name="accept" eType="#//AcceptTaskView"/>
     <eGenericSuperTypes eClassifier="#//TaskView">
       <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//AcceptTask"/>
     </eGenericSuperTypes>

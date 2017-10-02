@@ -21,6 +21,6 @@ public interface AcceptTaskView extends TaskView<AcceptTask> {
 	 * @model
 	 * @generated
 	 */
-	void accept();
+	AcceptTaskView accept();
 
 } // AcceptTaskView

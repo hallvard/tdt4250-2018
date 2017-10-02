@@ -78,7 +78,7 @@ public class AcceptTaskImpl extends TaskImpl<Boolean> implements AcceptTask {
 	
 	@Override
 	public String getDescription() {
-		return "Just accept the task";
+		return "Just **accept** the task";
 	}
 
 } //AcceptTaskImpl

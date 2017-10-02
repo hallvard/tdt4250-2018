@@ -2,6 +2,7 @@
  */
 package no.hal.pg.app.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameView;
 import no.hal.pg.app.TaskView;
@@ -12,6 +13,7 @@ import no.hal.pg.runtime.Task;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -191,6 +193,17 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public TaskView<?> start() {
+		getModel().start();
+		return this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -306,6 +319,20 @@ public class TaskViewImpl<T extends Task<?>> extends View1Impl<Player, T> implem
 				return isFinished() != FINISHED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case AppPackage.TASK_VIEW___START:
+				return start();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //TaskViewImpl

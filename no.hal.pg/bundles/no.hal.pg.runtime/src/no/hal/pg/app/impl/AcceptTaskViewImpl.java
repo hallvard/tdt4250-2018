@@ -46,8 +46,9 @@ public class AcceptTaskViewImpl extends TaskViewImpl<AcceptTask> implements Acce
 	 * @generated NOT
 	 */
 	@Override
-	public void accept() {
+	public AcceptTaskView accept() {
 		getModel().accept();
+		return this;
 	}
 
 	/**
@@ -59,8 +60,7 @@ public class AcceptTaskViewImpl extends TaskViewImpl<AcceptTask> implements Acce
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
 			case AppPackage.ACCEPT_TASK_VIEW___ACCEPT:
-				accept();
-				return null;
+				return accept();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

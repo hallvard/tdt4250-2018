@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.runtime.http.GameAppServletConfig">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.runtime.http.GameHttpConfig">
    <property name="osgi.http.whiteboard.resource.prefix" type="String" value="/web/game"/>
    <property name="osgi.http.whiteboard.resource.pattern" type="String" value="/game/*"/>
    <service>
-      <provide interface="no.hal.pg.runtime.http.GameAppServletConfig"/>
+      <provide interface="no.hal.pg.runtime.http.GameHttpConfig"/>
       <provide interface="no.hal.pg.http.AppConfig"/>
    </service>
-   <implementation class="no.hal.pg.runtime.http.GameAppServletConfig"/>
+   <implementation class="no.hal.pg.runtime.http.GameHttpConfig"/>
 </scr:component>

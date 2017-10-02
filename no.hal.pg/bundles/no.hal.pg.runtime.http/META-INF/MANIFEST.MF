@@ -21,9 +21,11 @@ Import-Package: com.fasterxml.jackson.core;version="2.9.0.pr3-SNAPSHOT",
  org.osgi.service.http.whiteboard;version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/no.hal.pg.runtime.http.auth.GameAuthenticationHandler.xml,
- OSGI-INF/no.hal.pg.runtime.http.JsServletConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.AcceptTaskServletConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.GameAppServletConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.OsmJsonSerializer.xml
+ OSGI-INF/no.hal.pg.runtime.http.OsmJsonSerializer.xml,
+ OSGI-INF/no.hal.pg.runtime.http.JsHttpConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.AcceptTaskHttpConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.GameHttpConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.GameViewHttpConfig.xml,
+ OSGI-INF/no.hal.pg.runtime.http.AcceptTaskViewHttpConfig.xml
 Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
  no.hal.pg.runtime;bundle-version="0.0.1"

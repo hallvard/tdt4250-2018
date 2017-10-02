@@ -7,17 +7,17 @@ import no.hal.pg.http.AppConfig;
 import no.hal.pg.runtime.RuntimePackage;
 
 @Component(
-		service={AcceptTaskServletConfig.class, AppConfig.class},
+		service={GameHttpConfig.class, AppConfig.class},
 		property={
-				HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PREFIX + ":String=/web/accept-task",
-				HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PATTERN + ":String=/accept-task/*"
+			HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PREFIX + ":String=/web/game",
+			HttpWhiteboardConstants.HTTP_WHITEBOARD_RESOURCE_PATTERN + ":String=/game/*"
 		}
 	)
-public class AcceptTaskServletConfig implements AppConfig {
+public class GameHttpConfig implements AppConfig {
 
 	@Override
 	public String getMainLocation() {
-		return "/accept-task/AcceptTaskApp.html";
+		return "/game/Game.html";
 	}
 
 	@Override
@@ -27,6 +27,6 @@ public class AcceptTaskServletConfig implements AppConfig {
 
 	@Override
 	public String getEClassName() {
-		return RuntimePackage.eINSTANCE.getAcceptTask().getName();
+		return RuntimePackage.eINSTANCE.getGame().getName();
 	}
 }

@@ -867,8 +867,50 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// no.hal.pg.http.impl.JsonSerializer
+		createNoAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>no.hal.pg.http.impl.JsonSerializer</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createNoAnnotations() {
+		String source = "no.hal.pg.http.impl.JsonSerializer";	
+		addAnnotation
+		  (getPlayer_Person(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });	
+		addAnnotation
+		  (getTask__GetDescription(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });	
+		addAnnotation
+		  (getTask__CanStart(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });	
+		addAnnotation
+		  (getTask__IsStarted(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });	
+		addAnnotation
+		  (getTask__IsFinished(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });
 	}
 
 	/**

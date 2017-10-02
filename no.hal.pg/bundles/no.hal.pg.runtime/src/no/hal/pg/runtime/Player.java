@@ -71,7 +71,7 @@ public interface Player extends GeoLocation {
 	 * @return the value of the '<em>Person</em>' reference.
 	 * @see #setPerson(Person)
 	 * @see no.hal.pg.runtime.RuntimePackage#getPlayer_Person()
-	 * @model
+	 * @model annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	Person getPerson();

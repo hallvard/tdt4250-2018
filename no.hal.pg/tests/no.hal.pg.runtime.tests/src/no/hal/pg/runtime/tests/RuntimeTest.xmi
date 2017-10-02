@@ -1,49 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<runtime:Runtime
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:arc="platform:/plugin/no.hal.pg.arc/model/arc.ecore"
-    xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
-    xsi:schemaLocation="platform:/plugin/no.hal.pg.arc/model/arc.ecore ../../../../../../../no.hal.pg.arc/model/arc.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
-  <actors xsi:type="arc:Person"
-      name="Hallvard Trætteberg"/>
+<runtime:Runtime xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:arc="platform:/plugin/no.hal.pg.arc/model/arc.ecore" xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore" xsi:schemaLocation="platform:/plugin/no.hal.pg.arc/model/arc.ecore ../../../../../../../no.hal.pg.arc/model/arc.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
+  <actors xsi:type="arc:Person" name="Hallvard Trætteberg">
+    <ids>hal@ntnu.no</ids>
+  </actors>
   <games>
-    <players
-        person="//@actors.0"/>
-    <tasks xsi:type="runtime:AcceptTask"
-        players="//@games.0/@players.0"/>
-    <tasks players="//@games.0/@players.0">
-      <startConditions
-          xsi:type="runtime:IsTaskStarted"
-          context="//@games.0/@tasks.0"/>
+    <players person="//@actors.0"/>
+    <tasks xsi:type="runtime:AcceptTask" players="//@games.0/@players.0"/>
+    <tasks xsi:type="runtime:AcceptTask" players="//@games.0/@players.0">
+      <startConditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks players="//@games.0/@players.0">
-      <startConditions
-          xsi:type="runtime:IsTaskFinished"
-          context="//@games.0/@tasks.0"/>
+      <startConditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks players="//@games.0/@players.0">
-      <startConditions
-          xsi:type="runtime:CompositeCondition">
-        <conditions
-            xsi:type="runtime:IsTaskStarted"
-            context="//@games.0/@tasks.0"/>
-        <conditions
-            xsi:type="runtime:IsTaskFinished"
-            context="//@games.0/@tasks.0"/>
+      <startConditions xsi:type="runtime:CompositeCondition">
+        <conditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>
     <tasks players="//@games.0/@players.0">
-      <startConditions
-          xsi:type="runtime:CompositeCondition"
-          logic="true">
-        <conditions
-            xsi:type="runtime:IsTaskStarted"
-            context="//@games.0/@tasks.0"/>
-        <conditions
-            xsi:type="runtime:IsTaskFinished"
-            context="//@games.0/@tasks.0"/>
+      <startConditions xsi:type="runtime:CompositeCondition" logic="true">
+        <conditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>
   </games>
