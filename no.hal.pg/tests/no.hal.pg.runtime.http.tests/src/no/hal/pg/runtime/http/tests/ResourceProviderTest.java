@@ -117,7 +117,7 @@ public class ResourceProviderTest {
 		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
 //	   	System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
-		ObjectNode gameNode = checkObjectNode(rootNode.get(0), "players", "items");
+		ObjectNode gameNode = checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "players", "items"
 		checkArrayNode(gameNode.get("tasks"), 5);
 	}
 
@@ -127,7 +127,7 @@ public class ResourceProviderTest {
 		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
-		checkObjectNode(rootNode.get(0), "startConditions", "finishConditions");
+		checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "startConditions", "finishConditions"
 	}
 	
 	protected void testAcceptTaskStart(HttpURLConnection con) throws IOException {
