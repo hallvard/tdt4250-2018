@@ -48,8 +48,14 @@ public class ResourceRequestView extends AbstractSelectionView {
 	public void createPartControl(Composite parent) {
 		super.createPartControl(parent);
 		GridLayout layout = new GridLayout(2, false);
+		layout.marginTop = 1;
+		layout.marginLeft = 1;
+		layout.marginRight = 1;
+		layout.marginBottom = 1;
 		layout.horizontalSpacing = 1;
 		layout.verticalSpacing = 1;
+		layout.marginWidth = 1;
+		layout.marginHeight = 1;
 		parent.setLayout(layout);
 
 		requestText = new Text(parent, SWT.BORDER);
