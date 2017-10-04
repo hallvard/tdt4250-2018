@@ -471,13 +471,22 @@ public interface RuntimePackage extends EPackage {
 	int TASK___START = 4;
 
 	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK___RESTART = 5;
+
+	/**
 	 * The operation id for the '<em>Finish</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___FINISH__OBJECT = 5;
+	int TASK___FINISH__OBJECT = 6;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -486,7 +495,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = 6;
+	int TASK_OPERATION_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.Condition <em>Condition</em>}' class.
@@ -853,6 +862,15 @@ public interface RuntimePackage extends EPackage {
 	 * @ordered
 	 */
 	int ACCEPT_TASK___START = TASK___START;
+
+	/**
+	 * The operation id for the '<em>Restart</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___RESTART = TASK___RESTART;
 
 	/**
 	 * The operation id for the '<em>Finish</em>' operation.
@@ -1422,6 +1440,16 @@ public interface RuntimePackage extends EPackage {
 	EOperation getTask__Start();
 
 	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#restart() <em>Restart</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Restart</em>' operation.
+	 * @see no.hal.pg.runtime.Task#restart()
+	 * @generated
+	 */
+	EOperation getTask__Restart();
+
+	/**
 	 * Returns the meta object for data type '{@link java.lang.Long <em>Timestamp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1832,6 +1860,14 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK___START = eINSTANCE.getTask__Start();
+
+		/**
+		 * The meta object literal for the '<em><b>Restart</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TASK___RESTART = eINSTANCE.getTask__Restart();
 
 		/**
 		 * The meta object literal for the '<em>Timestamp</em>' data type.

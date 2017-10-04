@@ -250,4 +250,12 @@ public interface Task<R> extends EObject {
 	 */
 	void start();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void restart();
+
 } // Task

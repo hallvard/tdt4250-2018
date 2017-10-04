@@ -364,7 +364,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	@Override
 	public boolean isFinished() {
-		return isValidTime(getFinishTime()) && getResult() != null && TaskImpl.test(getFinishConditions());
+		return isValidTime(getFinishTime()) && TaskImpl.test(getFinishConditions());
 	}
 
 	/**
@@ -378,6 +378,18 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			throw new IllegalStateException("Cannot start a task that isn't enabled");
 		}
 		setStartTime(getCurrentTime());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void restart() {
+		setStartTime(null);
+		setFinishTime(null);
+		setResult(null);
 	}
 
 	static long getCurrentTime() {
@@ -399,7 +411,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			setFinishTime(getCurrentTime());
 		}
 	}
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -602,6 +614,9 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return isFinished();
 			case RuntimePackage.TASK___START:
 				start();
+				return null;
+			case RuntimePackage.TASK___RESTART:
+				restart();
 				return null;
 			case RuntimePackage.TASK___FINISH__OBJECT:
 				finish((R)arguments.get(0));

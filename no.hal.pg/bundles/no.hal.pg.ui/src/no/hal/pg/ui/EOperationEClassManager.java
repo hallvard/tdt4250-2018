@@ -60,7 +60,7 @@ public class EOperationEClassManager {
 	
 	private EClass getEOperationEClass(EOperation operation, EClass argumentsClass) {
 		EPackage ePackage = getEOperationEPackage();
-		String eClassName = operation.getName() + "_operation";
+		String eClassName = getEOperationEClassName(operation);
 		EClass eClass = (EClass) ePackage.getEClassifier(eClassName);
 		if (eClass == null) {
 			eClass = EcoreFactory.eINSTANCE.createEClass();
@@ -71,6 +71,15 @@ public class EOperationEClassManager {
 			ePackage.getEClassifiers().add(eClass);
 		}
 		return eClass;
+	}
+
+	// must be unique, also considering overloading
+	protected String getEOperationEClassName(EOperation operation) {
+		String name = operation.getEContainingClass().getName() + "__" + operation.getName();
+		for (EParameter param : operation.getEParameters()) {
+			name = "_" + param.getName() + param.getEType().getName();
+		}
+		return name + "__operation";
 	}
 
 	public EClass getEOperationArgumentsEClass(EOperation operation) {

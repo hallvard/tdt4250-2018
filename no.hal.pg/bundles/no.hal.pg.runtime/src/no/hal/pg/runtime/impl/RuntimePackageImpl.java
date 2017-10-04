@@ -460,7 +460,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__Finish__Object() {
-		return taskEClass.getEOperations().get(5);
+		return taskEClass.getEOperations().get(6);
 	}
 
 	/**
@@ -624,6 +624,15 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getTask__Restart() {
+		return taskEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public EDataType getTimestamp() {
 		return timestampEDataType;
@@ -691,6 +700,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEOperation(taskEClass, TASK___IS_STARTED);
 		createEOperation(taskEClass, TASK___IS_FINISHED);
 		createEOperation(taskEClass, TASK___START);
+		createEOperation(taskEClass, TASK___RESTART);
 		createEOperation(taskEClass, TASK___FINISH__OBJECT);
 
 		conditionEClass = createEClass(CONDITION);
@@ -828,6 +838,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEOperation(getTask__IsFinished(), ecorePackage.getEBoolean(), "isFinished", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getTask__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEOperation(getTask__Restart(), null, "restart", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		EOperation op = initEOperation(getTask__Finish__Object(), null, "finish", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(taskEClass_R);

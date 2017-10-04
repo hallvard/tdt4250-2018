@@ -70,6 +70,7 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="start"/>
+    <eOperations name="restart"/>
     <eOperations name="finish">
       <eParameters name="result">
         <eGenericType eTypeParameter="#//Task/R"/>
