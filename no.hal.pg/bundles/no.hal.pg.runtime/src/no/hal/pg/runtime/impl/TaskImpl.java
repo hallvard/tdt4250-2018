@@ -387,10 +387,12 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	@Override
 	public void restart() {
-		setStartTime(null);
-		setFinishTime(null);
-		setResult(null);
-		start();
+		if (isStarted()) {
+			setStartTime(null);
+			setFinishTime(null);
+			setResult(null);
+			start();
+		}
 	}
 
 	static long getCurrentTime() {

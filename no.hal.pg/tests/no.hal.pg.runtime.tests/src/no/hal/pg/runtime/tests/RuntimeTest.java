@@ -76,7 +76,7 @@ public class RuntimeTest {
 		Task<?> task = getTasks(0).get(0);
 		testStart(task);
 		task.restart();
-		Assert.assertFalse(task.isStarted());
+		Assert.assertTrue(task.isStarted());
 	}
 
 	@Test
