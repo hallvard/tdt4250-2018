@@ -60,6 +60,24 @@ public class RuntimeTest {
 		}
 		return tasks;
 	}
+	
+	protected void testStart(Task<?> task) {
+		Assert.assertFalse(task.isStarted());
+		task.start();
+		Assert.assertTrue(task.isStarted());
+	}
+	@Test
+	public void testStart() {
+		testStart(getTasks(0).get(0));
+	}
+
+	@Test
+	public void testRestart() {
+		Task<?> task = getTasks(0).get(0);
+		testStart(task);
+		task.restart();
+		Assert.assertFalse(task.isStarted());
+	}
 
 	@Test
 	public void testIsStartedCondition() {

@@ -390,6 +390,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		setStartTime(null);
 		setFinishTime(null);
 		setResult(null);
+		start();
 	}
 
 	static long getCurrentTime() {

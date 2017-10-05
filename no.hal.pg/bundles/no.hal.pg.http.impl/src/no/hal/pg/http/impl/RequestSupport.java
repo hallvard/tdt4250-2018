@@ -148,8 +148,10 @@ public class RequestSupport {
 	}
 
 	protected EOperation findEOperation(EObject target, String opName, Map<String, ?> parameters) {
+		EOperation bestOp = null;
+		int bestCount = -1;
 		nextOp: for (EOperation op : target.eClass().getEAllOperations()) {
-			if (opName.equals(op.getName())) {
+			if (opName.equals(op.getName()) && AnnotationUtil.includeTypedElement(op, REQUEST_SUPPORT_ANNOTATION_SOURCE, true)) {
 				nextParam: for (EParameter param : op.getEParameters()) {
 					if ((parameters != null && parameters.containsKey(param.getName())) ||
 						(isSubjectParameter(param) && subjectProvider != null)) {
@@ -157,12 +159,14 @@ public class RequestSupport {
 					}
 					continue nextOp;
 				}
-				if (AnnotationUtil.includeTypedElement(op, REQUEST_SUPPORT_ANNOTATION_SOURCE, true)) {
-					return op;
+				int count = op.getEParameters().size();
+				if (bestOp == null || (count > bestCount)) {
+					bestOp = op;
+					bestCount = count;
 				}
 			}
 		}
-		return null;
+		return bestOp;
 	}
 
 	protected boolean isSubjectParameter(EParameter param) {
