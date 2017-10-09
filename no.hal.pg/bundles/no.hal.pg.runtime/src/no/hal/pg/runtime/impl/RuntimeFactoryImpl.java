@@ -12,11 +12,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -68,8 +70,10 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.GAME: return createGame();
 			case RuntimePackage.PLAYER: return createPlayer();
 			case RuntimePackage.ITEM: return createItem();
+			case RuntimePackage.INFO: return createInfo();
 			case RuntimePackage.INFO_ITEM: return createInfoItem();
 			case RuntimePackage.TASK: return createTask();
+			case RuntimePackage.RESETTABLE_TASK: return createResettableTask();
 			case RuntimePackage.COMPOSITE_CONDITION: return createCompositeCondition();
 			case RuntimePackage.IS_TASK_STARTED: return createIsTaskStarted();
 			case RuntimePackage.IS_TASK_FINISHED: return createIsTaskFinished();
@@ -152,6 +156,16 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Info createInfo() {
+		InfoImpl info = new InfoImpl();
+		return info;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public InfoItem createInfoItem() {
 		InfoItemImpl infoItem = new InfoItemImpl();
@@ -167,6 +181,16 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public <R> Task<R> createTask() {
 		TaskImpl<R> task = new TaskImpl<R>();
 		return task;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public <R> ResettableTask<R> createResettableTask() {
+		ResettableTaskImpl<R> resettableTask = new ResettableTaskImpl<R>();
+		return resettableTask;
 	}
 
 	/**

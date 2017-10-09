@@ -49,6 +49,15 @@ public interface RuntimeFactory extends EFactory {
 	Item createItem();
 
 	/**
+	 * Returns a new object of class '<em>Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Info</em>'.
+	 * @generated
+	 */
+	Info createInfo();
+
+	/**
 	 * Returns a new object of class '<em>Info Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +74,15 @@ public interface RuntimeFactory extends EFactory {
 	 * @generated
 	 */
 	<R> Task<R> createTask();
+
+	/**
+	 * Returns a new object of class '<em>Resettable Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Resettable Task</em>'.
+	 * @generated
+	 */
+	<R> ResettableTask<R> createResettableTask();
 
 	/**
 	 * Returns a new object of class '<em>Composite Condition</em>'.

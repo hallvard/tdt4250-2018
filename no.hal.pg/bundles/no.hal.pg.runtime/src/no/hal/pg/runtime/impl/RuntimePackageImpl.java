@@ -19,11 +19,13 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
@@ -63,6 +65,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass infoEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass infoItemEClass = null;
 
 	/**
@@ -71,6 +80,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	private EClass taskEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resettableTaskEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -309,35 +325,44 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInfo() {
+		return infoEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfo_Text() {
+		return (EAttribute)infoEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfo_Url() {
+		return (EAttribute)infoEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInfo_ImageUrl() {
+		return (EAttribute)infoEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInfoItem() {
 		return infoItemEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInfoItem_Text() {
-		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInfoItem_Url() {
-		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInfoItem_ImageUrl() {
-		return (EAttribute)infoItemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -460,7 +485,25 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__Finish__Object() {
-		return taskEClass.getEOperations().get(6);
+		return taskEClass.getEOperations().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getResettableTask() {
+		return resettableTaskEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getResettableTask__Reset() {
+		return resettableTaskEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -624,15 +667,6 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTask__Restart() {
-		return taskEClass.getEOperations().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public EDataType getTimestamp() {
 		return timestampEDataType;
@@ -681,10 +715,12 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEReference(itemEClass, ITEM__OWNER);
 		createEReference(itemEClass, ITEM__OWN_LOCATION);
 
+		infoEClass = createEClass(INFO);
+		createEAttribute(infoEClass, INFO__TEXT);
+		createEAttribute(infoEClass, INFO__URL);
+		createEAttribute(infoEClass, INFO__IMAGE_URL);
+
 		infoItemEClass = createEClass(INFO_ITEM);
-		createEAttribute(infoItemEClass, INFO_ITEM__TEXT);
-		createEAttribute(infoItemEClass, INFO_ITEM__URL);
-		createEAttribute(infoItemEClass, INFO_ITEM__IMAGE_URL);
 
 		taskEClass = createEClass(TASK);
 		createEReference(taskEClass, TASK__GAME);
@@ -700,8 +736,10 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEOperation(taskEClass, TASK___IS_STARTED);
 		createEOperation(taskEClass, TASK___IS_FINISHED);
 		createEOperation(taskEClass, TASK___START);
-		createEOperation(taskEClass, TASK___RESTART);
 		createEOperation(taskEClass, TASK___FINISH__OBJECT);
+
+		resettableTaskEClass = createEClass(RESETTABLE_TASK);
+		createEOperation(resettableTaskEClass, RESETTABLE_TASK___RESET);
 
 		conditionEClass = createEClass(CONDITION);
 		createEOperation(conditionEClass, CONDITION___TEST);
@@ -758,6 +796,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		// Create type parameters
 		ETypeParameter gameEClass_T = addETypeParameter(gameEClass, "T");
 		ETypeParameter taskEClass_R = addETypeParameter(taskEClass, "R");
+		ETypeParameter resettableTaskEClass_R = addETypeParameter(resettableTaskEClass, "R");
 		ETypeParameter abstractConditionEClass_E = addETypeParameter(abstractConditionEClass, "E");
 		addETypeParameter(compositeConditionEClass, "E");
 
@@ -771,6 +810,11 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		playerEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 		itemEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
 		infoItemEClass.getESuperTypes().add(this.getItem());
+		infoItemEClass.getESuperTypes().add(this.getInfo());
+		g1 = createEGenericType(this.getTask());
+		g2 = createEGenericType(resettableTaskEClass_R);
+		g1.getETypeArguments().add(g2);
+		resettableTaskEClass.getEGenericSuperTypes().add(g1);
 		abstractConditionEClass.getESuperTypes().add(this.getCondition());
 		compositeConditionEClass.getESuperTypes().add(this.getCondition());
 		g1 = createEGenericType(this.getAbstractCondition());
@@ -785,7 +829,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		isTaskFinishedEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getTask());
+		g1 = createEGenericType(this.getResettableTask());
 		g2 = createEGenericType(ecorePackage.getEBooleanObject());
 		g1.getETypeArguments().add(g2);
 		acceptTaskEClass.getEGenericSuperTypes().add(g1);
@@ -810,10 +854,12 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEReference(getItem_Owner(), this.getPlayer(), this.getPlayer_Items(), "owner", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_OwnLocation(), theOsmPackage.getGeoLocation(), null, "ownLocation", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(infoEClass, Info.class, "Info", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInfo_Text(), ecorePackage.getEString(), "text", null, 0, 1, Info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInfo_Url(), this.getEURI(), "url", null, 0, 1, Info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInfo_ImageUrl(), this.getEURI(), "imageUrl", null, 0, 1, Info.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(infoItemEClass, InfoItem.class, "InfoItem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInfoItem_Text(), ecorePackage.getEString(), "text", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfoItem_Url(), this.getEURI(), "url", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInfoItem_ImageUrl(), this.getEURI(), "imageUrl", null, 0, 1, InfoItem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getGame());
@@ -839,11 +885,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		initEOperation(getTask__Start(), null, "start", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getTask__Restart(), null, "restart", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		EOperation op = initEOperation(getTask__Finish__Object(), null, "finish", 0, 1, IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(taskEClass_R);
 		addEParameter(op, g1, "result", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(resettableTaskEClass, ResettableTask.class, "ResettableTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getResettableTask__Reset(), null, "reset", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(conditionEClass, Condition.class, "Condition", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

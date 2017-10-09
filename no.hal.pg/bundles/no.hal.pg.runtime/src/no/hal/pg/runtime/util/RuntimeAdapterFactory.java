@@ -15,11 +15,13 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -93,12 +95,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createItemAdapter();
 			}
 			@Override
+			public Adapter caseInfo(Info object) {
+				return createInfoAdapter();
+			}
+			@Override
 			public Adapter caseInfoItem(InfoItem object) {
 				return createInfoItemAdapter();
 			}
 			@Override
 			public <R> Adapter caseTask(Task<R> object) {
 				return createTaskAdapter();
+			}
+			@Override
+			public <R> Adapter caseResettableTask(ResettableTask<R> object) {
+				return createResettableTaskAdapter();
 			}
 			@Override
 			public Adapter caseCondition(Condition object) {
@@ -203,6 +213,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Info <em>Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.Info
+	 * @generated
+	 */
+	public Adapter createInfoAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.InfoItem <em>Info Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -227,6 +251,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTaskAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.ResettableTask <em>Resettable Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.ResettableTask
+	 * @generated
+	 */
+	public Adapter createResettableTaskAdapter() {
 		return null;
 	}
 

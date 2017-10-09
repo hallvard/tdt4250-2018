@@ -143,7 +143,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfoItem()
 	 * @generated
 	 */
-	int INFO_ITEM = 3;
+	int INFO_ITEM = 4;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -263,6 +263,61 @@ public interface RuntimePackage extends EPackage {
 	int ITEM_OPERATION_COUNT = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.InfoImpl <em>Info</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.InfoImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfo()
+	 * @generated
+	 */
+	int INFO = 3;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO__TEXT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO__URL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Image Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO__IMAGE_URL = 2;
+
+	/**
+	 * The number of structural features of the '<em>Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Info</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_OPERATION_COUNT = 0;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -342,7 +397,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 4;
+	int TASK = 5;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -471,22 +526,13 @@ public interface RuntimePackage extends EPackage {
 	int TASK___START = 4;
 
 	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK___RESTART = 5;
-
-	/**
 	 * The operation id for the '<em>Finish</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___FINISH__OBJECT = 6;
+	int TASK___FINISH__OBJECT = 5;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -495,7 +541,170 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = 7;
+	int TASK_OPERATION_COUNT = 6;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.ResettableTaskImpl <em>Resettable Task</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.ResettableTaskImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getResettableTask()
+	 * @generated
+	 */
+	int RESETTABLE_TASK = 6;
+
+	/**
+	 * The feature id for the '<em><b>Game</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__GAME = TASK__GAME;
+
+	/**
+	 * The feature id for the '<em><b>Players</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__PLAYERS = TASK__PLAYERS;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__RESULT = TASK__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__START_TIME = TASK__START_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Finish Time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__FINISH_TIME = TASK__FINISH_TIME;
+
+	/**
+	 * The feature id for the '<em><b>Start Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__START_CONDITIONS = TASK__START_CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Finish Conditions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__FINISH_CONDITIONS = TASK__FINISH_CONDITIONS;
+
+	/**
+	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__REWARDS = TASK__REWARDS;
+
+	/**
+	 * The number of structural features of the '<em>Resettable Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___GET_DESCRIPTION = TASK___GET_DESCRIPTION;
+
+	/**
+	 * The operation id for the '<em>Can Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___CAN_START = TASK___CAN_START;
+
+	/**
+	 * The operation id for the '<em>Is Started</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___IS_STARTED = TASK___IS_STARTED;
+
+	/**
+	 * The operation id for the '<em>Is Finished</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___IS_FINISHED = TASK___IS_FINISHED;
+
+	/**
+	 * The operation id for the '<em>Start</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___START = TASK___START;
+
+	/**
+	 * The operation id for the '<em>Finish</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___FINISH__OBJECT = TASK___FINISH__OBJECT;
+
+	/**
+	 * The operation id for the '<em>Reset</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK___RESET = TASK_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Resettable Task</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.Condition <em>Condition</em>}' class.
@@ -505,7 +714,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 5;
+	int CONDITION = 7;
 
 	/**
 	 * The number of structural features of the '<em>Condition</em>' class.
@@ -542,7 +751,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAbstractCondition()
 	 * @generated
 	 */
-	int ABSTRACT_CONDITION = 6;
+	int ABSTRACT_CONDITION = 8;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -588,7 +797,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCompositeCondition()
 	 * @generated
 	 */
-	int COMPOSITE_CONDITION = 7;
+	int COMPOSITE_CONDITION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Logic</b></em>' attribute.
@@ -643,7 +852,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskStarted()
 	 * @generated
 	 */
-	int IS_TASK_STARTED = 8;
+	int IS_TASK_STARTED = 10;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -689,7 +898,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskFinished()
 	 * @generated
 	 */
-	int IS_TASK_FINISHED = 9;
+	int IS_TASK_FINISHED = 11;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -735,7 +944,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
 	 * @generated
 	 */
-	int ACCEPT_TASK = 10;
+	int ACCEPT_TASK = 12;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -744,7 +953,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__GAME = TASK__GAME;
+	int ACCEPT_TASK__GAME = RESETTABLE_TASK__GAME;
 
 	/**
 	 * The feature id for the '<em><b>Players</b></em>' reference list.
@@ -753,7 +962,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__PLAYERS = TASK__PLAYERS;
+	int ACCEPT_TASK__PLAYERS = RESETTABLE_TASK__PLAYERS;
 
 	/**
 	 * The feature id for the '<em><b>Result</b></em>' attribute.
@@ -762,7 +971,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__RESULT = TASK__RESULT;
+	int ACCEPT_TASK__RESULT = RESETTABLE_TASK__RESULT;
 
 	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
@@ -771,7 +980,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__START_TIME = TASK__START_TIME;
+	int ACCEPT_TASK__START_TIME = RESETTABLE_TASK__START_TIME;
 
 	/**
 	 * The feature id for the '<em><b>Finish Time</b></em>' attribute.
@@ -780,7 +989,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__FINISH_TIME = TASK__FINISH_TIME;
+	int ACCEPT_TASK__FINISH_TIME = RESETTABLE_TASK__FINISH_TIME;
 
 	/**
 	 * The feature id for the '<em><b>Start Conditions</b></em>' containment reference list.
@@ -789,7 +998,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__START_CONDITIONS = TASK__START_CONDITIONS;
+	int ACCEPT_TASK__START_CONDITIONS = RESETTABLE_TASK__START_CONDITIONS;
 
 	/**
 	 * The feature id for the '<em><b>Finish Conditions</b></em>' containment reference list.
@@ -798,7 +1007,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__FINISH_CONDITIONS = TASK__FINISH_CONDITIONS;
+	int ACCEPT_TASK__FINISH_CONDITIONS = RESETTABLE_TASK__FINISH_CONDITIONS;
 
 	/**
 	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
@@ -807,7 +1016,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK__REWARDS = TASK__REWARDS;
+	int ACCEPT_TASK__REWARDS = RESETTABLE_TASK__REWARDS;
 
 	/**
 	 * The number of structural features of the '<em>Accept Task</em>' class.
@@ -816,7 +1025,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK_FEATURE_COUNT = TASK_FEATURE_COUNT + 0;
+	int ACCEPT_TASK_FEATURE_COUNT = RESETTABLE_TASK_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Get Description</em>' operation.
@@ -825,7 +1034,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___GET_DESCRIPTION = TASK___GET_DESCRIPTION;
+	int ACCEPT_TASK___GET_DESCRIPTION = RESETTABLE_TASK___GET_DESCRIPTION;
 
 	/**
 	 * The operation id for the '<em>Can Start</em>' operation.
@@ -834,7 +1043,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___CAN_START = TASK___CAN_START;
+	int ACCEPT_TASK___CAN_START = RESETTABLE_TASK___CAN_START;
 
 	/**
 	 * The operation id for the '<em>Is Started</em>' operation.
@@ -843,7 +1052,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___IS_STARTED = TASK___IS_STARTED;
+	int ACCEPT_TASK___IS_STARTED = RESETTABLE_TASK___IS_STARTED;
 
 	/**
 	 * The operation id for the '<em>Is Finished</em>' operation.
@@ -852,7 +1061,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___IS_FINISHED = TASK___IS_FINISHED;
+	int ACCEPT_TASK___IS_FINISHED = RESETTABLE_TASK___IS_FINISHED;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -861,16 +1070,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___START = TASK___START;
-
-	/**
-	 * The operation id for the '<em>Restart</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK___RESTART = TASK___RESTART;
+	int ACCEPT_TASK___START = RESETTABLE_TASK___START;
 
 	/**
 	 * The operation id for the '<em>Finish</em>' operation.
@@ -879,7 +1079,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___FINISH__OBJECT = TASK___FINISH__OBJECT;
+	int ACCEPT_TASK___FINISH__OBJECT = RESETTABLE_TASK___FINISH__OBJECT;
+
+	/**
+	 * The operation id for the '<em>Reset</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACCEPT_TASK___RESET = RESETTABLE_TASK___RESET;
 
 	/**
 	 * The operation id for the '<em>Accept</em>' operation.
@@ -888,7 +1097,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK___ACCEPT = TASK_OPERATION_COUNT + 0;
+	int ACCEPT_TASK___ACCEPT = RESETTABLE_TASK_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Accept Task</em>' class.
@@ -897,7 +1106,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACCEPT_TASK_OPERATION_COUNT = TASK_OPERATION_COUNT + 1;
+	int ACCEPT_TASK_OPERATION_COUNT = RESETTABLE_TASK_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.RuntimeImpl <em>Runtime</em>}' class.
@@ -907,7 +1116,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 11;
+	int RUNTIME = 13;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -962,7 +1171,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
 	 * @generated
 	 */
-	int EURI = 12;
+	int EURI = 14;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -972,7 +1181,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 13;
+	int TIMESTAMP = 15;
 
 
 	/**
@@ -1083,6 +1292,49 @@ public interface RuntimePackage extends EPackage {
 	EReference getItem_OwnLocation();
 
 	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.Info <em>Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Info</em>'.
+	 * @see no.hal.pg.runtime.Info
+	 * @generated
+	 */
+	EClass getInfo();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.Info#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see no.hal.pg.runtime.Info#getText()
+	 * @see #getInfo()
+	 * @generated
+	 */
+	EAttribute getInfo_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.Info#getUrl <em>Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Url</em>'.
+	 * @see no.hal.pg.runtime.Info#getUrl()
+	 * @see #getInfo()
+	 * @generated
+	 */
+	EAttribute getInfo_Url();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.Info#getImageUrl <em>Image Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image Url</em>'.
+	 * @see no.hal.pg.runtime.Info#getImageUrl()
+	 * @see #getInfo()
+	 * @generated
+	 */
+	EAttribute getInfo_ImageUrl();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.InfoItem <em>Info Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1091,39 +1343,6 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getInfoItem();
-
-	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see no.hal.pg.runtime.InfoItem#getText()
-	 * @see #getInfoItem()
-	 * @generated
-	 */
-	EAttribute getInfoItem_Text();
-
-	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getUrl <em>Url</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Url</em>'.
-	 * @see no.hal.pg.runtime.InfoItem#getUrl()
-	 * @see #getInfoItem()
-	 * @generated
-	 */
-	EAttribute getInfoItem_Url();
-
-	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.InfoItem#getImageUrl <em>Image Url</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Image Url</em>'.
-	 * @see no.hal.pg.runtime.InfoItem#getImageUrl()
-	 * @see #getInfoItem()
-	 * @generated
-	 */
-	EAttribute getInfoItem_ImageUrl();
 
 	/**
 	 * Returns the meta object for the reference '{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}'.
@@ -1263,6 +1482,26 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTask__Finish__Object();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.ResettableTask <em>Resettable Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resettable Task</em>'.
+	 * @see no.hal.pg.runtime.ResettableTask
+	 * @generated
+	 */
+	EClass getResettableTask();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.ResettableTask#reset() <em>Reset</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Reset</em>' operation.
+	 * @see no.hal.pg.runtime.ResettableTask#reset()
+	 * @generated
+	 */
+	EOperation getResettableTask__Reset();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Condition <em>Condition</em>}'.
@@ -1440,16 +1679,6 @@ public interface RuntimePackage extends EPackage {
 	EOperation getTask__Start();
 
 	/**
-	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#restart() <em>Restart</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Restart</em>' operation.
-	 * @see no.hal.pg.runtime.Task#restart()
-	 * @generated
-	 */
-	EOperation getTask__Restart();
-
-	/**
 	 * Returns the meta object for data type '{@link java.lang.Long <em>Timestamp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1570,6 +1799,40 @@ public interface RuntimePackage extends EPackage {
 		EReference ITEM__OWN_LOCATION = eINSTANCE.getItem_OwnLocation();
 
 		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.InfoImpl <em>Info</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.InfoImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfo()
+		 * @generated
+		 */
+		EClass INFO = eINSTANCE.getInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO__TEXT = eINSTANCE.getInfo_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO__URL = eINSTANCE.getInfo_Url();
+
+		/**
+		 * The meta object literal for the '<em><b>Image Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INFO__IMAGE_URL = eINSTANCE.getInfo_ImageUrl();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.InfoItemImpl <em>Info Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1578,30 +1841,6 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EClass INFO_ITEM = eINSTANCE.getInfoItem();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INFO_ITEM__TEXT = eINSTANCE.getInfoItem_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INFO_ITEM__URL = eINSTANCE.getInfoItem_Url();
-
-		/**
-		 * The meta object literal for the '<em><b>Image Url</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INFO_ITEM__IMAGE_URL = eINSTANCE.getInfoItem_ImageUrl();
 
 		/**
 		 * The meta object literal for the '<em><b>Person</b></em>' reference feature.
@@ -1708,6 +1947,24 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK___FINISH__OBJECT = eINSTANCE.getTask__Finish__Object();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.ResettableTaskImpl <em>Resettable Task</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.ResettableTaskImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getResettableTask()
+		 * @generated
+		 */
+		EClass RESETTABLE_TASK = eINSTANCE.getResettableTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Reset</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation RESETTABLE_TASK___RESET = eINSTANCE.getResettableTask__Reset();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.Condition <em>Condition</em>}' class.
@@ -1860,14 +2117,6 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK___START = eINSTANCE.getTask__Start();
-
-		/**
-		 * The meta object literal for the '<em><b>Restart</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TASK___RESTART = eINSTANCE.getTask__Restart();
 
 		/**
 		 * The meta object literal for the '<em>Timestamp</em>' data type.

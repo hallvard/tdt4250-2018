@@ -38,11 +38,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownLocation" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocation"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InfoItem" eSuperTypes="#//Item">
+  <eClassifiers xsi:type="ecore:EClass" name="Info">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="#//EURI"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageUrl" eType="#//EURI"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InfoItem" eSuperTypes="#//Item #//Info"/>
   <eClassifiers xsi:type="ecore:EDataType" name="EURI" instanceClassName="java.net.URI"/>
   <eClassifiers xsi:type="ecore:EClass" name="Task">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -70,7 +71,6 @@
       </eAnnotations>
     </eOperations>
     <eOperations name="start"/>
-    <eOperations name="restart"/>
     <eOperations name="finish">
       <eParameters name="result">
         <eGenericType eTypeParameter="#//Task/R"/>
@@ -94,6 +94,13 @@
         eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rewards" upperBound="-1"
         eType="#//Item" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResettableTask">
+    <eTypeParameters name="R"/>
+    <eOperations name="reset"/>
+    <eGenericSuperTypes eClassifier="#//Task">
+      <eTypeArguments eTypeParameter="#//ResettableTask/R"/>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true" interface="true">
     <eOperations name="test" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -126,7 +133,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptTask">
     <eOperations name="accept"/>
-    <eGenericSuperTypes eClassifier="#//Task">
+    <eGenericSuperTypes eClassifier="#//ResettableTask">
       <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
     </eGenericSuperTypes>
   </eClassifiers>

@@ -13,11 +13,13 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -100,10 +102,17 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RuntimePackage.INFO: {
+				Info info = (Info)theEObject;
+				T1 result = caseInfo(info);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RuntimePackage.INFO_ITEM: {
 				InfoItem infoItem = (InfoItem)theEObject;
 				T1 result = caseInfoItem(infoItem);
 				if (result == null) result = caseItem(infoItem);
+				if (result == null) result = caseInfo(infoItem);
 				if (result == null) result = caseGeoLocated(infoItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -111,6 +120,13 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 			case RuntimePackage.TASK: {
 				Task<?> task = (Task<?>)theEObject;
 				T1 result = caseTask(task);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.RESETTABLE_TASK: {
+				ResettableTask<?> resettableTask = (ResettableTask<?>)theEObject;
+				T1 result = caseResettableTask(resettableTask);
+				if (result == null) result = caseTask(resettableTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -153,6 +169,7 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 			case RuntimePackage.ACCEPT_TASK: {
 				AcceptTask acceptTask = (AcceptTask)theEObject;
 				T1 result = caseAcceptTask(acceptTask);
+				if (result == null) result = caseResettableTask(acceptTask);
 				if (result == null) result = caseTask(acceptTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -214,6 +231,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Info</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Info</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInfo(Info object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Info Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -240,6 +272,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public <R> T1 caseTask(Task<R> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Resettable Task</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Resettable Task</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <R> T1 caseResettableTask(ResettableTask<R> object) {
 		return null;
 	}
 

@@ -10,10 +10,10 @@ package no.hal.pg.runtime;
  *
  *
  * @see no.hal.pg.runtime.RuntimePackage#getAcceptTask()
- * @model superTypes="no.hal.pg.runtime.Task&lt;org.eclipse.emf.ecore.EBooleanObject&gt;"
+ * @model superTypes="no.hal.pg.runtime.ResettableTask&lt;org.eclipse.emf.ecore.EBooleanObject&gt;"
  * @generated
  */
-public interface AcceptTask extends Task<Boolean> {
+public interface AcceptTask extends ResettableTask<Boolean> {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -5,7 +5,6 @@ package no.hal.pg.runtime.impl;
 import java.net.URI;
 
 import no.hal.pg.runtime.Info;
-import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.RuntimePackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -13,23 +12,24 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Info Item</b></em>'.
+ * An implementation of the model object '<em><b>Info</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getText <em>Text</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getImageUrl <em>Image Url</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.InfoImpl#getText <em>Text</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.InfoImpl#getUrl <em>Url</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.InfoImpl#getImageUrl <em>Image Url</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class InfoItemImpl extends ItemImpl implements InfoItem {
+public class InfoImpl extends MinimalEObjectImpl.Container implements Info {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -95,7 +95,7 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InfoItemImpl() {
+	protected InfoImpl() {
 		super();
 	}
 
@@ -106,7 +106,7 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return RuntimePackage.Literals.INFO_ITEM;
+		return RuntimePackage.Literals.INFO;
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO__TEXT, oldText, text));
 	}
 
 	/**
@@ -148,7 +148,7 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 		URI oldUrl = url;
 		url = newUrl;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__URL, oldUrl, url));
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO__URL, oldUrl, url));
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 		URI oldImageUrl = imageUrl;
 		imageUrl = newImageUrl;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__IMAGE_URL, oldImageUrl, imageUrl));
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO__IMAGE_URL, oldImageUrl, imageUrl));
 	}
 
 	/**
@@ -180,11 +180,11 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
+			case RuntimePackage.INFO__TEXT:
 				return getText();
-			case RuntimePackage.INFO_ITEM__URL:
+			case RuntimePackage.INFO__URL:
 				return getUrl();
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
+			case RuntimePackage.INFO__IMAGE_URL:
 				return getImageUrl();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -198,13 +198,13 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
+			case RuntimePackage.INFO__TEXT:
 				setText((String)newValue);
 				return;
-			case RuntimePackage.INFO_ITEM__URL:
+			case RuntimePackage.INFO__URL:
 				setUrl((URI)newValue);
 				return;
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
+			case RuntimePackage.INFO__IMAGE_URL:
 				setImageUrl((URI)newValue);
 				return;
 		}
@@ -219,13 +219,13 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
+			case RuntimePackage.INFO__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case RuntimePackage.INFO_ITEM__URL:
+			case RuntimePackage.INFO__URL:
 				setUrl(URL_EDEFAULT);
 				return;
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
+			case RuntimePackage.INFO__IMAGE_URL:
 				setImageUrl(IMAGE_URL_EDEFAULT);
 				return;
 		}
@@ -240,50 +240,14 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
+			case RuntimePackage.INFO__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case RuntimePackage.INFO_ITEM__URL:
+			case RuntimePackage.INFO__URL:
 				return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
+			case RuntimePackage.INFO__IMAGE_URL:
 				return IMAGE_URL_EDEFAULT == null ? imageUrl != null : !IMAGE_URL_EDEFAULT.equals(imageUrl);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Info.class) {
-			switch (derivedFeatureID) {
-				case RuntimePackage.INFO_ITEM__TEXT: return RuntimePackage.INFO__TEXT;
-				case RuntimePackage.INFO_ITEM__URL: return RuntimePackage.INFO__URL;
-				case RuntimePackage.INFO_ITEM__IMAGE_URL: return RuntimePackage.INFO__IMAGE_URL;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Info.class) {
-			switch (baseFeatureID) {
-				case RuntimePackage.INFO__TEXT: return RuntimePackage.INFO_ITEM__TEXT;
-				case RuntimePackage.INFO__URL: return RuntimePackage.INFO_ITEM__URL;
-				case RuntimePackage.INFO__IMAGE_URL: return RuntimePackage.INFO_ITEM__IMAGE_URL;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -306,4 +270,4 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 		return result.toString();
 	}
 
-} //InfoItemImpl
+} //InfoImpl

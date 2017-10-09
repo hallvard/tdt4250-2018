@@ -72,11 +72,12 @@ public class RuntimeTest {
 	}
 
 	@Test
-	public void testRestart() {
+	public void testReset() {
 		Task<?> task = getTasks(0).get(0);
+		Assert.assertTrue(task instanceof AcceptTask);
 		testStart(task);
-		task.restart();
-		Assert.assertTrue(task.isStarted());
+		((AcceptTask) task).reset();
+		Assert.assertFalse(task.isStarted());
 	}
 
 	@Test

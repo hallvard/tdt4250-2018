@@ -380,21 +380,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		setStartTime(getCurrentTime());
 	}
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public void restart() {
-		if (isStarted()) {
-			setStartTime(null);
-			setFinishTime(null);
-			setResult(null);
-			start();
-		}
-	}
-
 	static long getCurrentTime() {
 		return System.currentTimeMillis();
 	}
@@ -617,9 +602,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return isFinished();
 			case RuntimePackage.TASK___START:
 				start();
-				return null;
-			case RuntimePackage.TASK___RESTART:
-				restart();
 				return null;
 			case RuntimePackage.TASK___FINISH__OBJECT:
 				finish((R)arguments.get(0));

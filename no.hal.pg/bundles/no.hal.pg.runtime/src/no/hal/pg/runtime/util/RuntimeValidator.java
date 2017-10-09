@@ -8,11 +8,13 @@ import no.hal.pg.runtime.AbstractCondition;
 import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -102,10 +104,14 @@ public class RuntimeValidator extends EObjectValidator {
 				return validatePlayer((Player)value, diagnostics, context);
 			case RuntimePackage.ITEM:
 				return validateItem((Item)value, diagnostics, context);
+			case RuntimePackage.INFO:
+				return validateInfo((Info)value, diagnostics, context);
 			case RuntimePackage.INFO_ITEM:
 				return validateInfoItem((InfoItem)value, diagnostics, context);
 			case RuntimePackage.TASK:
 				return validateTask((Task<?>)value, diagnostics, context);
+			case RuntimePackage.RESETTABLE_TASK:
+				return validateResettableTask((ResettableTask<?>)value, diagnostics, context);
 			case RuntimePackage.CONDITION:
 				return validateCondition((Condition)value, diagnostics, context);
 			case RuntimePackage.ABSTRACT_CONDITION:
@@ -154,6 +160,15 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validateItem(Item item, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(item, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateInfo(Info info, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(info, diagnostics, context);
 	}
 
 	/**
@@ -256,6 +271,27 @@ public class RuntimeValidator extends EObjectValidator {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateResettableTask(ResettableTask<?> resettableTask, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(resettableTask, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_PlayerIsContainedInGame(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_IsFinishedImpliesIsStarted(resettableTask, diagnostics, context);
+		if (result || diagnostics != null) result &= validateTask_FinishTimeGEStartTime(resettableTask, diagnostics, context);
+		return result;
 	}
 
 	/**
