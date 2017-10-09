@@ -1,4 +1,4 @@
-package no.hal.pg.http.util;
+package no.hal.pg.http.impl;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import no.hal.pg.http.IResourceProvider;
 
-public class ResourceProvider extends RequestHelper implements IResourceProvider {
+public class ResourceProvider implements IResourceProvider {
 
 	private URI uri;
 	private Resource resource;

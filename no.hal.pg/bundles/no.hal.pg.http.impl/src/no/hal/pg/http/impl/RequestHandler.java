@@ -1,9 +1,11 @@
 package no.hal.pg.http.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.ecore.EObject;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferenceCardinality;
@@ -13,25 +15,43 @@ import no.hal.pg.http.IReferenceResolver;
 import no.hal.pg.http.IRequestPathResolver;
 import no.hal.pg.http.IRequestQueryExecutor;
 import no.hal.pg.http.auth.ISubjectProvider;
-import no.hal.pg.http.util.CompositeReferenceResolver;
 
-@Component
-public class RequestHandler extends CompositeReferenceResolver implements IRequestPathResolver, IRequestQueryExecutor {
+@Component(
+	service={IRequestPathResolver.class, IRequestQueryExecutor.class}
+)
+public class RequestHandler implements IRequestPathResolver, IRequestQueryExecutor, IReferenceResolver {
 
-	@Override
+	protected Collection<IReferenceResolver> referenceResolvers;
+
 	@Reference(
-			cardinality=ReferenceCardinality.MULTIPLE,			
-			policy=ReferencePolicy.DYNAMIC,
-			unbind="removeReferenceResolver"
-			)
+		cardinality=ReferenceCardinality.MULTIPLE,
+		policy=ReferencePolicy.DYNAMIC,
+		unbind="removeReferenceResolver"
+	)
 	public void addReferenceResolver(IReferenceResolver referenceResolver) {
-		super.addReferenceResolver(referenceResolver);
+		if (referenceResolvers == null) {
+			referenceResolvers = new ArrayList<IReferenceResolver>();
+		}
+		referenceResolvers.add(referenceResolver);
 	}
-	@Override
+
 	public void removeReferenceResolver(IReferenceResolver referenceResolver) {
-		super.removeReferenceResolver(referenceResolver);
+		if (referenceResolvers != null) {
+			referenceResolvers.remove(referenceResolver);
+		}
 	}
-	
+
+	@Override
+	public EObject resolveReference(String reference, EObject context) {
+		for (IReferenceResolver referenceResolver : referenceResolvers) {
+			EObject resolved = referenceResolver.resolveReference(reference, context);
+			if (resolved != null) {
+				return resolved;
+			}
+		}
+		return null;
+	}
+
 	private ISubjectProvider<?> subjectProvider;
 	
 	@Override

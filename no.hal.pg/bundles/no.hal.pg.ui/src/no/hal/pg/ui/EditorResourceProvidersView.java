@@ -24,7 +24,7 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceRegistration;
 
 import no.hal.pg.http.IResourceProvider;
-import no.hal.pg.http.util.ResourceProvider;
+import no.hal.pg.http.impl.ResourceProvider;
 
 public class EditorResourceProvidersView extends AbstractSelectionView {
 

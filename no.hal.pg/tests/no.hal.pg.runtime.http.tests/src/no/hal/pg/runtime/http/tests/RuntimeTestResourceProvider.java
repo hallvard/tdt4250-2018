@@ -4,7 +4,7 @@ import org.eclipse.emf.common.util.URI;
 import org.osgi.service.component.annotations.Component;
 
 import no.hal.pg.http.IResourceProvider;
-import no.hal.pg.http.util.ResourceProvider;
+import no.hal.pg.http.impl.ResourceProvider;
 
 @Component
 public class RuntimeTestResourceProvider extends ResourceProvider implements IResourceProvider {

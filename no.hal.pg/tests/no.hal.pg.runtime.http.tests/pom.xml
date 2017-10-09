@@ -28,7 +28,7 @@
 					<skipTests>false</skipTests>
 					<providerHint>junit4</providerHint>
 					<useUIHarness>false</useUIHarness>
-					<argLine>-Dorg.osgi.service.http.port=8082</argLine>
+					<argLine>-Dorg.osgi.service.http.port=8085</argLine>
 					<showEclipseLog>true</showEclipseLog>
 					<dependencies>
 
