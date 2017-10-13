@@ -7,7 +7,7 @@ no.hal.pg is a small OSGi-based framework for location-oriented games that consi
 ## Organisation of the framework
 
 The framework's code is organized as is typical for Eclipse projects:
-- bundles - the bundles containing models and web support
-- tests - the test bundles
-- features - feature projects
-- releng - projects for release engineering
+- [bundles](../../bundles/) - the bundles containing models and web support
+- [tests](../../tests/) - the test bundles
+- [features](../../features/) - feature and repository projects for p2 update site 
+- [releng](../../releng/) - projects for release engineering
