@@ -11,7 +11,9 @@ The OSM model was primarily created for loading the XML, and secondarily for int
 ### EClassifiers
 
 * **LatLong** - Java data value class and EDataType with latitude, longitude pair, and a method for distance computation. Implements **equals**, **hashCode**, **toString** and **valueOf**, the latter two support the standard Ecore Factory implementation.
-* **GeoLocated** and **GeoLocation** - interface for latitude, longitude pair and implementation
+* **GeoLocated** - interface for getting a **LatLong** location with latitude, longitude pair
+* **GeoLocation** - implementation class with latitude and longitude attributes, that can be subclassed or contained
+* **GeoLatLong** - implementation class with **LatLong** attribute, longitude pair, that can be subclassed or contained
 * **Tagged**, **Tags** and **Tag** - interface for tags, container for tags implementing the interface and key, value pair
 * **Node** - a point in OSM, with location, tags and meta-data 
 * **Way** and **NodeRef** - a sequence of nodes, as **NodeRef** objects, e.g. for paths
@@ -21,4 +23,4 @@ The OSM model was primarily created for loading the XML, and secondarily for int
 
 ## Implementation
 
-The implementation consists mainly of generated code and custom method bodies. Most noteworthy is how the **GeoLocated**. The resource implementation has been extended to speed up loading of large files.
+The implementation consists mainly of generated code and custom method bodies. Most noteworthy is how the **GeoLocated** interface provides location data, to make code independent on how the location is stored, e.g. in a **GeoLocation** or **GeoLatLong** object. The resource implementation has been extended to speed up loading of large files.
