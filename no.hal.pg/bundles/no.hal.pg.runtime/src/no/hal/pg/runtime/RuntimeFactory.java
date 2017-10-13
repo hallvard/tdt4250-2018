@@ -112,6 +112,15 @@ public interface RuntimeFactory extends EFactory {
 	IsTaskFinished createIsTaskFinished();
 
 	/**
+	 * Returns a new object of class '<em>Is By Geo Location Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Is By Geo Location Condition</em>'.
+	 * @generated
+	 */
+	IsByGeoLocationCondition createIsByGeoLocationCondition();
+
+	/**
 	 * Returns a new object of class '<em>Accept Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -80,8 +81,36 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Map<String, Object> params = decodeQuery(req, new HashMap<String, Object>());
-		decodePostBody(req, params);
-		doHelper(req, resp, params);
+		handlePostBody(req, params, resp);
+	}
+
+	protected void handlePostBody(HttpServletRequest req, Map<String, Object> params, HttpServletResponse resp) throws ServletException, IOException {
+		try {
+			String body = getPostBody(req, params);
+			handlePostBody(body, params);
+			doHelper(req, resp, params);
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
+	}
+
+	protected String getPostBody(HttpServletRequest req, Map<String, Object> params) throws IOException {
+		StringBuilder buffer = new StringBuilder();
+		Scanner scanner = new Scanner(req.getInputStream());
+		try {
+			while (scanner.hasNextLine()) {
+				buffer.append(scanner.nextLine());
+				buffer.append("\n");
+			}
+		} finally {
+			scanner.close();
+		}
+		return buffer.toString();
+	}
+
+	protected void handlePostBody(String body, Map<String, Object> params) {
+		params.put("httpPostBody", body);
+		decodePostBody(body, params);
 	}
 	
 	protected void doHelper(HttpServletRequest req, HttpServletResponse resp, Map<String, Object> params) throws ServletException, IOException {
@@ -156,7 +185,7 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 	
 	//
 	
-	private Map<String, Object> decodeQuery(HttpServletRequest req, Map<String, Object> params) {
+	protected Map<String, Object> decodeQuery(HttpServletRequest req, Map<String, Object> params) {
 		String query = req.getQueryString();
 		if (query != null) {
 			for (String param : query.split("&")) {
@@ -171,12 +200,11 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		return params;
 	}
 
-	private Map<String, Object> decodePostBody(HttpServletRequest req, Map<String, Object> params) {
+	protected Map<String, Object> decodePostBody(String body, Map<String, Object> params) {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonTree = null;
 		try {
-			jsonTree = mapper.readTree(req.getReader());
-		} catch (JsonProcessingException e) {
+			jsonTree = mapper.readTree(body);
 		} catch (IOException e) {
 		}
 		if (jsonTree instanceof ObjectNode) {
@@ -194,3 +222,51 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		return params;
 	}
 }
+
+/*
+ * @startuml
+ * interface ILogger {
+ * 	void log(int severity, String message)
+ * }
+ * class SMSLogger {
+ * }
+ * class FileLogger {
+ * }
+ * ILogger <|.. SMSLogger 
+ * ILogger <|.. FileLogger
+ * @enduml
+
+ * @startuml
+ * class SMSLogger {
+ * }
+ * class FileLogger {
+ * }
+ * SMSLogger -() ILogger
+ * FileLogger -() ILogger
+ * @enduml
+
+ * @startuml
+ * [SMSLogger] -- ILogger
+ * [FileLogger] -- ILogger
+ * @enduml
+
+ * @startuml
+ * class HttpServerImpl {
+ * }
+ * interface Servlet {
+ * }
+ * class DataServlet {
+ * }
+ * class AppServlet {
+ * }
+ * Servlet <|.. DataServlet 
+ * Servlet <|.. AppServlet
+ * HttpServerImpl -> Servlet: servlets
+ * @enduml
+
+ * @startuml
+ * [DataServlet] -- Servlet
+ * [AppServlet] -- Servlet
+ * Servlet <.. [HttpServerImpl]: use
+ * @enduml
+ */

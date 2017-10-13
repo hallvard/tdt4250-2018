@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
@@ -129,6 +130,10 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIsTaskFinished(IsTaskFinished object) {
 				return createIsTaskFinishedAdapter();
+			}
+			@Override
+			public Adapter caseIsByGeoLocationCondition(IsByGeoLocationCondition object) {
+				return createIsByGeoLocationConditionAdapter();
 			}
 			@Override
 			public Adapter caseAcceptTask(AcceptTask object) {
@@ -335,6 +340,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIsTaskFinishedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.IsByGeoLocationCondition <em>Is By Geo Location Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition
+	 * @generated
+	 */
+	public Adapter createIsByGeoLocationConditionAdapter() {
 		return null;
 	}
 

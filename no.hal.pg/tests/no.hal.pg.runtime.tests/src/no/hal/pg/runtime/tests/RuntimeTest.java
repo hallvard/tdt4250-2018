@@ -15,8 +15,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.hal.pg.osm.GeoLocation;
+import no.hal.pg.osm.OsmFactory;
+import no.hal.pg.osm.geoutil.LatLong;
 import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -142,5 +146,32 @@ public class RuntimeTest {
 		
 		task0.start();
 		Assert.assertTrue(task.canStart());
+	}
+	
+	@Test
+	public void testIsByLocationCondition() {
+		GeoLocation loc1 = OsmFactory.eINSTANCE.createGeoLocation(), loc2 = OsmFactory.eINSTANCE.createGeoLocation();
+		IsByGeoLocationCondition condition = RuntimeFactory.eINSTANCE.createIsByGeoLocationCondition();
+		condition.setContext(loc1);
+		condition.getLocations().add(loc2);
+		double distance = 0.0;
+		while (distance <= 10.0) {
+			loc1.setLatitude((float) (Math.random() * 90));
+			loc1.setLongitude((float) (Math.random() * 90));
+			loc2.setLatitude((float) (Math.random() * 90));
+			loc2.setLongitude((float) (Math.random() * 90));
+			distance = LatLong.distance(loc1, loc2);
+		}
+		condition.setLowerTargetDistanceBound(distance + 1);
+		condition.setUpperTargetDistanceBound(distance + 1);
+		Assert.assertFalse(condition.test());
+
+		condition.setLowerTargetDistanceBound(distance);
+		condition.setUpperTargetDistanceBound(distance + 1);
+		Assert.assertTrue(condition.test());
+
+		condition.setLowerTargetDistanceBound(distance);
+		condition.setUpperTargetDistanceBound(distance - 1);
+		Assert.assertFalse(condition.test());
 	}
 }

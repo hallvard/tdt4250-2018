@@ -20,4 +20,5 @@ Bundle-ActivationPolicy: lazy
 Import-Package: org.junit;version="4.12.0",
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations
-Service-Component: OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeTestResourceProvider.xml
+Service-Component: OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeTestResourceProvider.xml,
+ OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeQlTestResourceProvider.xml

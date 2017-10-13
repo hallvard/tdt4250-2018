@@ -1,5 +1,8 @@
 package no.hal.pg.osm.geoutil;
 
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.GeoLocation;
+
 public class LatLong {
 	
 	public final double latitude, longitude;
@@ -93,6 +96,14 @@ public class LatLong {
 		// convert to meters 
 		dist = dist * 1609.344;
 		return dist;
+	}
+
+	public static double distance(LatLong latLong1, LatLong latLong2) {
+		return distance(latLong1.latitude, latLong1.longitude, latLong2.latitude, latLong2.longitude);
+	}
+
+	public static double distance(GeoLocated loc1, GeoLocated loc2) {
+		return distance(loc1.getLatLong(), loc2.getLatLong());
 	}
 
 	/*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/

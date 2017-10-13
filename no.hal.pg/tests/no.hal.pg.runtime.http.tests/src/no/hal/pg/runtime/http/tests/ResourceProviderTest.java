@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,50 +16,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class ResourceProviderTest {
+public class ResourceProviderTest extends AbstractHttpRequestTest {
 
-	protected String gameName = "RuntimeTest";
-	protected String baseUrlString = null, urlString = null;
-
-	protected void setUp(String hostProperty, String portProperty, boolean externalSetupGame) throws Exception {
-		String host = "localhost", port = "8082";
-		if (hostProperty != null) {
-			host = System.getProperty(hostProperty);
-		}
-		if (portProperty != null) {
-			port = System.getProperty(portProperty);
-		}
-		if (host != null && port != null) {
-			baseUrlString = "http://" + host + ":" + port;
-			urlString = baseUrlString + "/data/" + gameName + "/games/0";
-		}
+	@Override
+	protected String getGameName() {
+		return "RuntimeTest";
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		setUp(null, "org.osgi.service.http.port", true);
-	}
-
-	protected String readLines(InputStream input) throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-		StringBuilder buffer = new StringBuilder();
-		String line = null;
-		while ((line = reader.readLine()) != null) {
-			buffer.append(line);
-			buffer.append("\n");
-		}
-		return buffer.toString();
-	}
-
-	protected void addAuthorization(HttpURLConnection con) {
-		con.addRequestProperty("Authorization", "Basic aGFsQGlkaS5udG51Lm5vOmhpbm4="); // hal@idi.ntnu.no:hinn base64 encoded
-	}
-
-	protected HttpURLConnection getRequest(String urlPath) throws IOException {
-		HttpURLConnection con = (HttpURLConnection) new URL(urlString + urlPath).openConnection();
-		con.setRequestMethod("GET");
-		addAuthorization(con);
-		return con;
 	}
 
 	@Test

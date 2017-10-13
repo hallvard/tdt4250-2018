@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
@@ -163,6 +164,14 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				T1 result = caseIsTaskFinished(isTaskFinished);
 				if (result == null) result = caseAbstractCondition(isTaskFinished);
 				if (result == null) result = caseCondition(isTaskFinished);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION: {
+				IsByGeoLocationCondition isByGeoLocationCondition = (IsByGeoLocationCondition)theEObject;
+				T1 result = caseIsByGeoLocationCondition(isByGeoLocationCondition);
+				if (result == null) result = caseAbstractCondition(isByGeoLocationCondition);
+				if (result == null) result = caseCondition(isByGeoLocationCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -362,6 +371,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseIsTaskFinished(IsTaskFinished object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Is By Geo Location Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Is By Geo Location Condition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseIsByGeoLocationCondition(IsByGeoLocationCondition object) {
 		return null;
 	}
 

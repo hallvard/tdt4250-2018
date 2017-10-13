@@ -150,7 +150,7 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 
 	@Override
 	public void partClosed(IWorkbenchPart part) {
-		super.partActivated(part);
+		super.partClosed(part);
 		if (part instanceof IEditingDomainProvider) {
 			removeResource((IEditingDomainProvider) part);
 		}

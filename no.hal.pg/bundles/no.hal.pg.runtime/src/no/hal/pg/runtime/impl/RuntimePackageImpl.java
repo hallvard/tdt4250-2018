@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
@@ -122,6 +123,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	private EClass isTaskFinishedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass isByGeoLocationConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -592,6 +600,60 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIsByGeoLocationCondition() {
+		return isByGeoLocationConditionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIsByGeoLocationCondition_Locations() {
+		return (EReference)isByGeoLocationConditionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIsByGeoLocationCondition_ContainedLocations() {
+		return (EReference)isByGeoLocationConditionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIsByGeoLocationCondition_LowerTargetDistanceBound() {
+		return (EAttribute)isByGeoLocationConditionEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIsByGeoLocationCondition_UpperTargetDistanceBound() {
+		return (EAttribute)isByGeoLocationConditionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getIsByGeoLocationCondition_Logic() {
+		return (EAttribute)isByGeoLocationConditionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAcceptTask() {
 		return acceptTaskEClass;
 	}
@@ -755,6 +817,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		isTaskFinishedEClass = createEClass(IS_TASK_FINISHED);
 
+		isByGeoLocationConditionEClass = createEClass(IS_BY_GEO_LOCATION_CONDITION);
+		createEReference(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOCATIONS);
+		createEReference(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__CONTAINED_LOCATIONS);
+		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOWER_TARGET_DISTANCE_BOUND);
+		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__UPPER_TARGET_DISTANCE_BOUND);
+		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOGIC);
+
 		acceptTaskEClass = createEClass(ACCEPT_TASK);
 		createEOperation(acceptTaskEClass, ACCEPT_TASK___ACCEPT);
 
@@ -829,6 +898,10 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		isTaskFinishedEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getAbstractCondition());
+		g2 = createEGenericType(theOsmPackage.getGeoLocated());
+		g1.getETypeArguments().add(g2);
+		isByGeoLocationConditionEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getResettableTask());
 		g2 = createEGenericType(ecorePackage.getEBooleanObject());
 		g1.getETypeArguments().add(g2);
@@ -908,6 +981,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEClass(isTaskStartedEClass, IsTaskStarted.class, "IsTaskStarted", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isTaskFinishedEClass, IsTaskFinished.class, "IsTaskFinished", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(isByGeoLocationConditionEClass, IsByGeoLocationCondition.class, "IsByGeoLocationCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIsByGeoLocationCondition_Locations(), theOsmPackage.getGeoLocated(), null, "locations", null, 0, -1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIsByGeoLocationCondition_ContainedLocations(), theOsmPackage.getGeoLocated(), null, "containedLocations", null, 0, -1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsByGeoLocationCondition_LowerTargetDistanceBound(), ecorePackage.getEDouble(), "lowerTargetDistanceBound", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsByGeoLocationCondition_UpperTargetDistanceBound(), ecorePackage.getEDouble(), "upperTargetDistanceBound", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIsByGeoLocationCondition_Logic(), ecorePackage.getEBoolean(), "logic", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(acceptTaskEClass, AcceptTask.class, "AcceptTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

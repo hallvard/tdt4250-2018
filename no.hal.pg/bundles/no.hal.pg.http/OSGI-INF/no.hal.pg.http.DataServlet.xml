@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.ResourceServlet">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.DataServlet">
    <property name="osgi.http.whiteboard.servlet.name" type="String" value="data"/>
    <property name="osgi.http.whiteboard.servlet.pattern" type="String" value="/data/*"/>
    <service scope="prototype">
@@ -11,5 +11,5 @@
    <reference cardinality="1..1" field="requestQueryExecutor" interface="no.hal.pg.http.IRequestQueryExecutor" name="requestQueryExecutor" policy="dynamic"/>
    <reference cardinality="0..n" field="resourceProviders" interface="no.hal.pg.http.IResourceProvider" name="resourceProviders" policy="dynamic"/>
    <reference cardinality="1..1" field="responseSerializer" interface="no.hal.pg.http.IResponseSerializer" name="responseSerializer" policy="dynamic"/>
-   <implementation class="no.hal.pg.http.ResourceServlet"/>
+   <implementation class="no.hal.pg.http.DataServlet"/>
 </scr:component>

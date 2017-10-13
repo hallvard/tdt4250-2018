@@ -131,6 +131,20 @@
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IsByGeoLocationCondition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containedLocations" upperBound="-1"
+        eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerTargetDistanceBound"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperTargetDistanceBound"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eGenericSuperTypes eClassifier="#//AbstractCondition">
+      <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptTask">
     <eOperations name="accept"/>
     <eGenericSuperTypes eClassifier="#//ResettableTask">

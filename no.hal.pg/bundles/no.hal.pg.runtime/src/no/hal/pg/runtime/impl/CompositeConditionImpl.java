@@ -129,10 +129,21 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 		// short-circuit when the test value becomes logic
 		// use logic == true for || and logic == false for &&
 		for (Condition cond : getConditions()) {
-			if (cond.test() == logic) {
-				return logic;
+			Boolean result = result(cond.test(), isLogic());
+			if (result != null) {
+				return result;
 			}
 		}
+		return result(isLogic());
+	}
+	
+	public static Boolean result(boolean value, boolean logic) {
+		if (value == logic) {
+			return Boolean.valueOf(logic);
+		}
+		return null;
+	}
+	public static Boolean result(boolean logic) {
 		return ! logic;
 	}
 

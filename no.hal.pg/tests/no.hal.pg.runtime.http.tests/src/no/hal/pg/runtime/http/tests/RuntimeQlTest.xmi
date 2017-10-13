@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<runtime:Runtime
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
+    xsi:schemaLocation="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
+  <games>
+    <tasks xsi:type="runtime:AcceptTask"/>
+    <tasks>
+      <startConditions
+          xsi:type="runtime:IsTaskStarted"
+          context="//@games.0/@tasks.0"/>
+    </tasks>
+    <tasks>
+      <startConditions
+          xsi:type="runtime:IsTaskFinished"
+          context="//@games.0/@tasks.0"/>
+    </tasks>
+    <tasks>
+      <startConditions
+          xsi:type="runtime:CompositeCondition">
+        <conditions
+            xsi:type="runtime:IsTaskStarted"
+            context="//@games.0/@tasks.0"/>
+        <conditions
+            xsi:type="runtime:IsTaskFinished"
+            context="//@games.0/@tasks.0"/>
+      </startConditions>
+    </tasks>
+    <tasks>
+      <startConditions
+          xsi:type="runtime:CompositeCondition"
+          logic="true">
+        <conditions
+            xsi:type="runtime:IsTaskStarted"
+            context="//@games.0/@tasks.0"/>
+        <conditions
+            xsi:type="runtime:IsTaskFinished"
+            context="//@games.0/@tasks.0"/>
+      </startConditions>
+    </tasks>
+  </games>
+</runtime:Runtime>

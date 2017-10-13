@@ -10,6 +10,7 @@ import no.hal.pg.runtime.CompositeCondition;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinished;
 import no.hal.pg.runtime.IsTaskStarted;
 import no.hal.pg.runtime.Item;
@@ -122,6 +123,8 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateIsTaskStarted((IsTaskStarted)value, diagnostics, context);
 			case RuntimePackage.IS_TASK_FINISHED:
 				return validateIsTaskFinished((IsTaskFinished)value, diagnostics, context);
+			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION:
+				return validateIsByGeoLocationCondition((IsByGeoLocationCondition)value, diagnostics, context);
 			case RuntimePackage.ACCEPT_TASK:
 				return validateAcceptTask((AcceptTask)value, diagnostics, context);
 			case RuntimePackage.RUNTIME:
@@ -337,6 +340,15 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validateIsTaskFinished(IsTaskFinished isTaskFinished, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(isTaskFinished, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateIsByGeoLocationCondition(IsByGeoLocationCondition isByGeoLocationCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(isByGeoLocationCondition, diagnostics, context);
 	}
 
 	/**

@@ -9,11 +9,13 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EObjectEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -78,7 +80,7 @@ public class RequestSupport {
 		if (pos >= 0) {
 			boolean rel1 = ops.indexOf(step.charAt(pos - 1)) < 0;
 			String rel = (rel1 ? step.substring(pos, pos + 1) : step.substring(pos - 1, pos + 1)); 
-			return objects = selectKey(objects, step.substring(0, pos - (rel1 ? 0 : 1)), step.substring(pos + 1), rel);
+			return objects = selectRelation(objects, step.substring(0, pos - (rel1 ? 0 : 1)), step.substring(pos + 1), rel);
 		}
 		EList<Object> values = null;
 		EObjectEList<?> eObjects = null;
@@ -125,7 +127,15 @@ public class RequestSupport {
 			}
 		}
 		if (count == 0) {
-			return objects = selectEClass(objects, step);									
+			if (Character.isUpperCase(step.charAt(0))) {
+				objects = selectEClass(objects, step);
+				if (objects.isEmpty()) {
+					objects = selectKey(objects, step.split(","));					
+				}
+			} else {
+				objects = selectKey(objects, step.split(","));					
+			}
+			return objects;
 		}
 		if (values != null) {
 			return objects = values;
@@ -138,9 +148,17 @@ public class RequestSupport {
 
 	public static final String REQUEST_SUPPORT_ANNOTATION_SOURCE = RequestSupport.class.getName();
 
+	protected <T extends EStructuralFeature> T findEStructuralFeature(String featureName, EList<T> features) {
+		for (T feature : features) {
+			if (feature.getName().equals(featureName) && AnnotationUtil.includeTypedElement(feature, REQUEST_SUPPORT_ANNOTATION_SOURCE, true)) {
+				return feature;
+			}
+		}
+		return null;
+	}
+	
 	protected EStructuralFeature findEStructuralFeature(EObject target, String featureName) {
-		EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
-		return (feature != null && AnnotationUtil.includeTypedElement(feature, REQUEST_SUPPORT_ANNOTATION_SOURCE, true) ? feature : null);
+		return findEStructuralFeature(featureName, target.eClass().getEAllStructuralFeatures());
 	}
 	
 	protected Object getFeatureValue(EObject target, EStructuralFeature feature) {
@@ -237,14 +255,14 @@ public class RequestSupport {
 		return filtered;
 	}
 
-	protected EList<EObject> selectKey(Collection<?> objects, final String featureName, final String featureValueString, final String rel) {
+	protected EList<EObject> selectRelation(Collection<?> objects, final String featureName, final String featureValueString, final String rel) {
 		return selectEObjects(objects, new EObjectFilter() {
 			@Override
 			public boolean accept(EObject eObject) {
-				EStructuralFeature feature = findEStructuralFeature(eObject, featureName);
-				if (feature instanceof EAttribute) {
-					Object featureValue1 = eObject.eGet(feature);
-					Object featureValue2 = EcoreUtil.createFromString(((EAttribute) feature).getEAttributeType(), featureValueString);
+				EAttribute attr = findEStructuralFeature(featureName, eObject.eClass().getEAllAttributes());
+				if (attr != null) {
+					Object featureValue1 = eObject.eGet(attr);
+					Object featureValue2 = EcoreUtil.createFromString(attr.getEAttributeType(), featureValueString);
 					if (rel == null || rel.equals("=")) {
 						if (featureValue1 == featureValue2 || (featureValue1 != null && featureValue1.equals(featureValue2))) {
 							return true;
@@ -267,11 +285,45 @@ public class RequestSupport {
 		});
 	}
 
-	private EList<EObject> selectEClass(Collection<?> objects, final String step) {
+	protected EList<EObject> selectKey(Collection<?> objects, final String[] keyValueStrings) {
 		return selectEObjects(objects, new EObjectFilter() {
 			@Override
 			public boolean accept(EObject eObject) {
-				return eObject.eClass().getName().equals(step);
+				EStructuralFeature containingFeature = eObject.eContainingFeature();
+				if (containingFeature instanceof EReference) {
+					EList<EAttribute> keyAttributes = ((EReference) containingFeature).getEKeys();
+					if (keyAttributes.size() == keyValueStrings.length) {
+						for (int i = 0; i < keyAttributes.size(); i++) {
+							EAttribute attr = keyAttributes.get(i);
+							Object value = EcoreUtil.createFromString(attr.getEAttributeType(), keyValueStrings[i]);
+							if (value == null || (! value.equals(eObject.eGet(attr)))) {
+								return false;
+							}
+						}
+						return true;
+					}
+				}
+				return false;
+			}
+		});
+	}
+
+	private EList<EObject> selectEClass(Collection<?> objects, final String step) {
+		return selectEObjects(objects, new EObjectFilter() {
+			private boolean accept(EClass eClass) {
+				return eClass.getName().equals(step);
+			}
+			@Override
+			public boolean accept(EObject eObject) {
+				if (accept(eObject.eClass())) {
+					return true;
+				}
+				for (EClass eClass : eObject.eClass().getEAllSuperTypes()) {
+					if (accept(eClass)) {
+						return true;
+					}
+				}
+				return false;
 			}
 		});
 	}

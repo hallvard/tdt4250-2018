@@ -937,6 +937,97 @@ public interface RuntimePackage extends EPackage {
 	int IS_TASK_FINISHED_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl <em>Is By Geo Location Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION = 12;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Locations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__LOCATIONS = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Contained Locations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__CONTAINED_LOCATIONS = ABSTRACT_CONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Lower Target Distance Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__LOWER_TARGET_DISTANCE_BOUND = ABSTRACT_CONDITION_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Upper Target Distance Bound</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__UPPER_TARGET_DISTANCE_BOUND = ABSTRACT_CONDITION_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Logic</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION__LOGIC = ABSTRACT_CONDITION_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Is By Geo Location Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
+
+	/**
+	 * The number of operations of the '<em>Is By Geo Location Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -944,7 +1035,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
 	 * @generated
 	 */
-	int ACCEPT_TASK = 12;
+	int ACCEPT_TASK = 13;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -1116,7 +1207,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 13;
+	int RUNTIME = 14;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -1171,7 +1262,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
 	 * @generated
 	 */
-	int EURI = 14;
+	int EURI = 15;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -1181,7 +1272,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 15;
+	int TIMESTAMP = 16;
 
 
 	/**
@@ -1595,6 +1686,71 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getIsTaskFinished();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsByGeoLocationCondition <em>Is By Geo Location Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Is By Geo Location Condition</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition
+	 * @generated
+	 */
+	EClass getIsByGeoLocationCondition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link no.hal.pg.runtime.IsByGeoLocationCondition#getLocations <em>Locations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Locations</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition#getLocations()
+	 * @see #getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	EReference getIsByGeoLocationCondition_Locations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.IsByGeoLocationCondition#getContainedLocations <em>Contained Locations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contained Locations</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition#getContainedLocations()
+	 * @see #getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	EReference getIsByGeoLocationCondition_ContainedLocations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.IsByGeoLocationCondition#getLowerTargetDistanceBound <em>Lower Target Distance Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lower Target Distance Bound</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition#getLowerTargetDistanceBound()
+	 * @see #getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	EAttribute getIsByGeoLocationCondition_LowerTargetDistanceBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.IsByGeoLocationCondition#getUpperTargetDistanceBound <em>Upper Target Distance Bound</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Upper Target Distance Bound</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition#getUpperTargetDistanceBound()
+	 * @see #getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	EAttribute getIsByGeoLocationCondition_UpperTargetDistanceBound();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.IsByGeoLocationCondition#isLogic <em>Logic</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Logic</em>'.
+	 * @see no.hal.pg.runtime.IsByGeoLocationCondition#isLogic()
+	 * @see #getIsByGeoLocationCondition()
+	 * @generated
+	 */
+	EAttribute getIsByGeoLocationCondition_Logic();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.AcceptTask <em>Accept Task</em>}'.
@@ -2047,6 +2203,56 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EClass IS_TASK_FINISHED = eINSTANCE.getIsTaskFinished();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl <em>Is By Geo Location Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsByGeoLocationCondition()
+		 * @generated
+		 */
+		EClass IS_BY_GEO_LOCATION_CONDITION = eINSTANCE.getIsByGeoLocationCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Locations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IS_BY_GEO_LOCATION_CONDITION__LOCATIONS = eINSTANCE.getIsByGeoLocationCondition_Locations();
+
+		/**
+		 * The meta object literal for the '<em><b>Contained Locations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IS_BY_GEO_LOCATION_CONDITION__CONTAINED_LOCATIONS = eINSTANCE.getIsByGeoLocationCondition_ContainedLocations();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower Target Distance Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_BY_GEO_LOCATION_CONDITION__LOWER_TARGET_DISTANCE_BOUND = eINSTANCE.getIsByGeoLocationCondition_LowerTargetDistanceBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Target Distance Bound</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_BY_GEO_LOCATION_CONDITION__UPPER_TARGET_DISTANCE_BOUND = eINSTANCE.getIsByGeoLocationCondition_UpperTargetDistanceBound();
+
+		/**
+		 * The meta object literal for the '<em><b>Logic</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IS_BY_GEO_LOCATION_CONDITION__LOGIC = eINSTANCE.getIsByGeoLocationCondition_Logic();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.
