@@ -15,7 +15,7 @@ The bundles fall into three categories: models, (generic and specific) web suppo
 - [no.hal.pg.config](no.hal.pg.config/) - A model for configuring or setting up a game. From an instance of this model you get the initial runtime state of a game, means there needs to be UI support for authoring config models. 
 
 ### Web bundles
-- [no.hal.pg.http](no.hal.pg.http/) - Generic support for accessing model instances using REST-like paths and GraphQL querries, and for providing web apps for model objects.
+- [no.hal.pg.http](no.hal.pg.http/) - Generic support for accessing model instances using REST-like paths and GraphQL queries, and for providing web apps for model objects.
 - [no.hal.graphql.emf](no.hal.graphql.emf/) - Generic GraphQL support for EMF, albeit a prototype at this moment.
 - [no.hal.pg.runtime.http](no.hal.pg.runtime.http/) - Web app for the game model.
 
