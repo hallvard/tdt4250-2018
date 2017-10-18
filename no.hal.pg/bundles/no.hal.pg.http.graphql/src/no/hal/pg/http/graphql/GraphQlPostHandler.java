@@ -38,7 +38,6 @@ public class GraphQlPostHandler implements IPostHandler {
 				}
 			}
 		}
-		System.out.println("handlePostBody: " + root + " POST " + postBody);
 		if (context != null) {
 			return doGraphQl(String.valueOf(postBody), context, params);
 		}

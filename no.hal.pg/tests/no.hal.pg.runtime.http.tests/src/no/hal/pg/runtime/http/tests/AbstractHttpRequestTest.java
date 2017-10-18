@@ -32,7 +32,7 @@ public abstract class AbstractHttpRequestTest {
 		}
 		if (host != null && port != null) {
 			baseUrlString = "http://" + host + ":" + port;
-			urlString = baseUrlString + "/data/" + getGameName() + "/games/0";
+			urlString = baseUrlString + "/data/" + getGameName();
 		}
 	}
 
@@ -78,6 +78,15 @@ public abstract class AbstractHttpRequestTest {
 	}
 	
 	//
+
+	private boolean useOwnReader = true;
+	
+	protected JsonNode getJsonNode(HttpURLConnection con) throws IOException {
+		InputStream input = con.getInputStream();
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		return jsonNode;
+	}
 
 	protected ArrayNode checkArrayNode(JsonNode node, int size) {
 		Assert.assertTrue(node instanceof ArrayNode);

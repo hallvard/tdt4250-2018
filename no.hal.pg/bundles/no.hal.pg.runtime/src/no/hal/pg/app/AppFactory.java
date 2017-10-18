@@ -69,13 +69,40 @@ public interface AppFactory extends EFactory {
 	MapView createMapView();
 
 	/**
-	 * Returns a new object of class '<em>Map Marker</em>'.
+	 * Returns a new object of class '<em>Map Marker Options</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Map Marker</em>'.
+	 * @return a new object of class '<em>Map Marker Options</em>'.
 	 * @generated
 	 */
-	MapMarker createMapMarker();
+	MapMarkerOptions createMapMarkerOptions();
+
+	/**
+	 * Returns a new object of class '<em>Geo Located View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Geo Located View</em>'.
+	 * @generated
+	 */
+	GeoLocatedView createGeoLocatedView();
+
+	/**
+	 * Returns a new object of class '<em>Geo Location View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Geo Location View</em>'.
+	 * @generated
+	 */
+	GeoLocationView createGeoLocationView();
+
+	/**
+	 * Returns a new object of class '<em>Geo Polyline</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Geo Polyline</em>'.
+	 * @generated
+	 */
+	GeoPolyline createGeoPolyline();
 
 	/**
 	 * Returns the package supported by this factory.

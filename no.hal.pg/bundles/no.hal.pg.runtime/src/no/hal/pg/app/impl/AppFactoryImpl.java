@@ -63,7 +63,10 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 			case AppPackage.TASK_VIEW: return createTaskView();
 			case AppPackage.ACCEPT_TASK_VIEW: return createAcceptTaskView();
 			case AppPackage.MAP_VIEW: return createMapView();
-			case AppPackage.MAP_MARKER: return createMapMarker();
+			case AppPackage.MAP_MARKER_OPTIONS: return createMapMarkerOptions();
+			case AppPackage.GEO_LOCATED_VIEW: return createGeoLocatedView();
+			case AppPackage.GEO_LOCATION_VIEW: return createGeoLocationView();
+			case AppPackage.GEO_POLYLINE: return createGeoPolyline();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -124,9 +127,39 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MapMarker createMapMarker() {
-		MapMarkerImpl mapMarker = new MapMarkerImpl();
-		return mapMarker;
+	public MapMarkerOptions createMapMarkerOptions() {
+		MapMarkerOptionsImpl mapMarkerOptions = new MapMarkerOptionsImpl();
+		return mapMarkerOptions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeoLocatedView createGeoLocatedView() {
+		GeoLocatedViewImpl geoLocatedView = new GeoLocatedViewImpl();
+		return geoLocatedView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeoLocationView createGeoLocationView() {
+		GeoLocationViewImpl geoLocationView = new GeoLocationViewImpl();
+		return geoLocationView;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GeoPolyline createGeoPolyline() {
+		GeoPolylineImpl geoPolyline = new GeoPolylineImpl();
+		return geoPolyline;
 	}
 
 	/**

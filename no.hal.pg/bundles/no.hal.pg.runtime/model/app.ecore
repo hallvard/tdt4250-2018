@@ -129,24 +129,34 @@
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="zoom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="10"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="markers" upperBound="-1"
-        eType="#//MapMarker" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="geoLocationViews" upperBound="-1"
+        eType="#//AbstractGeoLocationView" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="geoPolylines" upperBound="-1"
+        eType="#//AbstractGeoLocationView" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MapMarker">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="name" value="lat"/>
-        <details key="kind" value="attribute"/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="longitude" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
-      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
-        <details key="name" value="lon"/>
-        <details key="kind" value="attribute"/>
-      </eAnnotations>
-    </eStructuralFeatures>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractGeoLocationView" abstract="true"
+      eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocated">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="latLong" eType="ecore:EDataType ../../no.hal.pg.osm/model/osm.ecore#//LatLong"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="options" eType="#//MapMarkerOptions"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapMarkerOptions">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="radius" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoLocatedView" eSuperTypes="#//AbstractGeoLocationView">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoLocationView" eSuperTypes="#//AbstractGeoLocationView ../../no.hal.pg.osm/model/osm.ecore#//GeoLocation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GeoPolyline">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated">
+      <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
+        <details key="include" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="closed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -31,10 +31,10 @@ public class ResourceProviderQlTest extends AbstractHttpRequestTest {
 	public void testRequests() throws IOException {
 		int attemptsLeft = 5;
 		while (attemptsLeft > 0) {
-			HttpURLConnection con1 = getRequest("");
+			HttpURLConnection con = getRequest("/games/0");
 			try {
 				attemptsLeft--;
-				testGame(con1);
+				testGame(con);
 				break;
 			} catch (Exception e) {
 				if (attemptsLeft <= 0) {
@@ -46,134 +46,40 @@ public class ResourceProviderQlTest extends AbstractHttpRequestTest {
 				}
 			}
 		}
-		testAcceptTask(postRequest("/tasks", "application/graphql", "query { canStart isStarted isFinished }"));
-//		testIgnore(getRequest("/tasks/0/start"));
-		testAcceptTaskStart(postRequest("/tasks/0", "application/graphql", "mutation { start { isStarted isFinished }}"));
-//		testIgnore(getRequest("/tasks/0/accept"));
-		testAcceptTaskAccept(postRequest("/tasks/0", "application/graphql", "mutation { accept { isStarted isFinished }}"));
+		testAcceptTask(postRequest("/games/0/tasks", "application/graphql", "query { canStart isStarted isFinished }"));
+		testAcceptTaskStart(postRequest("/games/0/tasks/0", "application/graphql", "mutation { start { isStarted isFinished }}"));
+		testAcceptTaskAccept(postRequest("/games/0/tasks/0", "application/graphql", "mutation { accept { isStarted isFinished }}"));
 	}
 
-	private boolean useOwnReader = true;
-	
 	protected void testIgnore(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 	}
+
 	protected void testGame(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
-//	   	System.out.println(mapper.writeValueAsString(jsonNode));
+		JsonNode jsonNode = getJsonNode(con);
+	   	System.out.println(new ObjectMapper().writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		ObjectNode gameNode = checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "players", "items"
 		checkArrayNode(gameNode.get("tasks"), 5);
 	}
 
 	protected void testAcceptTask(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
-		System.out.println(mapper.writeValueAsString(jsonNode));
+		JsonNode jsonNode = getJsonNode(con);
+//		System.out.println(mapper.writeValueAsString(jsonNode));
 		checkObjectNode(jsonNode, "canStart", true, "isStarted", false, "isFinished", false);
 	}
 
 	protected void testAcceptTaskStart(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		checkObjectNode(jsonNode, "start");
 		checkObjectNode(((ObjectNode) jsonNode).get("start"), "isStarted", true, "isFinished", false);
 	}
 	
 	protected void testAcceptTaskAccept(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		checkObjectNode(jsonNode, "accept");
 		checkObjectNode(((ObjectNode) jsonNode).get("accept"), "isStarted", true, "isFinished", true);
 	}
-
-	/*
-[ {
-  "players" : [ ],
-  "items" : [ ],
-  "tasks" : [ {
-    "players" : [ ],
-    "startConditions" : [ ],
-    "finishConditions" : [ ],
-    "rewards" : [ ]
-  }, {
-    "players" : [ ],
-    "startConditions" : [ {
-      "context" : {
-        "players" : [ ],
-        "startConditions" : [ ],
-        "finishConditions" : [ ],
-        "rewards" : [ ]
-      }
-    } ],
-    "finishConditions" : [ ],
-    "rewards" : [ ]
-  }, {
-    "players" : [ ],
-    "startConditions" : [ {
-      "context" : {
-        "players" : [ ],
-        "startConditions" : [ ],
-        "finishConditions" : [ ],
-        "rewards" : [ ]
-      }
-    } ],
-    "finishConditions" : [ ],
-    "rewards" : [ ]
-  }, {
-    "players" : [ ],
-    "startConditions" : [ {
-      "logic" : false,
-      "predicates" : [ {
-        "context" : {
-          "players" : [ ],
-          "startConditions" : [ ],
-          "finishConditions" : [ ],
-          "rewards" : [ ]
-        }
-      }, {
-        "context" : {
-          "players" : [ ],
-          "startConditions" : [ ],
-          "finishConditions" : [ ],
-          "rewards" : [ ]
-        }
-      } ]
-    } ],
-    "finishConditions" : [ ],
-    "rewards" : [ ]
-  }, {
-    "players" : [ ],
-    "startConditions" : [ {
-      "logic" : true,
-      "predicates" : [ {
-        "context" : {
-          "players" : [ ],
-          "startConditions" : [ ],
-          "finishConditions" : [ ],
-          "rewards" : [ ]
-        }
-      }, {
-        "context" : {
-          "players" : [ ],
-          "startConditions" : [ ],
-          "finishConditions" : [ ],
-          "rewards" : [ ]
-        }
-      } ]
-    } ],
-    "finishConditions" : [ ],
-    "rewards" : [ ]
-  } ]
-} ]
-	 */
 }

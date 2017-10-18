@@ -6,8 +6,8 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
+import no.hal.pg.app.AbstractGeoLocationView;
 import no.hal.pg.app.AppPackage;
-import no.hal.pg.app.MapMarker;
 import no.hal.pg.app.MapView;
 
 import no.hal.pg.osm.impl.GeoLocationImpl;
@@ -34,7 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.app.impl.MapViewImpl#getZoom <em>Zoom</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.MapViewImpl#getMarkers <em>Markers</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.MapViewImpl#getGeoLocationViews <em>Geo Location Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.MapViewImpl#getGeoPolylines <em>Geo Polylines</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,14 +62,24 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 	protected int zoom = ZOOM_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getMarkers() <em>Markers</em>}' containment reference list.
+	 * The cached value of the '{@link #getGeoLocationViews() <em>Geo Location Views</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getMarkers()
+	 * @see #getGeoLocationViews()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<MapMarker> markers;
+	protected EList<AbstractGeoLocationView> geoLocationViews;
+
+	/**
+	 * The cached value of the '{@link #getGeoPolylines() <em>Geo Polylines</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getGeoPolylines()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AbstractGeoLocationView> geoPolylines;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,12 +128,23 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<MapMarker> getMarkers() {
-		if (markers == null) {
-			markers = new EObjectContainmentEList<MapMarker>(MapMarker.class, this, AppPackage.MAP_VIEW__MARKERS);
+	public EList<AbstractGeoLocationView> getGeoLocationViews() {
+		if (geoLocationViews == null) {
+			geoLocationViews = new EObjectContainmentEList<AbstractGeoLocationView>(AbstractGeoLocationView.class, this, AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS);
 		}
-		return markers;
+		return geoLocationViews;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<AbstractGeoLocationView> getGeoPolylines() {
+		if (geoPolylines == null) {
+			geoPolylines = new EObjectContainmentEList<AbstractGeoLocationView>(AbstractGeoLocationView.class, this, AppPackage.MAP_VIEW__GEO_POLYLINES);
+		}
+		return geoPolylines;
 	}
 
 	/**
@@ -151,8 +173,10 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AppPackage.MAP_VIEW__MARKERS:
-				return ((InternalEList<?>)getMarkers()).basicRemove(otherEnd, msgs);
+			case AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS:
+				return ((InternalEList<?>)getGeoLocationViews()).basicRemove(otherEnd, msgs);
+			case AppPackage.MAP_VIEW__GEO_POLYLINES:
+				return ((InternalEList<?>)getGeoPolylines()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -167,8 +191,10 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 		switch (featureID) {
 			case AppPackage.MAP_VIEW__ZOOM:
 				return getZoom();
-			case AppPackage.MAP_VIEW__MARKERS:
-				return getMarkers();
+			case AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS:
+				return getGeoLocationViews();
+			case AppPackage.MAP_VIEW__GEO_POLYLINES:
+				return getGeoPolylines();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -185,9 +211,13 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 			case AppPackage.MAP_VIEW__ZOOM:
 				setZoom((Integer)newValue);
 				return;
-			case AppPackage.MAP_VIEW__MARKERS:
-				getMarkers().clear();
-				getMarkers().addAll((Collection<? extends MapMarker>)newValue);
+			case AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS:
+				getGeoLocationViews().clear();
+				getGeoLocationViews().addAll((Collection<? extends AbstractGeoLocationView>)newValue);
+				return;
+			case AppPackage.MAP_VIEW__GEO_POLYLINES:
+				getGeoPolylines().clear();
+				getGeoPolylines().addAll((Collection<? extends AbstractGeoLocationView>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -204,8 +234,11 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 			case AppPackage.MAP_VIEW__ZOOM:
 				setZoom(ZOOM_EDEFAULT);
 				return;
-			case AppPackage.MAP_VIEW__MARKERS:
-				getMarkers().clear();
+			case AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS:
+				getGeoLocationViews().clear();
+				return;
+			case AppPackage.MAP_VIEW__GEO_POLYLINES:
+				getGeoPolylines().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -221,8 +254,10 @@ public class MapViewImpl extends GeoLocationImpl implements MapView {
 		switch (featureID) {
 			case AppPackage.MAP_VIEW__ZOOM:
 				return zoom != ZOOM_EDEFAULT;
-			case AppPackage.MAP_VIEW__MARKERS:
-				return markers != null && !markers.isEmpty();
+			case AppPackage.MAP_VIEW__GEO_LOCATION_VIEWS:
+				return geoLocationViews != null && !geoLocationViews.isEmpty();
+			case AppPackage.MAP_VIEW__GEO_POLYLINES:
+				return geoPolylines != null && !geoPolylines.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

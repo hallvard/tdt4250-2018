@@ -3,7 +3,7 @@
 package no.hal.pg.app.impl;
 
 import no.hal.pg.app.AppPackage;
-import no.hal.pg.app.MapMarker;
+import no.hal.pg.app.MapMarkerOptions;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,62 +14,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Map Marker</b></em>'.
+ * An implementation of the model object '<em><b>Map Marker Options</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.app.impl.MapMarkerImpl#getLatitude <em>Latitude</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.MapMarkerImpl#getLongitude <em>Longitude</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.MapMarkerImpl#getText <em>Text</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.MapMarkerImpl#getRadius <em>Radius</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.MapMarkerImpl#getColor <em>Color</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.MapMarkerOptionsImpl#getText <em>Text</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.MapMarkerOptionsImpl#getRadius <em>Radius</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.MapMarkerOptionsImpl#getColor <em>Color</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMarker {
-	/**
-	 * The default value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLatitude()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final float LATITUDE_EDEFAULT = 0.0F;
-
-	/**
-	 * The cached value of the '{@link #getLatitude() <em>Latitude</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLatitude()
-	 * @generated
-	 * @ordered
-	 */
-	protected float latitude = LATITUDE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLongitude()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final float LONGITUDE_EDEFAULT = 0.0F;
-
-	/**
-	 * The cached value of the '{@link #getLongitude() <em>Longitude</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLongitude()
-	 * @generated
-	 * @ordered
-	 */
-	protected float longitude = LONGITUDE_EDEFAULT;
-
+public class MapMarkerOptionsImpl extends MinimalEObjectImpl.Container implements MapMarkerOptions {
 	/**
 	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -135,7 +93,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MapMarkerImpl() {
+	protected MapMarkerOptionsImpl() {
 		super();
 	}
 
@@ -146,49 +104,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return AppPackage.Literals.MAP_MARKER;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public float getLatitude() {
-		return latitude;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLatitude(float newLatitude) {
-		float oldLatitude = latitude;
-		latitude = newLatitude;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER__LATITUDE, oldLatitude, latitude));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public float getLongitude() {
-		return longitude;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLongitude(float newLongitude) {
-		float oldLongitude = longitude;
-		longitude = newLongitude;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER__LONGITUDE, oldLongitude, longitude));
+		return AppPackage.Literals.MAP_MARKER_OPTIONS;
 	}
 
 	/**
@@ -209,7 +125,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 		String oldText = text;
 		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER__TEXT, oldText, text));
+			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER_OPTIONS__TEXT, oldText, text));
 	}
 
 	/**
@@ -230,7 +146,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 		Integer oldRadius = radius;
 		radius = newRadius;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER__RADIUS, oldRadius, radius));
+			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER_OPTIONS__RADIUS, oldRadius, radius));
 	}
 
 	/**
@@ -251,7 +167,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 		String oldColor = color;
 		color = newColor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER__COLOR, oldColor, color));
+			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.MAP_MARKER_OPTIONS__COLOR, oldColor, color));
 	}
 
 	/**
@@ -262,15 +178,11 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AppPackage.MAP_MARKER__LATITUDE:
-				return getLatitude();
-			case AppPackage.MAP_MARKER__LONGITUDE:
-				return getLongitude();
-			case AppPackage.MAP_MARKER__TEXT:
+			case AppPackage.MAP_MARKER_OPTIONS__TEXT:
 				return getText();
-			case AppPackage.MAP_MARKER__RADIUS:
+			case AppPackage.MAP_MARKER_OPTIONS__RADIUS:
 				return getRadius();
-			case AppPackage.MAP_MARKER__COLOR:
+			case AppPackage.MAP_MARKER_OPTIONS__COLOR:
 				return getColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -284,19 +196,13 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AppPackage.MAP_MARKER__LATITUDE:
-				setLatitude((Float)newValue);
-				return;
-			case AppPackage.MAP_MARKER__LONGITUDE:
-				setLongitude((Float)newValue);
-				return;
-			case AppPackage.MAP_MARKER__TEXT:
+			case AppPackage.MAP_MARKER_OPTIONS__TEXT:
 				setText((String)newValue);
 				return;
-			case AppPackage.MAP_MARKER__RADIUS:
+			case AppPackage.MAP_MARKER_OPTIONS__RADIUS:
 				setRadius((Integer)newValue);
 				return;
-			case AppPackage.MAP_MARKER__COLOR:
+			case AppPackage.MAP_MARKER_OPTIONS__COLOR:
 				setColor((String)newValue);
 				return;
 		}
@@ -311,19 +217,13 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AppPackage.MAP_MARKER__LATITUDE:
-				setLatitude(LATITUDE_EDEFAULT);
-				return;
-			case AppPackage.MAP_MARKER__LONGITUDE:
-				setLongitude(LONGITUDE_EDEFAULT);
-				return;
-			case AppPackage.MAP_MARKER__TEXT:
+			case AppPackage.MAP_MARKER_OPTIONS__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case AppPackage.MAP_MARKER__RADIUS:
+			case AppPackage.MAP_MARKER_OPTIONS__RADIUS:
 				setRadius(RADIUS_EDEFAULT);
 				return;
-			case AppPackage.MAP_MARKER__COLOR:
+			case AppPackage.MAP_MARKER_OPTIONS__COLOR:
 				setColor(COLOR_EDEFAULT);
 				return;
 		}
@@ -338,15 +238,11 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AppPackage.MAP_MARKER__LATITUDE:
-				return latitude != LATITUDE_EDEFAULT;
-			case AppPackage.MAP_MARKER__LONGITUDE:
-				return longitude != LONGITUDE_EDEFAULT;
-			case AppPackage.MAP_MARKER__TEXT:
+			case AppPackage.MAP_MARKER_OPTIONS__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case AppPackage.MAP_MARKER__RADIUS:
+			case AppPackage.MAP_MARKER_OPTIONS__RADIUS:
 				return RADIUS_EDEFAULT == null ? radius != null : !RADIUS_EDEFAULT.equals(radius);
-			case AppPackage.MAP_MARKER__COLOR:
+			case AppPackage.MAP_MARKER_OPTIONS__COLOR:
 				return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
 		}
 		return super.eIsSet(featureID);
@@ -362,11 +258,7 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (latitude: ");
-		result.append(latitude);
-		result.append(", longitude: ");
-		result.append(longitude);
-		result.append(", text: ");
+		result.append(" (text: ");
 		result.append(text);
 		result.append(", radius: ");
 		result.append(radius);
@@ -376,4 +268,4 @@ public class MapMarkerImpl extends MinimalEObjectImpl.Container implements MapMa
 		return result.toString();
 	}
 
-} //MapMarkerImpl
+} //MapMarkerOptionsImpl

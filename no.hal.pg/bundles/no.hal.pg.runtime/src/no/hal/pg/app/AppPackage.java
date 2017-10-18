@@ -602,13 +602,22 @@ public interface AppPackage extends EPackage {
 	int MAP_VIEW__ZOOM = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Markers</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Geo Location Views</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_VIEW__MARKERS = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
+	int MAP_VIEW__GEO_LOCATION_VIEWS = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Geo Polylines</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAP_VIEW__GEO_POLYLINES = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Map View</em>' class.
@@ -617,7 +626,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_VIEW_FEATURE_COUNT = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 2;
+	int MAP_VIEW_FEATURE_COUNT = OsmPackage.GEO_LOCATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Get Lat Long</em>' operation.
@@ -647,32 +656,69 @@ public interface AppPackage extends EPackage {
 	int MAP_VIEW_OPERATION_COUNT = OsmPackage.GEO_LOCATION_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link no.hal.pg.app.impl.MapMarkerImpl <em>Map Marker</em>}' class.
+	 * The meta object id for the '{@link no.hal.pg.app.impl.AbstractGeoLocationViewImpl <em>Abstract Geo Location View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.app.impl.MapMarkerImpl
-	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarker()
+	 * @see no.hal.pg.app.impl.AbstractGeoLocationViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getAbstractGeoLocationView()
 	 * @generated
 	 */
-	int MAP_MARKER = 9;
+	int ABSTRACT_GEO_LOCATION_VIEW = 9;
 
 	/**
-	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
+	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER__LATITUDE = 0;
+	int ABSTRACT_GEO_LOCATION_VIEW__LAT_LONG = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Longitude</b></em>' attribute.
+	 * The feature id for the '<em><b>Options</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER__LONGITUDE = 1;
+	int ABSTRACT_GEO_LOCATION_VIEW__OPTIONS = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Geo Location View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT = OsmPackage.GEO_LOCATED_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GEO_LOCATION_VIEW___GET_LAT_LONG = OsmPackage.GEO_LOCATED___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Abstract Geo Location View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GEO_LOCATION_VIEW_OPERATION_COUNT = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.MapMarkerOptionsImpl <em>Map Marker Options</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.MapMarkerOptionsImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarkerOptions()
+	 * @generated
+	 */
+	int MAP_MARKER_OPTIONS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -681,7 +727,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER__TEXT = 2;
+	int MAP_MARKER_OPTIONS__TEXT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Radius</b></em>' attribute.
@@ -690,7 +736,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER__RADIUS = 3;
+	int MAP_MARKER_OPTIONS__RADIUS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Color</b></em>' attribute.
@@ -699,26 +745,208 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER__COLOR = 4;
+	int MAP_MARKER_OPTIONS__COLOR = 2;
 
 	/**
-	 * The number of structural features of the '<em>Map Marker</em>' class.
+	 * The number of structural features of the '<em>Map Marker Options</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER_FEATURE_COUNT = 5;
+	int MAP_MARKER_OPTIONS_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>Map Marker</em>' class.
+	 * The number of operations of the '<em>Map Marker Options</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_MARKER_OPERATION_COUNT = 0;
+	int MAP_MARKER_OPTIONS_OPERATION_COUNT = 0;
 
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.GeoLocatedViewImpl <em>Geo Located View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.GeoLocatedViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocatedView()
+	 * @generated
+	 */
+	int GEO_LOCATED_VIEW = 11;
+
+	/**
+	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW__LAT_LONG = ABSTRACT_GEO_LOCATION_VIEW__LAT_LONG;
+
+	/**
+	 * The feature id for the '<em><b>Options</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW__OPTIONS = ABSTRACT_GEO_LOCATION_VIEW__OPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Location</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW__LOCATION = ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Geo Located View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW_FEATURE_COUNT = ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW___GET_LAT_LONG = ABSTRACT_GEO_LOCATION_VIEW___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Geo Located View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATED_VIEW_OPERATION_COUNT = ABSTRACT_GEO_LOCATION_VIEW_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.GeoLocationViewImpl <em>Geo Location View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.GeoLocationViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocationView()
+	 * @generated
+	 */
+	int GEO_LOCATION_VIEW = 12;
+
+	/**
+	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW__LAT_LONG = ABSTRACT_GEO_LOCATION_VIEW__LAT_LONG;
+
+	/**
+	 * The feature id for the '<em><b>Options</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW__OPTIONS = ABSTRACT_GEO_LOCATION_VIEW__OPTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW__LATITUDE = ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Longitude</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW__LONGITUDE = ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Geo Location View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW_FEATURE_COUNT = ABSTRACT_GEO_LOCATION_VIEW_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW___GET_LAT_LONG = ABSTRACT_GEO_LOCATION_VIEW___GET_LAT_LONG;
+
+	/**
+	 * The number of operations of the '<em>Geo Location View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_LOCATION_VIEW_OPERATION_COUNT = ABSTRACT_GEO_LOCATION_VIEW_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.GeoPolylineImpl <em>Geo Polyline</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.GeoPolylineImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoPolyline()
+	 * @generated
+	 */
+	int GEO_POLYLINE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Locations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_POLYLINE__LOCATIONS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Closed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_POLYLINE__CLOSED = 1;
+
+	/**
+	 * The number of structural features of the '<em>Geo Polyline</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_POLYLINE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Geo Polyline</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GEO_POLYLINE_OPERATION_COUNT = 0;
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.View <em>View</em>}'.
@@ -985,15 +1213,26 @@ public interface AppPackage extends EPackage {
 	EAttribute getMapView_Zoom();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.MapView#getMarkers <em>Markers</em>}'.
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.MapView#getGeoLocationViews <em>Geo Location Views</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Markers</em>'.
-	 * @see no.hal.pg.app.MapView#getMarkers()
+	 * @return the meta object for the containment reference list '<em>Geo Location Views</em>'.
+	 * @see no.hal.pg.app.MapView#getGeoLocationViews()
 	 * @see #getMapView()
 	 * @generated
 	 */
-	EReference getMapView_Markers();
+	EReference getMapView_GeoLocationViews();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.MapView#getGeoPolylines <em>Geo Polylines</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Geo Polylines</em>'.
+	 * @see no.hal.pg.app.MapView#getGeoPolylines()
+	 * @see #getMapView()
+	 * @generated
+	 */
+	EReference getMapView_GeoPolylines();
 
 	/**
 	 * Returns the meta object for the '{@link no.hal.pg.app.MapView#navigate(float, float, int) <em>Navigate</em>}' operation.
@@ -1006,69 +1245,142 @@ public interface AppPackage extends EPackage {
 	EOperation getMapView__Navigate__float_float_int();
 
 	/**
-	 * Returns the meta object for class '{@link no.hal.pg.app.MapMarker <em>Map Marker</em>}'.
+	 * Returns the meta object for class '{@link no.hal.pg.app.AbstractGeoLocationView <em>Abstract Geo Location View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Map Marker</em>'.
-	 * @see no.hal.pg.app.MapMarker
+	 * @return the meta object for class '<em>Abstract Geo Location View</em>'.
+	 * @see no.hal.pg.app.AbstractGeoLocationView
 	 * @generated
 	 */
-	EClass getMapMarker();
+	EClass getAbstractGeoLocationView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getLatitude <em>Latitude</em>}'.
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.AbstractGeoLocationView#getLatLong <em>Lat Long</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Latitude</em>'.
-	 * @see no.hal.pg.app.MapMarker#getLatitude()
-	 * @see #getMapMarker()
+	 * @return the meta object for the attribute '<em>Lat Long</em>'.
+	 * @see no.hal.pg.app.AbstractGeoLocationView#getLatLong()
+	 * @see #getAbstractGeoLocationView()
 	 * @generated
 	 */
-	EAttribute getMapMarker_Latitude();
+	EAttribute getAbstractGeoLocationView_LatLong();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getLongitude <em>Longitude</em>}'.
+	 * Returns the meta object for the containment reference '{@link no.hal.pg.app.AbstractGeoLocationView#getOptions <em>Options</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Longitude</em>'.
-	 * @see no.hal.pg.app.MapMarker#getLongitude()
-	 * @see #getMapMarker()
+	 * @return the meta object for the containment reference '<em>Options</em>'.
+	 * @see no.hal.pg.app.AbstractGeoLocationView#getOptions()
+	 * @see #getAbstractGeoLocationView()
 	 * @generated
 	 */
-	EAttribute getMapMarker_Longitude();
+	EReference getAbstractGeoLocationView_Options();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getText <em>Text</em>}'.
+	 * Returns the meta object for class '{@link no.hal.pg.app.MapMarkerOptions <em>Map Marker Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Map Marker Options</em>'.
+	 * @see no.hal.pg.app.MapMarkerOptions
+	 * @generated
+	 */
+	EClass getMapMarkerOptions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarkerOptions#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see no.hal.pg.app.MapMarker#getText()
-	 * @see #getMapMarker()
+	 * @see no.hal.pg.app.MapMarkerOptions#getText()
+	 * @see #getMapMarkerOptions()
 	 * @generated
 	 */
-	EAttribute getMapMarker_Text();
+	EAttribute getMapMarkerOptions_Text();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getRadius <em>Radius</em>}'.
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarkerOptions#getRadius <em>Radius</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Radius</em>'.
-	 * @see no.hal.pg.app.MapMarker#getRadius()
-	 * @see #getMapMarker()
+	 * @see no.hal.pg.app.MapMarkerOptions#getRadius()
+	 * @see #getMapMarkerOptions()
 	 * @generated
 	 */
-	EAttribute getMapMarker_Radius();
+	EAttribute getMapMarkerOptions_Radius();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarker#getColor <em>Color</em>}'.
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.MapMarkerOptions#getColor <em>Color</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Color</em>'.
-	 * @see no.hal.pg.app.MapMarker#getColor()
-	 * @see #getMapMarker()
+	 * @see no.hal.pg.app.MapMarkerOptions#getColor()
+	 * @see #getMapMarkerOptions()
 	 * @generated
 	 */
-	EAttribute getMapMarker_Color();
+	EAttribute getMapMarkerOptions_Color();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.GeoLocatedView <em>Geo Located View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Geo Located View</em>'.
+	 * @see no.hal.pg.app.GeoLocatedView
+	 * @generated
+	 */
+	EClass getGeoLocatedView();
+
+	/**
+	 * Returns the meta object for the reference '{@link no.hal.pg.app.GeoLocatedView#getLocation <em>Location</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Location</em>'.
+	 * @see no.hal.pg.app.GeoLocatedView#getLocation()
+	 * @see #getGeoLocatedView()
+	 * @generated
+	 */
+	EReference getGeoLocatedView_Location();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.GeoLocationView <em>Geo Location View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Geo Location View</em>'.
+	 * @see no.hal.pg.app.GeoLocationView
+	 * @generated
+	 */
+	EClass getGeoLocationView();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.GeoPolyline <em>Geo Polyline</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Geo Polyline</em>'.
+	 * @see no.hal.pg.app.GeoPolyline
+	 * @generated
+	 */
+	EClass getGeoPolyline();
+
+	/**
+	 * Returns the meta object for the reference list '{@link no.hal.pg.app.GeoPolyline#getLocations <em>Locations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Locations</em>'.
+	 * @see no.hal.pg.app.GeoPolyline#getLocations()
+	 * @see #getGeoPolyline()
+	 * @generated
+	 */
+	EReference getGeoPolyline_Locations();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.GeoPolyline#isClosed <em>Closed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Closed</em>'.
+	 * @see no.hal.pg.app.GeoPolyline#isClosed()
+	 * @see #getGeoPolyline()
+	 * @generated
+	 */
+	EAttribute getGeoPolyline_Closed();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1312,12 +1624,20 @@ public interface AppPackage extends EPackage {
 		EAttribute MAP_VIEW__ZOOM = eINSTANCE.getMapView_Zoom();
 
 		/**
-		 * The meta object literal for the '<em><b>Markers</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Geo Location Views</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAP_VIEW__MARKERS = eINSTANCE.getMapView_Markers();
+		EReference MAP_VIEW__GEO_LOCATION_VIEWS = eINSTANCE.getMapView_GeoLocationViews();
+
+		/**
+		 * The meta object literal for the '<em><b>Geo Polylines</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAP_VIEW__GEO_POLYLINES = eINSTANCE.getMapView_GeoPolylines();
 
 		/**
 		 * The meta object literal for the '<em><b>Navigate</b></em>' operation.
@@ -1328,30 +1648,40 @@ public interface AppPackage extends EPackage {
 		EOperation MAP_VIEW___NAVIGATE__FLOAT_FLOAT_INT = eINSTANCE.getMapView__Navigate__float_float_int();
 
 		/**
-		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapMarkerImpl <em>Map Marker</em>}' class.
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.AbstractGeoLocationViewImpl <em>Abstract Geo Location View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.app.impl.MapMarkerImpl
-		 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarker()
+		 * @see no.hal.pg.app.impl.AbstractGeoLocationViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getAbstractGeoLocationView()
 		 * @generated
 		 */
-		EClass MAP_MARKER = eINSTANCE.getMapMarker();
+		EClass ABSTRACT_GEO_LOCATION_VIEW = eINSTANCE.getAbstractGeoLocationView();
 
 		/**
-		 * The meta object literal for the '<em><b>Latitude</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Lat Long</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAP_MARKER__LATITUDE = eINSTANCE.getMapMarker_Latitude();
+		EAttribute ABSTRACT_GEO_LOCATION_VIEW__LAT_LONG = eINSTANCE.getAbstractGeoLocationView_LatLong();
 
 		/**
-		 * The meta object literal for the '<em><b>Longitude</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Options</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAP_MARKER__LONGITUDE = eINSTANCE.getMapMarker_Longitude();
+		EReference ABSTRACT_GEO_LOCATION_VIEW__OPTIONS = eINSTANCE.getAbstractGeoLocationView_Options();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapMarkerOptionsImpl <em>Map Marker Options</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.MapMarkerOptionsImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarkerOptions()
+		 * @generated
+		 */
+		EClass MAP_MARKER_OPTIONS = eINSTANCE.getMapMarkerOptions();
 
 		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
@@ -1359,7 +1689,7 @@ public interface AppPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAP_MARKER__TEXT = eINSTANCE.getMapMarker_Text();
+		EAttribute MAP_MARKER_OPTIONS__TEXT = eINSTANCE.getMapMarkerOptions_Text();
 
 		/**
 		 * The meta object literal for the '<em><b>Radius</b></em>' attribute feature.
@@ -1367,7 +1697,7 @@ public interface AppPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAP_MARKER__RADIUS = eINSTANCE.getMapMarker_Radius();
+		EAttribute MAP_MARKER_OPTIONS__RADIUS = eINSTANCE.getMapMarkerOptions_Radius();
 
 		/**
 		 * The meta object literal for the '<em><b>Color</b></em>' attribute feature.
@@ -1375,7 +1705,61 @@ public interface AppPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MAP_MARKER__COLOR = eINSTANCE.getMapMarker_Color();
+		EAttribute MAP_MARKER_OPTIONS__COLOR = eINSTANCE.getMapMarkerOptions_Color();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.GeoLocatedViewImpl <em>Geo Located View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.GeoLocatedViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocatedView()
+		 * @generated
+		 */
+		EClass GEO_LOCATED_VIEW = eINSTANCE.getGeoLocatedView();
+
+		/**
+		 * The meta object literal for the '<em><b>Location</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GEO_LOCATED_VIEW__LOCATION = eINSTANCE.getGeoLocatedView_Location();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.GeoLocationViewImpl <em>Geo Location View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.GeoLocationViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocationView()
+		 * @generated
+		 */
+		EClass GEO_LOCATION_VIEW = eINSTANCE.getGeoLocationView();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.GeoPolylineImpl <em>Geo Polyline</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.GeoPolylineImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoPolyline()
+		 * @generated
+		 */
+		EClass GEO_POLYLINE = eINSTANCE.getGeoPolyline();
+
+		/**
+		 * The meta object literal for the '<em><b>Locations</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GEO_POLYLINE__LOCATIONS = eINSTANCE.getGeoPolyline_Locations();
+
+		/**
+		 * The meta object literal for the '<em><b>Closed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute GEO_POLYLINE__CLOSED = eINSTANCE.getGeoPolyline_Closed();
 
 	}
 

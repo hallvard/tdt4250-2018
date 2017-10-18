@@ -16,7 +16,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.app.MapView#getZoom <em>Zoom</em>}</li>
- *   <li>{@link no.hal.pg.app.MapView#getMarkers <em>Markers</em>}</li>
+ *   <li>{@link no.hal.pg.app.MapView#getGeoLocationViews <em>Geo Location Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.MapView#getGeoPolylines <em>Geo Polylines</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.app.AppPackage#getMapView()
@@ -52,20 +53,36 @@ public interface MapView extends GeoLocation {
 	void setZoom(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Markers</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.app.MapMarker}.
+	 * Returns the value of the '<em><b>Geo Location Views</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.app.AbstractGeoLocationView}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Markers</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Geo Location Views</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Markers</em>' containment reference list.
-	 * @see no.hal.pg.app.AppPackage#getMapView_Markers()
+	 * @return the value of the '<em>Geo Location Views</em>' containment reference list.
+	 * @see no.hal.pg.app.AppPackage#getMapView_GeoLocationViews()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<MapMarker> getMarkers();
+	EList<AbstractGeoLocationView> getGeoLocationViews();
+
+	/**
+	 * Returns the value of the '<em><b>Geo Polylines</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.app.AbstractGeoLocationView}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Geo Polylines</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Geo Polylines</em>' containment reference list.
+	 * @see no.hal.pg.app.AppPackage#getMapView_GeoPolylines()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AbstractGeoLocationView> getGeoPolylines();
 
 	/**
 	 * <!-- begin-user-doc -->

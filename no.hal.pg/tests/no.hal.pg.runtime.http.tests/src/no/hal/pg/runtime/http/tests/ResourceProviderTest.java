@@ -32,7 +32,7 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 	public void testRequests() throws IOException {
 		int attemptsLeft = 5;
 		while (attemptsLeft > 0) {
-			HttpURLConnection con1 = getRequest("");
+			HttpURLConnection con1 = getRequest("/games/0");
 			try {
 				attemptsLeft--;
 				testGame(con1);
@@ -47,39 +47,17 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 				}
 			}
 		}
-		testAcceptTask(getRequest("/tasks/0"));
-		testAcceptTaskStart(getRequest("/tasks/0/start"));
-		testAcceptTaskAccept(getRequest("/tasks/0/accept"));
-		testAcceptTaskFinished(getRequest("/tasks/0"));
-		
-//		HttpURLConnection con2 = (HttpURLConnection) new URL(urlString).openConnection();
-//		con2.setRequestMethod("POST");
-//		addAuthorization(con2);
-//		con2.setDoOutput(true);
-//		Charset utf8 = StandardCharsets.UTF_8;
-//		con2.setRequestProperty("Content-Type", "application/json; charset=" + utf8.name()); 
-//		con2.setRequestProperty("charset", utf8.name());
-//		JsonNodeFactory jsonFactory = new JsonNodeFactory(false);
-//		ObjectNode parameters = jsonFactory.objectNode();
-//		// moves away from one item (they are at cafe."SiT Kafe Hangaren" and artwork.Integrasjon), to auditorium F3
-//		parameters.set("lat", jsonFactory.numberNode(63.4171782));
-//		parameters.set("lon", jsonFactory.numberNode(10.4029398));
-//		ObjectMapper mapper = new ObjectMapper();
-//		byte[] postData = mapper.writeValueAsString(parameters).getBytes(utf8);
-//		con2.setRequestProperty( "Content-Length", Integer.toString(postData.length));
-//		con2.setUseCaches(false);
-//		OutputStream output = con2.getOutputStream();
-//		output.write(postData);
-//		output.flush();
-//		testGame(con2);
+		testAcceptTask(getRequest("/games/0/tasks/0"));
+		testAcceptTaskStart(getRequest("/games/0/tasks/0/start"));
+		testAcceptTaskAccept(getRequest("/games/0/tasks/0/accept"));
+		testAcceptTaskFinished(getRequest("/games/0/tasks/0"));
 	}
 
 	private boolean useOwnReader = true;
 	
 	protected void testGame(HttpURLConnection con) throws IOException {
 		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //	   	System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		ObjectNode gameNode = checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "players", "items"
@@ -87,36 +65,28 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 	}
 
 	protected void testAcceptTask(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "startConditions", "finishConditions"
 	}
 	
 	protected void testAcceptTaskStart(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		// void method
-		Assert.assertEquals("null", mapper.writeValueAsString(jsonNode));
+		Assert.assertEquals("null", new ObjectMapper().writeValueAsString(jsonNode));
 	}
 	
 	protected void testAcceptTaskAccept(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		// void method
-		Assert.assertEquals("null", mapper.writeValueAsString(jsonNode));
+		Assert.assertEquals("null", new ObjectMapper().writeValueAsString(jsonNode));
 	}
 
 	protected void testAcceptTaskFinished(HttpURLConnection con) throws IOException {
-		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
+		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		checkObjectNode(rootNode.get(0), "result", true);
@@ -124,6 +94,7 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 
 	//
 	
+	@Override
 	protected ArrayNode checkArrayNode(JsonNode node, int size) {
 		Assert.assertTrue(node instanceof ArrayNode);
 		ArrayNode arrayNode = (ArrayNode) node;
@@ -131,6 +102,7 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 		return arrayNode;
 	}
 	
+	@Override
 	protected ObjectNode checkObjectNode(JsonNode node, String... fields) {
 		Assert.assertTrue(node instanceof ObjectNode);
 		ObjectNode objectNode = (ObjectNode) node;
@@ -140,6 +112,7 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 		return (ObjectNode) node;
 	}
 
+	@Override
 	protected ObjectNode checkObjectNode(JsonNode node, Object... fieldsAndValues) {
 		Assert.assertTrue(node instanceof ObjectNode);
 		ObjectNode objectNode = (ObjectNode) node;

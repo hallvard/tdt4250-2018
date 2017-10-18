@@ -108,8 +108,24 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 				return createMapViewAdapter();
 			}
 			@Override
-			public Adapter caseMapMarker(MapMarker object) {
-				return createMapMarkerAdapter();
+			public Adapter caseAbstractGeoLocationView(AbstractGeoLocationView object) {
+				return createAbstractGeoLocationViewAdapter();
+			}
+			@Override
+			public Adapter caseMapMarkerOptions(MapMarkerOptions object) {
+				return createMapMarkerOptionsAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocatedView(GeoLocatedView object) {
+				return createGeoLocatedViewAdapter();
+			}
+			@Override
+			public Adapter caseGeoLocationView(GeoLocationView object) {
+				return createGeoLocationViewAdapter();
+			}
+			@Override
+			public Adapter caseGeoPolyline(GeoPolyline object) {
+				return createGeoPolylineAdapter();
 			}
 			@Override
 			public Adapter caseGeoLocated(GeoLocated object) {
@@ -266,16 +282,72 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.MapMarker <em>Map Marker</em>}'.
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.AbstractGeoLocationView <em>Abstract Geo Location View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see no.hal.pg.app.MapMarker
+	 * @see no.hal.pg.app.AbstractGeoLocationView
 	 * @generated
 	 */
-	public Adapter createMapMarkerAdapter() {
+	public Adapter createAbstractGeoLocationViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.MapMarkerOptions <em>Map Marker Options</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.MapMarkerOptions
+	 * @generated
+	 */
+	public Adapter createMapMarkerOptionsAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.GeoLocatedView <em>Geo Located View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.GeoLocatedView
+	 * @generated
+	 */
+	public Adapter createGeoLocatedViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.GeoLocationView <em>Geo Location View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.GeoLocationView
+	 * @generated
+	 */
+	public Adapter createGeoLocationViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.GeoPolyline <em>Geo Polyline</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.GeoPolyline
+	 * @generated
+	 */
+	public Adapter createGeoPolylineAdapter() {
 		return null;
 	}
 

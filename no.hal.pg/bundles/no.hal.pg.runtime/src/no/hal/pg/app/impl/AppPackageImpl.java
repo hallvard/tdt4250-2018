@@ -2,13 +2,17 @@
  */
 package no.hal.pg.app.impl;
 
+import no.hal.pg.app.AbstractGeoLocationView;
 import no.hal.pg.app.AcceptTaskView;
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
-import no.hal.pg.app.MapMarker;
+import no.hal.pg.app.GeoLocatedView;
+import no.hal.pg.app.GeoLocationView;
+import no.hal.pg.app.GeoPolyline;
+import no.hal.pg.app.MapMarkerOptions;
 import no.hal.pg.app.MapView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.View;
@@ -106,7 +110,35 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mapMarkerEClass = null;
+	private EClass abstractGeoLocationViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass mapMarkerOptionsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass geoLocatedViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass geoLocationViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass geoPolylineEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -404,8 +436,17 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMapView_Markers() {
+	public EReference getMapView_GeoLocationViews() {
 		return (EReference)mapViewEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMapView_GeoPolylines() {
+		return (EReference)mapViewEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -422,8 +463,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMapMarker() {
-		return mapMarkerEClass;
+	public EClass getAbstractGeoLocationView() {
+		return abstractGeoLocationViewEClass;
 	}
 
 	/**
@@ -431,8 +472,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapMarker_Latitude() {
-		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(0);
+	public EAttribute getAbstractGeoLocationView_LatLong() {
+		return (EAttribute)abstractGeoLocationViewEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -440,8 +481,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapMarker_Longitude() {
-		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(1);
+	public EReference getAbstractGeoLocationView_Options() {
+		return (EReference)abstractGeoLocationViewEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -449,8 +490,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapMarker_Text() {
-		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(2);
+	public EClass getMapMarkerOptions() {
+		return mapMarkerOptionsEClass;
 	}
 
 	/**
@@ -458,8 +499,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapMarker_Radius() {
-		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(3);
+	public EAttribute getMapMarkerOptions_Text() {
+		return (EAttribute)mapMarkerOptionsEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -467,8 +508,71 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMapMarker_Color() {
-		return (EAttribute)mapMarkerEClass.getEStructuralFeatures().get(4);
+	public EAttribute getMapMarkerOptions_Radius() {
+		return (EAttribute)mapMarkerOptionsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMapMarkerOptions_Color() {
+		return (EAttribute)mapMarkerOptionsEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGeoLocatedView() {
+		return geoLocatedViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGeoLocatedView_Location() {
+		return (EReference)geoLocatedViewEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGeoLocationView() {
+		return geoLocationViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGeoPolyline() {
+		return geoPolylineEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGeoPolyline_Locations() {
+		return (EReference)geoPolylineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getGeoPolyline_Closed() {
+		return (EAttribute)geoPolylineEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -532,15 +636,27 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		mapViewEClass = createEClass(MAP_VIEW);
 		createEAttribute(mapViewEClass, MAP_VIEW__ZOOM);
-		createEReference(mapViewEClass, MAP_VIEW__MARKERS);
+		createEReference(mapViewEClass, MAP_VIEW__GEO_LOCATION_VIEWS);
+		createEReference(mapViewEClass, MAP_VIEW__GEO_POLYLINES);
 		createEOperation(mapViewEClass, MAP_VIEW___NAVIGATE__FLOAT_FLOAT_INT);
 
-		mapMarkerEClass = createEClass(MAP_MARKER);
-		createEAttribute(mapMarkerEClass, MAP_MARKER__LATITUDE);
-		createEAttribute(mapMarkerEClass, MAP_MARKER__LONGITUDE);
-		createEAttribute(mapMarkerEClass, MAP_MARKER__TEXT);
-		createEAttribute(mapMarkerEClass, MAP_MARKER__RADIUS);
-		createEAttribute(mapMarkerEClass, MAP_MARKER__COLOR);
+		abstractGeoLocationViewEClass = createEClass(ABSTRACT_GEO_LOCATION_VIEW);
+		createEAttribute(abstractGeoLocationViewEClass, ABSTRACT_GEO_LOCATION_VIEW__LAT_LONG);
+		createEReference(abstractGeoLocationViewEClass, ABSTRACT_GEO_LOCATION_VIEW__OPTIONS);
+
+		mapMarkerOptionsEClass = createEClass(MAP_MARKER_OPTIONS);
+		createEAttribute(mapMarkerOptionsEClass, MAP_MARKER_OPTIONS__TEXT);
+		createEAttribute(mapMarkerOptionsEClass, MAP_MARKER_OPTIONS__RADIUS);
+		createEAttribute(mapMarkerOptionsEClass, MAP_MARKER_OPTIONS__COLOR);
+
+		geoLocatedViewEClass = createEClass(GEO_LOCATED_VIEW);
+		createEReference(geoLocatedViewEClass, GEO_LOCATED_VIEW__LOCATION);
+
+		geoLocationViewEClass = createEClass(GEO_LOCATION_VIEW);
+
+		geoPolylineEClass = createEClass(GEO_POLYLINE);
+		createEReference(geoPolylineEClass, GEO_POLYLINE__LOCATIONS);
+		createEAttribute(geoPolylineEClass, GEO_POLYLINE__CLOSED);
 	}
 
 	/**
@@ -644,6 +760,10 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g1.getETypeArguments().add(g2);
 		acceptTaskViewEClass.getEGenericSuperTypes().add(g1);
 		mapViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
+		abstractGeoLocationViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
+		geoLocatedViewEClass.getESuperTypes().add(this.getAbstractGeoLocationView());
+		geoLocationViewEClass.getESuperTypes().add(this.getAbstractGeoLocationView());
+		geoLocationViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(viewEClass, View.class, "View", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -697,50 +817,34 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		initEClass(mapViewEClass, MapView.class, "MapView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapView_Zoom(), ecorePackage.getEInt(), "zoom", "10", 0, 1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMapView_Markers(), this.getMapMarker(), null, "markers", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMapView_GeoLocationViews(), this.getAbstractGeoLocationView(), null, "geoLocationViews", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMapView_GeoPolylines(), this.getAbstractGeoLocationView(), null, "geoPolylines", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getMapView__Navigate__float_float_int(), null, "navigate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEFloat(), "latitude", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEFloat(), "longitude", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEInt(), "zoom", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(mapMarkerEClass, MapMarker.class, "MapMarker", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMapMarker_Latitude(), ecorePackage.getEFloat(), "latitude", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapMarker_Longitude(), ecorePackage.getEFloat(), "longitude", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapMarker_Text(), ecorePackage.getEString(), "text", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapMarker_Radius(), ecorePackage.getEIntegerObject(), "radius", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMapMarker_Color(), ecorePackage.getEString(), "color", null, 0, 1, MapMarker.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractGeoLocationViewEClass, AbstractGeoLocationView.class, "AbstractGeoLocationView", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractGeoLocationView_LatLong(), theOsmPackage.getLatLong(), "latLong", null, 0, 1, AbstractGeoLocationView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractGeoLocationView_Options(), this.getMapMarkerOptions(), null, "options", null, 0, 1, AbstractGeoLocationView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(mapMarkerOptionsEClass, MapMarkerOptions.class, "MapMarkerOptions", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getMapMarkerOptions_Text(), ecorePackage.getEString(), "text", null, 0, 1, MapMarkerOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarkerOptions_Radius(), ecorePackage.getEIntegerObject(), "radius", null, 0, 1, MapMarkerOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMapMarkerOptions_Color(), ecorePackage.getEString(), "color", null, 0, 1, MapMarkerOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(geoLocatedViewEClass, GeoLocatedView.class, "GeoLocatedView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGeoLocatedView_Location(), theOsmPackage.getGeoLocated(), null, "location", null, 0, 1, GeoLocatedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(geoLocationViewEClass, GeoLocationView.class, "GeoLocationView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(geoPolylineEClass, GeoPolyline.class, "GeoPolyline", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGeoPolyline_Locations(), theOsmPackage.getGeoLocated(), null, "locations", null, 0, -1, GeoPolyline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getGeoPolyline_Closed(), ecorePackage.getEBoolean(), "closed", null, 0, 1, GeoPolyline.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
-		createExtendedMetaDataAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http:///org/eclipse/emf/ecore/util/ExtendedMetaData</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";	
-		addAnnotation
-		  (getMapMarker_Latitude(), 
-		   source, 
-		   new String[] {
-			 "name", "lat",
-			 "kind", "attribute"
-		   });	
-		addAnnotation
-		  (getMapMarker_Longitude(), 
-		   source, 
-		   new String[] {
-			 "name", "lon",
-			 "kind", "attribute"
-		   });
 	}
 
 } //AppPackageImpl

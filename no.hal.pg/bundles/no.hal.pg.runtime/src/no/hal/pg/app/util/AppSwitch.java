@@ -136,9 +136,39 @@ public class AppSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AppPackage.MAP_MARKER: {
-				MapMarker mapMarker = (MapMarker)theEObject;
-				T1 result = caseMapMarker(mapMarker);
+			case AppPackage.ABSTRACT_GEO_LOCATION_VIEW: {
+				AbstractGeoLocationView abstractGeoLocationView = (AbstractGeoLocationView)theEObject;
+				T1 result = caseAbstractGeoLocationView(abstractGeoLocationView);
+				if (result == null) result = caseGeoLocated(abstractGeoLocationView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.MAP_MARKER_OPTIONS: {
+				MapMarkerOptions mapMarkerOptions = (MapMarkerOptions)theEObject;
+				T1 result = caseMapMarkerOptions(mapMarkerOptions);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.GEO_LOCATED_VIEW: {
+				GeoLocatedView geoLocatedView = (GeoLocatedView)theEObject;
+				T1 result = caseGeoLocatedView(geoLocatedView);
+				if (result == null) result = caseAbstractGeoLocationView(geoLocatedView);
+				if (result == null) result = caseGeoLocated(geoLocatedView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.GEO_LOCATION_VIEW: {
+				GeoLocationView geoLocationView = (GeoLocationView)theEObject;
+				T1 result = caseGeoLocationView(geoLocationView);
+				if (result == null) result = caseAbstractGeoLocationView(geoLocationView);
+				if (result == null) result = caseGeoLocation(geoLocationView);
+				if (result == null) result = caseGeoLocated(geoLocationView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.GEO_POLYLINE: {
+				GeoPolyline geoPolyline = (GeoPolyline)theEObject;
+				T1 result = caseGeoPolyline(geoPolyline);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -282,17 +312,77 @@ public class AppSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Map Marker</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Geo Location View</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Map Marker</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Geo Location View</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseMapMarker(MapMarker object) {
+	public T1 caseAbstractGeoLocationView(AbstractGeoLocationView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Map Marker Options</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Map Marker Options</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseMapMarkerOptions(MapMarkerOptions object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Located View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Located View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocatedView(GeoLocatedView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Location View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Location View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoLocationView(GeoLocationView object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Geo Polyline</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Geo Polyline</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGeoPolyline(GeoPolyline object) {
 		return null;
 	}
 
