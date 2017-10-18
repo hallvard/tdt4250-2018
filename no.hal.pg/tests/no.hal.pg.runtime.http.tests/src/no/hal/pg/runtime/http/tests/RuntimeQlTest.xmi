@@ -9,22 +9,22 @@
     <tasks xsi:type="runtime:AcceptTask"/>
     <tasks>
       <startConditions
-          xsi:type="runtime:IsTaskStarted"
+          xsi:type="runtime:IsTaskStartedCondition"
           context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks>
       <startConditions
-          xsi:type="runtime:IsTaskFinished"
+          xsi:type="runtime:IsTaskFinishedCondition"
           context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks>
       <startConditions
           xsi:type="runtime:CompositeCondition">
         <conditions
-            xsi:type="runtime:IsTaskStarted"
+            xsi:type="runtime:IsTaskStartedCondition"
             context="//@games.0/@tasks.0"/>
         <conditions
-            xsi:type="runtime:IsTaskFinished"
+            xsi:type="runtime:IsTaskFinishedCondition"
             context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>
@@ -33,10 +33,10 @@
           xsi:type="runtime:CompositeCondition"
           logic="true">
         <conditions
-            xsi:type="runtime:IsTaskStarted"
+            xsi:type="runtime:IsTaskStartedCondition"
             context="//@games.0/@tasks.0"/>
         <conditions
-            xsi:type="runtime:IsTaskFinished"
+            xsi:type="runtime:IsTaskFinishedCondition"
             context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>

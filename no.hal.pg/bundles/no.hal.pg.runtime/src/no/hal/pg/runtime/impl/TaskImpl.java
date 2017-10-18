@@ -592,8 +592,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case RuntimePackage.TASK___GET_DESCRIPTION:
-				return getDescription();
 			case RuntimePackage.TASK___CAN_START:
 				return canStart();
 			case RuntimePackage.TASK___IS_STARTED:
@@ -606,6 +604,8 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			case RuntimePackage.TASK___FINISH__OBJECT:
 				finish((R)arguments.get(0));
 				return null;
+			case RuntimePackage.TASK___GET_DESCRIPTION:
+				return getDescription();
 		}
 		return super.eInvoke(operationID, arguments);
 	}

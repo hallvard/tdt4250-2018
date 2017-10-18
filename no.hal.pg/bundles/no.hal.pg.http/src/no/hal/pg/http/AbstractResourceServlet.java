@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osgi.service.log.LogService;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -94,20 +93,6 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		}
 	}
 
-	protected String getPostBody(HttpServletRequest req, Map<String, Object> params) throws IOException {
-		StringBuilder buffer = new StringBuilder();
-		Scanner scanner = new Scanner(req.getInputStream());
-		try {
-			while (scanner.hasNextLine()) {
-				buffer.append(scanner.nextLine());
-				buffer.append("\n");
-			}
-		} finally {
-			scanner.close();
-		}
-		return buffer.toString();
-	}
-
 	protected void handlePostBody(String body, Map<String, Object> params) {
 		params.put("httpPostBody", body);
 		decodePostBody(body, params);
@@ -154,7 +139,7 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 	}
-	
+
 	protected Object getPathObject(IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler) throws Exception {
 		IRequestPathResolver requestPathResolver = getRequestPathResolver();
 		requestPathResolver.setSubjectProvider(authenticationHandler);
@@ -172,12 +157,12 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, HttpServletResponse resp) throws Exception {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		Writer writer = new OutputStreamWriter(outputStream);
-		doHelper(resourceProvider, objects, resourcePath, op, params, authenticationHandler, writer);
+		doHelper(req, resourceProvider, objects, resourcePath, op, params, authenticationHandler, writer);
 		String responseString = new String(outputStream.toByteArray(), StandardCharsets.UTF_8);
 		resp.getWriter().write(responseString);
 	}
 
-	protected void doHelper(IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
+	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
 		Object result = getPathObject(resourceProvider, objects, resourcePath, op, params, authenticationHandler);
 		IResponseSerializer responseSerializer = getResponseSerializer();
 		responseSerializer.serialize(result, responseWriter);
@@ -185,7 +170,21 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 	
 	//
 	
-	protected Map<String, Object> decodeQuery(HttpServletRequest req, Map<String, Object> params) {
+	public static String getPostBody(HttpServletRequest req, Map<String, Object> params) throws IOException {
+		StringBuilder buffer = new StringBuilder();
+		Scanner scanner = new Scanner(req.getInputStream());
+		try {
+			while (scanner.hasNextLine()) {
+				buffer.append(scanner.nextLine());
+				buffer.append("\n");
+			}
+		} finally {
+			scanner.close();
+		}
+		return buffer.toString();
+	}
+
+	public static Map<String, Object> decodeQuery(HttpServletRequest req, Map<String, Object> params) {
 		String query = req.getQueryString();
 		if (query != null) {
 			for (String param : query.split("&")) {
@@ -200,7 +199,7 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		return params;
 	}
 
-	protected Map<String, Object> decodePostBody(String body, Map<String, Object> params) {
+	public static Map<String, Object> decodePostBody(String body, Map<String, Object> params) {
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonTree = null;
 		try {

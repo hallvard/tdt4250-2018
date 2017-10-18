@@ -13,9 +13,6 @@
 	<modules>
 		<module>../no.hal.pg.target</module>
 
-		<module>../../bundles/no.hal.graphql.emf</module>
-		<module>../../tests/no.hal.graphql.emf.tests</module>
-
 		<module>../../bundles/no.hal.pg.arc</module>
 		<module>../../tests/no.hal.pg.arc.tests</module>
 		
@@ -25,6 +22,10 @@
 		<module>../../bundles/no.hal.pg.http</module>
 		<module>../../bundles/no.hal.pg.http.impl</module>
 		<module>../../tests/no.hal.pg.http.impl.tests</module>
+
+		<module>../../bundles/no.hal.graphql.emf</module>
+		<module>../../tests/no.hal.graphql.emf.tests</module>
+		<module>../../bundles/no.hal.pg.http.graphql</module>
 
 		<module>../../bundles/no.hal.pg.ui</module>
 

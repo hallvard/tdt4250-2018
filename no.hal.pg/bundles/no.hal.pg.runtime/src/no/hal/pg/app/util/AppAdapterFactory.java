@@ -88,8 +88,12 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 				return createGameViewAdapter();
 			}
 			@Override
-			public Adapter caseApp(App object) {
+			public <V extends View1<U, M>, U, M> Adapter caseApp(App<V, U, M> object) {
 				return createAppAdapter();
+			}
+			@Override
+			public <T extends Task<?>> Adapter caseGameApp(GameApp<T> object) {
+				return createGameAppAdapter();
 			}
 			@Override
 			public <T extends Task<?>> Adapter caseTaskView(TaskView<T> object) {
@@ -202,6 +206,20 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAppAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.GameApp <em>Game App</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.GameApp
+	 * @generated
+	 */
+	public Adapter createGameAppAdapter() {
 		return null;
 	}
 

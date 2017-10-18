@@ -1,31 +1,24 @@
 package no.hal.pg.http;
 
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.Servlet;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.component.annotations.ServiceScope;
 import org.osgi.service.log.LogService;
 
-import graphql.ExecutionInput;
-import graphql.ExecutionResult;
-import graphql.GraphQL;
-import graphql.schema.GraphQLSchema;
-import no.hal.graphql.emf.SchemaGenerator;
 import no.hal.pg.http.auth.AuthenticationHandler;
 
 // OSGi Http Whiteboard, 140.4 in Enterprise R6 specification
@@ -88,87 +81,47 @@ public class DataServlet extends AbstractResourceServlet implements Servlet {
 	}
 	
 	@Override
-	protected void doHelper(IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
+	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
 		Object result = getPathObject(resourceProvider, objects, resourcePath, op, params, authenticationHandler);
 		Object postBody = params.get("httpPostBody");
 		if (postBody != null) {
-			EObject root = null;
-			if (result instanceof EObject) {
-				root = (EObject) result;
-			} else if (result instanceof Collection<?>) {
-				Collection<?> col = (Collection<?>) result;
-				if (col.size() > 0) {
-					Object first = col.iterator().next();
-					if (first instanceof EObject) {
-						root = (EObject) first;
-					}
-				}
+			String contentType = req.getHeader("Content-Type");
+			if (contentType == null) {
+				throw new ServletException("No Content-Type header");
 			}
-			if (root != null) {
-				result = doGraphQl(String.valueOf(postBody), root, params);
+			int pos = contentType.indexOf(';');
+			if (pos > 0) {
+				contentType = contentType.substring(0, pos);
+			}
+			IPostHandler postHandler = getPostHandler(contentType);
+			if (postHandler == null) {
+				throw new ServletException("No handler for " + contentType);
+			}
+			try {
+				result = postHandler.handlePostBody(result, String.valueOf(postBody), params);
+			} catch (Exception e) {
+				throw new ServletException("Exception when handling post body for " + contentType);
 			}
 		}
 		IResponseSerializer responseSerializer = getResponseSerializer();
 		responseSerializer.serialize(result, responseWriter);
 	}
-
-	protected Object doGraphQl(String body, EObject root, Map<String, Object> params) {
-		GraphQLSchema schema = getGraphQLSchema(root);
-	    	GraphQL graphQl = new GraphQL.Builder(schema).build();
-	    	ExecutionInput executionInput = new ExecutionInput.Builder().query(body).root(root).build();
+	
+	protected IPostHandler getPostHandler(String contentType) {
+		BundleContext bundleContext = FrameworkUtil.getBundle(getClass()).getBundleContext();
+		Collection<ServiceReference<IPostHandler>> serviceReferences = Collections.emptyList();
 		try {
-			ExecutionResult result = graphQl.execute(executionInput);
-			if (! result.getErrors().isEmpty()) {
-				throw new RuntimeException(result.getErrors().toString());
+			serviceReferences = bundleContext.getServiceReferences(IPostHandler.class, "(postHandlerMimeType=" + contentType + ")");
+		} catch (InvalidSyntaxException e) {
+		}
+		for (ServiceReference<IPostHandler> serviceReference : serviceReferences) {
+			IPostHandler postHandler = bundleContext.getService(serviceReference);
+			if (postHandler != null) {
+				return postHandler;
 			}
-			return result.getData();
-		} catch (Exception e) {
-			System.err.println(e);
 		}
 		return null;
 	}
-
-	private Map<Collection<EPackage>, GraphQLSchema> schemas = new HashMap<Collection<EPackage>, GraphQLSchema>();
-
-	protected GraphQLSchema getGraphQLSchema(EObject root) {
-		List<EPackage> packages = new ArrayList<EPackage>();
-		collectEPackages(root, packages);
-		Collections.sort(packages, new Comparator<EPackage>() {
-			@Override
-			public int compare(EPackage p1, EPackage p2) {
-				return p1.getName().compareTo(p2.getName());
-			}
-		});
-		GraphQLSchema schema = schemas.get(packages);
-		if (schema == null) {
-			SchemaGenerator schemaGenerator = new SchemaGenerator(packages.toArray(new EPackage[packages.size()]));
-			schema = schemaGenerator.generate(root.eClass());
-			schemas.put(packages, schema);
-		}
-		return schema;
-	}
-
-	protected void collectEPackages(EObject root, Collection<EPackage> packages) {
-		collectEPackages(root.eClass(), packages);
-		TreeIterator<EObject> it = root.eAllContents();
-		while (it.hasNext()) {
-			collectEPackages(it.next().eClass(), packages);
-		}
-	}
-
-	protected void collectEPackages(EClass eClass, Collection<EPackage> packages) {
-		EPackage pack = eClass.getEPackage();
-		if (! packages.contains(pack)) {
-			packages.add(pack);
-		}
-		for (EClass superClass : eClass.getEAllSuperTypes()) {
-			pack = superClass.getEPackage();
-			if (! packages.contains(pack)) {
-				packages.add(pack);
-			}
-		}
-	}
-
 }
 
 /*

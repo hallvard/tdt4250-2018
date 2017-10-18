@@ -272,22 +272,22 @@ public interface AppPackage extends EPackage {
 	int APP = 4;
 
 	/**
-	 * The feature id for the '<em><b>Game</b></em>' reference.
+	 * The feature id for the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APP__GAME = 0;
+	int APP__MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Game Views</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Views</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APP__GAME_VIEWS = 1;
+	int APP__VIEWS = 1;
 
 	/**
 	 * The number of structural features of the '<em>App</em>' class.
@@ -308,6 +308,52 @@ public interface AppPackage extends EPackage {
 	int APP_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.GameAppImpl <em>Game App</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.GameAppImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getGameApp()
+	 * @generated
+	 */
+	int GAME_APP = 5;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_APP__MODEL = APP__MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Views</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_APP__VIEWS = APP__VIEWS;
+
+	/**
+	 * The number of structural features of the '<em>Game App</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_APP_FEATURE_COUNT = APP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Game App</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_APP_OPERATION_COUNT = APP_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.app.impl.TaskViewImpl <em>Task View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -315,7 +361,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getTaskView()
 	 * @generated
 	 */
-	int TASK_VIEW = 5;
+	int TASK_VIEW = 6;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' reference.
@@ -416,7 +462,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getAcceptTaskView()
 	 * @generated
 	 */
-	int ACCEPT_TASK_VIEW = 6;
+	int ACCEPT_TASK_VIEW = 7;
 
 	/**
 	 * The feature id for the '<em><b>User</b></em>' reference.
@@ -526,7 +572,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapView()
 	 * @generated
 	 */
-	int MAP_VIEW = 7;
+	int MAP_VIEW = 8;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -608,7 +654,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarker()
 	 * @generated
 	 */
-	int MAP_MARKER = 8;
+	int MAP_MARKER = 9;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -791,26 +837,36 @@ public interface AppPackage extends EPackage {
 	EClass getApp();
 
 	/**
-	 * Returns the meta object for the reference '{@link no.hal.pg.app.App#getGame <em>Game</em>}'.
+	 * Returns the meta object for the reference '{@link no.hal.pg.app.App#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Game</em>'.
-	 * @see no.hal.pg.app.App#getGame()
+	 * @return the meta object for the reference '<em>Model</em>'.
+	 * @see no.hal.pg.app.App#getModel()
 	 * @see #getApp()
 	 * @generated
 	 */
-	EReference getApp_Game();
+	EReference getApp_Model();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.App#getGameViews <em>Game Views</em>}'.
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.App#getViews <em>Views</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Game Views</em>'.
-	 * @see no.hal.pg.app.App#getGameViews()
+	 * @return the meta object for the containment reference list '<em>Views</em>'.
+	 * @see no.hal.pg.app.App#getViews()
 	 * @see #getApp()
 	 * @generated
 	 */
-	EReference getApp_GameViews();
+	EReference getApp_Views();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.GameApp <em>Game App</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Game App</em>'.
+	 * @see no.hal.pg.app.GameApp
+	 * @generated
+	 */
+	EClass getGameApp();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.TaskView <em>Task View</em>}'.
@@ -1136,20 +1192,30 @@ public interface AppPackage extends EPackage {
 		EClass APP = eINSTANCE.getApp();
 
 		/**
-		 * The meta object literal for the '<em><b>Game</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference APP__GAME = eINSTANCE.getApp_Game();
+		EReference APP__MODEL = eINSTANCE.getApp_Model();
 
 		/**
-		 * The meta object literal for the '<em><b>Game Views</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Views</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference APP__GAME_VIEWS = eINSTANCE.getApp_GameViews();
+		EReference APP__VIEWS = eINSTANCE.getApp_Views();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.GameAppImpl <em>Game App</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.GameAppImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getGameApp()
+		 * @generated
+		 */
+		EClass GAME_APP = eINSTANCE.getGameApp();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.TaskViewImpl <em>Task View</em>}' class.

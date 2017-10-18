@@ -22,12 +22,13 @@ import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.IsTaskFinished;
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
+import no.hal.pg.runtime.Described;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -53,6 +54,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	private EClass playerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass describedEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,14 +123,14 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass isTaskStartedEClass = null;
+	private EClass isTaskStartedConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass isTaskFinishedEClass = null;
+	private EClass isTaskFinishedConditionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -306,6 +314,24 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDescribed() {
+		return describedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDescribed__GetDescription() {
+		return describedEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItem() {
 		return itemEClass;
 	}
@@ -473,17 +499,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getTask__GetDescription() {
-		return taskEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EOperation getTask__CanStart() {
-		return taskEClass.getEOperations().get(1);
+		return taskEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -493,7 +510,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__Finish__Object() {
-		return taskEClass.getEOperations().get(5);
+		return taskEClass.getEOperations().get(4);
 	}
 
 	/**
@@ -582,8 +599,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIsTaskStarted() {
-		return isTaskStartedEClass;
+	public EClass getIsTaskStartedCondition() {
+		return isTaskStartedConditionEClass;
 	}
 
 	/**
@@ -591,8 +608,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIsTaskFinished() {
-		return isTaskFinishedEClass;
+	public EClass getIsTaskFinishedCondition() {
+		return isTaskFinishedConditionEClass;
 	}
 
 	/**
@@ -701,7 +718,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__IsStarted() {
-		return taskEClass.getEOperations().get(2);
+		return taskEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -711,7 +728,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__IsFinished() {
-		return taskEClass.getEOperations().get(3);
+		return taskEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -721,7 +738,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	@Override
 	public EOperation getTask__Start() {
-		return taskEClass.getEOperations().get(4);
+		return taskEClass.getEOperations().get(3);
 	}
 
 	/**
@@ -773,6 +790,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEReference(playerEClass, PLAYER__PERSON);
 		createEReference(playerEClass, PLAYER__ITEMS);
 
+		describedEClass = createEClass(DESCRIBED);
+		createEOperation(describedEClass, DESCRIBED___GET_DESCRIPTION);
+
 		itemEClass = createEClass(ITEM);
 		createEReference(itemEClass, ITEM__OWNER);
 		createEReference(itemEClass, ITEM__OWN_LOCATION);
@@ -793,7 +813,6 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEReference(taskEClass, TASK__START_CONDITIONS);
 		createEReference(taskEClass, TASK__FINISH_CONDITIONS);
 		createEReference(taskEClass, TASK__REWARDS);
-		createEOperation(taskEClass, TASK___GET_DESCRIPTION);
 		createEOperation(taskEClass, TASK___CAN_START);
 		createEOperation(taskEClass, TASK___IS_STARTED);
 		createEOperation(taskEClass, TASK___IS_FINISHED);
@@ -813,9 +832,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEAttribute(compositeConditionEClass, COMPOSITE_CONDITION__LOGIC);
 		createEReference(compositeConditionEClass, COMPOSITE_CONDITION__CONDITIONS);
 
-		isTaskStartedEClass = createEClass(IS_TASK_STARTED);
+		isTaskStartedConditionEClass = createEClass(IS_TASK_STARTED_CONDITION);
 
-		isTaskFinishedEClass = createEClass(IS_TASK_FINISHED);
+		isTaskFinishedConditionEClass = createEClass(IS_TASK_FINISHED_CONDITION);
 
 		isByGeoLocationConditionEClass = createEClass(IS_BY_GEO_LOCATION_CONDITION);
 		createEReference(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOCATIONS);
@@ -878,8 +897,10 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		// Add supertypes to classes
 		playerEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 		itemEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
+		itemEClass.getESuperTypes().add(this.getDescribed());
 		infoItemEClass.getESuperTypes().add(this.getItem());
 		infoItemEClass.getESuperTypes().add(this.getInfo());
+		taskEClass.getESuperTypes().add(this.getDescribed());
 		g1 = createEGenericType(this.getTask());
 		g2 = createEGenericType(resettableTaskEClass_R);
 		g1.getETypeArguments().add(g2);
@@ -891,13 +912,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g1.getETypeArguments().add(g2);
 		EGenericType g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
-		isTaskStartedEClass.getEGenericSuperTypes().add(g1);
+		isTaskStartedConditionEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getAbstractCondition());
 		g2 = createEGenericType(this.getTask());
 		g1.getETypeArguments().add(g2);
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
-		isTaskFinishedEClass.getEGenericSuperTypes().add(g1);
+		isTaskFinishedConditionEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getAbstractCondition());
 		g2 = createEGenericType(theOsmPackage.getGeoLocated());
 		g1.getETypeArguments().add(g2);
@@ -923,6 +944,10 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEReference(getPlayer_Person(), theArcPackage.getPerson(), null, "person", null, 0, 1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPlayer_Items(), this.getItem(), this.getItem_Owner(), "items", null, 0, -1, Player.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(describedEClass, Described.class, "Described", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getDescribed__GetDescription(), ecorePackage.getEString(), "getDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getItem_Owner(), this.getPlayer(), this.getPlayer_Items(), "owner", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getItem_OwnLocation(), theOsmPackage.getGeoLocation(), null, "ownLocation", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -947,8 +972,6 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEReference(getTask_StartConditions(), this.getCondition(), null, "startConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_FinishConditions(), this.getCondition(), null, "finishConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_Rewards(), this.getItem(), null, "rewards", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getTask__GetDescription(), ecorePackage.getEString(), "getDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEOperation(getTask__CanStart(), ecorePackage.getEBoolean(), "canStart", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -978,9 +1001,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEAttribute(getCompositeCondition_Logic(), ecorePackage.getEBoolean(), "logic", null, 0, 1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeCondition_Conditions(), this.getCondition(), null, "conditions", null, 0, -1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(isTaskStartedEClass, IsTaskStarted.class, "IsTaskStarted", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(isTaskStartedConditionEClass, IsTaskStartedCondition.class, "IsTaskStartedCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(isTaskFinishedEClass, IsTaskFinished.class, "IsTaskFinished", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(isTaskFinishedConditionEClass, IsTaskFinishedCondition.class, "IsTaskFinishedCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(isByGeoLocationConditionEClass, IsByGeoLocationCondition.class, "IsByGeoLocationCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIsByGeoLocationCondition_Locations(), theOsmPackage.getGeoLocated(), null, "locations", null, 0, -1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1028,7 +1051,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 			 "include", "true"
 		   });	
 		addAnnotation
-		  (getTask__GetDescription(), 
+		  (getDescribed__GetDescription(), 
 		   source, 
 		   new String[] {
 			 "include", "true"

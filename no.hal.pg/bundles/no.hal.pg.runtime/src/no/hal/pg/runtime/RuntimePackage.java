@@ -133,7 +133,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getItem()
 	 * @generated
 	 */
-	int ITEM = 2;
+	int ITEM = 3;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.InfoItemImpl <em>Info Item</em>}' class.
@@ -143,7 +143,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfoItem()
 	 * @generated
 	 */
-	int INFO_ITEM = 4;
+	int INFO_ITEM = 5;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -218,6 +218,43 @@ public interface RuntimePackage extends EPackage {
 	int PLAYER_OPERATION_COUNT = OsmPackage.GEO_LOCATION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.Described <em>Described</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.Described
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getDescribed()
+	 * @generated
+	 */
+	int DESCRIBED = 2;
+
+	/**
+	 * The number of structural features of the '<em>Described</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIBED_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIBED___GET_DESCRIPTION = 0;
+
+	/**
+	 * The number of operations of the '<em>Described</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DESCRIBED_OPERATION_COUNT = 1;
+
+	/**
 	 * The feature id for the '<em><b>Owner</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -254,13 +291,22 @@ public interface RuntimePackage extends EPackage {
 	int ITEM___GET_LAT_LONG = OsmPackage.GEO_LOCATED___GET_LAT_LONG;
 
 	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM___GET_DESCRIPTION = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_OPERATION_COUNT = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 0;
+	int ITEM_OPERATION_COUNT = OsmPackage.GEO_LOCATED_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.InfoImpl <em>Info</em>}' class.
@@ -270,7 +316,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getInfo()
 	 * @generated
 	 */
-	int INFO = 3;
+	int INFO = 4;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -381,6 +427,15 @@ public interface RuntimePackage extends EPackage {
 	int INFO_ITEM___GET_LAT_LONG = ITEM___GET_LAT_LONG;
 
 	/**
+	 * The operation id for the '<em>Get Description</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INFO_ITEM___GET_DESCRIPTION = ITEM___GET_DESCRIPTION;
+
+	/**
 	 * The number of operations of the '<em>Info Item</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -397,7 +452,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTask()
 	 * @generated
 	 */
-	int TASK = 5;
+	int TASK = 6;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -406,7 +461,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__GAME = 0;
+	int TASK__GAME = DESCRIBED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Players</b></em>' reference list.
@@ -415,7 +470,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PLAYERS = 1;
+	int TASK__PLAYERS = DESCRIBED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Result</b></em>' attribute.
@@ -424,7 +479,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RESULT = 2;
+	int TASK__RESULT = DESCRIBED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Start Time</b></em>' attribute.
@@ -433,7 +488,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__START_TIME = 3;
+	int TASK__START_TIME = DESCRIBED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Finish Time</b></em>' attribute.
@@ -442,7 +497,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__FINISH_TIME = 4;
+	int TASK__FINISH_TIME = DESCRIBED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Start Conditions</b></em>' containment reference list.
@@ -451,7 +506,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__START_CONDITIONS = 5;
+	int TASK__START_CONDITIONS = DESCRIBED_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Finish Conditions</b></em>' containment reference list.
@@ -460,7 +515,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__FINISH_CONDITIONS = 6;
+	int TASK__FINISH_CONDITIONS = DESCRIBED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
@@ -469,7 +524,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__REWARDS = 7;
+	int TASK__REWARDS = DESCRIBED_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -478,7 +533,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = 8;
+	int TASK_FEATURE_COUNT = DESCRIBED_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Get Description</em>' operation.
@@ -487,7 +542,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___GET_DESCRIPTION = 0;
+	int TASK___GET_DESCRIPTION = DESCRIBED___GET_DESCRIPTION;
 
 	/**
 	 * The operation id for the '<em>Can Start</em>' operation.
@@ -496,7 +551,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___CAN_START = 1;
+	int TASK___CAN_START = DESCRIBED_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Is Started</em>' operation.
@@ -505,7 +560,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___IS_STARTED = 2;
+	int TASK___IS_STARTED = DESCRIBED_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>Is Finished</em>' operation.
@@ -514,7 +569,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___IS_FINISHED = 3;
+	int TASK___IS_FINISHED = DESCRIBED_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -523,7 +578,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___START = 4;
+	int TASK___START = DESCRIBED_OPERATION_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Finish</em>' operation.
@@ -532,7 +587,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK___FINISH__OBJECT = 5;
+	int TASK___FINISH__OBJECT = DESCRIBED_OPERATION_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Task</em>' class.
@@ -541,7 +596,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_OPERATION_COUNT = 6;
+	int TASK_OPERATION_COUNT = DESCRIBED_OPERATION_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.ResettableTaskImpl <em>Resettable Task</em>}' class.
@@ -551,7 +606,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getResettableTask()
 	 * @generated
 	 */
-	int RESETTABLE_TASK = 6;
+	int RESETTABLE_TASK = 7;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -714,7 +769,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCondition()
 	 * @generated
 	 */
-	int CONDITION = 7;
+	int CONDITION = 8;
 
 	/**
 	 * The number of structural features of the '<em>Condition</em>' class.
@@ -751,7 +806,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAbstractCondition()
 	 * @generated
 	 */
-	int ABSTRACT_CONDITION = 8;
+	int ABSTRACT_CONDITION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -797,7 +852,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCompositeCondition()
 	 * @generated
 	 */
-	int COMPOSITE_CONDITION = 9;
+	int COMPOSITE_CONDITION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Logic</b></em>' attribute.
@@ -845,14 +900,14 @@ public interface RuntimePackage extends EPackage {
 	int COMPOSITE_CONDITION_OPERATION_COUNT = CONDITION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsTaskStartedImpl <em>Is Task Started</em>}' class.
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsTaskStartedConditionImpl <em>Is Task Started Condition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.runtime.impl.IsTaskStartedImpl
-	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskStarted()
+	 * @see no.hal.pg.runtime.impl.IsTaskStartedConditionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskStartedCondition()
 	 * @generated
 	 */
-	int IS_TASK_STARTED = 10;
+	int IS_TASK_STARTED_CONDITION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -861,16 +916,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_STARTED__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
+	int IS_TASK_STARTED_CONDITION__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
 
 	/**
-	 * The number of structural features of the '<em>Is Task Started</em>' class.
+	 * The number of structural features of the '<em>Is Task Started Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_STARTED_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
+	int IS_TASK_STARTED_CONDITION_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Test</em>' operation.
@@ -879,26 +934,26 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_STARTED___TEST = ABSTRACT_CONDITION___TEST;
+	int IS_TASK_STARTED_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
 
 	/**
-	 * The number of operations of the '<em>Is Task Started</em>' class.
+	 * The number of operations of the '<em>Is Task Started Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_STARTED_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
+	int IS_TASK_STARTED_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsTaskFinishedImpl <em>Is Task Finished</em>}' class.
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsTaskFinishedConditionImpl <em>Is Task Finished Condition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.runtime.impl.IsTaskFinishedImpl
-	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskFinished()
+	 * @see no.hal.pg.runtime.impl.IsTaskFinishedConditionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskFinishedCondition()
 	 * @generated
 	 */
-	int IS_TASK_FINISHED = 11;
+	int IS_TASK_FINISHED_CONDITION = 12;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -907,16 +962,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_FINISHED__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
+	int IS_TASK_FINISHED_CONDITION__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
 
 	/**
-	 * The number of structural features of the '<em>Is Task Finished</em>' class.
+	 * The number of structural features of the '<em>Is Task Finished Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_FINISHED_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
+	int IS_TASK_FINISHED_CONDITION_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Test</em>' operation.
@@ -925,16 +980,16 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_FINISHED___TEST = ABSTRACT_CONDITION___TEST;
+	int IS_TASK_FINISHED_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
 
 	/**
-	 * The number of operations of the '<em>Is Task Finished</em>' class.
+	 * The number of operations of the '<em>Is Task Finished Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IS_TASK_FINISHED_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
+	int IS_TASK_FINISHED_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl <em>Is By Geo Location Condition</em>}' class.
@@ -944,7 +999,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsByGeoLocationCondition()
 	 * @generated
 	 */
-	int IS_BY_GEO_LOCATION_CONDITION = 12;
+	int IS_BY_GEO_LOCATION_CONDITION = 13;
 
 	/**
 	 * The feature id for the '<em><b>Context</b></em>' reference.
@@ -1035,7 +1090,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
 	 * @generated
 	 */
-	int ACCEPT_TASK = 13;
+	int ACCEPT_TASK = 14;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -1207,7 +1262,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 14;
+	int RUNTIME = 15;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -1262,7 +1317,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
 	 * @generated
 	 */
-	int EURI = 15;
+	int EURI = 16;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -1272,7 +1327,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 16;
+	int TIMESTAMP = 17;
 
 
 	/**
@@ -1349,6 +1404,26 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPlayer_Items();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.Described <em>Described</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Described</em>'.
+	 * @see no.hal.pg.runtime.Described
+	 * @generated
+	 */
+	EClass getDescribed();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.Described#getDescription() <em>Get Description</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Description</em>' operation.
+	 * @see no.hal.pg.runtime.Described#getDescription()
+	 * @generated
+	 */
+	EOperation getDescribed__GetDescription();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Item <em>Item</em>}'.
@@ -1545,16 +1620,6 @@ public interface RuntimePackage extends EPackage {
 	EReference getTask_Rewards();
 
 	/**
-	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#getDescription() <em>Get Description</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Description</em>' operation.
-	 * @see no.hal.pg.runtime.Task#getDescription()
-	 * @generated
-	 */
-	EOperation getTask__GetDescription();
-
-	/**
 	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#canStart() <em>Can Start</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1668,24 +1733,24 @@ public interface RuntimePackage extends EPackage {
 	EReference getCompositeCondition_Conditions();
 
 	/**
-	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsTaskStarted <em>Is Task Started</em>}'.
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsTaskStartedCondition <em>Is Task Started Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Is Task Started</em>'.
-	 * @see no.hal.pg.runtime.IsTaskStarted
+	 * @return the meta object for class '<em>Is Task Started Condition</em>'.
+	 * @see no.hal.pg.runtime.IsTaskStartedCondition
 	 * @generated
 	 */
-	EClass getIsTaskStarted();
+	EClass getIsTaskStartedCondition();
 
 	/**
-	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsTaskFinished <em>Is Task Finished</em>}'.
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsTaskFinishedCondition <em>Is Task Finished Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Is Task Finished</em>'.
-	 * @see no.hal.pg.runtime.IsTaskFinished
+	 * @return the meta object for class '<em>Is Task Finished Condition</em>'.
+	 * @see no.hal.pg.runtime.IsTaskFinishedCondition
 	 * @generated
 	 */
-	EClass getIsTaskFinished();
+	EClass getIsTaskFinishedCondition();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.IsByGeoLocationCondition <em>Is By Geo Location Condition</em>}'.
@@ -1929,6 +1994,24 @@ public interface RuntimePackage extends EPackage {
 		EReference PLAYER__ITEMS = eINSTANCE.getPlayer_Items();
 
 		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.Described <em>Described</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.Described
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getDescribed()
+		 * @generated
+		 */
+		EClass DESCRIBED = eINSTANCE.getDescribed();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Description</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DESCRIBED___GET_DESCRIPTION = eINSTANCE.getDescribed__GetDescription();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.ItemImpl <em>Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2081,14 +2164,6 @@ public interface RuntimePackage extends EPackage {
 		EReference TASK__REWARDS = eINSTANCE.getTask_Rewards();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Description</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation TASK___GET_DESCRIPTION = eINSTANCE.getTask__GetDescription();
-
-		/**
 		 * The meta object literal for the '<em><b>Can Start</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2185,24 +2260,24 @@ public interface RuntimePackage extends EPackage {
 		EReference COMPOSITE_CONDITION__CONDITIONS = eINSTANCE.getCompositeCondition_Conditions();
 
 		/**
-		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsTaskStartedImpl <em>Is Task Started</em>}' class.
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsTaskStartedConditionImpl <em>Is Task Started Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.runtime.impl.IsTaskStartedImpl
-		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskStarted()
+		 * @see no.hal.pg.runtime.impl.IsTaskStartedConditionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskStartedCondition()
 		 * @generated
 		 */
-		EClass IS_TASK_STARTED = eINSTANCE.getIsTaskStarted();
+		EClass IS_TASK_STARTED_CONDITION = eINSTANCE.getIsTaskStartedCondition();
 
 		/**
-		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsTaskFinishedImpl <em>Is Task Finished</em>}' class.
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsTaskFinishedConditionImpl <em>Is Task Finished Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.runtime.impl.IsTaskFinishedImpl
-		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskFinished()
+		 * @see no.hal.pg.runtime.impl.IsTaskFinishedConditionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getIsTaskFinishedCondition()
 		 * @generated
 		 */
-		EClass IS_TASK_FINISHED = eINSTANCE.getIsTaskFinished();
+		EClass IS_TASK_FINISHED_CONDITION = eINSTANCE.getIsTaskFinishedCondition();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.IsByGeoLocationConditionImpl <em>Is By Geo Location Condition</em>}' class.

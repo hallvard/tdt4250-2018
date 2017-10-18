@@ -16,12 +16,13 @@ import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.IsTaskFinished;
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
+import no.hal.pg.runtime.Described;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 
@@ -96,10 +97,17 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RuntimePackage.DESCRIBED: {
+				Described described = (Described)theEObject;
+				T1 result = caseDescribed(described);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case RuntimePackage.ITEM: {
 				Item item = (Item)theEObject;
 				T1 result = caseItem(item);
 				if (result == null) result = caseGeoLocated(item);
+				if (result == null) result = caseDescribed(item);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -115,12 +123,14 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				if (result == null) result = caseItem(infoItem);
 				if (result == null) result = caseInfo(infoItem);
 				if (result == null) result = caseGeoLocated(infoItem);
+				if (result == null) result = caseDescribed(infoItem);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case RuntimePackage.TASK: {
 				Task<?> task = (Task<?>)theEObject;
 				T1 result = caseTask(task);
+				if (result == null) result = caseDescribed(task);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -128,6 +138,7 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				ResettableTask<?> resettableTask = (ResettableTask<?>)theEObject;
 				T1 result = caseResettableTask(resettableTask);
 				if (result == null) result = caseTask(resettableTask);
+				if (result == null) result = caseDescribed(resettableTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,19 +162,19 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RuntimePackage.IS_TASK_STARTED: {
-				IsTaskStarted isTaskStarted = (IsTaskStarted)theEObject;
-				T1 result = caseIsTaskStarted(isTaskStarted);
-				if (result == null) result = caseAbstractCondition(isTaskStarted);
-				if (result == null) result = caseCondition(isTaskStarted);
+			case RuntimePackage.IS_TASK_STARTED_CONDITION: {
+				IsTaskStartedCondition isTaskStartedCondition = (IsTaskStartedCondition)theEObject;
+				T1 result = caseIsTaskStartedCondition(isTaskStartedCondition);
+				if (result == null) result = caseAbstractCondition(isTaskStartedCondition);
+				if (result == null) result = caseCondition(isTaskStartedCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RuntimePackage.IS_TASK_FINISHED: {
-				IsTaskFinished isTaskFinished = (IsTaskFinished)theEObject;
-				T1 result = caseIsTaskFinished(isTaskFinished);
-				if (result == null) result = caseAbstractCondition(isTaskFinished);
-				if (result == null) result = caseCondition(isTaskFinished);
+			case RuntimePackage.IS_TASK_FINISHED_CONDITION: {
+				IsTaskFinishedCondition isTaskFinishedCondition = (IsTaskFinishedCondition)theEObject;
+				T1 result = caseIsTaskFinishedCondition(isTaskFinishedCondition);
+				if (result == null) result = caseAbstractCondition(isTaskFinishedCondition);
+				if (result == null) result = caseCondition(isTaskFinishedCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -180,6 +191,7 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				T1 result = caseAcceptTask(acceptTask);
 				if (result == null) result = caseResettableTask(acceptTask);
 				if (result == null) result = caseTask(acceptTask);
+				if (result == null) result = caseDescribed(acceptTask);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -221,6 +233,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePlayer(Player object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Described</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Described</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDescribed(Described object) {
 		return null;
 	}
 
@@ -345,32 +372,32 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Is Task Started</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Is Task Started Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Is Task Started</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Is Task Started Condition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIsTaskStarted(IsTaskStarted object) {
+	public T1 caseIsTaskStartedCondition(IsTaskStartedCondition object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Is Task Finished</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Is Task Finished Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Is Task Finished</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Is Task Finished Condition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseIsTaskFinished(IsTaskFinished object) {
+	public T1 caseIsTaskFinishedCondition(IsTaskFinishedCondition object) {
 		return null;
 	}
 

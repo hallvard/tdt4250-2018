@@ -53,18 +53,38 @@
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="App">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="game">
-      <eGenericType eClassifier="ecore:EClass runtime.ecore#//Game">
-        <eTypeArguments/>
-      </eGenericType>
+  <eClassifiers xsi:type="ecore:EClass" name="App" abstract="true">
+    <eTypeParameters name="V">
+      <eBounds eClassifier="#//View1">
+        <eTypeArguments eTypeParameter="#//App/U"/>
+        <eTypeArguments eTypeParameter="#//App/M"/>
+      </eBounds>
+    </eTypeParameters>
+    <eTypeParameters name="U"/>
+    <eTypeParameters name="M"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model">
+      <eGenericType eTypeParameter="#//App/M"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gameViews" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="views" upperBound="-1"
         containment="true">
-      <eGenericType eClassifier="#//GameView">
-        <eTypeArguments/>
-      </eGenericType>
+      <eGenericType eTypeParameter="#//App/V"/>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameApp">
+    <eTypeParameters name="T">
+      <eBounds eClassifier="ecore:EClass runtime.ecore#//Task">
+        <eTypeArguments/>
+      </eBounds>
+    </eTypeParameters>
+    <eGenericSuperTypes eClassifier="#//App">
+      <eTypeArguments eClassifier="#//GameView">
+        <eTypeArguments eTypeParameter="#//GameApp/T"/>
+      </eTypeArguments>
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Game">
+        <eTypeArguments eTypeParameter="#//GameApp/T"/>
+      </eTypeArguments>
+    </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskView">
     <eTypeParameters name="T">

@@ -99,8 +99,15 @@ public class AppSwitch<T1> extends Switch<T1> {
 				return result;
 			}
 			case AppPackage.APP: {
-				App app = (App)theEObject;
+				App<?, ?, ?> app = (App<?, ?, ?>)theEObject;
 				T1 result = caseApp(app);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AppPackage.GAME_APP: {
+				GameApp<?> gameApp = (GameApp<?>)theEObject;
+				T1 result = caseGameApp(gameApp);
+				if (result == null) result = caseApp(gameApp);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -210,7 +217,22 @@ public class AppSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseApp(App object) {
+	public <V extends View1<U, M>, U, M> T1 caseApp(App<V, U, M> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Game App</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Game App</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <T extends Task<?>> T1 caseGameApp(GameApp<T> object) {
 		return null;
 	}
 

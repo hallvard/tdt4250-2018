@@ -18,12 +18,13 @@ import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.IsTaskFinished;
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
+import no.hal.pg.runtime.Described;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 
@@ -92,6 +93,10 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createPlayerAdapter();
 			}
 			@Override
+			public Adapter caseDescribed(Described object) {
+				return createDescribedAdapter();
+			}
+			@Override
 			public Adapter caseItem(Item object) {
 				return createItemAdapter();
 			}
@@ -124,12 +129,12 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createCompositeConditionAdapter();
 			}
 			@Override
-			public Adapter caseIsTaskStarted(IsTaskStarted object) {
-				return createIsTaskStartedAdapter();
+			public Adapter caseIsTaskStartedCondition(IsTaskStartedCondition object) {
+				return createIsTaskStartedConditionAdapter();
 			}
 			@Override
-			public Adapter caseIsTaskFinished(IsTaskFinished object) {
-				return createIsTaskFinishedAdapter();
+			public Adapter caseIsTaskFinishedCondition(IsTaskFinishedCondition object) {
+				return createIsTaskFinishedConditionAdapter();
 			}
 			@Override
 			public Adapter caseIsByGeoLocationCondition(IsByGeoLocationCondition object) {
@@ -200,6 +205,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPlayerAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Described <em>Described</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.Described
+	 * @generated
+	 */
+	public Adapter createDescribedAdapter() {
 		return null;
 	}
 
@@ -316,30 +335,30 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.IsTaskStarted <em>Is Task Started</em>}'.
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.IsTaskStartedCondition <em>Is Task Started Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.IsTaskStarted
+	 * @see no.hal.pg.runtime.IsTaskStartedCondition
 	 * @generated
 	 */
-	public Adapter createIsTaskStartedAdapter() {
+	public Adapter createIsTaskStartedConditionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.IsTaskFinished <em>Is Task Finished</em>}'.
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.IsTaskFinishedCondition <em>Is Task Finished Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.IsTaskFinished
+	 * @see no.hal.pg.runtime.IsTaskFinishedCondition
 	 * @generated
 	 */
-	public Adapter createIsTaskFinishedAdapter() {
+	public Adapter createIsTaskFinishedConditionAdapter() {
 		return null;
 	}
 

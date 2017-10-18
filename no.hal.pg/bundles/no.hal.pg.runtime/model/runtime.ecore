@@ -32,7 +32,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
         eType="#//Item" containment="true" eOpposite="#//Item/owner"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocated">
+  <eClassifiers xsi:type="ecore:EClass" name="Described" abstract="true" interface="true">
+    <eOperations name="getDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
+        <details key="include" value="true"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocated #//Described">
     <eStructuralFeatures xsi:type="ecore:EReference" name="owner" eType="#//Player"
         eOpposite="#//Player/items"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownLocation" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocation"
@@ -45,16 +52,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InfoItem" eSuperTypes="#//Item #//Info"/>
   <eClassifiers xsi:type="ecore:EDataType" name="EURI" instanceClassName="java.net.URI"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Task">
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//Described">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
       <details key="constraints" value="PlayerIsContainedInGame IsFinishedImpliesIsStarted FinishTimeGEStartTime"/>
     </eAnnotations>
     <eTypeParameters name="R"/>
-    <eOperations name="getDescription" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
-        <details key="include" value="true"/>
-      </eAnnotations>
-    </eOperations>
     <eOperations name="canStart" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
         <details key="include" value="true"/>
@@ -117,14 +119,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
         eType="#//Condition" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IsTaskStarted">
+  <eClassifiers xsi:type="ecore:EClass" name="IsTaskStartedCondition">
     <eGenericSuperTypes eClassifier="#//AbstractCondition">
       <eTypeArguments eClassifier="#//Task">
         <eTypeArguments/>
       </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IsTaskFinished">
+  <eClassifiers xsi:type="ecore:EClass" name="IsTaskFinishedCondition">
     <eGenericSuperTypes eClassifier="#//AbstractCondition">
       <eTypeArguments eClassifier="#//Task">
         <eTypeArguments/>

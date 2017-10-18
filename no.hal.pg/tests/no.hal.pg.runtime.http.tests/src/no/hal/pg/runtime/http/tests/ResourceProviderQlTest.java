@@ -46,11 +46,11 @@ public class ResourceProviderQlTest extends AbstractHttpRequestTest {
 				}
 			}
 		}
-		testAcceptTask(postRequest("/tasks", "query { canStart isStarted isFinished }"));
+		testAcceptTask(postRequest("/tasks", "application/graphql", "query { canStart isStarted isFinished }"));
 //		testIgnore(getRequest("/tasks/0/start"));
-		testAcceptTaskStart(postRequest("/tasks/0", "mutation { start { isStarted isFinished }}"));
+		testAcceptTaskStart(postRequest("/tasks/0", "application/graphql", "mutation { start { isStarted isFinished }}"));
 //		testIgnore(getRequest("/tasks/0/accept"));
-		testAcceptTaskAccept(postRequest("/tasks/0", "mutation { accept { isStarted isFinished }}"));
+		testAcceptTaskAccept(postRequest("/tasks/0", "application/graphql", "mutation { accept { isStarted isFinished }}"));
 	}
 
 	private boolean useOwnReader = true;
@@ -74,7 +74,7 @@ public class ResourceProviderQlTest extends AbstractHttpRequestTest {
 		InputStream input = con.getInputStream();
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
-//		System.out.println(mapper.writeValueAsString(jsonNode));
+		System.out.println(mapper.writeValueAsString(jsonNode));
 		checkObjectNode(jsonNode, "canStart", true, "isStarted", false, "isFinished", false);
 	}
 

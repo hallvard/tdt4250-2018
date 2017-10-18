@@ -15,6 +15,7 @@ import org.junit.Test;
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
+import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.util.ViewFactoryUtil;
@@ -85,11 +86,11 @@ public class AppTest {
 		Assert.assertTrue(rootObjects.iterator().hasNext());
 		Assert.assertTrue(rootObjects.iterator().next() instanceof GameView<?>);
 		Game<Task<?>> game = ((GameView<Task<?>>) rootObjects.iterator().next()).getModel();
-		App app = ViewFactoryUtil.createApp(game);
-		Assert.assertEquals(game, app.getGame());
-		Assert.assertEquals(game.getPlayers().size(), app.getGameViews().size());
+		GameApp<?> app = ViewFactoryUtil.createGameApp(game);
+		Assert.assertEquals(game, app.getModel());
+		Assert.assertEquals(game.getPlayers().size(), app.getViews().size());
 		outer: for (Player player : game.getPlayers()) {
-			for (GameView<?> gameView : app.getGameViews()) {
+			for (GameView<?> gameView : app.getViews()) {
 				if (gameView.getUser() == player) {
 					Assert.assertEquals(game, gameView.getModel());
 					Assert.assertEquals(game.getTasks().size(), gameView.getTaskViews().size());

@@ -59,7 +59,7 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case AppPackage.GAME_VIEW: return createGameView();
-			case AppPackage.APP: return createApp();
+			case AppPackage.GAME_APP: return createGameApp();
 			case AppPackage.TASK_VIEW: return createTaskView();
 			case AppPackage.ACCEPT_TASK_VIEW: return createAcceptTaskView();
 			case AppPackage.MAP_VIEW: return createMapView();
@@ -84,9 +84,9 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public App createApp() {
-		AppImpl app = new AppImpl();
-		return app;
+	public <T extends Task<?>> GameApp<T> createGameApp() {
+		GameAppImpl<T> gameApp = new GameAppImpl<T>();
+		return gameApp;
 	}
 
 	/**

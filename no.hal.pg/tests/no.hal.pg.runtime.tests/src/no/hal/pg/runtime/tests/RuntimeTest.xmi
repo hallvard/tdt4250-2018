@@ -7,21 +7,21 @@
     <players person="//@actors.0"/>
     <tasks xsi:type="runtime:AcceptTask" players="//@games.0/@players.0"/>
     <tasks xsi:type="runtime:AcceptTask" players="//@games.0/@players.0">
-      <startConditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
+      <startConditions xsi:type="runtime:IsTaskStartedCondition" context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks players="//@games.0/@players.0">
-      <startConditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
+      <startConditions xsi:type="runtime:IsTaskFinishedCondition" context="//@games.0/@tasks.0"/>
     </tasks>
     <tasks players="//@games.0/@players.0">
       <startConditions xsi:type="runtime:CompositeCondition">
-        <conditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
-        <conditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskStartedCondition" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskFinishedCondition" context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>
     <tasks players="//@games.0/@players.0">
       <startConditions xsi:type="runtime:CompositeCondition" logic="true">
-        <conditions xsi:type="runtime:IsTaskStarted" context="//@games.0/@tasks.0"/>
-        <conditions xsi:type="runtime:IsTaskFinished" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskStartedCondition" context="//@games.0/@tasks.0"/>
+        <conditions xsi:type="runtime:IsTaskFinishedCondition" context="//@games.0/@tasks.0"/>
       </startConditions>
     </tasks>
   </games>

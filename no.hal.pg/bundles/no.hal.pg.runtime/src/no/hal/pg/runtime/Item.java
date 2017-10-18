@@ -22,7 +22,7 @@ import no.hal.pg.osm.GeoLocation;
  * @model
  * @generated
  */
-public interface Item extends GeoLocated {
+public interface Item extends GeoLocated, Described {
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Player#getItems <em>Items</em>}'.

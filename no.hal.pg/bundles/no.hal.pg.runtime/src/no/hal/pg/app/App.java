@@ -2,8 +2,6 @@
  */
 package no.hal.pg.app;
 
-import no.hal.pg.runtime.Game;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -17,55 +15,54 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.app.App#getGame <em>Game</em>}</li>
- *   <li>{@link no.hal.pg.app.App#getGameViews <em>Game Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.App#getModel <em>Model</em>}</li>
+ *   <li>{@link no.hal.pg.app.App#getViews <em>Views</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.app.AppPackage#getApp()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface App extends EObject {
+public interface App<V extends View1<U, M>, U, M> extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Game</b></em>' reference.
+	 * Returns the value of the '<em><b>Model</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Game</em>' reference isn't clear,
+	 * If the meaning of the '<em>Model</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Game</em>' reference.
-	 * @see #setGame(Game)
-	 * @see no.hal.pg.app.AppPackage#getApp_Game()
-	 * @model
+	 * @return the value of the '<em>Model</em>' reference.
+	 * @see #setModel(Object)
+	 * @see no.hal.pg.app.AppPackage#getApp_Model()
+	 * @model kind="reference"
 	 * @generated
 	 */
-	Game<?> getGame();
+	M getModel();
 
 	/**
-	 * Sets the value of the '{@link no.hal.pg.app.App#getGame <em>Game</em>}' reference.
+	 * Sets the value of the '{@link no.hal.pg.app.App#getModel <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Game</em>' reference.
-	 * @see #getGame()
+	 * @param value the new value of the '<em>Model</em>' reference.
+	 * @see #getModel()
 	 * @generated
 	 */
-	void setGame(Game<?> value);
+	void setModel(M value);
 
 	/**
-	 * Returns the value of the '<em><b>Game Views</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.app.GameView}<code>&lt;?&gt;</code>.
+	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Game Views</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Views</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Game Views</em>' containment reference list.
-	 * @see no.hal.pg.app.AppPackage#getApp_GameViews()
+	 * @return the value of the '<em>Views</em>' containment reference list.
+	 * @see no.hal.pg.app.AppPackage#getApp_Views()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<GameView<?>> getGameViews();
+	EList<V> getViews();
 
 } // App

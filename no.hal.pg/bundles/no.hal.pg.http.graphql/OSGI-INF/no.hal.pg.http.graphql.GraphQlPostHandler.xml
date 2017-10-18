@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.http.graphql.GraphQlPostHandler">
+   <property name="postHandlerMimeType" type="String" value="application/graphql"/>
+   <service>
+      <provide interface="no.hal.pg.http.IPostHandler"/>
+   </service>
+   <implementation class="no.hal.pg.http.graphql.GraphQlPostHandler"/>
+</scr:component>

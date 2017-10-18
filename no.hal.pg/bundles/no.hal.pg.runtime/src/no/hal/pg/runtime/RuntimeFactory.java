@@ -94,22 +94,22 @@ public interface RuntimeFactory extends EFactory {
 	<E> CompositeCondition<E> createCompositeCondition();
 
 	/**
-	 * Returns a new object of class '<em>Is Task Started</em>'.
+	 * Returns a new object of class '<em>Is Task Started Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Is Task Started</em>'.
+	 * @return a new object of class '<em>Is Task Started Condition</em>'.
 	 * @generated
 	 */
-	IsTaskStarted createIsTaskStarted();
+	IsTaskStartedCondition createIsTaskStartedCondition();
 
 	/**
-	 * Returns a new object of class '<em>Is Task Finished</em>'.
+	 * Returns a new object of class '<em>Is Task Finished Condition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Is Task Finished</em>'.
+	 * @return a new object of class '<em>Is Task Finished Condition</em>'.
 	 * @generated
 	 */
-	IsTaskFinished createIsTaskFinished();
+	IsTaskFinishedCondition createIsTaskFinishedCondition();
 
 	/**
 	 * Returns a new object of class '<em>Is By Geo Location Condition</em>'.

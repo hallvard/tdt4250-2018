@@ -9,9 +9,9 @@ package no.hal.pg.runtime;
  * <!-- end-user-doc -->
  *
  *
- * @see no.hal.pg.runtime.RuntimePackage#getIsTaskStarted()
+ * @see no.hal.pg.runtime.RuntimePackage#getIsTaskStartedCondition()
  * @model
  * @generated
  */
-public interface IsTaskStarted extends AbstractCondition<Task<?>> {
+public interface IsTaskStartedCondition extends AbstractCondition<Task<?>> {
 } // IsTaskStarted

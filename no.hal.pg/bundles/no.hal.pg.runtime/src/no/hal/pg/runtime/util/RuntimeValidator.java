@@ -11,12 +11,13 @@ import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.IsTaskFinished;
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
+import no.hal.pg.runtime.Described;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 import no.hal.pg.runtime.impl.TaskImpl;
@@ -103,6 +104,8 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateGame((Game<?>)value, diagnostics, context);
 			case RuntimePackage.PLAYER:
 				return validatePlayer((Player)value, diagnostics, context);
+			case RuntimePackage.DESCRIBED:
+				return validateDescribed((Described)value, diagnostics, context);
 			case RuntimePackage.ITEM:
 				return validateItem((Item)value, diagnostics, context);
 			case RuntimePackage.INFO:
@@ -119,10 +122,10 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateAbstractCondition((AbstractCondition<?>)value, diagnostics, context);
 			case RuntimePackage.COMPOSITE_CONDITION:
 				return validateCompositeCondition((CompositeCondition<?>)value, diagnostics, context);
-			case RuntimePackage.IS_TASK_STARTED:
-				return validateIsTaskStarted((IsTaskStarted)value, diagnostics, context);
-			case RuntimePackage.IS_TASK_FINISHED:
-				return validateIsTaskFinished((IsTaskFinished)value, diagnostics, context);
+			case RuntimePackage.IS_TASK_STARTED_CONDITION:
+				return validateIsTaskStartedCondition((IsTaskStartedCondition)value, diagnostics, context);
+			case RuntimePackage.IS_TASK_FINISHED_CONDITION:
+				return validateIsTaskFinishedCondition((IsTaskFinishedCondition)value, diagnostics, context);
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION:
 				return validateIsByGeoLocationCondition((IsByGeoLocationCondition)value, diagnostics, context);
 			case RuntimePackage.ACCEPT_TASK:
@@ -154,6 +157,15 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validatePlayer(Player player, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(player, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateDescribed(Described described, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(described, diagnostics, context);
 	}
 
 	/**
@@ -329,8 +341,8 @@ public class RuntimeValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIsTaskStarted(IsTaskStarted isTaskStarted, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(isTaskStarted, diagnostics, context);
+	public boolean validateIsTaskStartedCondition(IsTaskStartedCondition isTaskStartedCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(isTaskStartedCondition, diagnostics, context);
 	}
 
 	/**
@@ -338,8 +350,8 @@ public class RuntimeValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validateIsTaskFinished(IsTaskFinished isTaskFinished, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(isTaskFinished, diagnostics, context);
+	public boolean validateIsTaskFinishedCondition(IsTaskFinishedCondition isTaskFinishedCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(isTaskFinishedCondition, diagnostics, context);
 	}
 
 	/**

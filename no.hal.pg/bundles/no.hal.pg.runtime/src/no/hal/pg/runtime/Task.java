@@ -3,7 +3,6 @@
 package no.hal.pg.runtime;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PlayerIsContainedInGame IsFinishedImpliesIsStarted FinishTimeGEStartTime'"
  * @generated
  */
-public interface Task<R> extends EObject {
+public interface Task<R> extends Described {
 	/**
 	 * Returns the value of the '<em><b>Game</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link no.hal.pg.runtime.Game#getTasks <em>Tasks</em>}'.
@@ -198,15 +197,6 @@ public interface Task<R> extends EObject {
 	 * @generated
 	 */
 	EList<Item> getRewards();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 *        annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
-	 * @generated
-	 */
-	String getDescription();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -11,6 +11,7 @@ import org.osgi.framework.ServiceReference;
 
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
+import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.View;
@@ -46,9 +47,9 @@ public class ViewFactoryUtil {
 		return null;
 	}
 
-	public static App createApp(Game<Task<?>> game) {
-		App app = AppFactory.eINSTANCE.createApp();
-		app.setGame(game);
+	public static GameApp<?> createGameApp(Game<Task<?>> game) {
+		GameApp<?> app = AppFactory.eINSTANCE.createGameApp();
+		app.setModel(game);
 		BundleContext bundleContext = FrameworkUtil.getBundle(game.getClass()).getBundleContext();
 		Collection<IViewFactory> viewFactories = new ArrayList<IViewFactory>();
 		try {
@@ -64,7 +65,7 @@ public class ViewFactoryUtil {
 			GameView<Task<?>> gameView = (GameView<Task<?>>) createView(player, game, GameView.class, viewFactories);
 			gameView.setPlayer(player);
 			gameView.setModel(game);
-			app.getGameViews().add(gameView);
+			app.getViews().add(gameView);
 			for (Task<?> task : game.getTasks()) {
 				if (task.getPlayers().contains(player)) {
 					TaskView<Task<?>> taskView = (TaskView<Task<?>>) createView(player, task, TaskView.class, viewFactories);

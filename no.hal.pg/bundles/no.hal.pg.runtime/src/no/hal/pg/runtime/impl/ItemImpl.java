@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.geoutil.LatLong;
+import no.hal.pg.runtime.Described;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.RuntimePackage;
@@ -158,6 +159,18 @@ public class ItemImpl extends MinimalEObjectImpl.Container implements Item {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getDescription() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	@Override
@@ -289,8 +302,26 @@ public class ItemImpl extends MinimalEObjectImpl.Container implements Item {
 	 * @generated
 	 */
 	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == Described.class) {
+			switch (baseOperationID) {
+				case RuntimePackage.DESCRIBED___GET_DESCRIPTION: return RuntimePackage.ITEM___GET_DESCRIPTION;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case RuntimePackage.ITEM___GET_DESCRIPTION:
+				return getDescription();
 			case RuntimePackage.ITEM___GET_LAT_LONG:
 				return getLatLong();
 		}

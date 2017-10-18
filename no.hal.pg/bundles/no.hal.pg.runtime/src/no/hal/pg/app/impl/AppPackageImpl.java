@@ -6,6 +6,7 @@ import no.hal.pg.app.AcceptTaskView;
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
+import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
 import no.hal.pg.app.MapMarker;
 import no.hal.pg.app.MapView;
@@ -71,6 +72,13 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	private EClass appEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gameAppEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -270,7 +278,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getApp_Game() {
+	public EReference getApp_Model() {
 		return (EReference)appEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -279,8 +287,17 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getApp_GameViews() {
+	public EReference getApp_Views() {
 		return (EReference)appEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGameApp() {
+		return gameAppEClass;
 	}
 
 	/**
@@ -497,8 +514,10 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		createEReference(gameViewEClass, GAME_VIEW__TASK_VIEWS);
 
 		appEClass = createEClass(APP);
-		createEReference(appEClass, APP__GAME);
-		createEReference(appEClass, APP__GAME_VIEWS);
+		createEReference(appEClass, APP__MODEL);
+		createEReference(appEClass, APP__VIEWS);
+
+		gameAppEClass = createEClass(GAME_APP);
 
 		taskViewEClass = createEClass(TASK_VIEW);
 		createEReference(taskViewEClass, TASK_VIEW__GAME_VIEW);
@@ -559,6 +578,10 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		ETypeParameter view2EClass_M1 = addETypeParameter(view2EClass, "M1");
 		ETypeParameter view2EClass_M2 = addETypeParameter(view2EClass, "M2");
 		ETypeParameter gameViewEClass_T = addETypeParameter(gameViewEClass, "T");
+		ETypeParameter appEClass_V = addETypeParameter(appEClass, "V");
+		ETypeParameter appEClass_U = addETypeParameter(appEClass, "U");
+		ETypeParameter appEClass_M = addETypeParameter(appEClass, "M");
+		ETypeParameter gameAppEClass_T = addETypeParameter(gameAppEClass, "T");
 		ETypeParameter taskViewEClass_T = addETypeParameter(taskViewEClass, "T");
 
 		// Set bounds for type parameters
@@ -566,6 +589,16 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		gameViewEClass_T.getEBounds().add(g1);
+		g1 = createEGenericType(this.getView1());
+		g2 = createEGenericType(appEClass_U);
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(appEClass_M);
+		g1.getETypeArguments().add(g2);
+		appEClass_V.getEBounds().add(g1);
+		g1 = createEGenericType(theRuntimePackage.getTask());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		gameAppEClass_T.getEBounds().add(g1);
 		g1 = createEGenericType(theRuntimePackage.getTask());
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
@@ -588,6 +621,18 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		EGenericType g3 = createEGenericType(gameViewEClass_T);
 		g2.getETypeArguments().add(g3);
 		gameViewEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getApp());
+		g2 = createEGenericType(this.getGameView());
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(gameAppEClass_T);
+		g2.getETypeArguments().add(g3);
+		g2 = createEGenericType(theRuntimePackage.getPlayer());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theRuntimePackage.getGame());
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType(gameAppEClass_T);
+		g2.getETypeArguments().add(g3);
+		gameAppEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getView1());
 		g2 = createEGenericType(theRuntimePackage.getPlayer());
 		g1.getETypeArguments().add(g2);
@@ -622,15 +667,13 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g1.getETypeArguments().add(g2);
 		initEReference(getGameView_TaskViews(), g1, this.getTaskView_GameView(), "taskViews", null, 0, -1, GameView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(appEClass, App.class, "App", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(theRuntimePackage.getGame());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEReference(getApp_Game(), g1, null, "game", null, 0, 1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		g1 = createEGenericType(this.getGameView());
-		g2 = createEGenericType();
-		g1.getETypeArguments().add(g2);
-		initEReference(getApp_GameViews(), g1, null, "gameViews", null, 0, -1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(appEClass, App.class, "App", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(appEClass_M);
+		initEReference(getApp_Model(), g1, null, "model", null, 0, 1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		g1 = createEGenericType(appEClass_V);
+		initEReference(getApp_Views(), g1, null, "views", null, 0, -1, App.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(gameAppEClass, GameApp.class, "GameApp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskViewEClass, TaskView.class, "TaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getGameView());

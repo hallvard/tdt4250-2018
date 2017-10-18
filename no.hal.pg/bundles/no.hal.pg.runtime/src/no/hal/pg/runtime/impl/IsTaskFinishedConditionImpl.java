@@ -2,7 +2,7 @@
  */
 package no.hal.pg.runtime.impl;
 
-import no.hal.pg.runtime.IsTaskFinished;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 
@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsTaskFinishedImpl extends AbstractConditionImpl<Task<?>> implements IsTaskFinished {
+public class IsTaskFinishedConditionImpl extends AbstractConditionImpl<Task<?>> implements IsTaskFinishedCondition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IsTaskFinishedImpl() {
+	protected IsTaskFinishedConditionImpl() {
 		super();
 	}
 
@@ -32,7 +32,7 @@ public class IsTaskFinishedImpl extends AbstractConditionImpl<Task<?>> implement
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return RuntimePackage.Literals.IS_TASK_FINISHED;
+		return RuntimePackage.Literals.IS_TASK_FINISHED_CONDITION;
 	}
 
 	/**

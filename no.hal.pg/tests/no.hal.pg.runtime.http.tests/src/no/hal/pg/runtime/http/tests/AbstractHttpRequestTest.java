@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -61,12 +60,12 @@ public abstract class AbstractHttpRequestTest {
 		return con;
 	}
 	
-	protected HttpURLConnection postRequest(String urlPath, String body) throws IOException {
+	protected HttpURLConnection postRequest(String urlPath, String contentType, String body) throws IOException {
 		HttpURLConnection con = (HttpURLConnection) new URL(urlString + urlPath).openConnection();
 		con.setRequestMethod("POST");
 		con.setDoOutput(true);
 		Charset utf8 = StandardCharsets.UTF_8;
-		con.setRequestProperty("Content-Type", "application/json; charset=" + utf8.name()); 
+		con.setRequestProperty("Content-Type", contentType + "; charset=" + utf8.name()); 
 		con.setRequestProperty("charset", utf8.name());
 		byte[] postData = body.getBytes(utf8);
 		con.setRequestProperty( "Content-Length", Integer.toString(postData.length));

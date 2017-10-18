@@ -33,4 +33,5 @@ Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/no.hal.pg.http.impl.JsonSerializer.xml,
  OSGI-INF/no.hal.pg.http.impl.NameReferenceResolver.xml,
  OSGI-INF/no.hal.pg.http.impl.RequestHandler.xml
-Require-Bundle: no.hal.pg.http;bundle-version="0.0.1"
+Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
+ no.hal.graphql.emf;bundle-version="0.0.1"

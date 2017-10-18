@@ -6,16 +6,14 @@ import java.util.Collection;
 
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppPackage;
-import no.hal.pg.app.GameView;
-
-import no.hal.pg.runtime.Game;
-
+import no.hal.pg.app.View1;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -32,32 +30,32 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.app.impl.AppImpl#getGame <em>Game</em>}</li>
- *   <li>{@link no.hal.pg.app.impl.AppImpl#getGameViews <em>Game Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.AppImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.AppImpl#getViews <em>Views</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class AppImpl extends MinimalEObjectImpl.Container implements App {
+public abstract class AppImpl<V extends View1<U, M>, U, M> extends MinimalEObjectImpl.Container implements App<V, U, M> {
 	/**
-	 * The cached value of the '{@link #getGame() <em>Game</em>}' reference.
+	 * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGame()
+	 * @see #getModel()
 	 * @generated
 	 * @ordered
 	 */
-	protected Game<?> game;
+	protected M model;
 
 	/**
-	 * The cached value of the '{@link #getGameViews() <em>Game Views</em>}' containment reference list.
+	 * The cached value of the '{@link #getViews() <em>Views</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGameViews()
+	 * @see #getViews()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<GameView<?>> gameViews;
+	protected EList<V> views;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -83,16 +81,17 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Game<?> getGame() {
-		if (game != null && game.eIsProxy()) {
-			InternalEObject oldGame = (InternalEObject)game;
-			game = (Game<?>)eResolveProxy(oldGame);
-			if (game != oldGame) {
+	@SuppressWarnings("unchecked")
+	public M getModel() {
+		if (model != null && ((EObject)model).eIsProxy()) {
+			InternalEObject oldModel = (InternalEObject)model;
+			model = (M)eResolveProxy(oldModel);
+			if (model != oldModel) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AppPackage.APP__GAME, oldGame, game));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AppPackage.APP__MODEL, oldModel, model));
 			}
 		}
-		return game;
+		return model;
 	}
 
 	/**
@@ -100,8 +99,8 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Game<?> basicGetGame() {
-		return game;
+	public M basicGetModel() {
+		return model;
 	}
 
 	/**
@@ -109,11 +108,11 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGame(Game<?> newGame) {
-		Game<?> oldGame = game;
-		game = newGame;
+	public void setModel(M newModel) {
+		M oldModel = model;
+		model = newModel;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.APP__GAME, oldGame, game));
+			eNotify(new ENotificationImpl(this, Notification.SET, AppPackage.APP__MODEL, oldModel, model));
 	}
 
 	/**
@@ -121,11 +120,11 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<GameView<?>> getGameViews() {
-		if (gameViews == null) {
-			gameViews = new EObjectContainmentEList<GameView<?>>(GameView.class, this, AppPackage.APP__GAME_VIEWS);
+	public EList<V> getViews() {
+		if (views == null) {
+			views = new EObjectContainmentEList<V>(View1.class, this, AppPackage.APP__VIEWS);
 		}
-		return gameViews;
+		return views;
 	}
 
 	/**
@@ -136,8 +135,8 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AppPackage.APP__GAME_VIEWS:
-				return ((InternalEList<?>)getGameViews()).basicRemove(otherEnd, msgs);
+			case AppPackage.APP__VIEWS:
+				return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -150,11 +149,11 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AppPackage.APP__GAME:
-				if (resolve) return getGame();
-				return basicGetGame();
-			case AppPackage.APP__GAME_VIEWS:
-				return getGameViews();
+			case AppPackage.APP__MODEL:
+				if (resolve) return getModel();
+				return basicGetModel();
+			case AppPackage.APP__VIEWS:
+				return getViews();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,12 +167,12 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AppPackage.APP__GAME:
-				setGame((Game<?>)newValue);
+			case AppPackage.APP__MODEL:
+				setModel((M)newValue);
 				return;
-			case AppPackage.APP__GAME_VIEWS:
-				getGameViews().clear();
-				getGameViews().addAll((Collection<? extends GameView<?>>)newValue);
+			case AppPackage.APP__VIEWS:
+				getViews().clear();
+				getViews().addAll((Collection<? extends V>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,11 +186,11 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AppPackage.APP__GAME:
-				setGame((Game<?>)null);
+			case AppPackage.APP__MODEL:
+				setModel((M)null);
 				return;
-			case AppPackage.APP__GAME_VIEWS:
-				getGameViews().clear();
+			case AppPackage.APP__VIEWS:
+				getViews().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -205,10 +204,10 @@ public class AppImpl extends MinimalEObjectImpl.Container implements App {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AppPackage.APP__GAME:
-				return game != null;
-			case AppPackage.APP__GAME_VIEWS:
-				return gameViews != null && !gameViews.isEmpty();
+			case AppPackage.APP__MODEL:
+				return model != null;
+			case AppPackage.APP__VIEWS:
+				return views != null && !views.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

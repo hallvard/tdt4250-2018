@@ -2,7 +2,7 @@
  */
 package no.hal.pg.runtime.impl;
 
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
 
@@ -15,13 +15,13 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class IsTaskStartedImpl extends AbstractConditionImpl<Task<?>> implements IsTaskStarted {
+public class IsTaskStartedConditionImpl extends AbstractConditionImpl<Task<?>> implements IsTaskStartedCondition {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IsTaskStartedImpl() {
+	protected IsTaskStartedConditionImpl() {
 		super();
 	}
 
@@ -32,7 +32,7 @@ public class IsTaskStartedImpl extends AbstractConditionImpl<Task<?>> implements
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return RuntimePackage.Literals.IS_TASK_STARTED;
+		return RuntimePackage.Literals.IS_TASK_STARTED_CONDITION;
 	}
 
 	/**

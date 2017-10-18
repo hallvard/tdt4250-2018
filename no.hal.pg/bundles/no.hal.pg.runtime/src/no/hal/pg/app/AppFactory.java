@@ -33,13 +33,13 @@ public interface AppFactory extends EFactory {
 	<T extends Task<?>> GameView<T> createGameView();
 
 	/**
-	 * Returns a new object of class '<em>App</em>'.
+	 * Returns a new object of class '<em>Game App</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>App</em>'.
+	 * @return a new object of class '<em>Game App</em>'.
 	 * @generated
 	 */
-	App createApp();
+	<T extends Task<?>> GameApp<T> createGameApp();
 
 	/**
 	 * Returns a new object of class '<em>Task View</em>'.

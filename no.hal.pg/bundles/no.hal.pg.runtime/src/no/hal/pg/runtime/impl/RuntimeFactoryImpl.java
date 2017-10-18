@@ -15,8 +15,8 @@ import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.IsTaskFinished;
-import no.hal.pg.runtime.IsTaskStarted;
+import no.hal.pg.runtime.IsTaskFinishedCondition;
+import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.ResettableTask;
@@ -76,8 +76,8 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.TASK: return createTask();
 			case RuntimePackage.RESETTABLE_TASK: return createResettableTask();
 			case RuntimePackage.COMPOSITE_CONDITION: return createCompositeCondition();
-			case RuntimePackage.IS_TASK_STARTED: return createIsTaskStarted();
-			case RuntimePackage.IS_TASK_FINISHED: return createIsTaskFinished();
+			case RuntimePackage.IS_TASK_STARTED_CONDITION: return createIsTaskStartedCondition();
+			case RuntimePackage.IS_TASK_FINISHED_CONDITION: return createIsTaskFinishedCondition();
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION: return createIsByGeoLocationCondition();
 			case RuntimePackage.ACCEPT_TASK: return createAcceptTask();
 			case RuntimePackage.RUNTIME: return createRuntime();
@@ -211,10 +211,9 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public IsTaskStarted createIsTaskStarted() {
-		IsTaskStartedImpl isTaskStarted = new IsTaskStartedImpl();
-		return isTaskStarted;
+	public IsTaskStartedCondition createIsTaskStartedCondition() {
+		IsTaskStartedConditionImpl isTaskStartedCondition = new IsTaskStartedConditionImpl();
+		return isTaskStartedCondition;
 	}
 
 	/**
@@ -222,10 +221,9 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public IsTaskFinished createIsTaskFinished() {
-		IsTaskFinishedImpl isTaskFinished = new IsTaskFinishedImpl();
-		return isTaskFinished;
+	public IsTaskFinishedCondition createIsTaskFinishedCondition() {
+		IsTaskFinishedConditionImpl isTaskFinishedCondition = new IsTaskFinishedConditionImpl();
+		return isTaskFinishedCondition;
 	}
 
 	/**

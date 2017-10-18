@@ -9,9 +9,9 @@ package no.hal.pg.runtime;
  * <!-- end-user-doc -->
  *
  *
- * @see no.hal.pg.runtime.RuntimePackage#getIsTaskFinished()
+ * @see no.hal.pg.runtime.RuntimePackage#getIsTaskFinishedCondition()
  * @model
  * @generated
  */
-public interface IsTaskFinished extends AbstractCondition<Task<?>> {
+public interface IsTaskFinishedCondition extends AbstractCondition<Task<?>> {
 } // IsTaskFinished
