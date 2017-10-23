@@ -15,6 +15,7 @@ import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Described;
@@ -128,6 +129,8 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateIsTaskFinishedCondition((IsTaskFinishedCondition)value, diagnostics, context);
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION:
 				return validateIsByGeoLocationCondition((IsByGeoLocationCondition)value, diagnostics, context);
+			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION:
+				return validatePlayersHaveItemsCondition((PlayersHaveItemsCondition)value, diagnostics, context);
 			case RuntimePackage.ACCEPT_TASK:
 				return validateAcceptTask((AcceptTask)value, diagnostics, context);
 			case RuntimePackage.RUNTIME:
@@ -361,6 +364,15 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validateIsByGeoLocationCondition(IsByGeoLocationCondition isByGeoLocationCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(isByGeoLocationCondition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validatePlayersHaveItemsCondition(PlayersHaveItemsCondition playersHaveItemsCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(playersHaveItemsCondition, diagnostics, context);
 	}
 
 	/**

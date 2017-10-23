@@ -21,6 +21,8 @@ import no.hal.pg.osm.geoutil.LatLong;
 import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
+import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -165,13 +167,47 @@ public class RuntimeTest {
 		condition.setLowerTargetDistanceBound(distance + 1);
 		condition.setUpperTargetDistanceBound(distance + 1);
 		Assert.assertFalse(condition.test());
+		Assert.assertFalse(condition.test(loc1));
 
 		condition.setLowerTargetDistanceBound(distance);
 		condition.setUpperTargetDistanceBound(distance + 1);
 		Assert.assertTrue(condition.test());
+		Assert.assertTrue(condition.test(loc1));
 
 		condition.setLowerTargetDistanceBound(distance);
 		condition.setUpperTargetDistanceBound(distance - 1);
 		Assert.assertFalse(condition.test());
+		Assert.assertFalse(condition.test(loc1));
+	}
+	
+	@Test
+	public void testPlayersHaveItemsCondition() {
+		Task<?> task = RuntimeFactory.eINSTANCE.createTask();
+		Player player1 = RuntimeFactory.eINSTANCE.createPlayer();
+		task.getPlayers().add(player1);
+		PlayersHaveItemsCondition condition = RuntimeFactory.eINSTANCE.createPlayersHaveItemsCondition();
+		condition.setContext(task);
+		condition.getItemClasses().add(RuntimePackage.eINSTANCE.getInfoItem());
+
+		// an InfoItem is required, but not present
+		Assert.assertFalse(condition.test());
+		Assert.assertFalse(condition.test(task));
+
+		player1.getItems().add(RuntimeFactory.eINSTANCE.createInfoItem());
+		// an InfoItem is now present
+		Assert.assertTrue(condition.test());
+		Assert.assertTrue(condition.test(task));
+
+		condition.getItemClasses().add(RuntimePackage.eINSTANCE.getItem());
+		// another InfoItem is required, but not present
+		Assert.assertFalse(condition.test());
+		Assert.assertFalse(condition.test(task));
+
+		Player player2 = RuntimeFactory.eINSTANCE.createPlayer();
+		task.getPlayers().add(player2);
+		player2.getItems().add(RuntimeFactory.eINSTANCE.createInfoItem());
+		// both InfoItems are now present
+		Assert.assertTrue(condition.test());
+		Assert.assertTrue(condition.test(task));
 	}
 }

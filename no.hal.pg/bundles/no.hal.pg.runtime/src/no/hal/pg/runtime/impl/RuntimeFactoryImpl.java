@@ -19,6 +19,7 @@ import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.RuntimeFactory;
 import no.hal.pg.runtime.RuntimePackage;
@@ -79,6 +80,7 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.IS_TASK_STARTED_CONDITION: return createIsTaskStartedCondition();
 			case RuntimePackage.IS_TASK_FINISHED_CONDITION: return createIsTaskFinishedCondition();
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION: return createIsByGeoLocationCondition();
+			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION: return createPlayersHaveItemsCondition();
 			case RuntimePackage.ACCEPT_TASK: return createAcceptTask();
 			case RuntimePackage.RUNTIME: return createRuntime();
 			default:
@@ -234,6 +236,16 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public IsByGeoLocationCondition createIsByGeoLocationCondition() {
 		IsByGeoLocationConditionImpl isByGeoLocationCondition = new IsByGeoLocationConditionImpl();
 		return isByGeoLocationCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlayersHaveItemsCondition createPlayersHaveItemsCondition() {
+		PlayersHaveItemsConditionImpl playersHaveItemsCondition = new PlayersHaveItemsConditionImpl();
+		return playersHaveItemsCondition;
 	}
 
 	/**

@@ -49,7 +49,7 @@ public class IsTaskStartedConditionImpl extends AbstractConditionImpl<Task<?>> i
 	//
 	
 	@Override
-	public boolean test() {
+	public boolean test(Task<?> context) {
 		return context.isStarted();
 	}
 

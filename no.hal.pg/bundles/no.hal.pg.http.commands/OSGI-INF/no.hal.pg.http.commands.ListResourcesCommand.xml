@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.commands.ListResourcesCommand">
+   <property name="osgi.command.scope" type="String" value="pg"/>
+   <property name="osgi.command.function" type="String" value="lr"/>
+   <reference cardinality="0..n" field="resourceProviders" interface="no.hal.pg.http.IResourceProvider" name="resourceProviders" policy="dynamic"/>
+   <implementation class="no.hal.pg.http.commands.ListResourcesCommand"/>
+</scr:component>

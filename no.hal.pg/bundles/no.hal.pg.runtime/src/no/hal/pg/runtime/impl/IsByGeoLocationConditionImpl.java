@@ -8,6 +8,7 @@ import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.geoutil.LatLong;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.RuntimePackage;
+import no.hal.pg.runtime.Task;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -251,8 +252,8 @@ public class IsByGeoLocationConditionImpl extends AbstractConditionImpl<GeoLocat
 	 * @generated NOT
 	 */
 	@Override
-	public boolean test() {
-		LatLong latLong = getContext().getLatLong();
+	public boolean test(GeoLocated context) {
+		LatLong latLong = context.getLatLong();
 		for (GeoLocated located : getLocations()) {
 			LatLong latLong2 = located.getLatLong();
 			double distance = LatLong.distance(latLong, latLong2);

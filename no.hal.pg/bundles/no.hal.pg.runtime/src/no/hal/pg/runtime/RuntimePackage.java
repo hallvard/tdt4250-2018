@@ -836,13 +836,22 @@ public interface RuntimePackage extends EPackage {
 	int ABSTRACT_CONDITION___TEST = CONDITION___TEST;
 
 	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONDITION___TEST__OBJECT = CONDITION_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Abstract Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONDITION_OPERATION_COUNT = CONDITION_OPERATION_COUNT + 0;
+	int ABSTRACT_CONDITION_OPERATION_COUNT = CONDITION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.CompositeConditionImpl <em>Composite Condition</em>}' class.
@@ -937,6 +946,15 @@ public interface RuntimePackage extends EPackage {
 	int IS_TASK_STARTED_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
 
 	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_TASK_STARTED_CONDITION___TEST__OBJECT = ABSTRACT_CONDITION___TEST__OBJECT;
+
+	/**
 	 * The number of operations of the '<em>Is Task Started Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -981,6 +999,15 @@ public interface RuntimePackage extends EPackage {
 	 * @ordered
 	 */
 	int IS_TASK_FINISHED_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
+
+	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_TASK_FINISHED_CONDITION___TEST__OBJECT = ABSTRACT_CONDITION___TEST__OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Is Task Finished Condition</em>' class.
@@ -1074,6 +1101,15 @@ public interface RuntimePackage extends EPackage {
 	int IS_BY_GEO_LOCATION_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
 
 	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IS_BY_GEO_LOCATION_CONDITION___TEST__OBJECT = ABSTRACT_CONDITION___TEST__OBJECT;
+
+	/**
 	 * The number of operations of the '<em>Is By Geo Location Condition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1083,6 +1119,70 @@ public interface RuntimePackage extends EPackage {
 	int IS_BY_GEO_LOCATION_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.PlayersHaveItemsConditionImpl <em>Players Have Items Condition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.PlayersHaveItemsConditionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getPlayersHaveItemsCondition()
+	 * @generated
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION = 14;
+
+	/**
+	 * The feature id for the '<em><b>Context</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION__CONTEXT = ABSTRACT_CONDITION__CONTEXT;
+
+	/**
+	 * The feature id for the '<em><b>Item Classes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION__ITEM_CLASSES = ABSTRACT_CONDITION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Players Have Items Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION_FEATURE_COUNT = ABSTRACT_CONDITION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION___TEST = ABSTRACT_CONDITION___TEST;
+
+	/**
+	 * The operation id for the '<em>Test</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION___TEST__OBJECT = ABSTRACT_CONDITION___TEST__OBJECT;
+
+	/**
+	 * The number of operations of the '<em>Players Have Items Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYERS_HAVE_ITEMS_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1090,7 +1190,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAcceptTask()
 	 * @generated
 	 */
-	int ACCEPT_TASK = 14;
+	int ACCEPT_TASK = 15;
 
 	/**
 	 * The feature id for the '<em><b>Game</b></em>' container reference.
@@ -1262,7 +1362,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 15;
+	int RUNTIME = 16;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -1317,7 +1417,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
 	 * @generated
 	 */
-	int EURI = 16;
+	int EURI = 17;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -1327,7 +1427,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 17;
+	int TIMESTAMP = 18;
 
 
 	/**
@@ -1701,6 +1801,16 @@ public interface RuntimePackage extends EPackage {
 	EReference getAbstractCondition_Context();
 
 	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.AbstractCondition#test(java.lang.Object) <em>Test</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Test</em>' operation.
+	 * @see no.hal.pg.runtime.AbstractCondition#test(java.lang.Object)
+	 * @generated
+	 */
+	EOperation getAbstractCondition__Test__Object();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.CompositeCondition <em>Composite Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1816,6 +1926,27 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIsByGeoLocationCondition_Logic();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.PlayersHaveItemsCondition <em>Players Have Items Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Players Have Items Condition</em>'.
+	 * @see no.hal.pg.runtime.PlayersHaveItemsCondition
+	 * @generated
+	 */
+	EClass getPlayersHaveItemsCondition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link no.hal.pg.runtime.PlayersHaveItemsCondition#getItemClasses <em>Item Classes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Item Classes</em>'.
+	 * @see no.hal.pg.runtime.PlayersHaveItemsCondition#getItemClasses()
+	 * @see #getPlayersHaveItemsCondition()
+	 * @generated
+	 */
+	EReference getPlayersHaveItemsCondition_ItemClasses();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.AcceptTask <em>Accept Task</em>}'.
@@ -2234,6 +2365,14 @@ public interface RuntimePackage extends EPackage {
 		EReference ABSTRACT_CONDITION__CONTEXT = eINSTANCE.getAbstractCondition_Context();
 
 		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ABSTRACT_CONDITION___TEST__OBJECT = eINSTANCE.getAbstractCondition__Test__Object();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.CompositeConditionImpl <em>Composite Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2328,6 +2467,24 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IS_BY_GEO_LOCATION_CONDITION__LOGIC = eINSTANCE.getIsByGeoLocationCondition_Logic();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.PlayersHaveItemsConditionImpl <em>Players Have Items Condition</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.PlayersHaveItemsConditionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getPlayersHaveItemsCondition()
+		 * @generated
+		 */
+		EClass PLAYERS_HAVE_ITEMS_CONDITION = eINSTANCE.getPlayersHaveItemsCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Item Classes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAYERS_HAVE_ITEMS_CONDITION__ITEM_CLASSES = eINSTANCE.getPlayersHaveItemsCondition_ItemClasses();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.AcceptTaskImpl <em>Accept Task</em>}' class.

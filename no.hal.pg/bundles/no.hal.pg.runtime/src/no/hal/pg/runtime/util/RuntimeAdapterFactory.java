@@ -22,6 +22,7 @@ import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Described;
@@ -139,6 +140,10 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIsByGeoLocationCondition(IsByGeoLocationCondition object) {
 				return createIsByGeoLocationConditionAdapter();
+			}
+			@Override
+			public Adapter casePlayersHaveItemsCondition(PlayersHaveItemsCondition object) {
+				return createPlayersHaveItemsConditionAdapter();
 			}
 			@Override
 			public Adapter caseAcceptTask(AcceptTask object) {
@@ -373,6 +378,20 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIsByGeoLocationConditionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.PlayersHaveItemsCondition <em>Players Have Items Condition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.runtime.PlayersHaveItemsCondition
+	 * @generated
+	 */
+	public Adapter createPlayersHaveItemsConditionAdapter() {
 		return null;
 	}
 

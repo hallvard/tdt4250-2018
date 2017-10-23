@@ -121,6 +121,15 @@ public interface RuntimeFactory extends EFactory {
 	IsByGeoLocationCondition createIsByGeoLocationCondition();
 
 	/**
+	 * Returns a new object of class '<em>Players Have Items Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Players Have Items Condition</em>'.
+	 * @generated
+	 */
+	PlayersHaveItemsCondition createPlayersHaveItemsCondition();
+
+	/**
 	 * Returns a new object of class '<em>Accept Task</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

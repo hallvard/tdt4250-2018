@@ -66,6 +66,7 @@ public abstract class AbstractConditionImpl<E> extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public E getContext() {
 		if (context != null && ((EObject)context).eIsProxy()) {
@@ -93,6 +94,7 @@ public abstract class AbstractConditionImpl<E> extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContext(E newContext) {
 		E oldContext = context;
 		context = newContext;
@@ -105,10 +107,21 @@ public abstract class AbstractConditionImpl<E> extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean test() {
+	@Override
+	public boolean test(E context) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public boolean test() {
+		return test(getContext());
 	}
 
 	/**
@@ -179,6 +192,8 @@ public abstract class AbstractConditionImpl<E> extends MinimalEObjectImpl.Contai
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
+			case RuntimePackage.ABSTRACT_CONDITION___TEST__OBJECT:
+				return test((E)arguments.get(0));
 			case RuntimePackage.ABSTRACT_CONDITION___TEST:
 				return test();
 		}

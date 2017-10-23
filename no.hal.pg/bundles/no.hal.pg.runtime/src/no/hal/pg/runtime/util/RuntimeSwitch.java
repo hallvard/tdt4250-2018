@@ -20,6 +20,7 @@ import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Described;
@@ -183,6 +184,14 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				T1 result = caseIsByGeoLocationCondition(isByGeoLocationCondition);
 				if (result == null) result = caseAbstractCondition(isByGeoLocationCondition);
 				if (result == null) result = caseCondition(isByGeoLocationCondition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION: {
+				PlayersHaveItemsCondition playersHaveItemsCondition = (PlayersHaveItemsCondition)theEObject;
+				T1 result = casePlayersHaveItemsCondition(playersHaveItemsCondition);
+				if (result == null) result = caseAbstractCondition(playersHaveItemsCondition);
+				if (result == null) result = caseCondition(playersHaveItemsCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -413,6 +422,21 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 caseIsByGeoLocationCondition(IsByGeoLocationCondition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Players Have Items Condition</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Players Have Items Condition</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePlayersHaveItemsCondition(PlayersHaveItemsCondition object) {
 		return null;
 	}
 

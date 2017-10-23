@@ -46,4 +46,12 @@ public interface AbstractCondition<E> extends Condition {
 	 */
 	void setContext(E value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean test(E context);
+
 } // AbstractPredicate

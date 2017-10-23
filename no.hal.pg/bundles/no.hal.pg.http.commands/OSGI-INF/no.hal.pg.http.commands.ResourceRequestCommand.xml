@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="no.hal.pg.http.commands.ResourceRequestCommand">
+   <property name="osgi.command.scope" type="String" value="pg"/>
+   <property name="osgi.command.function" type="String" value="rr"/>
+   <service>
+      <provide interface="no.hal.pg.http.commands.ResourceRequestCommand"/>
+   </service>
+   <reference cardinality="1..1" field="requestPathResolver" interface="no.hal.pg.http.IRequestPathResolver" name="requestPathResolver" policy="dynamic"/>
+   <reference cardinality="0..n" field="resourceProviders" interface="no.hal.pg.http.IResourceProvider" name="resourceProviders" policy="dynamic"/>
+   <reference cardinality="1..1" field="responseSerializer" interface="no.hal.pg.http.IResponseSerializer" name="responseSerializer" policy="dynamic"/>
+   <implementation class="no.hal.pg.http.commands.ResourceRequestCommand"/>
+</scr:component>

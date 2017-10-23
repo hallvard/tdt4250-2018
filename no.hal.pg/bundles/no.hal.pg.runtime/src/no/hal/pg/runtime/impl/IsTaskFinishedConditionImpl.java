@@ -49,7 +49,7 @@ public class IsTaskFinishedConditionImpl extends AbstractConditionImpl<Task<?>> 
 	//
 	
 	@Override
-	public boolean test() {
+	public boolean test(Task<?> context) {
 		return context.isFinished();
 	}
 

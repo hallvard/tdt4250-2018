@@ -100,8 +100,8 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 	
 	protected void doHelper(HttpServletRequest req, HttpServletResponse resp, Map<String, Object> params) throws ServletException, IOException {
 		String path = req.getPathInfo();
-		List<String> segments = Arrays.asList(path.substring(1).split("/"));
-		if (segments.size() == 0) {
+		List<String> segments = (path != null && path.length() > 0 ? Arrays.asList(path.substring(1).split("/")) : null);
+		if (segments == null || segments.isEmpty()) {
 			throw new ServletException("Path must at least have a resource identifier");
 		}
 		String resourceProviderName = segments.get(0);

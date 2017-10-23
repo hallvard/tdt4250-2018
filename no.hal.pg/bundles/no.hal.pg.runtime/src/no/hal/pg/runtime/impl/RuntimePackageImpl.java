@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EValidator;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Info;
@@ -26,6 +27,7 @@ import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.IsTaskStartedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
+import no.hal.pg.runtime.PlayersHaveItemsCondition;
 import no.hal.pg.runtime.ResettableTask;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Described;
@@ -144,6 +146,13 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass playersHaveItemsConditionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass acceptTaskEClass = null;
 
 	/**
@@ -215,6 +224,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		// Initialize simple dependencies
 		ArcPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		OsmPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -572,6 +582,15 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getAbstractCondition__Test__Object() {
+		return abstractConditionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCompositeCondition() {
 		return compositeConditionEClass;
 	}
@@ -664,6 +683,24 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 */
 	public EAttribute getIsByGeoLocationCondition_Logic() {
 		return (EAttribute)isByGeoLocationConditionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlayersHaveItemsCondition() {
+		return playersHaveItemsConditionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlayersHaveItemsCondition_ItemClasses() {
+		return (EReference)playersHaveItemsConditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -827,6 +864,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		abstractConditionEClass = createEClass(ABSTRACT_CONDITION);
 		createEReference(abstractConditionEClass, ABSTRACT_CONDITION__CONTEXT);
+		createEOperation(abstractConditionEClass, ABSTRACT_CONDITION___TEST__OBJECT);
 
 		compositeConditionEClass = createEClass(COMPOSITE_CONDITION);
 		createEAttribute(compositeConditionEClass, COMPOSITE_CONDITION__LOGIC);
@@ -842,6 +880,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOWER_TARGET_DISTANCE_BOUND);
 		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__UPPER_TARGET_DISTANCE_BOUND);
 		createEAttribute(isByGeoLocationConditionEClass, IS_BY_GEO_LOCATION_CONDITION__LOGIC);
+
+		playersHaveItemsConditionEClass = createEClass(PLAYERS_HAVE_ITEMS_CONDITION);
+		createEReference(playersHaveItemsConditionEClass, PLAYERS_HAVE_ITEMS_CONDITION__ITEM_CLASSES);
 
 		acceptTaskEClass = createEClass(ACCEPT_TASK);
 		createEOperation(acceptTaskEClass, ACCEPT_TASK___ACCEPT);
@@ -880,6 +921,7 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		// Obtain other dependent packages
 		OsmPackage theOsmPackage = (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
 		ArcPackage theArcPackage = (ArcPackage)EPackage.Registry.INSTANCE.getEPackage(ArcPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter gameEClass_T = addETypeParameter(gameEClass, "T");
@@ -923,6 +965,12 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g2 = createEGenericType(theOsmPackage.getGeoLocated());
 		g1.getETypeArguments().add(g2);
 		isByGeoLocationConditionEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getAbstractCondition());
+		g2 = createEGenericType(this.getTask());
+		g1.getETypeArguments().add(g2);
+		g3 = createEGenericType();
+		g2.getETypeArguments().add(g3);
+		playersHaveItemsConditionEClass.getEGenericSuperTypes().add(g1);
 		g1 = createEGenericType(this.getResettableTask());
 		g2 = createEGenericType(ecorePackage.getEBooleanObject());
 		g1.getETypeArguments().add(g2);
@@ -997,6 +1045,10 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g1 = createEGenericType(abstractConditionEClass_E);
 		initEReference(getAbstractCondition_Context(), g1, null, "context", null, 0, 1, AbstractCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		op = initEOperation(getAbstractCondition__Test__Object(), ecorePackage.getEBoolean(), "test", 0, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(abstractConditionEClass_E);
+		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(compositeConditionEClass, CompositeCondition.class, "CompositeCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCompositeCondition_Logic(), ecorePackage.getEBoolean(), "logic", null, 0, 1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCompositeCondition_Conditions(), this.getCondition(), null, "conditions", null, 0, -1, CompositeCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1011,6 +1063,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEAttribute(getIsByGeoLocationCondition_LowerTargetDistanceBound(), ecorePackage.getEDouble(), "lowerTargetDistanceBound", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIsByGeoLocationCondition_UpperTargetDistanceBound(), ecorePackage.getEDouble(), "upperTargetDistanceBound", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getIsByGeoLocationCondition_Logic(), ecorePackage.getEBoolean(), "logic", null, 0, 1, IsByGeoLocationCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(playersHaveItemsConditionEClass, PlayersHaveItemsCondition.class, "PlayersHaveItemsCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPlayersHaveItemsCondition_ItemClasses(), theEcorePackage.getEClass(), null, "itemClasses", null, 0, -1, PlayersHaveItemsCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(acceptTaskEClass, AcceptTask.class, "AcceptTask", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

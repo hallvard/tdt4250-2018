@@ -109,6 +109,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractCondition" abstract="true" eSuperTypes="#//Condition">
     <eTypeParameters name="E"/>
+    <eOperations name="test" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="context">
+        <eGenericType eTypeParameter="#//AbstractCondition/E"/>
+      </eParameters>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="context">
       <eGenericType eTypeParameter="#//AbstractCondition/E"/>
     </eStructuralFeatures>
@@ -145,6 +150,15 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eGenericSuperTypes eClassifier="#//AbstractCondition">
       <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlayersHaveItemsCondition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemClasses" upperBound="-1"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+    <eGenericSuperTypes eClassifier="#//AbstractCondition">
+      <eTypeArguments eClassifier="#//Task">
+        <eTypeArguments/>
+      </eTypeArguments>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AcceptTask">
