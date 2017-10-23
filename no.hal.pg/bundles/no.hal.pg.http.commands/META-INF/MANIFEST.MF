@@ -10,8 +10,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: no.hal.pg.http.commands
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/no.hal.pg.http.commands.ListResourcesCommand.xml,
- OSGI-INF/no.hal.pg.http.commands.ToggleResourceProviderCommand.xml,
- OSGI-INF/no.hal.pg.http.commands.ResourceRequestCommand.xml
+ OSGI-INF/no.hal.pg.http.commands.ResourceRequestCommand.xml,
+ OSGI-INF/no.hal.pg.http.commands.ToggleResourceCommand.xml
 Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
  no.hal.pg.http.impl;bundle-version="0.0.1"
 Import-Package: org.eclipse.emf.common.util,

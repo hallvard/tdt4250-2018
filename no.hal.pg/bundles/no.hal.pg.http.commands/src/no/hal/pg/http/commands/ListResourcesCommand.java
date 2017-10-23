@@ -9,10 +9,13 @@ import org.osgi.service.component.annotations.ReferencePolicy;
 
 import no.hal.pg.http.IResourceProvider;
 
-@Component(property={
-	"osgi.command.scope:String=pg",
-	"osgi.command.function:String=lr"
-	})
+@Component(
+	service=ListResourcesCommand.class,
+	property={
+		"osgi.command.scope:String=pg",
+		"osgi.command.function:String=lr"
+	}
+)
 public class ListResourcesCommand {
 
 	@Reference(policy=ReferencePolicy.DYNAMIC)

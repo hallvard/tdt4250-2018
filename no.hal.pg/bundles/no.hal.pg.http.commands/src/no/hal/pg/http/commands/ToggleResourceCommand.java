@@ -14,13 +14,13 @@ import no.hal.pg.http.IResourceProvider;
 import no.hal.pg.http.impl.ResourceProvider;
 
 @Component(
-	service=ToggleResourceProviderCommand.class,
+	service=ToggleResourceCommand.class,
 	property={
 		"osgi.command.scope:String=pg",
 		"osgi.command.function:String=tr"
 	}
 )
-public class ToggleResourceProviderCommand {
+public class ToggleResourceCommand {
 
 	@Reference(policy=ReferencePolicy.DYNAMIC)
 	protected volatile Collection<IResourceProvider> resourceProviders;
