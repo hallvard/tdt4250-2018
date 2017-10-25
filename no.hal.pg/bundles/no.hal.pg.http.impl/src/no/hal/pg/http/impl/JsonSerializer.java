@@ -2,7 +2,6 @@ package no.hal.pg.http.impl;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Stack;
 
@@ -150,14 +149,19 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 	
 	protected void serializeFeature(EObject eObject, EStructuralFeature feature, JsonGenerator generator) throws IOException {
 		String name = getFieldName(feature);
-		Object value = eObject.eGet(feature);
-		if (feature instanceof EAttribute) {
-			EAttribute attr = (EAttribute) feature;
-			JsonEAttributeSerializer attrSerializer = getEAttributeSerializer(eObject, attr, value);
-			if (attrSerializer != null) {
-				attrSerializer.serialize(eObject, attr, value, name, generator);
-				return;
+		Object value = null;
+		try {
+			value = eObject.eGet(feature);
+			if (feature instanceof EAttribute) {
+				EAttribute attr = (EAttribute) feature;
+				JsonEAttributeSerializer attrSerializer = getEAttributeSerializer(eObject, attr, value);
+				if (attrSerializer != null) {
+					attrSerializer.serialize(eObject, attr, value, name, generator);
+					return;
+				}
 			}
+		} catch (Exception e) {
+			value = "Exception when getting/serializing value of " + feature.getName() + ": " + e.getMessage();
 		}
 		if (excludeNullValues && value == null) {
 			return;
@@ -178,7 +182,8 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		Object value = null;
 		try {
 			value = eObject.eInvoke(op, null);
-		} catch (InvocationTargetException e) {
+		} catch (Exception e) {
+			value = "Exception when invoking " + op.getName() + ": " + e.getMessage();
 		}
 		if (value != null) {
 			generator.writeFieldName(name);
