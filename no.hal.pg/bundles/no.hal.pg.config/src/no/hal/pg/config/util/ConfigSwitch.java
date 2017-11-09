@@ -2,7 +2,6 @@
  */
 package no.hal.pg.config.util;
 
-import no.hal.pg.arc.Arc;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -68,42 +67,68 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	@Override
 	protected T1 doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ConfigPackage.CONFIG: {
-				Config config = (Config)theEObject;
-				T1 result = caseConfig(config);
-				if (result == null) result = caseArc(config);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ConfigPackage.GAME_CONFIG: {
 				GameConfig gameConfig = (GameConfig)theEObject;
 				T1 result = caseGameConfig(gameConfig);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ConfigPackage.ABSTRACT_CONFIG: {
+				AbstractConfig<?> abstractConfig = (AbstractConfig<?>)theEObject;
+				T1 result = caseAbstractConfig(abstractConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ConfigPackage.TASK_CONFIG: {
-				TaskConfig<?, ?> taskConfig = (TaskConfig<?, ?>)theEObject;
+				TaskConfig<?> taskConfig = (TaskConfig<?>)theEObject;
 				T1 result = caseTaskConfig(taskConfig);
+				if (result == null) result = caseAbstractConfig(taskConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ITEM_CONFIG: {
+				ItemConfig itemConfig = (ItemConfig)theEObject;
+				T1 result = caseItemConfig(itemConfig);
+				if (result == null) result = caseAbstractConfig(itemConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.INFO_ITEM_CONFIG: {
+				InfoItemConfig infoItemConfig = (InfoItemConfig)theEObject;
+				T1 result = caseInfoItemConfig(infoItemConfig);
+				if (result == null) result = caseItemConfig(infoItemConfig);
+				if (result == null) result = caseAbstractConfig(infoItemConfig);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.PROXY: {
+				Proxy<?> proxy = (Proxy<?>)theEObject;
+				T1 result = caseProxy(proxy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.TASK_PROXY: {
+				TaskProxy taskProxy = (TaskProxy)theEObject;
+				T1 result = caseTaskProxy(taskProxy);
+				if (result == null) result = caseProxy(taskProxy);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.PLAYER_ROLE: {
+				PlayerRole playerRole = (PlayerRole)theEObject;
+				T1 result = casePlayerRole(playerRole);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ConfigPackage.ITEM_PROXY: {
+				ItemProxy itemProxy = (ItemProxy)theEObject;
+				T1 result = caseItemProxy(itemProxy);
+				if (result == null) result = caseProxy(itemProxy);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Config</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Config</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseConfig(Config object) {
-		return null;
 	}
 
 	/**
@@ -122,6 +147,21 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Config</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <T> T1 caseAbstractConfig(AbstractConfig<T> object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Task Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -132,22 +172,97 @@ public class ConfigSwitch<T1> extends Switch<T1> {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T extends Task<R>, R> T1 caseTaskConfig(TaskConfig<T, R> object) {
+	public <T extends Task<?>> T1 caseTaskConfig(TaskConfig<T> object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Item Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Arc</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Item Config</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseArc(Arc object) {
+	public T1 caseItemConfig(ItemConfig object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Info Item Config</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Info Item Config</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseInfoItemConfig(InfoItemConfig object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public <T> T1 caseProxy(Proxy<T> object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Task Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Task Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseTaskProxy(TaskProxy object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Player Role</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Player Role</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 casePlayerRole(PlayerRole object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Item Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Item Proxy</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseItemProxy(ItemProxy object) {
 		return null;
 	}
 

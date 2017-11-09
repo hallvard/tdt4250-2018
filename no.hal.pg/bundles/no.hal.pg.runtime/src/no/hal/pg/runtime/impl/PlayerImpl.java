@@ -35,13 +35,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.impl.PlayerImpl#getGame <em>Game</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.PlayerImpl#getNickname <em>Nickname</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.PlayerImpl#getPerson <em>Person</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.PlayerImpl#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.PlayerImpl#getItems <em>Items</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PlayerImpl extends GeoLocationImpl implements Player {
+	/**
+	 * The default value of the '{@link #getNickname() <em>Nickname</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNickname()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NICKNAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getNickname() <em>Nickname</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNickname()
+	 * @generated
+	 * @ordered
+	 */
+	protected String nickname = NICKNAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getPerson() <em>Person</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -51,6 +73,16 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	 * @ordered
 	 */
 	protected Person person;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
@@ -86,6 +118,7 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Game<?> getGame() {
 		if (eContainerFeatureID() != RuntimePackage.PLAYER__GAME) return null;
 		return (Game<?>)eInternalContainer();
@@ -96,6 +129,30 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public String getNickname() {
+		return nickname;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setNickname(String newNickname) {
+		String oldNickname = nickname;
+		nickname = newNickname;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.PLAYER__NICKNAME, oldNickname, nickname));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Person getPerson() {
 		if (person != null && person.eIsProxy()) {
 			InternalEObject oldPerson = (InternalEObject)person;
@@ -122,6 +179,7 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPerson(Person newPerson) {
 		Person oldPerson = person;
 		person = newPerson;
@@ -132,8 +190,23 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getName() {
+		String name = getNickname();
+		if (name == null && getPerson() != null) {
+			name = getPerson().getName();
+		}
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Item> getItems() {
 		if (items == null) {
 			items = new EObjectContainmentWithInverseEList<Item>(Item.class, this, RuntimePackage.PLAYER__ITEMS, RuntimePackage.ITEM__OWNER);
@@ -200,9 +273,13 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 		switch (featureID) {
 			case RuntimePackage.PLAYER__GAME:
 				return getGame();
+			case RuntimePackage.PLAYER__NICKNAME:
+				return getNickname();
 			case RuntimePackage.PLAYER__PERSON:
 				if (resolve) return getPerson();
 				return basicGetPerson();
+			case RuntimePackage.PLAYER__NAME:
+				return getName();
 			case RuntimePackage.PLAYER__ITEMS:
 				return getItems();
 		}
@@ -218,6 +295,9 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case RuntimePackage.PLAYER__NICKNAME:
+				setNickname((String)newValue);
+				return;
 			case RuntimePackage.PLAYER__PERSON:
 				setPerson((Person)newValue);
 				return;
@@ -237,6 +317,9 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case RuntimePackage.PLAYER__NICKNAME:
+				setNickname(NICKNAME_EDEFAULT);
+				return;
 			case RuntimePackage.PLAYER__PERSON:
 				setPerson((Person)null);
 				return;
@@ -257,12 +340,32 @@ public class PlayerImpl extends GeoLocationImpl implements Player {
 		switch (featureID) {
 			case RuntimePackage.PLAYER__GAME:
 				return getGame() != null;
+			case RuntimePackage.PLAYER__NICKNAME:
+				return NICKNAME_EDEFAULT == null ? nickname != null : !NICKNAME_EDEFAULT.equals(nickname);
 			case RuntimePackage.PLAYER__PERSON:
 				return person != null;
+			case RuntimePackage.PLAYER__NAME:
+				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 			case RuntimePackage.PLAYER__ITEMS:
 				return items != null && !items.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (nickname: ");
+		result.append(nickname);
+		result.append(')');
+		return result.toString();
 	}
 
 } //PlayerImpl

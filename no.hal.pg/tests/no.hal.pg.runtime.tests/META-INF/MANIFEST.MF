@@ -10,6 +10,7 @@ Export-Package: no.hal.pg.runtime.tests
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.common,
- no.hal.pg.runtime;bundle-version="0.0.1"
+ no.hal.pg.runtime;bundle-version="0.0.1",
+ no.hal.pg.exampletask.runtime;bundle-version="0.0.1"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.junit;version="4.12.0"

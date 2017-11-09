@@ -1,9 +1,7 @@
 package no.hal.pg.runtime.http.tests;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import org.junit.Assert;
@@ -47,10 +45,10 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 				}
 			}
 		}
-		testAcceptTask(getRequest("/games/0/tasks/0"));
-		testAcceptTaskStart(getRequest("/games/0/tasks/0/start"));
-		testAcceptTaskAccept(getRequest("/games/0/tasks/0/accept"));
-		testAcceptTaskFinished(getRequest("/games/0/tasks/0"));
+		testExampleTask(getRequest("/games/0/tasks/0"));
+		testExampleTaskStart(getRequest("/games/0/tasks/0/start"));
+		testExampleTaskAnswer(getRequest("/games/0/tasks/0/answer?proposal=true"));
+		testExampleTaskFinished(getRequest("/games/0/tasks/0"));
 	}
 
 	private boolean useOwnReader = true;
@@ -64,28 +62,28 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 		checkArrayNode(gameNode.get("tasks"), 5);
 	}
 
-	protected void testAcceptTask(HttpURLConnection con) throws IOException {
+	protected void testExampleTask(HttpURLConnection con) throws IOException {
 		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "startConditions", "finishConditions"
 	}
 	
-	protected void testAcceptTaskStart(HttpURLConnection con) throws IOException {
+	protected void testExampleTaskStart(HttpURLConnection con) throws IOException {
 		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		// void method
 		Assert.assertEquals("null", new ObjectMapper().writeValueAsString(jsonNode));
 	}
 	
-	protected void testAcceptTaskAccept(HttpURLConnection con) throws IOException {
+	protected void testExampleTaskAnswer(HttpURLConnection con) throws IOException {
 		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		// void method
 		Assert.assertEquals("null", new ObjectMapper().writeValueAsString(jsonNode));
 	}
 
-	protected void testAcceptTaskFinished(HttpURLConnection con) throws IOException {
+	protected void testExampleTaskFinished(HttpURLConnection con) throws IOException {
 		JsonNode jsonNode = getJsonNode(con);
 //		System.out.println(mapper.writeValueAsString(jsonNode));
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);

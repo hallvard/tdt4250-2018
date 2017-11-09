@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.exampletask.runtime/src" modelPluginID="no.hal.pg.exampletask.runtime"
+    modelName="Exampletask" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../no.hal.pg.runtime/model/app.genmodel#//app ../../no.hal.pg.arc/model/arc.genmodel#//arc ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../no.hal.pg.osm/model/osm.genmodel#//osm ../../no.hal.pg.runtime/model/runtime.genmodel#//runtime"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>exampletask.ecore</foreignModel>
+  <genPackages prefix="Runtime" basePackage="no.hal.pg.exampletask" disposableProviderFactory="true"
+      ecorePackage="exampletask.ecore#/">
+    <genClasses ecoreClass="exampletask.ecore#//ExampleTask">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute exampletask.ecore#//ExampleTask/question"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute exampletask.ecore#//ExampleTask/correctAnswer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute exampletask.ecore#//ExampleTask/lastAnswer"/>
+    </genClasses>
+    <genClasses ecoreClass="exampletask.ecore#//ExampleTaskView">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute exampletask.ecore#//ExampleTaskView/question"/>
+      <genOperations ecoreOperation="exampletask.ecore#//ExampleTaskView/proposeAnswer">
+        <genParameters ecoreParameter="exampletask.ecore#//ExampleTaskView/proposeAnswer/proposal"/>
+      </genOperations>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

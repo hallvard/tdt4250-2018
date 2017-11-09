@@ -5,7 +5,6 @@ import org.osgi.service.component.annotations.Component;
 
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.View;
-import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.impl.GameImpl;
 import no.hal.pg.runtime.impl.TaskImpl;
 
@@ -18,8 +17,6 @@ public class DefaultViewFactory implements IViewFactory {
 			return AppFactory.eINSTANCE.createGameView();
 		} else if (eObject.getClass() == TaskImpl.class) {
 			return AppFactory.eINSTANCE.createTaskView();
-		} else if (eObject instanceof AcceptTask) {
-			return AppFactory.eINSTANCE.createAcceptTaskView();			
 		}
 		return null;
 	}

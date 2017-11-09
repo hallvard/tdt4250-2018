@@ -2,7 +2,6 @@ package no.hal.pg.http;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -77,10 +76,7 @@ public class AppServlet extends AbstractResourceServlet implements Servlet {
 	
 	public String getMainLocationFor(Object object) {
 		for (AppConfig config : configs) {
-			String ePackageUri = config.getEPackageUri();
-			EPackage ePackage = EPackage.Registry.INSTANCE.getEPackage(ePackageUri);
-			EClassifier eClassifier = ePackage.getEClassifier(config.getEClassName());
-			if (eClassifier.isInstance(object)) {
+			if (config.getEClass().isInstance(object)) {
 				return config.getMainLocation();
 			}
 		}
@@ -88,10 +84,10 @@ public class AppServlet extends AbstractResourceServlet implements Servlet {
 	}
 
 	@Override
-	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, HttpServletResponse resp) throws Exception {
-		Object object = getPathObject(resourceProvider, objects, resourcePath, op, params, authenticationHandler);
+	protected void doHelper(HttpServletRequest req, RequestData requestData, HttpServletResponse resp) throws Exception {
+		Object object = getPathObject(requestData);
 		if (object == null) {
-			throw new ServletException("No app Servlet for " + resourcePath);
+			throw new ServletException("No app data for " + requestData.resourcePath);
 		}
 		if (object instanceof Iterable<?>) {
 			Iterator<?> it = ((Iterable<?>) object).iterator();
@@ -99,12 +95,12 @@ public class AppServlet extends AbstractResourceServlet implements Servlet {
 		}
 		String mainLocation = getMainLocationFor(object);
 		if (mainLocation == null) {
-			throw new ServletException("No main location for " + object);
+			throw new ServletException("No app location for " + object);
 		}
 		String location = req.getServletContext().getContextPath();
 		location = location + mainLocation + "?dataUrl=";
-		location = location + "/data/" + resourceProvider.getName();
-		for (String segment : resourcePath) {
+		location = location + "/data/" + requestData.resourceProvider.getName();
+		for (String segment : requestData.resourcePath) {
 			location = location + "/" + segment;
 		}
 		resp.sendRedirect(location);

@@ -37,7 +37,7 @@ public interface GeoPolyline extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Locations</em>' reference list.
 	 * @see no.hal.pg.app.AppPackage#getGeoPolyline_Locations()
-	 * @model
+	 * @model annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
 	 * @generated
 	 */
 	EList<GeoLocated> getLocations();

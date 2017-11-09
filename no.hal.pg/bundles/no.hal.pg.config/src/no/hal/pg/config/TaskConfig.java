@@ -3,19 +3,18 @@
 package no.hal.pg.config;
 
 import no.hal.pg.runtime.Task;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Task Def</b></em>'.
+ * A representation of the model object '<em><b>Task Config</b></em>'.
  * <!-- end-user-doc -->
  *
  *
  * @see no.hal.pg.config.ConfigPackage#getTaskConfig()
- * @model
+ * @model abstract="true"
  * @generated
  */
-public interface TaskConfig<T extends Task<R>, R> extends EObject {
+public interface TaskConfig<T extends Task<?>> extends AbstractConfig<T> {
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -23,5 +22,5 @@ public interface TaskConfig<T extends Task<R>, R> extends EObject {
 	 * @model
 	 * @generated
 	 */
-	Task<R> createTask();
-} // TaskDef
+	T createTask(TaskProxy proxy);
+} // TaskConfig

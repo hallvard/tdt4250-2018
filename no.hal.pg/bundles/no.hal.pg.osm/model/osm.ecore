@@ -26,6 +26,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="LatLong" instanceClassName="no.hal.pg.osm.geoutil.LatLong"/>
   <eClassifiers xsi:type="ecore:EClass" name="GeoLocated" abstract="true" interface="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="validCoordinates"/>
+    </eAnnotations>
     <eOperations name="getLatLong" eType="#//LatLong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Way" eSuperTypes="#//OSMElement">

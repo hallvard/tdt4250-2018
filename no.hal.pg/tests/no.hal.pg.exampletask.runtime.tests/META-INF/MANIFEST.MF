@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: no.hal.pg.exampletask.runtime.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: no.hal.pg.exampletask.runtime.tests
+Require-Bundle: no.hal.pg.runtime;visibility:=reexport,
+ no.hal.pg.exampletask.runtime;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Import-Package: org.junit;version="4.12.0"

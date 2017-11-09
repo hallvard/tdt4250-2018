@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="diagram" version="12.0.0.2017041100">
+  <ownedViewpoints name="DiagramViewpoint" modelFileExtension="config">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ConfigDiagram" domainClass="config::GameConfig" enablePopupBars="true">
+      <metamodel href="platform:/plugin/no.hal.pg.config/model/config.ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="TaskNode" domainClass="config::TaskProxy" dropDescriptions="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropTaskConfig']">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="XTaskNode" label="XTaskNode" semanticCandidatesExpression="aql:self.tasks->union(self.taskProxies->filter(config::TaskProxy).ref)" domainClass="config::TaskConfig">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="PlayerNode" label="PlayerNode" domainClass="config::PlayerRole">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" labelPosition="node" resizeKind="NSEW" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ItemNode" label="ItemNode" domainClass="config::ItemProxy">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="XItemNode" label="XItemNode" semanticCandidatesExpression="aql:self.items->union(self.itemProxies->filter(config::ItemProxy).ref)" domainClass="config::ItemConfig">
+          <style xsi:type="style:LozengeNodeDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="TaskDependencyEdge" label="TaskDependencyEdge" sourceMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']" targetFinderExpression="feature:requiresFinished">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TaskPlayer" label="TaskPlayerEdge" sourceMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='PlayerNode']" targetFinderExpression="feature:players">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="TaskRewardItemsEdge" label="TaskRewardItemsEdge" sourceMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='ItemNode']" targetFinderExpression="feature:rewardItems">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ItemDependencyEdge" label="ItemDependencyEdge" sourceMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']" targetMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='ItemNode']" targetFinderExpression="feature:requiresItems">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RefEdge" label="RefEdge" sourceMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode'] //@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='ItemNode']" targetMapping="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='XTaskNode'] //@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='XItemNode']" targetFinderExpression="feature:ref">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="CreationTools" label="CreationTools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateTaskNode" label="Task" nodeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="config::TaskProxy" referenceName="taskProxies"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateItem" label="Item" nodeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='ItemNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="config::ItemProxy" referenceName="itemProxies"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreatePlayer" label="Player" nodeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='PlayerNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="config::PlayerRole" referenceName="players"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Ref edge" label="Proxy ref" edgeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@edgeMappings[name='RefEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateRequiresFinishedEdge" label="Task dependency" edgeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@edgeMappings[name='TaskDependencyEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="requiresFinished" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateTaskPlayerEdge" label="Task player" extraSourceMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='PlayerNode']" extraTargetMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="players" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateRequiresItemsEdge" label="Requires item" extraSourceMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='ItemNode']" extraTargetMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@nodeMappings[name='TaskNode']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="requiresItems" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateRewardItemsEdge" label="Reward item" edgeMappings="//@ownedViewpoints[name='DiagramViewpoint']/@ownedRepresentations[name='ConfigDiagram']/@defaultLayer/@edgeMappings[name='TaskRewardItemsEdge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="rewardItems" valueExpression="var:target"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DropTaskConfig" label="DropTaskConfig" precondition="aql:element.oclIsKindOf(config::TaskConfig)" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DropItemConfig" label="DropItemConfig" precondition="aql:element.oclIsKindOf(config::TaskConfig)" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="ref" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="no.hal.pg.config.diagram.Services"/>
+  </ownedViewpoints>
+</description:Group>

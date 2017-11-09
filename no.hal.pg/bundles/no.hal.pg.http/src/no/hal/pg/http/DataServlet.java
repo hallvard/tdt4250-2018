@@ -3,7 +3,6 @@ package no.hal.pg.http;
 import java.io.Writer;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -81,9 +80,9 @@ public class DataServlet extends AbstractResourceServlet implements Servlet {
 	}
 	
 	@Override
-	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
-		Object result = getPathObject(resourceProvider, objects, resourcePath, op, params, authenticationHandler);
-		Object postBody = params.get("httpPostBody");
+	protected void doHelper(HttpServletRequest req, RequestData requestData, Writer responseWriter) throws Exception {
+		Object result = getPathObject(requestData);
+		Object postBody = requestData.params.get("httpPostBody");
 		if (postBody != null) {
 			String contentType = req.getHeader("Content-Type");
 			if (contentType == null) {
@@ -98,7 +97,7 @@ public class DataServlet extends AbstractResourceServlet implements Servlet {
 				throw new ServletException("No handler for " + contentType);
 			}
 			try {
-				result = postHandler.handlePostBody(result, String.valueOf(postBody), params);
+				result = postHandler.handlePostBody(result, String.valueOf(postBody), requestData.params);
 			} catch (Exception e) {
 				throw new ServletException("Exception when handling post body for " + contentType);
 			}

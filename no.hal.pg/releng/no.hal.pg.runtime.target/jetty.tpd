@@ -1,0 +1,10 @@
+target "jetty"
+
+location jetty "http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.7.v20170914" {
+	org.eclipse.jetty.servlet
+	org.eclipse.jetty.http
+	org.eclipse.jetty.server
+	org.eclipse.jetty.io
+	org.eclipse.jetty.util
+	org.eclipse.jetty.security
+}

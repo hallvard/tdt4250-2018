@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Example task</title>
+	<meta charset="UTF-8"/>
+	<link rel="stylesheet" href="ExampleTaskView.css">
+</head>
+<body>
+
+<h1>ExampleTask</h1>
+<div id="exampleTask"></div>
+
+<script src="https://unpkg.com/react@^15.6/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@^15.6/dist/react-dom.js"></script>
+
+<script src="/js/AppUtils.js"></script>
+
+<script src="QuestionAnswerComponent.js"></script>
+<script type="text/javascript">
+	var exampleTaskViewData = {
+		question: "Will you answer this question correctly?",
+	};
+	var dataUrl = AppUtils.appProps({}).dataUrl;
+	var returnUrl = document.referrer;
+	AppUtils.loadData(dataUrl + "/start", false, exampleTaskViewData, function(props) {
+		props['dataUrl'] = dataUrl;
+		props['returnUrl'] = returnUrl;
+		ReactDOM.render(React.createElement(QuestionAnswerComponent, props), document.getElementById('exampleTask'));
+	});
+</script>
+</body>
+</html>

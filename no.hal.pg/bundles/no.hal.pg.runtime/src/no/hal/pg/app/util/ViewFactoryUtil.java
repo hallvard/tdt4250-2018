@@ -9,13 +9,11 @@ import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
-import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.View;
-import no.hal.pg.app.View1;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.Task;
@@ -51,16 +49,7 @@ public class ViewFactoryUtil {
 		GameApp<?> app = AppFactory.eINSTANCE.createGameApp();
 		app.setModel(game);
 		BundleContext bundleContext = FrameworkUtil.getBundle(game.getClass()).getBundleContext();
-		Collection<IViewFactory> viewFactories = new ArrayList<IViewFactory>();
-		try {
-			Collection<ServiceReference<IViewFactory>> serviceReferences = bundleContext.getServiceReferences(IViewFactory.class, null);
-			for (ServiceReference<IViewFactory> serviceReference : serviceReferences) {
-				IViewFactory viewFactory = bundleContext.getService(serviceReference);
-				viewFactories.add(viewFactory);
-			}
-		} catch (InvalidSyntaxException e) {
-			return null;
-		}
+		Collection<IViewFactory> viewFactories = getViewFactories(bundleContext);
 		for (Player player : game.getPlayers()) {
 			GameView<Task<?>> gameView = (GameView<Task<?>>) createView(player, game, GameView.class, viewFactories);
 			gameView.setPlayer(player);
@@ -77,5 +66,19 @@ public class ViewFactoryUtil {
 			}
 		}
 		return app;
+	}
+
+	public static Collection<IViewFactory> getViewFactories(BundleContext bundleContext) {
+		Collection<IViewFactory> viewFactories = new ArrayList<IViewFactory>();
+		try {
+			Collection<ServiceReference<IViewFactory>> serviceReferences = bundleContext.getServiceReferences(IViewFactory.class, null);
+			for (ServiceReference<IViewFactory> serviceReference : serviceReferences) {
+				IViewFactory viewFactory = bundleContext.getService(serviceReference);
+				viewFactories.add(viewFactory);
+			}
+		} catch (InvalidSyntaxException e) {
+			return null;
+		}
+		return viewFactories;
 	}
 }

@@ -61,7 +61,6 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 			case AppPackage.GAME_VIEW: return createGameView();
 			case AppPackage.GAME_APP: return createGameApp();
 			case AppPackage.TASK_VIEW: return createTaskView();
-			case AppPackage.ACCEPT_TASK_VIEW: return createAcceptTaskView();
 			case AppPackage.MAP_VIEW: return createMapView();
 			case AppPackage.MAP_MARKER_OPTIONS: return createMapMarkerOptions();
 			case AppPackage.GEO_LOCATED_VIEW: return createGeoLocatedView();
@@ -100,16 +99,6 @@ public class AppFactoryImpl extends EFactoryImpl implements AppFactory {
 	public <T extends Task<?>> TaskView<T> createTaskView() {
 		TaskViewImpl<T> taskView = new TaskViewImpl<T>();
 		return taskView;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AcceptTaskView createAcceptTaskView() {
-		AcceptTaskViewImpl acceptTaskView = new AcceptTaskViewImpl();
-		return acceptTaskView;
 	}
 
 	/**

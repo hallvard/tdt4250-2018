@@ -33,7 +33,7 @@ import no.hal.pg.http.auth.AuthenticationHandler;
 import no.hal.pg.http.auth.UnauthorizedException;
 
 @SuppressWarnings("serial")
-public abstract class AbstractResourceServlet extends HttpServlet {
+public abstract class AbstractResourceServlet extends HttpServlet { // WebSocketServlet implements WebSocketCreator {
 
 	public abstract Iterable<IResourceProvider> getResourceProviders();
 	
@@ -97,8 +97,16 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		params.put("httpPostBody", body);
 		decodePostBody(body, params);
 	}
-	
-	protected void doHelper(HttpServletRequest req, HttpServletResponse resp, Map<String, Object> params) throws ServletException, IOException {
+
+	protected static class RequestData {
+		IResourceProvider resourceProvider;
+		List<String> resourcePath;
+		String op;
+		Map<String, Object> params;
+		AuthenticationHandler<?> authenticationHandler;
+	}
+
+	protected RequestData getRequestData(HttpServletRequest req, HttpServletResponse resp, Map<String, Object> params) throws ServletException, IOException {
 		String path = req.getPathInfo();
 		List<String> segments = (path != null && path.length() > 0 ? Arrays.asList(path.substring(1).split("/")) : null);
 		if (segments == null || segments.isEmpty()) {
@@ -117,15 +125,20 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 			resourcePath = segments.subList(1, segments.size() - 1);
 		}
 		log(LogService.LOG_INFO, "Handling " + resourcePath + " + " + op + " with " + resourceProvider);
-		Collection<?> objects = resourceProvider.getRootObjects();
-		EObject context = (EObject) EcoreUtil.getObjectByType(objects, EcorePackage.eINSTANCE.getEObject());
+		EObject context = (EObject) EcoreUtil.getObjectByType(resourceProvider.getRootObjects(), EcorePackage.eINSTANCE.getEObject());
 		AuthenticationHandler<?> authenticationHandler = null;
 		try {
 			authenticationHandler = getAuthenticationHandler(context);
 			if (authenticationHandler != null && (! authenticationHandler.acceptRequest(req, context))) {
 				authenticationHandler.forceAuthentication(resp, "Request not accepted", resourceProvider.getName());
 			} else {
-				doHelper(req, resourceProvider, objects, resourcePath, op, params, authenticationHandler, resp);
+				RequestData requestData = new RequestData();
+				requestData.resourceProvider = resourceProvider;
+				requestData.resourcePath = resourcePath;
+				requestData.op = op;
+				requestData.params = params;
+				requestData.authenticationHandler = authenticationHandler;
+				return requestData;
 			}
 		} catch (UnauthorizedException ue) {
 			String message = "Unauthorized, " + (authenticationHandler != null ? "forcing authentication" : "but no authentication handler") + ": " + ue.getMessage();
@@ -138,12 +151,30 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 			log(LogService.LOG_WARNING, message);
 			throw new ServletException(e);
 		}
+		return null;
 	}
 
-	protected Object getPathObject(IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler) throws Exception {
+	protected void doHelper(HttpServletRequest req, HttpServletResponse resp, Map<String, Object> params) throws ServletException, IOException {
+		RequestData requestData = getRequestData(req, resp, params);
+		if (requestData != null) {
+			try {
+				doHelper(req, requestData, resp);
+			} catch (ServletException e) {
+				throw e;
+			} catch (Exception e) {
+				throw new ServletException(e);
+			}
+		}
+	}
+
+	protected Object getPathObject(RequestData requestData) throws Exception {
+		return getPathObject(requestData.resourceProvider, requestData.resourcePath, requestData.op, requestData.params, requestData.authenticationHandler);
+	}
+
+	protected Object getPathObject(IResourceProvider resourceProvider, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler) throws Exception {
 		IRequestPathResolver requestPathResolver = getRequestPathResolver();
 		requestPathResolver.setSubjectProvider(authenticationHandler);
-		Object object = requestPathResolver.getObjectForPath(objects, resourcePath.toArray(new String[0]));
+		Object object = requestPathResolver.getObjectForPath(resourceProvider.getRootObjects(), resourcePath.toArray(new String[0]));
 		Object result = object;
 		if (op != null) {
 			Collection<?> target = (object instanceof Collection<?> ? (Collection<?>) object : Collections.singletonList(object));
@@ -154,16 +185,16 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		return result;
 	}
 	
-	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, HttpServletResponse resp) throws Exception {
+	protected void doHelper(HttpServletRequest req, RequestData requestData, HttpServletResponse resp) throws Exception {
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 		Writer writer = new OutputStreamWriter(outputStream);
-		doHelper(req, resourceProvider, objects, resourcePath, op, params, authenticationHandler, writer);
+		doHelper(req, requestData, writer);
 		String responseString = new String(outputStream.toByteArray(), StandardCharsets.UTF_8);
 		resp.getWriter().write(responseString);
 	}
 
-	protected void doHelper(HttpServletRequest req, IResourceProvider resourceProvider, Collection<?> objects, Collection<String> resourcePath, String op, Map<String, Object> params, AuthenticationHandler<?> authenticationHandler, Writer responseWriter) throws Exception {
-		Object result = getPathObject(resourceProvider, objects, resourcePath, op, params, authenticationHandler);
+	protected void doHelper(HttpServletRequest req, RequestData requestData, Writer responseWriter) throws Exception {
+		Object result = getPathObject(requestData);
 		IResponseSerializer responseSerializer = getResponseSerializer();
 		responseSerializer.serialize(result, responseWriter);
 	}
@@ -220,6 +251,33 @@ public abstract class AbstractResourceServlet extends HttpServlet {
 		}
 		return params;
 	}
+
+	// websocket support
+
+// Commented out, due to
+//	I was missing the following three additional bundles:
+//		org.objectweb.asm.all.debug_5.0.2
+//		org.apache.aries.util_1.1.1
+//		org.apache.aries.spifly.dynamic.bundle_1.0.2
+
+//	@Override
+//	public void configure(WebSocketServletFactory webSocketServletFactory) {
+//		webSocketServletFactory.setCreator(this);
+//	}
+//
+//	@Override
+//	public Object createWebSocket(ServletUpgradeRequest upgradeRequest, ServletUpgradeResponse upgradeResponse) {
+//		return new WebSocketAdapter() {
+//		    @Override
+//		    public void onWebSocketText(String message) {
+//		        if (isConnected()) {
+//		            getRemote().sendString(message,null);
+//		        }
+//		    }
+//		};
+//	}
+	
+
 }
 
 /*

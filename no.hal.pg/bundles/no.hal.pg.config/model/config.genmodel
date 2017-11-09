@@ -3,24 +3,49 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.config/src" modelPluginID="no.hal.pg.config"
     modelName="Config" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
-    usedGenPackages="../../no.hal.pg.arc/model/arc.genmodel#//arc ../../no.hal.pg.runtime/model/runtime.genmodel#//runtime"
+    usedGenPackages="../../no.hal.pg.arc/model/arc.genmodel#//arc ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../no.hal.pg.osm/model/osm.genmodel#//osm ../../no.hal.pg.runtime/model/runtime.genmodel#//runtime"
     operationReflection="true" importOrganizing="true">
   <foreignModel>config.ecore</foreignModel>
-  <genPackages prefix="Config" basePackage="no.hal.pg" disposableProviderFactory="true"
+  <genPackages prefix="Config" basePackage="no.hal.pg" resource="XMI" disposableProviderFactory="true"
       ecorePackage="config.ecore#/">
-    <genClasses ecoreClass="config.ecore#//Config">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//Config/games"/>
-    </genClasses>
     <genClasses ecoreClass="config.ecore#//GameConfig">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/tasks"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/taskRefs"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference config.ecore#//GameConfig/allTasks"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/participants"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/players"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/items"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//GameConfig/locations"/>
     </genClasses>
-    <genClasses ecoreClass="config.ecore#//TaskConfig">
-      <genTypeParameters ecoreTypeParameter="config.ecore#//TaskConfig/T"/>
-      <genTypeParameters ecoreTypeParameter="config.ecore#//TaskConfig/R"/>
-      <genOperations ecoreOperation="config.ecore#//TaskConfig/createTask"/>
+    <genClasses ecoreClass="config.ecore#//AbstractConfig">
+      <genTypeParameters ecoreTypeParameter="config.ecore#//AbstractConfig/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//AbstractConfig/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//AbstractConfig/description"/>
+      <genOperations ecoreOperation="config.ecore#//AbstractConfig/create">
+        <genParameters ecoreParameter="config.ecore#//AbstractConfig/create/proxy"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//TaskConfig"/>
+    <genClasses ecoreClass="config.ecore#//ItemConfig"/>
+    <genClasses ecoreClass="config.ecore#//Proxy">
+      <genTypeParameters ecoreTypeParameter="config.ecore#//Proxy/T"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Proxy/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Proxy/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//Proxy/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//TaskProxy">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//TaskProxy/players"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference config.ecore#//TaskProxy/rewardItems"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//TaskProxy/requiresFinished"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//TaskProxy/locations"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//PlayerRole">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//PlayerRole/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//PlayerRole/playerCount"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//ItemProxy">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//ItemProxy/location"/>
+    </genClasses>
+    <genClasses ecoreClass="config.ecore#//Location">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute config.ecore#//Location/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference config.ecore#//Location/locationRef"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

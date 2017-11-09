@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: no.hal.pg.exampletask.config.tests
+Bundle-Version: 0.0.1.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: no.hal.pg.exampletask.config.tests
+Require-Bundle: org.eclipse.core.runtime,
+ no.hal.pg.exampletask.runtime;bundle-version="0.0.1",
+ no.hal.pg.exampletask.config;bundle-version="0.0.1"
+Bundle-ActivationPolicy: lazy
+Import-Package: org.junit;version="4.12.0"

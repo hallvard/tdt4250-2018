@@ -1,0 +1,8 @@
+target "jetty.websocket"
+
+location jetty "http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.7.v20170914" {
+	org.eclipse.jetty.websocket.api
+	org.eclipse.jetty.websocket.common
+	org.eclipse.jetty.websocket.server
+	org.eclipse.jetty.websocket.servlet
+}

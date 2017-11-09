@@ -4,9 +4,10 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
-    xsi:schemaLocation="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
+	xmlns:exampletask-runtime="platform:/plugin/no.hal.pg.exampletask.runtime/model/exampletask.ecore"
+    xsi:schemaLocation="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore platform:/plugin/no.hal.pg.exampletask.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.exampletask.runtime/model/exampletask.ecore">
   <games>
-    <tasks xsi:type="runtime:AcceptTask"/>
+    <tasks xsi:type="exampletask-runtime:ExampleTask" correctAnswer="true"/>
     <tasks>
       <startConditions
           xsi:type="runtime:IsTaskStartedCondition"

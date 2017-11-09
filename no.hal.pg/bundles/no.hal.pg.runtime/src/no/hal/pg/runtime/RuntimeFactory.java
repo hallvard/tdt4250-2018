@@ -49,15 +49,6 @@ public interface RuntimeFactory extends EFactory {
 	Item createItem();
 
 	/**
-	 * Returns a new object of class '<em>Info</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Info</em>'.
-	 * @generated
-	 */
-	Info createInfo();
-
-	/**
 	 * Returns a new object of class '<em>Info Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -128,15 +119,6 @@ public interface RuntimeFactory extends EFactory {
 	 * @generated
 	 */
 	PlayersHaveItemsCondition createPlayersHaveItemsCondition();
-
-	/**
-	 * Returns a new object of class '<em>Accept Task</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Accept Task</em>'.
-	 * @generated
-	 */
-	AcceptTask createAcceptTask();
 
 	/**
 	 * Returns a new object of class '<em>Runtime</em>'.

@@ -1,0 +1,17 @@
+target "no.hal.pg.runtime"
+
+include "equinox.tpd"
+include "equinox.console.tpd"
+include "eclipse.core.tpd"
+
+include "emf.core.tpd"
+
+include "junit.tpd"
+
+include "emfjson.tpd"
+
+include "servlet.tpd"
+include "jetty.tpd"
+// include "jetty.websocket.tpd"
+
+environment macosx cocoa x86_64

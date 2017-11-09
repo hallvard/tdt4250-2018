@@ -1,0 +1,7 @@
+target "emf.edit.ui"
+
+location oxygen "http://download.eclipse.org/releases/oxygen" {
+	org.eclipse.emf.common.ui
+	org.eclipse.emf.edit.ui
+	org.eclipse.emf.databinding.edit
+}

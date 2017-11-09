@@ -11,7 +11,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import no.hal.pg.config.*;
-import no.hal.pg.runtime.Task;
 
 /**
  * <!-- begin-user-doc -->
@@ -57,22 +56,14 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ConfigPackage.CONFIG: return createConfig();
 			case ConfigPackage.GAME_CONFIG: return createGameConfig();
-			case ConfigPackage.TASK_CONFIG: return createTaskConfig();
+			case ConfigPackage.INFO_ITEM_CONFIG: return createInfoItemConfig();
+			case ConfigPackage.TASK_PROXY: return createTaskProxy();
+			case ConfigPackage.PLAYER_ROLE: return createPlayerRole();
+			case ConfigPackage.ITEM_PROXY: return createItemProxy();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Config createConfig() {
-		ConfigImpl config = new ConfigImpl();
-		return config;
 	}
 
 	/**
@@ -90,9 +81,39 @@ public class ConfigFactoryImpl extends EFactoryImpl implements ConfigFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public <T extends Task<R>, R> TaskConfig<T, R> createTaskConfig() {
-		TaskConfigImpl<T, R> taskConfig = new TaskConfigImpl<T, R>();
-		return taskConfig;
+	public InfoItemConfig createInfoItemConfig() {
+		InfoItemConfigImpl infoItemConfig = new InfoItemConfigImpl();
+		return infoItemConfig;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TaskProxy createTaskProxy() {
+		TaskProxyImpl taskProxy = new TaskProxyImpl();
+		return taskProxy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PlayerRole createPlayerRole() {
+		PlayerRoleImpl playerRole = new PlayerRoleImpl();
+		return playerRole;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ItemProxy createItemProxy() {
+		ItemProxyImpl itemProxy = new ItemProxyImpl();
+		return itemProxy;
 	}
 
 	/**

@@ -1,7 +1,8 @@
 package no.hal.pg.http;
 
+import org.eclipse.emf.ecore.EClass;
+
 public interface AppConfig {
-	public String getEPackageUri();
-	public String getEClassName();
+	public EClass getEClass();
 	String getMainLocation();
 }

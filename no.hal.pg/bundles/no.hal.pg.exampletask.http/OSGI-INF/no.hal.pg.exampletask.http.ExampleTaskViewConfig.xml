@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="no.hal.pg.exampletask.http.ExampleTaskViewConfig">
+   <property name="osgi.http.whiteboard.resource.prefix" type="String" value="/web/example-task"/>
+   <property name="osgi.http.whiteboard.resource.pattern" type="String" value="/example-task/*"/>
+   <service>
+      <provide interface="no.hal.pg.exampletask.http.ExampleTaskViewConfig"/>
+      <provide interface="no.hal.pg.http.AppConfig"/>
+   </service>
+   <implementation class="no.hal.pg.exampletask.http.ExampleTaskViewConfig"/>
+</scr:component>

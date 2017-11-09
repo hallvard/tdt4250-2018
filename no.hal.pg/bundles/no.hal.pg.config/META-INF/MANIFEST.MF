@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.common,
  no.hal.pg.arc;bundle-version="0.0.1";visibility:=reexport,
- no.hal.pg.runtime;bundle-version="0.0.1";visibility:=reexport,
- no.hal.pg.osm;visibility:=reexport
+ no.hal.pg.osm;visibility:=reexport,
+ no.hal.pg.runtime;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_twjhoML4EeeYYvmui3p9rh" name="GameConfig" ecorePath="/no.hal.pg.config/model/config.ecore">
+  <rootEClass href="../../../plugin/no.hal.pg.config/model/config.ecore#//GameConfig"/>
+</org.eclipse.emf.ecp.view.model:View>

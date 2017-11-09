@@ -3,6 +3,7 @@ package no.hal.pg.osm.geomap;
 import org.eclipse.nebula.widgets.geomap.PointD;
 import org.eclipse.nebula.widgets.geomap.jface.LocationProvider;
 
+import no.hal.pg.osm.GeoLatLong;
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.geoutil.LatLong;
@@ -25,6 +26,9 @@ public class OsmLocationProvider implements LocationProvider {
 		if (element instanceof GeoLocation) {
 			((GeoLocation) element).setLatitude((float) lat);
 			((GeoLocation) element).setLongitude((float) lon);
+			return true;
+		} else  if (element instanceof GeoLatLong) {
+			((GeoLatLong) element).setLocation(new LatLong(lat, lon));
 			return true;
 		}
 		return false;

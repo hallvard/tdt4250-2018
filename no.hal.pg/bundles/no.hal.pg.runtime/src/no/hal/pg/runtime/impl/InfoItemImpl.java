@@ -2,9 +2,6 @@
  */
 package no.hal.pg.runtime.impl;
 
-import java.net.URI;
-
-import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.RuntimePackage;
 
@@ -22,73 +19,31 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getText <em>Text</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getUrl <em>Url</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getImageUrl <em>Image Url</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.InfoItemImpl#getDescription <em>Description</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class InfoItemImpl extends ItemImpl implements InfoItem {
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
+	protected static final String DESCRIPTION_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getText()
+	 * @see #getDescription()
 	 * @generated
 	 * @ordered
 	 */
-	protected String text = TEXT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUrl()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final URI URL_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getUrl() <em>Url</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUrl()
-	 * @generated
-	 * @ordered
-	 */
-	protected URI url = URL_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getImageUrl() <em>Image Url</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImageUrl()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final URI IMAGE_URL_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImageUrl() <em>Image Url</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImageUrl()
-	 * @generated
-	 * @ordered
-	 */
-	protected URI imageUrl = IMAGE_URL_EDEFAULT;
+	protected String description = DESCRIPTION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -114,62 +69,8 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getText() {
-		return text;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__TEXT, oldText, text));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public URI getUrl() {
-		return url;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUrl(URI newUrl) {
-		URI oldUrl = url;
-		url = newUrl;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__URL, oldUrl, url));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public URI getImageUrl() {
-		return imageUrl;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setImageUrl(URI newImageUrl) {
-		URI oldImageUrl = imageUrl;
-		imageUrl = newImageUrl;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__IMAGE_URL, oldImageUrl, imageUrl));
+	public String getDescription() {
+		return description;
 	}
 
 	/**
@@ -180,12 +81,8 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
-				return getText();
-			case RuntimePackage.INFO_ITEM__URL:
-				return getUrl();
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
-				return getImageUrl();
+			case RuntimePackage.INFO_ITEM__DESCRIPTION:
+				return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,14 +95,8 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
-				setText((String)newValue);
-				return;
-			case RuntimePackage.INFO_ITEM__URL:
-				setUrl((URI)newValue);
-				return;
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
-				setImageUrl((URI)newValue);
+			case RuntimePackage.INFO_ITEM__DESCRIPTION:
+				setDescription((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -219,14 +110,8 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
-				setText(TEXT_EDEFAULT);
-				return;
-			case RuntimePackage.INFO_ITEM__URL:
-				setUrl(URL_EDEFAULT);
-				return;
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
-				setImageUrl(IMAGE_URL_EDEFAULT);
+			case RuntimePackage.INFO_ITEM__DESCRIPTION:
+				setDescription(DESCRIPTION_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -240,50 +125,10 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case RuntimePackage.INFO_ITEM__TEXT:
-				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case RuntimePackage.INFO_ITEM__URL:
-				return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT.equals(url);
-			case RuntimePackage.INFO_ITEM__IMAGE_URL:
-				return IMAGE_URL_EDEFAULT == null ? imageUrl != null : !IMAGE_URL_EDEFAULT.equals(imageUrl);
+			case RuntimePackage.INFO_ITEM__DESCRIPTION:
+				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Info.class) {
-			switch (derivedFeatureID) {
-				case RuntimePackage.INFO_ITEM__TEXT: return RuntimePackage.INFO__TEXT;
-				case RuntimePackage.INFO_ITEM__URL: return RuntimePackage.INFO__URL;
-				case RuntimePackage.INFO_ITEM__IMAGE_URL: return RuntimePackage.INFO__IMAGE_URL;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Info.class) {
-			switch (baseFeatureID) {
-				case RuntimePackage.INFO__TEXT: return RuntimePackage.INFO_ITEM__TEXT;
-				case RuntimePackage.INFO__URL: return RuntimePackage.INFO_ITEM__URL;
-				case RuntimePackage.INFO__IMAGE_URL: return RuntimePackage.INFO_ITEM__IMAGE_URL;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -296,14 +141,23 @@ public class InfoItemImpl extends ItemImpl implements InfoItem {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (text: ");
-		result.append(text);
-		result.append(", url: ");
-		result.append(url);
-		result.append(", imageUrl: ");
-		result.append(imageUrl);
+		result.append(" (description: ");
+		result.append(description);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RuntimePackage.INFO_ITEM__DESCRIPTION, oldDescription, description));
 	}
 
 } //InfoItemImpl

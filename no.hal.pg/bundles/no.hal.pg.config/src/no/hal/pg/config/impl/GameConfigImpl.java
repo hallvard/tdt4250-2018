@@ -2,23 +2,23 @@
  */
 package no.hal.pg.config.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import no.hal.pg.arc.Person;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import no.hal.pg.config.ConfigPackage;
 import no.hal.pg.config.GameConfig;
+import no.hal.pg.config.ItemConfig;
+import no.hal.pg.config.ItemProxy;
+import no.hal.pg.config.PlayerRole;
 import no.hal.pg.config.TaskConfig;
-import no.hal.pg.config.util.Util;
-import no.hal.pg.runtime.Game;
+import no.hal.pg.config.TaskProxy;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,9 +29,10 @@ import no.hal.pg.runtime.Game;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTaskRefs <em>Task Refs</em>}</li>
- *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getAllTasks <em>All Tasks</em>}</li>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getPlayers <em>Players</em>}</li>
+ *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getItems <em>Items</em>}</li>
+ *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTaskProxies <em>Task Proxies</em>}</li>
+ *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getItemProxies <em>Item Proxies</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,27 +46,47 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TaskConfig<?, ?>> tasks;
+	protected EList<TaskConfig<?>> tasks;
 
 	/**
-	 * The cached value of the '{@link #getTaskRefs() <em>Task Refs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTaskRefs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<TaskConfig<?, ?>> taskRefs;
-
-	/**
-	 * The cached value of the '{@link #getPlayers() <em>Players</em>}' reference list.
+	 * The cached value of the '{@link #getPlayers() <em>Players</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPlayers()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Person> players;
+	protected EList<PlayerRole> players;
+
+	/**
+	 * The cached value of the '{@link #getItems() <em>Items</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ItemConfig> items;
+
+	/**
+	 * The cached value of the '{@link #getTaskProxies() <em>Task Proxies</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTaskProxies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<TaskProxy> taskProxies;
+
+	/**
+	 * The cached value of the '{@link #getItemProxies() <em>Item Proxies</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getItemProxies()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ItemProxy> itemProxies;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -92,9 +113,9 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * @generated
 	 */
 	@Override
-	public EList<TaskConfig<?, ?>> getTasks() {
+	public EList<TaskConfig<?>> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentEList<TaskConfig<?, ?>>(TaskConfig.class, this, ConfigPackage.GAME_CONFIG__TASKS);
+			tasks = new EObjectContainmentEList<TaskConfig<?>>(TaskConfig.class, this, ConfigPackage.GAME_CONFIG__TASKS);
 		}
 		return tasks;
 	}
@@ -104,32 +125,9 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EList<TaskConfig<?, ?>> getTaskRefs() {
-		if (taskRefs == null) {
-			taskRefs = new EObjectResolvingEList<TaskConfig<?, ?>>(TaskConfig.class, this, ConfigPackage.GAME_CONFIG__TASK_REFS);
-		}
-		return taskRefs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public EList<TaskConfig<?, ?>> getAllTasks() {
-		return Util.createUmodifiableList(this, ConfigPackage.eINSTANCE.getGameConfig_AllTasks(), getTasks(), getTaskRefs());
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Person> getPlayers() {
+	public EList<PlayerRole> getPlayers() {
 		if (players == null) {
-			players = new EObjectResolvingEList<Person>(Person.class, this, ConfigPackage.GAME_CONFIG__PLAYERS);
+			players = new EObjectContainmentEList<PlayerRole>(PlayerRole.class, this, ConfigPackage.GAME_CONFIG__PLAYERS);
 		}
 		return players;
 	}
@@ -139,10 +137,35 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Game createGame() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+	public EList<ItemConfig> getItems() {
+		if (items == null) {
+			items = new EObjectContainmentEList<ItemConfig>(ItemConfig.class, this, ConfigPackage.GAME_CONFIG__ITEMS);
+		}
+		return items;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<TaskProxy> getTaskProxies() {
+		if (taskProxies == null) {
+			taskProxies = new EObjectContainmentEList<TaskProxy>(TaskProxy.class, this, ConfigPackage.GAME_CONFIG__TASK_PROXIES);
+		}
+		return taskProxies;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<ItemProxy> getItemProxies() {
+		if (itemProxies == null) {
+			itemProxies = new EObjectContainmentEList<ItemProxy>(ItemProxy.class, this, ConfigPackage.GAME_CONFIG__ITEM_PROXIES);
+		}
+		return itemProxies;
 	}
 
 	/**
@@ -155,6 +178,14 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 		switch (featureID) {
 			case ConfigPackage.GAME_CONFIG__TASKS:
 				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+			case ConfigPackage.GAME_CONFIG__PLAYERS:
+				return ((InternalEList<?>)getPlayers()).basicRemove(otherEnd, msgs);
+			case ConfigPackage.GAME_CONFIG__ITEMS:
+				return ((InternalEList<?>)getItems()).basicRemove(otherEnd, msgs);
+			case ConfigPackage.GAME_CONFIG__TASK_PROXIES:
+				return ((InternalEList<?>)getTaskProxies()).basicRemove(otherEnd, msgs);
+			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
+				return ((InternalEList<?>)getItemProxies()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -169,12 +200,14 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 		switch (featureID) {
 			case ConfigPackage.GAME_CONFIG__TASKS:
 				return getTasks();
-			case ConfigPackage.GAME_CONFIG__TASK_REFS:
-				return getTaskRefs();
-			case ConfigPackage.GAME_CONFIG__ALL_TASKS:
-				return getAllTasks();
 			case ConfigPackage.GAME_CONFIG__PLAYERS:
 				return getPlayers();
+			case ConfigPackage.GAME_CONFIG__ITEMS:
+				return getItems();
+			case ConfigPackage.GAME_CONFIG__TASK_PROXIES:
+				return getTaskProxies();
+			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
+				return getItemProxies();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,15 +223,23 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 		switch (featureID) {
 			case ConfigPackage.GAME_CONFIG__TASKS:
 				getTasks().clear();
-				getTasks().addAll((Collection<? extends TaskConfig<?, ?>>)newValue);
-				return;
-			case ConfigPackage.GAME_CONFIG__TASK_REFS:
-				getTaskRefs().clear();
-				getTaskRefs().addAll((Collection<? extends TaskConfig<?, ?>>)newValue);
+				getTasks().addAll((Collection<? extends TaskConfig<?>>)newValue);
 				return;
 			case ConfigPackage.GAME_CONFIG__PLAYERS:
 				getPlayers().clear();
-				getPlayers().addAll((Collection<? extends Person>)newValue);
+				getPlayers().addAll((Collection<? extends PlayerRole>)newValue);
+				return;
+			case ConfigPackage.GAME_CONFIG__ITEMS:
+				getItems().clear();
+				getItems().addAll((Collection<? extends ItemConfig>)newValue);
+				return;
+			case ConfigPackage.GAME_CONFIG__TASK_PROXIES:
+				getTaskProxies().clear();
+				getTaskProxies().addAll((Collection<? extends TaskProxy>)newValue);
+				return;
+			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
+				getItemProxies().clear();
+				getItemProxies().addAll((Collection<? extends ItemProxy>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -215,11 +256,17 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 			case ConfigPackage.GAME_CONFIG__TASKS:
 				getTasks().clear();
 				return;
-			case ConfigPackage.GAME_CONFIG__TASK_REFS:
-				getTaskRefs().clear();
-				return;
 			case ConfigPackage.GAME_CONFIG__PLAYERS:
 				getPlayers().clear();
+				return;
+			case ConfigPackage.GAME_CONFIG__ITEMS:
+				getItems().clear();
+				return;
+			case ConfigPackage.GAME_CONFIG__TASK_PROXIES:
+				getTaskProxies().clear();
+				return;
+			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
+				getItemProxies().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -235,28 +282,16 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 		switch (featureID) {
 			case ConfigPackage.GAME_CONFIG__TASKS:
 				return tasks != null && !tasks.isEmpty();
-			case ConfigPackage.GAME_CONFIG__TASK_REFS:
-				return taskRefs != null && !taskRefs.isEmpty();
-			case ConfigPackage.GAME_CONFIG__ALL_TASKS:
-				return !getAllTasks().isEmpty();
 			case ConfigPackage.GAME_CONFIG__PLAYERS:
 				return players != null && !players.isEmpty();
+			case ConfigPackage.GAME_CONFIG__ITEMS:
+				return items != null && !items.isEmpty();
+			case ConfigPackage.GAME_CONFIG__TASK_PROXIES:
+				return taskProxies != null && !taskProxies.isEmpty();
+			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
+				return itemProxies != null && !itemProxies.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
-		switch (operationID) {
-			case ConfigPackage.GAME_CONFIG___CREATE_GAME:
-				return createGame();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //GameDefImpl

@@ -81,22 +81,23 @@ public abstract class AbstractHttpRequestTest {
 
 	private boolean useOwnReader = true;
 	
+	protected ObjectMapper mapper = new ObjectMapper();
+
 	protected JsonNode getJsonNode(HttpURLConnection con) throws IOException {
 		InputStream input = con.getInputStream();
-		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonNode = (useOwnReader ? mapper.readTree(new BufferedReader(new InputStreamReader(input))) : mapper.readTree(input));
 		return jsonNode;
 	}
 
 	protected ArrayNode checkArrayNode(JsonNode node, int size) {
-		Assert.assertTrue(node instanceof ArrayNode);
+		Assert.assertTrue("Should be ArrayNode, but was " + node.getClass().getName(), node instanceof ArrayNode);
 		ArrayNode arrayNode = (ArrayNode) node;
 		Assert.assertEquals(size, arrayNode.size());
 		return arrayNode;
 	}
 	
 	protected ObjectNode checkObjectNode(JsonNode node, String... fields) {
-		Assert.assertTrue(node instanceof ObjectNode);
+		Assert.assertTrue("Should be ObjectNode, but was " + node.getClass().getName(), node instanceof ObjectNode);
 		ObjectNode objectNode = (ObjectNode) node;
 		for (int i = 0; i < fields.length; i++) {
 			Assert.assertNotNull("Missing field: " + fields[i], objectNode.get(fields[i]));
@@ -105,14 +106,15 @@ public abstract class AbstractHttpRequestTest {
 	}
 
 	protected ObjectNode checkObjectNode(JsonNode node, Object... fieldsAndValues) {
-		Assert.assertTrue(node instanceof ObjectNode);
+		Assert.assertTrue("Should be ObjectNode, but was " + node.getClass().getName(), node instanceof ObjectNode);
 		ObjectNode objectNode = (ObjectNode) node;
 		ObjectMapper mapper = new ObjectMapper();
 		for (int i = 0; i < fieldsAndValues.length; i += 2) {
-			JsonNode value = objectNode.get(String.valueOf(fieldsAndValues[i]));
+			String fieldName = String.valueOf(fieldsAndValues[i]);
+			JsonNode value = objectNode.get(fieldName);
 			Assert.assertNotNull("Missing value: " + fieldsAndValues[i], value);
 			try {
-				Assert.assertEquals(String.valueOf(fieldsAndValues[i + 1]), mapper.writeValueAsString(value));
+				Assert.assertEquals("Incorrect " + fieldName + " value", String.valueOf(fieldsAndValues[i + 1]), mapper.writeValueAsString(value));
 			} catch (JsonProcessingException e) {
 				Assert.fail(e.getMessage());
 			}

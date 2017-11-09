@@ -5,18 +5,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:app="platform:/plugin/no.hal.pg.runtime/model/app.ecore"
     xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
-    xsi:schemaLocation="platform:/plugin/no.hal.pg.runtime/model/app.ecore ../../../../../../../no.hal.pg.runtime/model/app.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
+	xmlns:exampletask-runtime="platform:/plugin/no.hal.pg.exampletask.runtime/model/exampletask.ecore"
+    xsi:schemaLocation="platform:/plugin/no.hal.pg.runtime/model/app.ecore ../../../../../../../no.hal.pg.runtime/model/app.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore platform:/plugin/no.hal.pg.exampletask.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.exampletask.runtime/model/exampletask.ecore">
   <model xsi:type="runtime:Game"
       href="RuntimeTest.xmi#//@games.0"/>
   <player href="RuntimeTest.xmi#//@games.0/@players.0"/>
   <taskViews
-      xsi:type="app:AcceptTaskView">
-    <model xsi:type="runtime:AcceptTask"
+      xsi:type="exampletask-runtime:ExampleTaskView">
+    <model xsi:type="exampletask-runtime:ExampleTask"
         href="RuntimeTest.xmi#//@games.0/@tasks.0"/>
   </taskViews>
   <taskViews
-      xsi:type="app:AcceptTaskView">
-    <model xsi:type="runtime:AcceptTask"
+      xsi:type="exampletask-runtime:ExampleTaskView">
+    <model xsi:type="exampletask-runtime:ExampleTask"
         href="RuntimeTest.xmi#//@games.0/@tasks.1"/>
   </taskViews>
 </app:GameView>

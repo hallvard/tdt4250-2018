@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EGenericType;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
@@ -187,7 +186,7 @@ public class SchemaGenerator {
 	private void addField(ETypedElement typedElement, EClass eClass, Collection<GraphQLFieldDefinition> fields) {
 		GraphQLFieldDefinition field = generate(typedElement, eClass, (typedElement instanceof EOperation ? ((EOperation) typedElement).getEParameters() : null));
 		if (field == null) {
-			System.err.println("Couldn't create field " + typedElement.getName() + " of " + ((ENamedElement) typedElement.eContainer()).getName());
+//			System.err.println("Couldn't create field " + typedElement.getName() + " of " + ((ENamedElement) typedElement.eContainer()).getName());
 		} else {
 			fields.add(field);
 		}

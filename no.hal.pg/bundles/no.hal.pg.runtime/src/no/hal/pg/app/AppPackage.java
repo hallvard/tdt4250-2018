@@ -455,116 +455,6 @@ public interface AppPackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link no.hal.pg.app.impl.AcceptTaskViewImpl <em>Accept Task View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see no.hal.pg.app.impl.AcceptTaskViewImpl
-	 * @see no.hal.pg.app.impl.AppPackageImpl#getAcceptTaskView()
-	 * @generated
-	 */
-	int ACCEPT_TASK_VIEW = 7;
-
-	/**
-	 * The feature id for the '<em><b>User</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__USER = TASK_VIEW__USER;
-
-	/**
-	 * The feature id for the '<em><b>Model</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__MODEL = TASK_VIEW__MODEL;
-
-	/**
-	 * The feature id for the '<em><b>Game View</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__GAME_VIEW = TASK_VIEW__GAME_VIEW;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__DESCRIPTION = TASK_VIEW__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__ENABLED = TASK_VIEW__ENABLED;
-
-	/**
-	 * The feature id for the '<em><b>Started</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__STARTED = TASK_VIEW__STARTED;
-
-	/**
-	 * The feature id for the '<em><b>Finished</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW__FINISHED = TASK_VIEW__FINISHED;
-
-	/**
-	 * The number of structural features of the '<em>Accept Task View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW_FEATURE_COUNT = TASK_VIEW_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Start</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW___START = TASK_VIEW___START;
-
-	/**
-	 * The operation id for the '<em>Accept</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW___ACCEPT = TASK_VIEW_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Accept Task View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACCEPT_TASK_VIEW_OPERATION_COUNT = TASK_VIEW_OPERATION_COUNT + 1;
-
-
-	/**
 	 * The meta object id for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -572,7 +462,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapView()
 	 * @generated
 	 */
-	int MAP_VIEW = 8;
+	int MAP_VIEW = 7;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -663,7 +553,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getAbstractGeoLocationView()
 	 * @generated
 	 */
-	int ABSTRACT_GEO_LOCATION_VIEW = 9;
+	int ABSTRACT_GEO_LOCATION_VIEW = 8;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -718,7 +608,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarkerOptions()
 	 * @generated
 	 */
-	int MAP_MARKER_OPTIONS = 10;
+	int MAP_MARKER_OPTIONS = 9;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -773,7 +663,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocatedView()
 	 * @generated
 	 */
-	int GEO_LOCATED_VIEW = 11;
+	int GEO_LOCATED_VIEW = 10;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -837,7 +727,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocationView()
 	 * @generated
 	 */
-	int GEO_LOCATION_VIEW = 12;
+	int GEO_LOCATION_VIEW = 11;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -910,7 +800,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoPolyline()
 	 * @generated
 	 */
-	int GEO_POLYLINE = 13;
+	int GEO_POLYLINE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Locations</b></em>' reference list.
@@ -1170,26 +1060,6 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTaskView__Start();
-
-	/**
-	 * Returns the meta object for class '{@link no.hal.pg.app.AcceptTaskView <em>Accept Task View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Accept Task View</em>'.
-	 * @see no.hal.pg.app.AcceptTaskView
-	 * @generated
-	 */
-	EClass getAcceptTaskView();
-
-	/**
-	 * Returns the meta object for the '{@link no.hal.pg.app.AcceptTaskView#accept() <em>Accept</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Accept</em>' operation.
-	 * @see no.hal.pg.app.AcceptTaskView#accept()
-	 * @generated
-	 */
-	EOperation getAcceptTaskView__Accept();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.MapView <em>Map View</em>}'.
@@ -1586,24 +1456,6 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK_VIEW___START = eINSTANCE.getTaskView__Start();
-
-		/**
-		 * The meta object literal for the '{@link no.hal.pg.app.impl.AcceptTaskViewImpl <em>Accept Task View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see no.hal.pg.app.impl.AcceptTaskViewImpl
-		 * @see no.hal.pg.app.impl.AppPackageImpl#getAcceptTaskView()
-		 * @generated
-		 */
-		EClass ACCEPT_TASK_VIEW = eINSTANCE.getAcceptTaskView();
-
-		/**
-		 * The meta object literal for the '<em><b>Accept</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ACCEPT_TASK_VIEW___ACCEPT = eINSTANCE.getAcceptTaskView__Accept();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.

@@ -80,7 +80,7 @@ public class OsmGeoMapView extends AbstractSelectionView {
 			viewer.setInput(selection);
 			Object[] elements = contentProvider.getElements(selection);
 			if (elements != null && elements.length > 0) {
-				viewer.zoomTo(elements, 5);
+				viewer.zoomTo(elements, viewer.getGeoMap().getZoom());
 			}
 			viewer.getGeoMap().redraw();
 		}

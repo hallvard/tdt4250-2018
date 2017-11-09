@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/no.hal.pg.exampletask.config/src" modelPluginID="no.hal.pg.exampletask.config"
+    modelName="Exampletask-config" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../no.hal.pg.runtime/model/app.genmodel#//app ../../no.hal.pg.arc/model/arc.genmodel#//arc ../../no.hal.pg.config/model/config.genmodel#//config ../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../no.hal.pg.exampletask.runtime/model/exampletask.genmodel#//runtime ../../no.hal.pg.osm/model/osm.genmodel#//osm ../../no.hal.pg.runtime/model/runtime.genmodel#//runtime"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>exampletask-config.ecore</foreignModel>
+  <genPackages prefix="Config" basePackage="no.hal.pg.exampletask" disposableProviderFactory="true"
+      ecorePackage="exampletask-config.ecore#/">
+    <genClasses ecoreClass="exampletask-config.ecore#//ExampleTaskConfig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute exampletask-config.ecore#//ExampleTaskConfig/question"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute exampletask-config.ecore#//ExampleTaskConfig/correctAnswer"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -15,10 +15,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import no.hal.pg.exampletask.runtime.ExampleTask;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.OsmFactory;
 import no.hal.pg.osm.geoutil.LatLong;
-import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.Player;
@@ -80,9 +80,9 @@ public class RuntimeTest {
 	@Test
 	public void testReset() {
 		Task<?> task = getTasks(0).get(0);
-		Assert.assertTrue(task instanceof AcceptTask);
+		Assert.assertTrue(task instanceof ExampleTask);
 		testStart(task);
-		((AcceptTask) task).reset();
+		((ExampleTask) task).reset();
 		Assert.assertFalse(task.isStarted());
 	}
 
@@ -107,20 +107,6 @@ public class RuntimeTest {
 
 		task0.finish(Boolean.TRUE);
 		Assert.assertTrue(task.canStart());
-	}
-
-	@Test
-	public void testAcceptTask() {
-		AcceptTask task = RuntimeFactory.eINSTANCE.createAcceptTask();
-		Assert.assertFalse(task.isStarted());
-		Assert.assertFalse(task.isFinished());
-		Assert.assertTrue(task.canStart());
-		
-		task.start();
-		task.accept();
-
-		Assert.assertTrue(task.isFinished());
-		Assert.assertTrue(task.getResult());
 	}
 
 	@Test

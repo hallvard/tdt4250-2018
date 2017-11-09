@@ -2,50 +2,84 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config" nsURI="platform:/plugin/no.hal.pg.config/model/config.ecore"
     nsPrefix="config">
-  <eClassifiers xsi:type="ecore:EClass" name="Config" eSuperTypes="../../no.hal.pg.arc/model/arc.ecore#//Arc">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="games" upperBound="-1"
-        eType="#//GameConfig" containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GameConfig">
-    <eOperations name="createGame">
-      <eGenericType eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Game">
-        <eTypeArguments/>
-      </eGenericType>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         containment="true">
       <eGenericType eClassifier="#//TaskConfig">
         <eTypeArguments/>
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="taskRefs" upperBound="-1">
-      <eGenericType eClassifier="#//TaskConfig">
-        <eTypeArguments/>
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="allTasks" upperBound="-1"
-        changeable="false" volatile="true" transient="true" derived="true">
-      <eGenericType eClassifier="#//TaskConfig">
-        <eTypeArguments/>
-        <eTypeArguments/>
       </eGenericType>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
-        eType="ecore:EClass ../../no.hal.pg.arc/model/arc.ecore#//Person"/>
+        eType="#//PlayerRole" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//ItemConfig" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskProxies" upperBound="-1"
+        eType="#//TaskProxy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemProxies" upperBound="-1"
+        eType="#//ItemProxy" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskConfig">
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractConfig" abstract="true">
+    <eTypeParameters name="T"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskConfig" abstract="true">
     <eTypeParameters name="T">
       <eBounds eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Task">
-        <eTypeArguments eTypeParameter="#//TaskConfig/R"/>
+        <eTypeArguments/>
       </eBounds>
     </eTypeParameters>
-    <eTypeParameters name="R"/>
     <eOperations name="createTask">
-      <eGenericType eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Task">
-        <eTypeArguments eTypeParameter="#//TaskConfig/R"/>
-      </eGenericType>
+      <eGenericType eTypeParameter="#//TaskConfig/T"/>
+      <eParameters name="proxy" eType="#//TaskProxy"/>
     </eOperations>
+    <eGenericSuperTypes eClassifier="#//AbstractConfig">
+      <eTypeArguments eTypeParameter="#//TaskConfig/T"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemConfig" abstract="true">
+    <eOperations name="createItem" eType="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Item">
+      <eParameters name="proxy" eType="#//ItemProxy"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"
+        containment="true"/>
+    <eGenericSuperTypes eClassifier="#//AbstractConfig">
+      <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Item"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InfoItemConfig" eSuperTypes="#//ItemConfig"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Proxy" abstract="true">
+    <eTypeParameters name="T"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref">
+      <eGenericType eTypeParameter="#//Proxy/T"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TaskProxy">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" upperBound="-1"
+        eType="#//PlayerRole"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rewardItems" upperBound="-1"
+        eType="#//ItemProxy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiresFinished" upperBound="-1"
+        eType="#//TaskProxy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiresItems" upperBound="-1"
+        eType="#//ItemProxy"/>
+    <eGenericSuperTypes eClassifier="#//Proxy">
+      <eTypeArguments eClassifier="#//TaskConfig">
+        <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Task">
+          <eTypeArguments/>
+        </eTypeArguments>
+      </eTypeArguments>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlayerRole">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playerCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemProxy">
+    <eGenericSuperTypes eClassifier="#//Proxy">
+      <eTypeArguments eClassifier="#//ItemConfig"/>
+    </eGenericSuperTypes>
   </eClassifiers>
 </ecore:EPackage>

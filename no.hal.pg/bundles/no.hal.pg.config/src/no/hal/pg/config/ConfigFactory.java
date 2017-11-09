@@ -2,7 +2,6 @@
  */
 package no.hal.pg.config;
 
-import no.hal.pg.runtime.Task;
 import org.eclipse.emf.ecore.EFactory;
 
 /**
@@ -23,15 +22,6 @@ public interface ConfigFactory extends EFactory {
 	ConfigFactory eINSTANCE = no.hal.pg.config.impl.ConfigFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Config</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Config</em>'.
-	 * @generated
-	 */
-	Config createConfig();
-
-	/**
 	 * Returns a new object of class '<em>Game Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -41,13 +31,40 @@ public interface ConfigFactory extends EFactory {
 	GameConfig createGameConfig();
 
 	/**
-	 * Returns a new object of class '<em>Task Config</em>'.
+	 * Returns a new object of class '<em>Info Item Config</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task Config</em>'.
+	 * @return a new object of class '<em>Info Item Config</em>'.
 	 * @generated
 	 */
-	<T extends Task<R>, R> TaskConfig<T, R> createTaskConfig();
+	InfoItemConfig createInfoItemConfig();
+
+	/**
+	 * Returns a new object of class '<em>Task Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Task Proxy</em>'.
+	 * @generated
+	 */
+	TaskProxy createTaskProxy();
+
+	/**
+	 * Returns a new object of class '<em>Player Role</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Player Role</em>'.
+	 * @generated
+	 */
+	PlayerRole createPlayerRole();
+
+	/**
+	 * Returns a new object of class '<em>Item Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Item Proxy</em>'.
+	 * @generated
+	 */
+	ItemProxy createItemProxy();
 
 	/**
 	 * Returns the package supported by this factory.

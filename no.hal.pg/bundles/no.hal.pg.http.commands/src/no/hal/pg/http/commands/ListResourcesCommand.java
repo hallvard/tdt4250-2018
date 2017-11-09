@@ -21,7 +21,6 @@ public class ListResourcesCommand {
 	@Reference(policy=ReferencePolicy.DYNAMIC)
 	protected volatile Collection<IResourceProvider> resourceProviders;
 	
-	
 	public Collection<String> lr() {
 		Collection<String> resourceNames = new ArrayList<String>();
 		for (IResourceProvider resourceProvider : resourceProviders) {

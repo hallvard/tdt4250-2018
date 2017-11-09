@@ -1,0 +1,9 @@
+target "emfforms"
+
+location emfforms "http://download.eclipse.org/ecp/releases/releases_115/" {
+
+	org.eclipse.emf.ecp.emfforms.runtime.feature.feature.group
+	org.eclipse.emfforms.editor.feature.source.feature.group
+}
+
+environment macosx cocoa x86_64

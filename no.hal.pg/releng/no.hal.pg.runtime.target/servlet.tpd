@@ -1,0 +1,7 @@
+target "http"
+
+location oxygen "http://download.eclipse.org/releases/oxygen" {
+	javax.servlet
+	org.eclipse.equinox.http.servlet
+	org.eclipse.equinox.http.jetty
+}

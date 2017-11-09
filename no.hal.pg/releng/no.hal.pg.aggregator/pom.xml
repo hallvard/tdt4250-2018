@@ -11,7 +11,8 @@
 	  </parent>
 
 	<modules>
-		<module>../no.hal.pg.target</module>
+		<module>../no.hal.pg.runtime.target</module>
+		<module>../no.hal.pg.ui.target</module>
 
 		<module>../../bundles/no.hal.pg.arc</module>
 		<module>../../tests/no.hal.pg.arc.tests</module>
@@ -33,7 +34,11 @@
 		<module>../../bundles/no.hal.pg.osm</module>
 		<module>../../tests/no.hal.pg.osm.tests</module>
 
+		<module>../../bundles/no.hal.pg.exampletask.runtime</module>
+		<module>../../tests/no.hal.pg.exampletask.runtime.tests</module>
+
 		<module>../../bundles/no.hal.pg.runtime.http</module>
+		<module>../../bundles/no.hal.pg.exampletask.http</module>
 		<module>../../tests/no.hal.pg.runtime.http.tests</module>
 
 		<module>../../bundles/no.hal.pg.osm.geomap</module>
@@ -42,6 +47,13 @@
 		<module>../../features/no.hal.pg.feature</module>
 
 		<module>../../bundles/no.hal.pg.config</module>
+		<module>../../bundles/no.hal.pg.exampletask.config</module>
+		<module>../../tests/no.hal.pg.exampletask.config.tests</module>
+
+		<module>../../bundles/no.hal.pg.config.editor</module>
+		<module>../../bundles/no.hal.pg.exampletask.config.viewmodel</module>
+
+		<module>../../bundles/no.hal.pg.config.diagram</module>
 
 		<module>../no.hal.pg.repository</module>
 	</modules>

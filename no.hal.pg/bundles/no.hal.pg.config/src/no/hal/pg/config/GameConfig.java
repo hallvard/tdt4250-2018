@@ -2,8 +2,6 @@
  */
 package no.hal.pg.config;
 
-import no.hal.pg.arc.Person;
-import no.hal.pg.runtime.Game;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -18,9 +16,10 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.config.GameConfig#getTasks <em>Tasks</em>}</li>
- *   <li>{@link no.hal.pg.config.GameConfig#getTaskRefs <em>Task Refs</em>}</li>
- *   <li>{@link no.hal.pg.config.GameConfig#getAllTasks <em>All Tasks</em>}</li>
  *   <li>{@link no.hal.pg.config.GameConfig#getPlayers <em>Players</em>}</li>
+ *   <li>{@link no.hal.pg.config.GameConfig#getItems <em>Items</em>}</li>
+ *   <li>{@link no.hal.pg.config.GameConfig#getTaskProxies <em>Task Proxies</em>}</li>
+ *   <li>{@link no.hal.pg.config.GameConfig#getItemProxies <em>Item Proxies</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.config.ConfigPackage#getGameConfig()
@@ -30,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface GameConfig extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.config.TaskConfig}<code>&lt;?, ?&gt;</code>.
+	 * The list contents are of type {@link no.hal.pg.config.TaskConfig}<code>&lt;?&gt;</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
@@ -42,62 +41,70 @@ public interface GameConfig extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<TaskConfig<?, ?>> getTasks();
+	EList<TaskConfig<?>> getTasks();
 
 	/**
-	 * Returns the value of the '<em><b>Task Refs</b></em>' reference list.
-	 * The list contents are of type {@link no.hal.pg.config.TaskConfig}<code>&lt;?, ?&gt;</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Task Refs</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Task Refs</em>' reference list.
-	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_TaskRefs()
-	 * @model
-	 * @generated
-	 */
-	EList<TaskConfig<?, ?>> getTaskRefs();
-
-	/**
-	 * Returns the value of the '<em><b>All Tasks</b></em>' reference list.
-	 * The list contents are of type {@link no.hal.pg.config.TaskConfig}<code>&lt;?, ?&gt;</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>All Tasks</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>All Tasks</em>' reference list.
-	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_AllTasks()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	EList<TaskConfig<?, ?>> getAllTasks();
-
-	/**
-	 * Returns the value of the '<em><b>Players</b></em>' reference list.
-	 * The list contents are of type {@link no.hal.pg.arc.Person}.
+	 * Returns the value of the '<em><b>Players</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.PlayerRole}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Players</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Players</em>' reference list.
+	 * @return the value of the '<em>Players</em>' containment reference list.
 	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_Players()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Person> getPlayers();
+	EList<PlayerRole> getPlayers();
 
 	/**
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.ItemConfig}.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Items</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_Items()
+	 * @model containment="true"
 	 * @generated
 	 */
-	Game createGame();
+	EList<ItemConfig> getItems();
+
+	/**
+	 * Returns the value of the '<em><b>Task Proxies</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.TaskProxy}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Task Proxies</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Task Proxies</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_TaskProxies()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<TaskProxy> getTaskProxies();
+
+	/**
+	 * Returns the value of the '<em><b>Item Proxies</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.ItemProxy}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Item Proxies</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Item Proxies</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_ItemProxies()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ItemProxy> getItemProxies();
 
 } // GameDef

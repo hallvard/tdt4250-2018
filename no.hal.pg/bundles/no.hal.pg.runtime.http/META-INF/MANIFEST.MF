@@ -23,9 +23,7 @@ Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/no.hal.pg.runtime.http.auth.GameAuthenticationHandler.xml,
  OSGI-INF/no.hal.pg.runtime.http.OsmJsonSerializer.xml,
  OSGI-INF/no.hal.pg.runtime.http.JsHttpConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.AcceptTaskHttpConfig.xml,
  OSGI-INF/no.hal.pg.runtime.http.GameHttpConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.GameViewHttpConfig.xml,
- OSGI-INF/no.hal.pg.runtime.http.AcceptTaskViewHttpConfig.xml
+ OSGI-INF/no.hal.pg.runtime.http.GameViewHttpConfig.xml
 Require-Bundle: no.hal.pg.http;bundle-version="0.0.1",
  no.hal.pg.runtime;bundle-version="0.0.1"

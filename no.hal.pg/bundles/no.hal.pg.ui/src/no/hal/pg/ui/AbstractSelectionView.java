@@ -118,17 +118,24 @@ public abstract class AbstractSelectionView extends ViewPart implements IPartLis
 		if (part == this) {
 			return;
 		}
-		setSelectionProvider(getAdapter(part, ISelectionProvider.class));
+		ISelectionProvider selectionProvider = part.getSite().getSelectionProvider();
+		if (selectionProvider == null) {
+			selectionProvider = getAdapter(part, ISelectionProvider.class);
+		}
+		setSelectionProvider(selectionProvider);
 		setEditingDomainProvider(getAdapter(part, IEditingDomainProvider.class));
 	}
 
 	protected <T> T getAdapter(IWorkbenchPart part, Class<T> c) {
-		IWorkbenchPage workbenchPage = getViewSite().getWorkbenchWindow().getActivePage();
-		if (workbenchPage == null) {
-			return null;
+//		IWorkbenchPage workbenchPage = getViewSite().getWorkbenchWindow().getActivePage();
+//		if (workbenchPage == null) {
+//			return null;
+//		}
+//		IEditorPart editorPart = workbenchPage.getActiveEditor();
+		if (c.isInstance(part)) {
+			return (T) part;
 		}
-		IEditorPart editorPart = workbenchPage.getActiveEditor();
-		return (editorPart != null ? (T)editorPart.getAdapter(c) : null);
+		return (part != null ? (T) part.getAdapter(c) : null);
 	}
 	
 	@Override

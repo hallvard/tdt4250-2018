@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated exampletask-config -->
+      <package
+            uri="platform:/plugin/no.hal.pg.exampletask.config/model/exampletask-config.ecore"
+            class="no.hal.pg.exampletask.config.ConfigPackage"
+            genModel="model/exampletask-config.genmodel"/>
+   </extension>
+
+</plugin>

@@ -35,11 +35,17 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<pomDependencies>consider</pomDependencies>
 					<executionEnvironment>JavaSE-1.7</executionEnvironment>
 					<target>
 						<artifact>
 							<groupId>no.hal.pg</groupId>
-							<artifactId>no.hal.pg.target</artifactId>
+							<artifactId>no.hal.pg.runtime.target</artifactId>
+							<version>0.0.1-SNAPSHOT</version>
+						</artifact>
+						<artifact>
+							<groupId>no.hal.pg</groupId>
+							<artifactId>no.hal.pg.ui.target</artifactId>
 							<version>0.0.1-SNAPSHOT</version>
 						</artifact>
 					</target>

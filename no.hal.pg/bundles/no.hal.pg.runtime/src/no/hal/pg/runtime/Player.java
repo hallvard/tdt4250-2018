@@ -16,7 +16,9 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.runtime.Player#getGame <em>Game</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Player#getNickname <em>Nickname</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Player#getPerson <em>Person</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Player#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Player#getItems <em>Items</em>}</li>
  * </ul>
  *
@@ -41,6 +43,32 @@ public interface Player extends GeoLocation {
 	 * @generated
 	 */
 	Game<?> getGame();
+
+	/**
+	 * Returns the value of the '<em><b>Nickname</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Nickname</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Nickname</em>' attribute.
+	 * @see #setNickname(String)
+	 * @see no.hal.pg.runtime.RuntimePackage#getPlayer_Nickname()
+	 * @model
+	 * @generated
+	 */
+	String getNickname();
+
+	/**
+	 * Sets the value of the '{@link no.hal.pg.runtime.Player#getNickname <em>Nickname</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Nickname</em>' attribute.
+	 * @see #getNickname()
+	 * @generated
+	 */
+	void setNickname(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
@@ -85,5 +113,20 @@ public interface Player extends GeoLocation {
 	 * @generated
 	 */
 	void setPerson(Person value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see no.hal.pg.runtime.RuntimePackage#getPlayer_Name()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getName();
 
 } // Player

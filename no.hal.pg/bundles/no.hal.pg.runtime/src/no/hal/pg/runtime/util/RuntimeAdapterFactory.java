@@ -6,7 +6,6 @@ import no.hal.pg.arc.Arc;
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.AbstractCondition;
-import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -15,7 +14,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 import no.hal.pg.runtime.Game;
-import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -102,10 +100,6 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 				return createItemAdapter();
 			}
 			@Override
-			public Adapter caseInfo(Info object) {
-				return createInfoAdapter();
-			}
-			@Override
 			public Adapter caseInfoItem(InfoItem object) {
 				return createInfoItemAdapter();
 			}
@@ -144,10 +138,6 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePlayersHaveItemsCondition(PlayersHaveItemsCondition object) {
 				return createPlayersHaveItemsConditionAdapter();
-			}
-			@Override
-			public Adapter caseAcceptTask(AcceptTask object) {
-				return createAcceptTaskAdapter();
 			}
 			@Override
 			public Adapter caseRuntime(no.hal.pg.runtime.Runtime object) {
@@ -238,20 +228,6 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createItemAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.Info <em>Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.Info
-	 * @generated
-	 */
-	public Adapter createInfoAdapter() {
 		return null;
 	}
 
@@ -392,20 +368,6 @@ public class RuntimeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPlayersHaveItemsConditionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.runtime.AcceptTask <em>Accept Task</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see no.hal.pg.runtime.AcceptTask
-	 * @generated
-	 */
-	public Adapter createAcceptTaskAdapter() {
 		return null;
 	}
 

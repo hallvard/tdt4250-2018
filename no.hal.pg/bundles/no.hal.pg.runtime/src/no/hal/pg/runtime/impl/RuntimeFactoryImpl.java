@@ -3,7 +3,6 @@
 package no.hal.pg.runtime.impl;
 
 import java.net.URI;
-import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -12,7 +11,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import no.hal.pg.runtime.Game;
-import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -72,7 +70,6 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.GAME: return createGame();
 			case RuntimePackage.PLAYER: return createPlayer();
 			case RuntimePackage.ITEM: return createItem();
-			case RuntimePackage.INFO: return createInfo();
 			case RuntimePackage.INFO_ITEM: return createInfoItem();
 			case RuntimePackage.TASK: return createTask();
 			case RuntimePackage.RESETTABLE_TASK: return createResettableTask();
@@ -81,7 +78,6 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.IS_TASK_FINISHED_CONDITION: return createIsTaskFinishedCondition();
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION: return createIsByGeoLocationCondition();
 			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION: return createPlayersHaveItemsCondition();
-			case RuntimePackage.ACCEPT_TASK: return createAcceptTask();
 			case RuntimePackage.RUNTIME: return createRuntime();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -153,16 +149,6 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public Item createItem() {
 		ItemImpl item = new ItemImpl();
 		return item;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Info createInfo() {
-		InfoImpl info = new InfoImpl();
-		return info;
 	}
 
 	/**
@@ -246,16 +232,6 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public PlayersHaveItemsCondition createPlayersHaveItemsCondition() {
 		PlayersHaveItemsConditionImpl playersHaveItemsCondition = new PlayersHaveItemsConditionImpl();
 		return playersHaveItemsCondition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AcceptTask createAcceptTask() {
-		AcceptTaskImpl acceptTask = new AcceptTaskImpl();
-		return acceptTask;
 	}
 
 	/**

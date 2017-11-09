@@ -2,7 +2,6 @@
  */
 package no.hal.pg.config.util;
 
-import no.hal.pg.arc.Arc;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 
@@ -70,20 +69,40 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	protected ConfigSwitch<Adapter> modelSwitch =
 		new ConfigSwitch<Adapter>() {
 			@Override
-			public Adapter caseConfig(Config object) {
-				return createConfigAdapter();
-			}
-			@Override
 			public Adapter caseGameConfig(GameConfig object) {
 				return createGameConfigAdapter();
 			}
 			@Override
-			public <T extends Task<R>, R> Adapter caseTaskConfig(TaskConfig<T, R> object) {
+			public <T> Adapter caseAbstractConfig(AbstractConfig<T> object) {
+				return createAbstractConfigAdapter();
+			}
+			@Override
+			public <T extends Task<?>> Adapter caseTaskConfig(TaskConfig<T> object) {
 				return createTaskConfigAdapter();
 			}
 			@Override
-			public Adapter caseArc(Arc object) {
-				return createArcAdapter();
+			public Adapter caseItemConfig(ItemConfig object) {
+				return createItemConfigAdapter();
+			}
+			@Override
+			public Adapter caseInfoItemConfig(InfoItemConfig object) {
+				return createInfoItemConfigAdapter();
+			}
+			@Override
+			public <T> Adapter caseProxy(Proxy<T> object) {
+				return createProxyAdapter();
+			}
+			@Override
+			public Adapter caseTaskProxy(TaskProxy object) {
+				return createTaskProxyAdapter();
+			}
+			@Override
+			public Adapter casePlayerRole(PlayerRole object) {
+				return createPlayerRoleAdapter();
+			}
+			@Override
+			public Adapter caseItemProxy(ItemProxy object) {
+				return createItemProxyAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -106,20 +125,6 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.Config <em>Config</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see no.hal.pg.config.Config
-	 * @generated
-	 */
-	public Adapter createConfigAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.GameConfig <em>Game Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -130,6 +135,20 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createGameConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.AbstractConfig <em>Abstract Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.AbstractConfig
+	 * @generated
+	 */
+	public Adapter createAbstractConfigAdapter() {
 		return null;
 	}
 
@@ -148,16 +167,86 @@ public class ConfigAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link no.hal.pg.arc.Arc <em>Arc</em>}'.
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.ItemConfig <em>Item Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see no.hal.pg.arc.Arc
+	 * @see no.hal.pg.config.ItemConfig
 	 * @generated
 	 */
-	public Adapter createArcAdapter() {
+	public Adapter createItemConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.InfoItemConfig <em>Info Item Config</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.InfoItemConfig
+	 * @generated
+	 */
+	public Adapter createInfoItemConfigAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.Proxy <em>Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.Proxy
+	 * @generated
+	 */
+	public Adapter createProxyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.TaskProxy <em>Task Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.TaskProxy
+	 * @generated
+	 */
+	public Adapter createTaskProxyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.PlayerRole <em>Player Role</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.PlayerRole
+	 * @generated
+	 */
+	public Adapter createPlayerRoleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.config.ItemProxy <em>Item Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.config.ItemProxy
+	 * @generated
+	 */
+	public Adapter createItemProxyAdapter() {
 		return null;
 	}
 

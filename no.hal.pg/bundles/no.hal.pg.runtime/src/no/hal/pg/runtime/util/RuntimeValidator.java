@@ -4,11 +4,10 @@ package no.hal.pg.runtime.util;
 
 import java.net.URI;
 import java.util.Map;
+import no.hal.pg.osm.util.OsmValidator;
 import no.hal.pg.runtime.AbstractCondition;
-import no.hal.pg.runtime.AcceptTask;
 import no.hal.pg.runtime.CompositeCondition;
 import no.hal.pg.runtime.Game;
-import no.hal.pg.runtime.Info;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -72,6 +71,14 @@ public class RuntimeValidator extends EObjectValidator {
 	protected static final int DIAGNOSTIC_CODE_COUNT = GENERATED_DIAGNOSTIC_CODE_COUNT;
 
 	/**
+	 * The cached base package validator.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OsmValidator osmValidator;
+
+	/**
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,6 +86,7 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public RuntimeValidator() {
 		super();
+		osmValidator = OsmValidator.INSTANCE;
 	}
 
 	/**
@@ -109,8 +117,6 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateDescribed((Described)value, diagnostics, context);
 			case RuntimePackage.ITEM:
 				return validateItem((Item)value, diagnostics, context);
-			case RuntimePackage.INFO:
-				return validateInfo((Info)value, diagnostics, context);
 			case RuntimePackage.INFO_ITEM:
 				return validateInfoItem((InfoItem)value, diagnostics, context);
 			case RuntimePackage.TASK:
@@ -131,8 +137,6 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateIsByGeoLocationCondition((IsByGeoLocationCondition)value, diagnostics, context);
 			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION:
 				return validatePlayersHaveItemsCondition((PlayersHaveItemsCondition)value, diagnostics, context);
-			case RuntimePackage.ACCEPT_TASK:
-				return validateAcceptTask((AcceptTask)value, diagnostics, context);
 			case RuntimePackage.RUNTIME:
 				return validateRuntime((no.hal.pg.runtime.Runtime)value, diagnostics, context);
 			case RuntimePackage.EURI:
@@ -159,7 +163,17 @@ public class RuntimeValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePlayer(Player player, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(player, diagnostics, context);
+		if (!validate_NoCircularContainment(player, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(player, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(player, diagnostics, context);
+		if (result || diagnostics != null) result &= osmValidator.validateGeoLocated_validCoordinates(player, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -177,16 +191,17 @@ public class RuntimeValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateItem(Item item, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(item, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateInfo(Info info, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(info, diagnostics, context);
+		if (!validate_NoCircularContainment(item, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(item, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(item, diagnostics, context);
+		if (result || diagnostics != null) result &= osmValidator.validateGeoLocated_validCoordinates(item, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -195,7 +210,17 @@ public class RuntimeValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInfoItem(InfoItem infoItem, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(infoItem, diagnostics, context);
+		if (!validate_NoCircularContainment(infoItem, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(infoItem, diagnostics, context);
+		if (result || diagnostics != null) result &= osmValidator.validateGeoLocated_validCoordinates(infoItem, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -373,27 +398,6 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validatePlayersHaveItemsCondition(PlayersHaveItemsCondition playersHaveItemsCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(playersHaveItemsCondition, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateAcceptTask(AcceptTask acceptTask, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		if (!validate_NoCircularContainment(acceptTask, diagnostics, context)) return false;
-		boolean result = validate_EveryMultiplicityConforms(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_PlayerIsContainedInGame(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_IsFinishedImpliesIsStarted(acceptTask, diagnostics, context);
-		if (result || diagnostics != null) result &= validateTask_FinishTimeGEStartTime(acceptTask, diagnostics, context);
-		return result;
 	}
 
 	/**

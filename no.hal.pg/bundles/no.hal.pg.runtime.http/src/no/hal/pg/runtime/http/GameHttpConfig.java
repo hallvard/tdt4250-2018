@@ -1,5 +1,6 @@
 package no.hal.pg.runtime.http;
 
+import org.eclipse.emf.ecore.EClass;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 
@@ -21,12 +22,7 @@ public class GameHttpConfig implements AppConfig {
 	}
 
 	@Override
-	public String getEPackageUri() {
-		return RuntimePackage.eNS_URI;
-	}
-
-	@Override
-	public String getEClassName() {
-		return RuntimePackage.eINSTANCE.getGame().getName();
+	public EClass getEClass() {
+		return RuntimePackage.eINSTANCE.getGame();
 	}
 }

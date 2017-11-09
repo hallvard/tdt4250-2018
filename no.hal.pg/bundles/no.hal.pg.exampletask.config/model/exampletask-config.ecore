@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="config" nsURI="platform:/plugin/no.hal.pg.exampletask.config/model/exampletask-config.ecore"
+    nsPrefix="exampletask-config">
+  <eClassifiers xsi:type="ecore:EClass" name="ExampleTaskConfig">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="question" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="correctAnswer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eGenericSuperTypes eClassifier="ecore:EClass ../../no.hal.pg.config/model/config.ecore#//TaskConfig">
+      <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.exampletask.runtime/model/exampletask.ecore#//ExampleTask"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+</ecore:EPackage>

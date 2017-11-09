@@ -14,6 +14,7 @@ import no.hal.pg.osm.geoutil.LatLong;
  *
  * @see no.hal.pg.osm.OsmPackage#getGeoLocated()
  * @model interface="true" abstract="true"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='validCoordinates'"
  * @generated
  */
 public interface GeoLocated extends EObject {

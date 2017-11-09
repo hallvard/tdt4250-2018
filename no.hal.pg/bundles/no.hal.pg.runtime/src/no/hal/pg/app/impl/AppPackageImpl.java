@@ -3,7 +3,6 @@
 package no.hal.pg.app.impl;
 
 import no.hal.pg.app.AbstractGeoLocationView;
-import no.hal.pg.app.AcceptTaskView;
 import no.hal.pg.app.App;
 import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
@@ -33,6 +32,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.ETypeParameter;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -90,13 +90,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	private EClass taskViewEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass acceptTaskViewEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,6 +183,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		ArcPackage.eINSTANCE.eClass();
 		OsmPackage.eINSTANCE.eClass();
 		RuntimePackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theAppPackage.createPackageContents();
@@ -393,24 +387,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 */
 	public EOperation getTaskView__Start() {
 		return taskViewEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getAcceptTaskView() {
-		return acceptTaskViewEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getAcceptTaskView__Accept() {
-		return acceptTaskViewEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -631,9 +607,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		createEAttribute(taskViewEClass, TASK_VIEW__FINISHED);
 		createEOperation(taskViewEClass, TASK_VIEW___START);
 
-		acceptTaskViewEClass = createEClass(ACCEPT_TASK_VIEW);
-		createEOperation(acceptTaskViewEClass, ACCEPT_TASK_VIEW___ACCEPT);
-
 		mapViewEClass = createEClass(MAP_VIEW);
 		createEAttribute(mapViewEClass, MAP_VIEW__ZOOM);
 		createEReference(mapViewEClass, MAP_VIEW__GEO_LOCATION_VIEWS);
@@ -755,10 +728,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType(taskViewEClass_T);
 		g1.getETypeArguments().add(g2);
 		taskViewEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getTaskView());
-		g2 = createEGenericType(theRuntimePackage.getAcceptTask());
-		g1.getETypeArguments().add(g2);
-		acceptTaskViewEClass.getEGenericSuperTypes().add(g1);
 		mapViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 		abstractGeoLocationViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
 		geoLocatedViewEClass.getESuperTypes().add(this.getAbstractGeoLocationView());
@@ -811,10 +780,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		initEClass(acceptTaskViewEClass, AcceptTaskView.class, "AcceptTaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEOperation(getAcceptTaskView__Accept(), this.getAcceptTaskView(), "accept", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(mapViewEClass, MapView.class, "MapView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapView_Zoom(), ecorePackage.getEInt(), "zoom", "10", 0, 1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMapView_GeoLocationViews(), this.getAbstractGeoLocationView(), null, "geoLocationViews", null, 0, -1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -845,6 +810,26 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// no.hal.pg.http.impl.JsonSerializer
+		createNoAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>no.hal.pg.http.impl.JsonSerializer</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createNoAnnotations() {
+		String source = "no.hal.pg.http.impl.JsonSerializer";	
+		addAnnotation
+		  (getGeoPolyline_Locations(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });
 	}
 
 } //AppPackageImpl

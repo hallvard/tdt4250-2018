@@ -4,24 +4,20 @@ package no.hal.pg.runtime.impl;
 
 import java.util.Collection;
 
-import no.hal.pg.osm.GeoLocated;
-import no.hal.pg.osm.geoutil.LatLong;
-import no.hal.pg.runtime.IsByGeoLocationCondition;
-import no.hal.pg.runtime.RuntimePackage;
-import no.hal.pg.runtime.Task;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import no.hal.pg.osm.GeoLocated;
+import no.hal.pg.osm.geoutil.LatLong;
+import no.hal.pg.runtime.IsByGeoLocationCondition;
+import no.hal.pg.runtime.RuntimePackage;
 
 /**
  * <!-- begin-user-doc -->

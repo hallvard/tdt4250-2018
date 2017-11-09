@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import no.hal.pg.osm.Bounds;
@@ -29,6 +30,7 @@ import no.hal.pg.osm.Tagged;
 import no.hal.pg.osm.Tags;
 import no.hal.pg.osm.Way;
 import no.hal.pg.osm.geoutil.LatLong;
+import no.hal.pg.osm.util.OsmValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -207,6 +209,15 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		// Initialize created meta-data
 		theOsmPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theOsmPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return OsmValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theOsmPackage.freeze();
@@ -952,6 +963,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		// Create annotations
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
 	}
 
 	/**
@@ -1112,6 +1125,22 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		   new String[] {
 			 "name", "osm_base",
 			 "kind", "attribute"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
+		addAnnotation
+		  (geoLocatedEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "validCoordinates"
 		   });
 	}
 
