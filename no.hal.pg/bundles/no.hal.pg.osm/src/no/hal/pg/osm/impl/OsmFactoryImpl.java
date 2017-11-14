@@ -9,7 +9,21 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import no.hal.pg.osm.*;
+import no.hal.pg.osm.Bounds;
+import no.hal.pg.osm.GeoLatLong;
+import no.hal.pg.osm.GeoLocation;
+import no.hal.pg.osm.Member;
+import no.hal.pg.osm.MetaData;
+import no.hal.pg.osm.Node;
+import no.hal.pg.osm.NodeRef;
+import no.hal.pg.osm.Note;
+import no.hal.pg.osm.OSM;
+import no.hal.pg.osm.OsmFactory;
+import no.hal.pg.osm.OsmPackage;
+import no.hal.pg.osm.Relation;
+import no.hal.pg.osm.Tag;
+import no.hal.pg.osm.Tags;
+import no.hal.pg.osm.Way;
 import no.hal.pg.osm.geoutil.LatLong;
 
 /**

@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -25,6 +26,8 @@ import no.hal.pg.osm.geoutil.LatLong;
  * </p>
  * <ul>
  *   <li>{@link no.hal.pg.osm.impl.NodeRefImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link no.hal.pg.osm.impl.NodeRefImpl#getName <em>Name</em>}</li>
+ *   <li>{@link no.hal.pg.osm.impl.NodeRefImpl#getKind <em>Kind</em>}</li>
  * </ul>
  *
  * @generated
@@ -39,6 +42,25 @@ public class NodeRefImpl extends MinimalEObjectImpl.Container implements NodeRef
 	 * @ordered
 	 */
 	protected Node ref;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String KIND_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -105,6 +127,26 @@ public class NodeRefImpl extends MinimalEObjectImpl.Container implements NodeRef
 	 * @generated NOT
 	 */
 	@Override
+	public String getName() {
+		return NodeImpl.getTag(this.getRef(), OsmPackage.eINSTANCE.getNodeRef_Name(), OsmPackage.eINSTANCE.getNode_Name());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getKind() {
+		return NodeImpl.getTag(this.getRef(), OsmPackage.eINSTANCE.getNodeRef_Kind(), OsmPackage.eINSTANCE.getNode_Kind());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
 	public LatLong getLatLong() {
 		return (getRef() != null ? getRef().getLatLong() : null);
 	}
@@ -120,6 +162,10 @@ public class NodeRefImpl extends MinimalEObjectImpl.Container implements NodeRef
 			case OsmPackage.NODE_REF__REF:
 				if (resolve) return getRef();
 				return basicGetRef();
+			case OsmPackage.NODE_REF__NAME:
+				return getName();
+			case OsmPackage.NODE_REF__KIND:
+				return getKind();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,6 +210,10 @@ public class NodeRefImpl extends MinimalEObjectImpl.Container implements NodeRef
 		switch (featureID) {
 			case OsmPackage.NODE_REF__REF:
 				return ref != null;
+			case OsmPackage.NODE_REF__NAME:
+				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+			case OsmPackage.NODE_REF__KIND:
+				return KIND_EDEFAULT == null ? getKind() != null : !KIND_EDEFAULT.equals(getKind());
 		}
 		return super.eIsSet(featureID);
 	}

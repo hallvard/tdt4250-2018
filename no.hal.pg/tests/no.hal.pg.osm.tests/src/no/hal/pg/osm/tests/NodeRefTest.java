@@ -19,4 +19,23 @@ public class NodeRefTest {
 		Assert.assertEquals(node.getLatLong(), nodeRef.getLatLong());
 	}
 
+	@Test
+	public void testGetName() {
+		Node node = OsmFactory.eINSTANCE.createNode();
+		NodeTest.addTag(node, "name", "theName");
+		NodeRef nodeRef = OsmFactory.eINSTANCE.createNodeRef();
+		Assert.assertNull(nodeRef.getName());
+		nodeRef.setRef(node);
+		Assert.assertEquals("theName", nodeRef.getName());
+	}
+	
+	@Test
+	public void testGetKind() {
+		Node node = OsmFactory.eINSTANCE.createNode();
+		NodeTest.addTag(node, "amenity", "theKind");
+		NodeRef nodeRef = OsmFactory.eINSTANCE.createNodeRef();
+		Assert.assertNull(nodeRef.getKind());
+		nodeRef.setRef(node);
+		Assert.assertEquals("theKind", node.getKind());
+	}	
 }

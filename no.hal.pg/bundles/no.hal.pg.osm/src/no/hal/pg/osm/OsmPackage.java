@@ -423,13 +423,31 @@ public interface OsmPackage extends EPackage {
 	int NODE__LONGITUDE = OSM_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NAME = OSM_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__KIND = OSM_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = OSM_ELEMENT_FEATURE_COUNT + 2;
+	int NODE_FEATURE_COUNT = OSM_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Has Tag</em>' operation.
@@ -788,13 +806,31 @@ public interface OsmPackage extends EPackage {
 	int NODE_REF__REF = GEO_LOCATED_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_REF__NAME = GEO_LOCATED_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_REF__KIND = GEO_LOCATED_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Node Ref</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_REF_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 1;
+	int NODE_REF_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Get Lat Long</em>' operation.
@@ -1331,6 +1367,28 @@ public interface OsmPackage extends EPackage {
 	EClass getNode();
 
 	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.Node#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see no.hal.pg.osm.Node#getName()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.Node#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see no.hal.pg.osm.Node#getKind()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Kind();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.osm.GeoLocation <em>Geo Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1444,6 +1502,28 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNodeRef_Ref();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.NodeRef#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see no.hal.pg.osm.NodeRef#getName()
+	 * @see #getNodeRef()
+	 * @generated
+	 */
+	EAttribute getNodeRef_Name();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.NodeRef#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see no.hal.pg.osm.NodeRef#getKind()
+	 * @see #getNodeRef()
+	 * @generated
+	 */
+	EAttribute getNodeRef_Kind();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.osm.OSMElement <em>OSM Element</em>}'.
@@ -1949,6 +2029,22 @@ public interface OsmPackage extends EPackage {
 		EClass NODE = eINSTANCE.getNode();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__NAME = eINSTANCE.getNode_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__KIND = eINSTANCE.getNode_Kind();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.osm.impl.GeoLocationImpl <em>Geo Location</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2045,6 +2141,22 @@ public interface OsmPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE_REF__REF = eINSTANCE.getNodeRef_Ref();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE_REF__NAME = eINSTANCE.getNodeRef_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE_REF__KIND = eINSTANCE.getNodeRef_Kind();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.osm.impl.OSMElementImpl <em>OSM Element</em>}' class.

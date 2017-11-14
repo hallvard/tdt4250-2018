@@ -8,7 +8,6 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
@@ -242,6 +241,24 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNode_Name() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNode_Kind() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getGeoLocation() {
 		return geoLocationEClass;
 	}
@@ -334,6 +351,24 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 */
 	public EReference getNodeRef_Ref() {
 		return (EReference)nodeRefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNodeRef_Name() {
+		return (EAttribute)nodeRefEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNodeRef_Kind() {
+		return (EAttribute)nodeRefEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -761,6 +796,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		// Create classes and their features
 		nodeEClass = createEClass(NODE);
+		createEAttribute(nodeEClass, NODE__NAME);
+		createEAttribute(nodeEClass, NODE__KIND);
 
 		geoLocationEClass = createEClass(GEO_LOCATION);
 		createEAttribute(geoLocationEClass, GEO_LOCATION__LATITUDE);
@@ -777,6 +814,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		nodeRefEClass = createEClass(NODE_REF);
 		createEReference(nodeRefEClass, NODE_REF__REF);
+		createEAttribute(nodeRefEClass, NODE_REF__NAME);
+		createEAttribute(nodeRefEClass, NODE_REF__KIND);
 
 		osmElementEClass = createEClass(OSM_ELEMENT);
 		createEAttribute(osmElementEClass, OSM_ELEMENT__ID);
@@ -875,6 +914,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNode_Name(), ecorePackage.getEString(), "name", null, 0, 1, Node.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNode_Kind(), ecorePackage.getEString(), "kind", null, 0, 1, Node.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(geoLocationEClass, GeoLocation.class, "GeoLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getGeoLocation_Latitude(), ecorePackage.getEFloat(), "latitude", null, 0, 1, GeoLocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -892,6 +933,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		initEClass(nodeRefEClass, NodeRef.class, "NodeRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeRef_Ref(), this.getNode(), null, "ref", null, 0, 1, NodeRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, NodeRef.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeRef_Kind(), ecorePackage.getEString(), "kind", null, 0, 1, NodeRef.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(osmElementEClass, OSMElement.class, "OSMElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOSMElement_Id(), ecorePackage.getELong(), "id", null, 0, 1, OSMElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -961,10 +1004,34 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		createResource(eNS_URI);
 
 		// Create annotations
+		// http://www.openstreetmap.org/v06/osm.ecore
+		createOsmAnnotations();
 		// http:///org/eclipse/emf/ecore/util/ExtendedMetaData
 		createExtendedMetaDataAnnotations();
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.openstreetmap.org/v06/osm.ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createOsmAnnotations() {
+		String source = "http://www.openstreetmap.org/v06/osm.ecore";	
+		addAnnotation
+		  (getNode_Kind(), 
+		   source, 
+		   new String[] {
+			 "tag", "amenity"
+		   });	
+		addAnnotation
+		  (getNodeRef_Kind(), 
+		   source, 
+		   new String[] {
+			 "tag", "amenity"
+		   });
 	}
 
 	/**
