@@ -36,4 +36,4 @@ Import-Package: javax.inject;version="1.0.0",
  org.osgi.service.component;version="1.3.0",
  org.osgi.service.component.annotations;version="1.3.0"
 Service-Component: OSGI-INF/no.hal.pg.exampletask.config.viewmodel.ExampleTaskConfig_CorrectAnswerSWTRendererService.xml
-Export-Package: no.hal.pg.exampletask.config.viewmodel
+Bundle-ClassPath: .
