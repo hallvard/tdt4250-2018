@@ -127,7 +127,7 @@ public class NodeRefImpl extends MinimalEObjectImpl.Container implements NodeRef
 	 */
 	@Override
 	public String getName() {
-		return NodeImpl.getTag(this.getRef(), OsmPackage.eINSTANCE.getNodeRef_Name(), OsmPackage.eINSTANCE.getNode_Name());
+		return NodeImpl.getTag(this.getRef(), OsmPackage.eINSTANCE.getNodeRef_Name(), OsmPackage.eINSTANCE.getOSMElement_Name());
 	}
 
 	/**

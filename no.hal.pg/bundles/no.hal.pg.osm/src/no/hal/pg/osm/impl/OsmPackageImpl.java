@@ -241,17 +241,8 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNode_Name() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getNode_Kind() {
-		return (EAttribute)nodeEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -441,6 +432,15 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 	 */
 	public EAttribute getOSMElement_Uid() {
 		return (EAttribute)osmElementEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOSMElement_Name() {
+		return (EAttribute)osmElementEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -796,7 +796,6 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		// Create classes and their features
 		nodeEClass = createEClass(NODE);
-		createEAttribute(nodeEClass, NODE__NAME);
 		createEAttribute(nodeEClass, NODE__KIND);
 
 		geoLocationEClass = createEClass(GEO_LOCATION);
@@ -825,6 +824,7 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		createEAttribute(osmElementEClass, OSM_ELEMENT__VERSION);
 		createEAttribute(osmElementEClass, OSM_ELEMENT__CHANGESET);
 		createEAttribute(osmElementEClass, OSM_ELEMENT__UID);
+		createEAttribute(osmElementEClass, OSM_ELEMENT__NAME);
 
 		taggedEClass = createEClass(TAGGED);
 		createEOperation(taggedEClass, TAGGED___HAS_TAG__STRING);
@@ -914,7 +914,6 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNode_Name(), ecorePackage.getEString(), "name", null, 0, 1, Node.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNode_Kind(), ecorePackage.getEString(), "kind", null, 0, 1, Node.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(geoLocationEClass, GeoLocation.class, "GeoLocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -944,6 +943,7 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		initEAttribute(getOSMElement_Version(), ecorePackage.getEInt(), "version", null, 0, 1, OSMElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOSMElement_Changeset(), ecorePackage.getELong(), "changeset", null, 0, 1, OSMElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOSMElement_Uid(), ecorePackage.getELong(), "uid", null, 0, 1, OSMElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOSMElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, OSMElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(taggedEClass, Tagged.class, "Tagged", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

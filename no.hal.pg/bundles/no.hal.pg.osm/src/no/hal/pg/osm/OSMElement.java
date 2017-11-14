@@ -20,6 +20,7 @@ import java.util.Date;
  *   <li>{@link no.hal.pg.osm.OSMElement#getVersion <em>Version</em>}</li>
  *   <li>{@link no.hal.pg.osm.OSMElement#getChangeset <em>Changeset</em>}</li>
  *   <li>{@link no.hal.pg.osm.OSMElement#getUid <em>Uid</em>}</li>
+ *   <li>{@link no.hal.pg.osm.OSMElement#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.osm.OsmPackage#getOSMElement()
@@ -208,5 +209,20 @@ public interface OSMElement extends Tags {
 	 * @generated
 	 */
 	void setUid(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see no.hal.pg.osm.OsmPackage#getOSMElement_Name()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	String getName();
 
 } // OSMElement

@@ -6,16 +6,13 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.Node;
 import no.hal.pg.osm.OsmPackage;
-import no.hal.pg.osm.Tagged;
 import no.hal.pg.osm.geoutil.LatLong;
 
 /**
@@ -28,7 +25,6 @@ import no.hal.pg.osm.geoutil.LatLong;
  * <ul>
  *   <li>{@link no.hal.pg.osm.impl.NodeImpl#getLatitude <em>Latitude</em>}</li>
  *   <li>{@link no.hal.pg.osm.impl.NodeImpl#getLongitude <em>Longitude</em>}</li>
- *   <li>{@link no.hal.pg.osm.impl.NodeImpl#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.osm.impl.NodeImpl#getKind <em>Kind</em>}</li>
  * </ul>
  *
@@ -74,16 +70,6 @@ public class NodeImpl extends OSMElementImpl implements Node {
 	 * @ordered
 	 */
 	protected float longitude = LONGITUDE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -160,34 +146,6 @@ public class NodeImpl extends OSMElementImpl implements Node {
 			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.NODE__LONGITUDE, oldLongitude, longitude));
 	}
 
-	static String getTag(Tagged tagged, ENamedElement... nameds) {
-		String tagName = null;
-		for (ENamedElement named : nameds) {
-			if (tagName == null) {
-				tagName = named.getName();
-			}
-			EAnnotation annotation = named.getEAnnotation(OsmPackage.eNS_URI);
-			if (annotation != null) {
-				String value = annotation.getDetails().get("tag");
-				if (value != null) {
-					tagName = value;
-					break;
-				}
-			}
-		}
-		return (tagged != null && tagName !=  null ? tagged.getTag(tagName) : null);
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getName() {
-		return getTag(this, OsmPackage.eINSTANCE.getNode_Name());
-	}
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -220,8 +178,6 @@ public class NodeImpl extends OSMElementImpl implements Node {
 				return getLatitude();
 			case OsmPackage.NODE__LONGITUDE:
 				return getLongitude();
-			case OsmPackage.NODE__NAME:
-				return getName();
 			case OsmPackage.NODE__KIND:
 				return getKind();
 		}
@@ -276,8 +232,6 @@ public class NodeImpl extends OSMElementImpl implements Node {
 				return latitude != LATITUDE_EDEFAULT;
 			case OsmPackage.NODE__LONGITUDE:
 				return longitude != LONGITUDE_EDEFAULT;
-			case OsmPackage.NODE__NAME:
-				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 			case OsmPackage.NODE__KIND:
 				return KIND_EDEFAULT == null ? getKind() != null : !KIND_EDEFAULT.equals(getKind());
 		}

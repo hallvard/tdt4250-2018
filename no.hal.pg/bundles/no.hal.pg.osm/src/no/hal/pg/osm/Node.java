@@ -12,7 +12,6 @@ package no.hal.pg.osm;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link no.hal.pg.osm.Node#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.osm.Node#getKind <em>Kind</em>}</li>
  * </ul>
  *
@@ -21,21 +20,6 @@ package no.hal.pg.osm;
  * @generated
  */
 public interface Node extends OSMElement, GeoLocation {
-
-	/**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see no.hal.pg.osm.OsmPackage#getNode_Name()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	String getName();
 
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.

@@ -5,11 +5,14 @@ package no.hal.pg.osm.impl;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import no.hal.pg.osm.OSMElement;
 import no.hal.pg.osm.OsmPackage;
+import no.hal.pg.osm.Tagged;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +29,7 @@ import no.hal.pg.osm.OsmPackage;
  *   <li>{@link no.hal.pg.osm.impl.OSMElementImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link no.hal.pg.osm.impl.OSMElementImpl#getChangeset <em>Changeset</em>}</li>
  *   <li>{@link no.hal.pg.osm.impl.OSMElementImpl#getUid <em>Uid</em>}</li>
+ *   <li>{@link no.hal.pg.osm.impl.OSMElementImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -172,6 +176,16 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	protected long uid = UID_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,6 +209,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getId() {
 		return id;
 	}
@@ -204,6 +219,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(long newId) {
 		long oldId = id;
 		id = newId;
@@ -216,6 +232,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isVisible() {
 		return visible;
 	}
@@ -225,6 +242,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVisible(boolean newVisible) {
 		boolean oldVisible = visible;
 		visible = newVisible;
@@ -237,6 +255,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Date getTimestamp() {
 		return timestamp;
 	}
@@ -246,6 +265,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTimestamp(Date newTimestamp) {
 		Date oldTimestamp = timestamp;
 		timestamp = newTimestamp;
@@ -258,6 +278,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUser() {
 		return user;
 	}
@@ -267,6 +288,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUser(String newUser) {
 		String oldUser = user;
 		user = newUser;
@@ -279,6 +301,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getVersion() {
 		return version;
 	}
@@ -288,6 +311,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(int newVersion) {
 		int oldVersion = version;
 		version = newVersion;
@@ -300,6 +324,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getChangeset() {
 		return changeset;
 	}
@@ -309,6 +334,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setChangeset(long newChangeset) {
 		long oldChangeset = changeset;
 		changeset = newChangeset;
@@ -321,6 +347,7 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getUid() {
 		return uid;
 	}
@@ -330,11 +357,40 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUid(long newUid) {
 		long oldUid = uid;
 		uid = newUid;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.OSM_ELEMENT__UID, oldUid, uid));
+	}
+
+	static String getTag(Tagged tagged, ENamedElement... nameds) {
+		String tagName = null;
+		for (ENamedElement named : nameds) {
+			if (tagName == null) {
+				tagName = named.getName();
+			}
+			EAnnotation annotation = named.getEAnnotation(OsmPackage.eNS_URI);
+			if (annotation != null) {
+				String value = annotation.getDetails().get("tag");
+				if (value != null) {
+					tagName = value;
+					break;
+				}
+			}
+		}
+		return (tagged != null && tagName !=  null ? tagged.getTag(tagName) : null);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getName() {
+		return getTag(this, OsmPackage.eINSTANCE.getOSMElement_Name());
 	}
 
 	/**
@@ -359,6 +415,8 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 				return getChangeset();
 			case OsmPackage.OSM_ELEMENT__UID:
 				return getUid();
+			case OsmPackage.OSM_ELEMENT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -452,6 +510,8 @@ public abstract class OSMElementImpl extends TagsImpl implements OSMElement {
 				return changeset != CHANGESET_EDEFAULT;
 			case OsmPackage.OSM_ELEMENT__UID:
 				return uid != UID_EDEFAULT;
+			case OsmPackage.OSM_ELEMENT__NAME:
+				return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
 		}
 		return super.eIsSet(featureID);
 	}

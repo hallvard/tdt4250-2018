@@ -269,13 +269,22 @@ public interface OsmPackage extends EPackage {
 	int OSM_ELEMENT__UID = TAGS_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OSM_ELEMENT__NAME = TAGS_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>OSM Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OSM_ELEMENT_FEATURE_COUNT = TAGS_FEATURE_COUNT + 7;
+	int OSM_ELEMENT_FEATURE_COUNT = TAGS_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>Has Tag</em>' operation.
@@ -405,6 +414,15 @@ public interface OsmPackage extends EPackage {
 	int NODE__UID = OSM_ELEMENT__UID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__NAME = OSM_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -423,22 +441,13 @@ public interface OsmPackage extends EPackage {
 	int NODE__LONGITUDE = OSM_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE__NAME = OSM_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE__KIND = OSM_ELEMENT_FEATURE_COUNT + 3;
+	int NODE__KIND = OSM_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Node</em>' class.
@@ -447,7 +456,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = OSM_ELEMENT_FEATURE_COUNT + 4;
+	int NODE_FEATURE_COUNT = OSM_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>Has Tag</em>' operation.
@@ -724,6 +733,15 @@ public interface OsmPackage extends EPackage {
 	int WAY__UID = OSM_ELEMENT__UID;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAY__NAME = OSM_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -977,6 +995,15 @@ public interface OsmPackage extends EPackage {
 	 * @ordered
 	 */
 	int RELATION__UID = OSM_ELEMENT__UID;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATION__NAME = OSM_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Members</b></em>' containment reference list.
@@ -1367,17 +1394,6 @@ public interface OsmPackage extends EPackage {
 	EClass getNode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.Node#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see no.hal.pg.osm.Node#getName()
-	 * @see #getNode()
-	 * @generated
-	 */
-	EAttribute getNode_Name();
-
-	/**
 	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.Node#getKind <em>Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1611,6 +1627,17 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOSMElement_Uid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.osm.OSMElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see no.hal.pg.osm.OSMElement#getName()
+	 * @see #getOSMElement()
+	 * @generated
+	 */
+	EAttribute getOSMElement_Name();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.osm.Tagged <em>Tagged</em>}'.
@@ -2029,14 +2056,6 @@ public interface OsmPackage extends EPackage {
 		EClass NODE = eINSTANCE.getNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NODE__NAME = eINSTANCE.getNode_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2223,6 +2242,14 @@ public interface OsmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OSM_ELEMENT__UID = eINSTANCE.getOSMElement_Uid();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OSM_ELEMENT__NAME = eINSTANCE.getOSMElement_Name();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.osm.Tagged <em>Tagged</em>}' class.
