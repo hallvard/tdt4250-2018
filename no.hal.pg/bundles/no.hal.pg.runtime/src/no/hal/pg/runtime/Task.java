@@ -20,7 +20,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link no.hal.pg.runtime.Task#getFinishTime <em>Finish Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getStartConditions <em>Start Conditions</em>}</li>
  *   <li>{@link no.hal.pg.runtime.Task#getFinishConditions <em>Finish Conditions</em>}</li>
- *   <li>{@link no.hal.pg.runtime.Task#getRewards <em>Rewards</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Task#getStartActions <em>Start Actions</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.Task#getFinishActions <em>Finish Actions</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.runtime.RuntimePackage#getTask()
@@ -183,20 +184,36 @@ public interface Task<R> extends Described {
 	EList<Condition> getFinishConditions();
 
 	/**
-	 * Returns the value of the '<em><b>Rewards</b></em>' containment reference list.
-	 * The list contents are of type {@link no.hal.pg.runtime.Item}.
+	 * Returns the value of the '<em><b>Start Actions</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.runtime.Action}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Rewards</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Start Actions</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Rewards</em>' containment reference list.
-	 * @see no.hal.pg.runtime.RuntimePackage#getTask_Rewards()
+	 * @return the value of the '<em>Start Actions</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getTask_StartActions()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Item> getRewards();
+	EList<Action> getStartActions();
+
+	/**
+	 * Returns the value of the '<em><b>Finish Actions</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.runtime.Action}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Finish Actions</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Finish Actions</em>' containment reference list.
+	 * @see no.hal.pg.runtime.RuntimePackage#getTask_FinishActions()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Action> getFinishActions();
 
 	/**
 	 * <!-- begin-user-doc -->

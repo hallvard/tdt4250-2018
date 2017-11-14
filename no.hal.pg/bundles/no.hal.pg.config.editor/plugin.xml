@@ -16,7 +16,7 @@
    </extension>
 
    <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated config -->
+      <!-- @generated config NOT -->
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>

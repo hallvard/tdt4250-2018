@@ -121,6 +121,24 @@ public interface RuntimeFactory extends EFactory {
 	PlayersHaveItemsCondition createPlayersHaveItemsCondition();
 
 	/**
+	 * Returns a new object of class '<em>Composite Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Composite Action</em>'.
+	 * @generated
+	 */
+	CompositeAction createCompositeAction();
+
+	/**
+	 * Returns a new object of class '<em>Give Task Players Items Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Give Task Players Items Action</em>'.
+	 * @generated
+	 */
+	GiveTaskPlayersItemsAction createGiveTaskPlayersItemsAction();
+
+	/**
 	 * Returns a new object of class '<em>Runtime</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

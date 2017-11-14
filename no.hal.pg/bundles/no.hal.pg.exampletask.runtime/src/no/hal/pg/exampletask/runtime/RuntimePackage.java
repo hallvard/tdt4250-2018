@@ -131,13 +131,22 @@ public interface RuntimePackage extends EPackage {
 	int EXAMPLE_TASK__FINISH_CONDITIONS = no.hal.pg.runtime.RuntimePackage.RESETTABLE_TASK__FINISH_CONDITIONS;
 
 	/**
-	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Start Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXAMPLE_TASK__REWARDS = no.hal.pg.runtime.RuntimePackage.RESETTABLE_TASK__REWARDS;
+	int EXAMPLE_TASK__START_ACTIONS = no.hal.pg.runtime.RuntimePackage.RESETTABLE_TASK__START_ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Finish Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXAMPLE_TASK__FINISH_ACTIONS = no.hal.pg.runtime.RuntimePackage.RESETTABLE_TASK__FINISH_ACTIONS;
 
 	/**
 	 * The feature id for the '<em><b>Question</b></em>' attribute.

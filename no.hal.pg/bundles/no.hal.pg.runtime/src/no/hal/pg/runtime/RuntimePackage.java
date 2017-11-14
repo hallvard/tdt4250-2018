@@ -463,13 +463,22 @@ public interface RuntimePackage extends EPackage {
 	int TASK__FINISH_CONDITIONS = DESCRIBED_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Start Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__REWARDS = DESCRIBED_FEATURE_COUNT + 7;
+	int TASK__START_ACTIONS = DESCRIBED_FEATURE_COUNT + 7;
+
+	/**
+	 * The feature id for the '<em><b>Finish Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__FINISH_ACTIONS = DESCRIBED_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -478,7 +487,7 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = DESCRIBED_FEATURE_COUNT + 8;
+	int TASK_FEATURE_COUNT = DESCRIBED_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>Get Description</em>' operation.
@@ -617,13 +626,22 @@ public interface RuntimePackage extends EPackage {
 	int RESETTABLE_TASK__FINISH_CONDITIONS = TASK__FINISH_CONDITIONS;
 
 	/**
-	 * The feature id for the '<em><b>Rewards</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Start Actions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESETTABLE_TASK__REWARDS = TASK__REWARDS;
+	int RESETTABLE_TASK__START_ACTIONS = TASK__START_ACTIONS;
+
+	/**
+	 * The feature id for the '<em><b>Finish Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESETTABLE_TASK__FINISH_ACTIONS = TASK__FINISH_ACTIONS;
 
 	/**
 	 * The number of structural features of the '<em>Resettable Task</em>' class.
@@ -1128,6 +1146,226 @@ public interface RuntimePackage extends EPackage {
 	int PLAYERS_HAVE_ITEMS_CONDITION_OPERATION_COUNT = ABSTRACT_CONDITION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.Action <em>Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.Action
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAction()
+	 * @generated
+	 */
+	int ACTION = 14;
+
+	/**
+	 * The number of structural features of the '<em>Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION___PERFORM = 0;
+
+	/**
+	 * The number of operations of the '<em>Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.CompositeActionImpl <em>Composite Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.CompositeActionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCompositeAction()
+	 * @generated
+	 */
+	int COMPOSITE_ACTION = 15;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_ACTION__ACTIONS = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Composite Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_ACTION___PERFORM = ACTION___PERFORM;
+
+	/**
+	 * The number of operations of the '<em>Composite Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_ACTION_OPERATION_COUNT = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.AbstractGiveItemsActionImpl <em>Abstract Give Items Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.AbstractGiveItemsActionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAbstractGiveItemsAction()
+	 * @generated
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION = 16;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION__ITEMS = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION__COPY = ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Give Items Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION___PERFORM = ACTION___PERFORM;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION___PERFORM__PLAYER = ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Give Items Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_GIVE_ITEMS_ACTION_OPERATION_COUNT = ACTION_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link no.hal.pg.runtime.impl.GiveTaskPlayersItemsActionImpl <em>Give Task Players Items Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.runtime.impl.GiveTaskPlayersItemsActionImpl
+	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getGiveTaskPlayersItemsAction()
+	 * @generated
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION = 17;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION__ITEMS = ABSTRACT_GIVE_ITEMS_ACTION__ITEMS;
+
+	/**
+	 * The feature id for the '<em><b>Copy</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION__COPY = ABSTRACT_GIVE_ITEMS_ACTION__COPY;
+
+	/**
+	 * The feature id for the '<em><b>Task</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION__TASK = ABSTRACT_GIVE_ITEMS_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Give Task Players Items Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION_FEATURE_COUNT = ABSTRACT_GIVE_ITEMS_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION___PERFORM = ABSTRACT_GIVE_ITEMS_ACTION___PERFORM;
+
+	/**
+	 * The operation id for the '<em>Perform</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION___PERFORM__PLAYER = ABSTRACT_GIVE_ITEMS_ACTION___PERFORM__PLAYER;
+
+	/**
+	 * The number of operations of the '<em>Give Task Players Items Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GIVE_TASK_PLAYERS_ITEMS_ACTION_OPERATION_COUNT = ABSTRACT_GIVE_ITEMS_ACTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.runtime.impl.RuntimeImpl <em>Runtime</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1135,7 +1373,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getRuntime()
 	 * @generated
 	 */
-	int RUNTIME = 14;
+	int RUNTIME = 18;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -1190,7 +1428,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getEURI()
 	 * @generated
 	 */
-	int EURI = 15;
+	int EURI = 19;
 
 	/**
 	 * The meta object id for the '<em>Timestamp</em>' data type.
@@ -1200,7 +1438,7 @@ public interface RuntimePackage extends EPackage {
 	 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getTimestamp()
 	 * @generated
 	 */
-	int TIMESTAMP = 16;
+	int TIMESTAMP = 20;
 
 
 	/**
@@ -1472,15 +1710,26 @@ public interface RuntimePackage extends EPackage {
 	EReference getTask_FinishConditions();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Task#getRewards <em>Rewards</em>}'.
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Task#getStartActions <em>Start Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Rewards</em>'.
-	 * @see no.hal.pg.runtime.Task#getRewards()
+	 * @return the meta object for the containment reference list '<em>Start Actions</em>'.
+	 * @see no.hal.pg.runtime.Task#getStartActions()
 	 * @see #getTask()
 	 * @generated
 	 */
-	EReference getTask_Rewards();
+	EReference getTask_StartActions();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.Task#getFinishActions <em>Finish Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Finish Actions</em>'.
+	 * @see no.hal.pg.runtime.Task#getFinishActions()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EReference getTask_FinishActions();
 
 	/**
 	 * Returns the meta object for the '{@link no.hal.pg.runtime.Task#canStart() <em>Can Start</em>}' operation.
@@ -1710,6 +1959,110 @@ public interface RuntimePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPlayersHaveItemsCondition_ItemClasses();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.Action <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Action</em>'.
+	 * @see no.hal.pg.runtime.Action
+	 * @generated
+	 */
+	EClass getAction();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.Action#perform() <em>Perform</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Perform</em>' operation.
+	 * @see no.hal.pg.runtime.Action#perform()
+	 * @generated
+	 */
+	EOperation getAction__Perform();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.CompositeAction <em>Composite Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Action</em>'.
+	 * @see no.hal.pg.runtime.CompositeAction
+	 * @generated
+	 */
+	EClass getCompositeAction();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.CompositeAction#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actions</em>'.
+	 * @see no.hal.pg.runtime.CompositeAction#getActions()
+	 * @see #getCompositeAction()
+	 * @generated
+	 */
+	EReference getCompositeAction_Actions();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.AbstractGiveItemsAction <em>Abstract Give Items Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Give Items Action</em>'.
+	 * @see no.hal.pg.runtime.AbstractGiveItemsAction
+	 * @generated
+	 */
+	EClass getAbstractGiveItemsAction();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.runtime.AbstractGiveItemsAction#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see no.hal.pg.runtime.AbstractGiveItemsAction#getItems()
+	 * @see #getAbstractGiveItemsAction()
+	 * @generated
+	 */
+	EReference getAbstractGiveItemsAction_Items();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.runtime.AbstractGiveItemsAction#isCopy <em>Copy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Copy</em>'.
+	 * @see no.hal.pg.runtime.AbstractGiveItemsAction#isCopy()
+	 * @see #getAbstractGiveItemsAction()
+	 * @generated
+	 */
+	EAttribute getAbstractGiveItemsAction_Copy();
+
+	/**
+	 * Returns the meta object for the '{@link no.hal.pg.runtime.AbstractGiveItemsAction#perform(no.hal.pg.runtime.Player) <em>Perform</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Perform</em>' operation.
+	 * @see no.hal.pg.runtime.AbstractGiveItemsAction#perform(no.hal.pg.runtime.Player)
+	 * @generated
+	 */
+	EOperation getAbstractGiveItemsAction__Perform__Player();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.runtime.GiveTaskPlayersItemsAction <em>Give Task Players Items Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Give Task Players Items Action</em>'.
+	 * @see no.hal.pg.runtime.GiveTaskPlayersItemsAction
+	 * @generated
+	 */
+	EClass getGiveTaskPlayersItemsAction();
+
+	/**
+	 * Returns the meta object for the reference '{@link no.hal.pg.runtime.GiveTaskPlayersItemsAction#getTask <em>Task</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Task</em>'.
+	 * @see no.hal.pg.runtime.GiveTaskPlayersItemsAction#getTask()
+	 * @see #getGiveTaskPlayersItemsAction()
+	 * @generated
+	 */
+	EReference getGiveTaskPlayersItemsAction_Task();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.runtime.Runtime <em>Runtime</em>}'.
@@ -2020,12 +2373,20 @@ public interface RuntimePackage extends EPackage {
 		EReference TASK__FINISH_CONDITIONS = eINSTANCE.getTask_FinishConditions();
 
 		/**
-		 * The meta object literal for the '<em><b>Rewards</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Start Actions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TASK__REWARDS = eINSTANCE.getTask_Rewards();
+		EReference TASK__START_ACTIONS = eINSTANCE.getTask_StartActions();
+
+		/**
+		 * The meta object literal for the '<em><b>Finish Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TASK__FINISH_ACTIONS = eINSTANCE.getTask_FinishActions();
 
 		/**
 		 * The meta object literal for the '<em><b>Can Start</b></em>' operation.
@@ -2218,6 +2579,94 @@ public interface RuntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PLAYERS_HAVE_ITEMS_CONDITION__ITEM_CLASSES = eINSTANCE.getPlayersHaveItemsCondition_ItemClasses();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.Action <em>Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.Action
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAction()
+		 * @generated
+		 */
+		EClass ACTION = eINSTANCE.getAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Perform</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ACTION___PERFORM = eINSTANCE.getAction__Perform();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.CompositeActionImpl <em>Composite Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.CompositeActionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getCompositeAction()
+		 * @generated
+		 */
+		EClass COMPOSITE_ACTION = eINSTANCE.getCompositeAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITE_ACTION__ACTIONS = eINSTANCE.getCompositeAction_Actions();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.AbstractGiveItemsActionImpl <em>Abstract Give Items Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.AbstractGiveItemsActionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getAbstractGiveItemsAction()
+		 * @generated
+		 */
+		EClass ABSTRACT_GIVE_ITEMS_ACTION = eINSTANCE.getAbstractGiveItemsAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ABSTRACT_GIVE_ITEMS_ACTION__ITEMS = eINSTANCE.getAbstractGiveItemsAction_Items();
+
+		/**
+		 * The meta object literal for the '<em><b>Copy</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_GIVE_ITEMS_ACTION__COPY = eINSTANCE.getAbstractGiveItemsAction_Copy();
+
+		/**
+		 * The meta object literal for the '<em><b>Perform</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation ABSTRACT_GIVE_ITEMS_ACTION___PERFORM__PLAYER = eINSTANCE.getAbstractGiveItemsAction__Perform__Player();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.GiveTaskPlayersItemsActionImpl <em>Give Task Players Items Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.runtime.impl.GiveTaskPlayersItemsActionImpl
+		 * @see no.hal.pg.runtime.impl.RuntimePackageImpl#getGiveTaskPlayersItemsAction()
+		 * @generated
+		 */
+		EClass GIVE_TASK_PLAYERS_ITEMS_ACTION = eINSTANCE.getGiveTaskPlayersItemsAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Task</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GIVE_TASK_PLAYERS_ITEMS_ACTION__TASK = eINSTANCE.getGiveTaskPlayersItemsAction_Task();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.runtime.impl.RuntimeImpl <em>Runtime</em>}' class.

@@ -6,8 +6,12 @@ import java.net.URI;
 import java.util.Map;
 import no.hal.pg.osm.util.OsmValidator;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AbstractGiveItemsAction;
+import no.hal.pg.runtime.Action;
+import no.hal.pg.runtime.CompositeAction;
 import no.hal.pg.runtime.CompositeCondition;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -137,6 +141,14 @@ public class RuntimeValidator extends EObjectValidator {
 				return validateIsByGeoLocationCondition((IsByGeoLocationCondition)value, diagnostics, context);
 			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION:
 				return validatePlayersHaveItemsCondition((PlayersHaveItemsCondition)value, diagnostics, context);
+			case RuntimePackage.ACTION:
+				return validateAction((Action)value, diagnostics, context);
+			case RuntimePackage.COMPOSITE_ACTION:
+				return validateCompositeAction((CompositeAction)value, diagnostics, context);
+			case RuntimePackage.ABSTRACT_GIVE_ITEMS_ACTION:
+				return validateAbstractGiveItemsAction((AbstractGiveItemsAction)value, diagnostics, context);
+			case RuntimePackage.GIVE_TASK_PLAYERS_ITEMS_ACTION:
+				return validateGiveTaskPlayersItemsAction((GiveTaskPlayersItemsAction)value, diagnostics, context);
 			case RuntimePackage.RUNTIME:
 				return validateRuntime((no.hal.pg.runtime.Runtime)value, diagnostics, context);
 			case RuntimePackage.EURI:
@@ -398,6 +410,42 @@ public class RuntimeValidator extends EObjectValidator {
 	 */
 	public boolean validatePlayersHaveItemsCondition(PlayersHaveItemsCondition playersHaveItemsCondition, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(playersHaveItemsCondition, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAction(Action action, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(action, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateCompositeAction(CompositeAction compositeAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(compositeAction, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateAbstractGiveItemsAction(AbstractGiveItemsAction abstractGiveItemsAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(abstractGiveItemsAction, diagnostics, context);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateGiveTaskPlayersItemsAction(GiveTaskPlayersItemsAction giveTaskPlayersItemsAction, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return validate_EveryDefaultConstraint(giveTaskPlayersItemsAction, diagnostics, context);
 	}
 
 	/**

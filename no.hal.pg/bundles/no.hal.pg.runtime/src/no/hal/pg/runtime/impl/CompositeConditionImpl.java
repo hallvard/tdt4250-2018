@@ -126,15 +126,25 @@ public class CompositeConditionImpl<E> extends MinimalEObjectImpl.Container impl
 	 */
 	@Override
 	public boolean test() {
+		return test(getConditions(), isLogic());
+	}
+
+	static boolean and(Iterable<Condition> conditions) {
+		return test(conditions, false);
+	}
+	static boolean or(Iterable<Condition> conditions) {
+		return test(conditions, true);
+	}
+	static boolean test(Iterable<Condition> conditions, boolean logic) {
 		// short-circuit when the test value becomes logic
 		// use logic == true for || and logic == false for &&
-		for (Condition cond : getConditions()) {
-			Boolean result = result(cond.test(), isLogic());
+		for (Condition cond : conditions) {
+			Boolean result = result(cond.test(), logic);
 			if (result != null) {
 				return result;
 			}
 		}
-		return result(isLogic());
+		return result(logic);
 	}
 	
 	public static Boolean result(boolean value, boolean logic) {

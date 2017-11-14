@@ -3,6 +3,7 @@
 package no.hal.pg.runtime.impl;
 
 import java.net.URI;
+import no.hal.pg.runtime.CompositeAction;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -11,6 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -78,6 +80,8 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 			case RuntimePackage.IS_TASK_FINISHED_CONDITION: return createIsTaskFinishedCondition();
 			case RuntimePackage.IS_BY_GEO_LOCATION_CONDITION: return createIsByGeoLocationCondition();
 			case RuntimePackage.PLAYERS_HAVE_ITEMS_CONDITION: return createPlayersHaveItemsCondition();
+			case RuntimePackage.COMPOSITE_ACTION: return createCompositeAction();
+			case RuntimePackage.GIVE_TASK_PLAYERS_ITEMS_ACTION: return createGiveTaskPlayersItemsAction();
 			case RuntimePackage.RUNTIME: return createRuntime();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -232,6 +236,26 @@ public class RuntimeFactoryImpl extends EFactoryImpl implements RuntimeFactory {
 	public PlayersHaveItemsCondition createPlayersHaveItemsCondition() {
 		PlayersHaveItemsConditionImpl playersHaveItemsCondition = new PlayersHaveItemsConditionImpl();
 		return playersHaveItemsCondition;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositeAction createCompositeAction() {
+		CompositeActionImpl compositeAction = new CompositeActionImpl();
+		return compositeAction;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GiveTaskPlayersItemsAction createGiveTaskPlayersItemsAction() {
+		GiveTaskPlayersItemsActionImpl giveTaskPlayersItemsAction = new GiveTaskPlayersItemsActionImpl();
+		return giveTaskPlayersItemsAction;
 	}
 
 	/**

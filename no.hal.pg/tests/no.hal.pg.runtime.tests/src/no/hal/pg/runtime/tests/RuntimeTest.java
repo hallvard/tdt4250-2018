@@ -2,6 +2,7 @@ package no.hal.pg.runtime.tests;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,6 +21,8 @@ import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.osm.OsmFactory;
 import no.hal.pg.osm.geoutil.LatLong;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
+import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.PlayersHaveItemsCondition;
@@ -195,5 +198,65 @@ public class RuntimeTest {
 		// both InfoItems are now present
 		Assert.assertTrue(condition.test());
 		Assert.assertTrue(condition.test(task));
+	}
+	
+	@Test
+	public void testGiveTaskPlayersItemsAction() {
+		Task<Object> task = RuntimeFactory.eINSTANCE.createTask();
+		Player player1 = RuntimeFactory.eINSTANCE.createPlayer(),  player2 = RuntimeFactory.eINSTANCE.createPlayer();
+		task.getPlayers().addAll(Arrays.asList(player1, player2));
+		InfoItem item1 = RuntimeFactory.eINSTANCE.createInfoItem(), item2 = RuntimeFactory.eINSTANCE.createInfoItem(), item3 = RuntimeFactory.eINSTANCE.createInfoItem();
+		item1.setDescription("1");
+		item2.setDescription("2");
+		item3.setDescription("3");
+
+		GiveTaskPlayersItemsAction action1 = RuntimeFactory.eINSTANCE.createGiveTaskPlayersItemsAction();
+		action1.getItems().addAll(Arrays.asList(item1, item2));
+		action1.setCopy(true);
+		task.getStartActions().add(action1);
+
+		GiveTaskPlayersItemsAction action2 = RuntimeFactory.eINSTANCE.createGiveTaskPlayersItemsAction();
+		action2.getItems().addAll(Arrays.asList(item3));
+		action2.setCopy(true);
+		task.getFinishActions().add(action2);
+
+		Assert.assertEquals(0, player1.getItems().size());
+		Assert.assertEquals(0, player2.getItems().size());
+		task.start();
+		// copies of item1 and item2 added to player1 and player2
+		Assert.assertEquals(2, player1.getItems().size());
+		InfoItem infoItem11 = (InfoItem) player1.getItems().get(0), infoItem12 = (InfoItem) player1.getItems().get(1);
+		Assert.assertFalse(infoItem11 == item1);
+		Assert.assertEquals(infoItem11.getDescription(), item1.getDescription());
+		Assert.assertFalse(infoItem12 == item2);
+		Assert.assertEquals(infoItem12.getDescription(), item2.getDescription());
+
+		Assert.assertEquals(2, player2.getItems().size());
+		InfoItem infoItem21 = (InfoItem) player2.getItems().get(0), infoItem22 = (InfoItem) player2.getItems().get(1);
+		Assert.assertFalse(infoItem21 == item1);
+		Assert.assertEquals(infoItem21.getDescription(), item1.getDescription());
+		Assert.assertFalse(infoItem22 == item2);
+		Assert.assertEquals(infoItem22.getDescription(), item2.getDescription());
+
+		task.start();
+		// no change, since already started
+		Assert.assertEquals(2, player1.getItems().size());
+		Assert.assertSame(infoItem11, player1.getItems().get(0));
+		Assert.assertSame(infoItem12, player1.getItems().get(1));
+		
+		task.finish(new Object());
+		// first items are the same
+		Assert.assertSame(infoItem11, player1.getItems().get(0));
+		Assert.assertSame(infoItem12, player1.getItems().get(1));
+		// copy of item3
+		Assert.assertEquals(3, player1.getItems().size());
+		InfoItem infoItem13 = (InfoItem) player1.getItems().get(2);
+		Assert.assertFalse(infoItem13 == item3);
+		Assert.assertEquals(infoItem13.getDescription(), item3.getDescription());
+
+		Assert.assertEquals(3, player2.getItems().size());
+		InfoItem infoItem23 = (InfoItem) player2.getItems().get(2);
+		Assert.assertFalse(infoItem23 == item3);
+		Assert.assertEquals(infoItem23.getDescription(), item3.getDescription());
 	}
 }

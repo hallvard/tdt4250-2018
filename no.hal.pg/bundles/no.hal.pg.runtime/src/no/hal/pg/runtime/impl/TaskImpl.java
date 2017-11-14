@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import no.hal.pg.runtime.Action;
 import no.hal.pg.runtime.Condition;
 import no.hal.pg.runtime.Game;
-import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
 import no.hal.pg.runtime.RuntimePackage;
 import no.hal.pg.runtime.Task;
@@ -39,7 +39,8 @@ import no.hal.pg.runtime.Task;
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getFinishTime <em>Finish Time</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getStartConditions <em>Start Conditions</em>}</li>
  *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getFinishConditions <em>Finish Conditions</em>}</li>
- *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getRewards <em>Rewards</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getStartActions <em>Start Actions</em>}</li>
+ *   <li>{@link no.hal.pg.runtime.impl.TaskImpl#getFinishActions <em>Finish Actions</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,14 +119,23 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	protected EList<Condition> finishConditions;
 	/**
-	 * The cached value of the '{@link #getRewards() <em>Rewards</em>}' containment reference list.
+	 * The cached value of the '{@link #getStartActions() <em>Start Actions</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRewards()
+	 * @see #getStartActions()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Item> rewards;
+	protected EList<Action> startActions;
+	/**
+	 * The cached value of the '{@link #getFinishActions() <em>Finish Actions</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFinishActions()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Action> finishActions;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -303,11 +313,24 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 * @generated
 	 */
 	@Override
-	public EList<Item> getRewards() {
-		if (rewards == null) {
-			rewards = new EObjectContainmentEList<Item>(Item.class, this, RuntimePackage.TASK__REWARDS);
+	public EList<Action> getStartActions() {
+		if (startActions == null) {
+			startActions = new EObjectContainmentEList<Action>(Action.class, this, RuntimePackage.TASK__START_ACTIONS);
 		}
-		return rewards;
+		return startActions;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<Action> getFinishActions() {
+		if (finishActions == null) {
+			finishActions = new EObjectContainmentEList<Action>(Action.class, this, RuntimePackage.TASK__FINISH_ACTIONS);
+		}
+		return finishActions;
 	}
 
 	/**
@@ -324,15 +347,6 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		return "A task";
 	}
 
-	static boolean test(Iterable<Condition> conditions) {
-		for (Condition predicate : conditions) {
-			if (! predicate.test()) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -340,7 +354,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	@Override
 	public boolean canStart() {
-		return TaskImpl.test(getStartConditions());
+		return CompositeConditionImpl.and(getStartConditions());
 	}
 
 	/**
@@ -364,7 +378,7 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	@Override
 	public boolean isFinished() {
-		return isValidTime(getFinishTime()) && TaskImpl.test(getFinishConditions());
+		return isValidTime(getFinishTime()) && CompositeConditionImpl.and(getFinishConditions());
 	}
 
 	/**
@@ -374,10 +388,13 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 	 */
 	@Override
 	public void start() {
-		if (! canStart()) {
-			throw new IllegalStateException("Cannot start a task that isn't enabled");
+		if (! isStarted()) {
+			if (! canStart()) {
+				throw new IllegalStateException("Cannot start a task that isn't enabled");
+			}
+			setStartTime(getCurrentTime());
+			CompositeActionImpl.performActions(getStartActions());
 		}
-		setStartTime(getCurrentTime());
 	}
 
 	static long getCurrentTime() {
@@ -394,12 +411,15 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 		if (! isStarted()) {
 			throw new IllegalStateException("Cannot finish a task that isn't started");
 		}
-		if (TaskImpl.test(getFinishConditions())) {
+		if (CompositeConditionImpl.and(getFinishConditions())) {
 			setResult(result);
-			setFinishTime(getCurrentTime());
+			if (! isFinished()) {
+				setFinishTime(getCurrentTime());
+				CompositeActionImpl.performActions(getFinishActions());
+			}
 		}
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,8 +451,10 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return ((InternalEList<?>)getStartConditions()).basicRemove(otherEnd, msgs);
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return ((InternalEList<?>)getFinishConditions()).basicRemove(otherEnd, msgs);
-			case RuntimePackage.TASK__REWARDS:
-				return ((InternalEList<?>)getRewards()).basicRemove(otherEnd, msgs);
+			case RuntimePackage.TASK__START_ACTIONS:
+				return ((InternalEList<?>)getStartActions()).basicRemove(otherEnd, msgs);
+			case RuntimePackage.TASK__FINISH_ACTIONS:
+				return ((InternalEList<?>)getFinishActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -473,8 +495,10 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return getStartConditions();
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return getFinishConditions();
-			case RuntimePackage.TASK__REWARDS:
-				return getRewards();
+			case RuntimePackage.TASK__START_ACTIONS:
+				return getStartActions();
+			case RuntimePackage.TASK__FINISH_ACTIONS:
+				return getFinishActions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -512,9 +536,13 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				getFinishConditions().clear();
 				getFinishConditions().addAll((Collection<? extends Condition>)newValue);
 				return;
-			case RuntimePackage.TASK__REWARDS:
-				getRewards().clear();
-				getRewards().addAll((Collection<? extends Item>)newValue);
+			case RuntimePackage.TASK__START_ACTIONS:
+				getStartActions().clear();
+				getStartActions().addAll((Collection<? extends Action>)newValue);
+				return;
+			case RuntimePackage.TASK__FINISH_ACTIONS:
+				getFinishActions().clear();
+				getFinishActions().addAll((Collection<? extends Action>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -549,8 +577,11 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				getFinishConditions().clear();
 				return;
-			case RuntimePackage.TASK__REWARDS:
-				getRewards().clear();
+			case RuntimePackage.TASK__START_ACTIONS:
+				getStartActions().clear();
+				return;
+			case RuntimePackage.TASK__FINISH_ACTIONS:
+				getFinishActions().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -578,8 +609,10 @@ public class TaskImpl<R> extends MinimalEObjectImpl.Container implements Task<R>
 				return startConditions != null && !startConditions.isEmpty();
 			case RuntimePackage.TASK__FINISH_CONDITIONS:
 				return finishConditions != null && !finishConditions.isEmpty();
-			case RuntimePackage.TASK__REWARDS:
-				return rewards != null && !rewards.isEmpty();
+			case RuntimePackage.TASK__START_ACTIONS:
+				return startActions != null && !startActions.isEmpty();
+			case RuntimePackage.TASK__FINISH_ACTIONS:
+				return finishActions != null && !finishActions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -6,6 +6,9 @@ import java.net.URI;
 import no.hal.pg.arc.ArcPackage;
 import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AbstractGiveItemsAction;
+import no.hal.pg.runtime.Action;
+import no.hal.pg.runtime.CompositeAction;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,6 +22,7 @@ import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -138,6 +142,34 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * @generated
 	 */
 	private EClass playersHaveItemsConditionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass actionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compositeActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractGiveItemsActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass giveTaskPlayersItemsActionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -475,8 +507,17 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTask_Rewards() {
+	public EReference getTask_StartActions() {
 		return (EReference)taskEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTask_FinishActions() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -683,6 +724,96 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getAction() {
+		return actionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAction__Perform() {
+		return actionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCompositeAction() {
+		return compositeActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getCompositeAction_Actions() {
+		return (EReference)compositeActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbstractGiveItemsAction() {
+		return abstractGiveItemsActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getAbstractGiveItemsAction_Items() {
+		return (EReference)abstractGiveItemsActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractGiveItemsAction_Copy() {
+		return (EAttribute)abstractGiveItemsActionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getAbstractGiveItemsAction__Perform__Player() {
+		return abstractGiveItemsActionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getGiveTaskPlayersItemsAction() {
+		return giveTaskPlayersItemsActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGiveTaskPlayersItemsAction_Task() {
+		return (EReference)giveTaskPlayersItemsActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getRuntime() {
 		return runtimeEClass;
 	}
@@ -804,7 +935,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		createEAttribute(taskEClass, TASK__FINISH_TIME);
 		createEReference(taskEClass, TASK__START_CONDITIONS);
 		createEReference(taskEClass, TASK__FINISH_CONDITIONS);
-		createEReference(taskEClass, TASK__REWARDS);
+		createEReference(taskEClass, TASK__START_ACTIONS);
+		createEReference(taskEClass, TASK__FINISH_ACTIONS);
 		createEOperation(taskEClass, TASK___CAN_START);
 		createEOperation(taskEClass, TASK___IS_STARTED);
 		createEOperation(taskEClass, TASK___IS_FINISHED);
@@ -838,6 +970,20 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		playersHaveItemsConditionEClass = createEClass(PLAYERS_HAVE_ITEMS_CONDITION);
 		createEReference(playersHaveItemsConditionEClass, PLAYERS_HAVE_ITEMS_CONDITION__ITEM_CLASSES);
+
+		actionEClass = createEClass(ACTION);
+		createEOperation(actionEClass, ACTION___PERFORM);
+
+		compositeActionEClass = createEClass(COMPOSITE_ACTION);
+		createEReference(compositeActionEClass, COMPOSITE_ACTION__ACTIONS);
+
+		abstractGiveItemsActionEClass = createEClass(ABSTRACT_GIVE_ITEMS_ACTION);
+		createEReference(abstractGiveItemsActionEClass, ABSTRACT_GIVE_ITEMS_ACTION__ITEMS);
+		createEAttribute(abstractGiveItemsActionEClass, ABSTRACT_GIVE_ITEMS_ACTION__COPY);
+		createEOperation(abstractGiveItemsActionEClass, ABSTRACT_GIVE_ITEMS_ACTION___PERFORM__PLAYER);
+
+		giveTaskPlayersItemsActionEClass = createEClass(GIVE_TASK_PLAYERS_ITEMS_ACTION);
+		createEReference(giveTaskPlayersItemsActionEClass, GIVE_TASK_PLAYERS_ITEMS_ACTION__TASK);
 
 		runtimeEClass = createEClass(RUNTIME);
 		createEReference(runtimeEClass, RUNTIME__GAMES);
@@ -922,6 +1068,9 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		g3 = createEGenericType();
 		g2.getETypeArguments().add(g3);
 		playersHaveItemsConditionEClass.getEGenericSuperTypes().add(g1);
+		compositeActionEClass.getESuperTypes().add(this.getAction());
+		abstractGiveItemsActionEClass.getESuperTypes().add(this.getAction());
+		giveTaskPlayersItemsActionEClass.getESuperTypes().add(this.getAbstractGiveItemsAction());
 		runtimeEClass.getESuperTypes().add(theArcPackage.getArc());
 
 		// Initialize classes, features, and operations; add parameters
@@ -964,7 +1113,8 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 		initEAttribute(getTask_FinishTime(), this.getTimestamp(), "finishTime", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_StartConditions(), this.getCondition(), null, "startConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTask_FinishConditions(), this.getCondition(), null, "finishConditions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Rewards(), this.getItem(), null, "rewards", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_StartActions(), this.getAction(), null, "startActions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_FinishActions(), this.getAction(), null, "finishActions", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getTask__CanStart(), ecorePackage.getEBoolean(), "canStart", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -1011,6 +1161,26 @@ public class RuntimePackageImpl extends EPackageImpl implements RuntimePackage {
 
 		initEClass(playersHaveItemsConditionEClass, PlayersHaveItemsCondition.class, "PlayersHaveItemsCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPlayersHaveItemsCondition_ItemClasses(), theEcorePackage.getEClass(), null, "itemClasses", null, 0, -1, PlayersHaveItemsCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEOperation(getAction__Perform(), null, "perform", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(compositeActionEClass, CompositeAction.class, "CompositeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompositeAction_Actions(), this.getAction(), null, "actions", null, 0, -1, CompositeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(abstractGiveItemsActionEClass, AbstractGiveItemsAction.class, "AbstractGiveItemsAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAbstractGiveItemsAction_Items(), this.getItem(), null, "items", null, 0, -1, AbstractGiveItemsAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractGiveItemsAction_Copy(), theEcorePackage.getEBoolean(), "copy", null, 0, 1, AbstractGiveItemsAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		op = initEOperation(getAbstractGiveItemsAction__Perform__Player(), null, "perform", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getPlayer(), "player", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(giveTaskPlayersItemsActionEClass, GiveTaskPlayersItemsAction.class, "GiveTaskPlayersItemsAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getTask());
+		g2 = createEGenericType();
+		g1.getETypeArguments().add(g2);
+		initEReference(getGiveTaskPlayersItemsAction_Task(), g1, null, "task", null, 0, 1, GiveTaskPlayersItemsAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(runtimeEClass, no.hal.pg.runtime.Runtime.class, "Runtime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getGame());

@@ -6,12 +6,16 @@ import no.hal.pg.arc.Arc;
 import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.GeoLocation;
 import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.AbstractGiveItemsAction;
+import no.hal.pg.runtime.Action;
+import no.hal.pg.runtime.CompositeAction;
 import no.hal.pg.runtime.CompositeCondition;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
 import no.hal.pg.runtime.InfoItem;
 import no.hal.pg.runtime.IsByGeoLocationCondition;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
@@ -183,6 +187,34 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 				T1 result = casePlayersHaveItemsCondition(playersHaveItemsCondition);
 				if (result == null) result = caseAbstractCondition(playersHaveItemsCondition);
 				if (result == null) result = caseCondition(playersHaveItemsCondition);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.ACTION: {
+				Action action = (Action)theEObject;
+				T1 result = caseAction(action);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.COMPOSITE_ACTION: {
+				CompositeAction compositeAction = (CompositeAction)theEObject;
+				T1 result = caseCompositeAction(compositeAction);
+				if (result == null) result = caseAction(compositeAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.ABSTRACT_GIVE_ITEMS_ACTION: {
+				AbstractGiveItemsAction abstractGiveItemsAction = (AbstractGiveItemsAction)theEObject;
+				T1 result = caseAbstractGiveItemsAction(abstractGiveItemsAction);
+				if (result == null) result = caseAction(abstractGiveItemsAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RuntimePackage.GIVE_TASK_PLAYERS_ITEMS_ACTION: {
+				GiveTaskPlayersItemsAction giveTaskPlayersItemsAction = (GiveTaskPlayersItemsAction)theEObject;
+				T1 result = caseGiveTaskPlayersItemsAction(giveTaskPlayersItemsAction);
+				if (result == null) result = caseAbstractGiveItemsAction(giveTaskPlayersItemsAction);
+				if (result == null) result = caseAction(giveTaskPlayersItemsAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -404,6 +436,66 @@ public class RuntimeSwitch<T1> extends Switch<T1> {
 	 * @generated
 	 */
 	public T1 casePlayersHaveItemsCondition(PlayersHaveItemsCondition object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAction(Action object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Composite Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Composite Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseCompositeAction(CompositeAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Give Items Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Give Items Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseAbstractGiveItemsAction(AbstractGiveItemsAction object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Give Task Players Items Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Give Task Players Items Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseGiveTaskPlayersItemsAction(GiveTaskPlayersItemsAction object) {
 		return null;
 	}
 

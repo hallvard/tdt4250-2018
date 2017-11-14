@@ -18,6 +18,7 @@ import no.hal.pg.config.PlayerRole;
 import no.hal.pg.config.TaskConfig;
 import no.hal.pg.config.TaskProxy;
 import no.hal.pg.runtime.Game;
+import no.hal.pg.runtime.GiveTaskPlayersItemsAction;
 import no.hal.pg.runtime.IsTaskFinishedCondition;
 import no.hal.pg.runtime.Item;
 import no.hal.pg.runtime.Player;
@@ -111,16 +112,6 @@ public class ConfigUtil {
 				itemProxies.put(proxy, item);
 			}
 		}
-		// create reward items
-		for (TaskProxy proxy : taskProxies.keySet()) {
-			Task<?> task = taskProxies.get(proxy);
-			for (ItemProxy itemProxy : proxy.getRewardItems()) {
-				if (itemProxy.getRef() != null) {
-					Item item = itemProxy.getRef().createItem(itemProxy);
-					task.getRewards().add(item);
-				}
-			}
-		}
 		// add start conditions...
 		for (TaskProxy proxy : taskProxies.keySet()) {
 			Task<?> task = taskProxies.get(proxy);
@@ -142,6 +133,21 @@ public class ConfigUtil {
 				}
 				task.getStartConditions().add(cond);
 			}
+		}
+		// create reward actions
+		for (TaskProxy proxy : taskProxies.keySet()) {
+			Task<?> task = taskProxies.get(proxy);
+			Collection<Item> items = new ArrayList<Item>();
+			for (ItemProxy itemProxy : proxy.getRewardItems()) {
+				if (itemProxy.getRef() != null) {
+					Item item = itemProxy.getRef().createItem(itemProxy);
+					items.add(item);
+				}
+			}
+			GiveTaskPlayersItemsAction action = RuntimeFactory.eINSTANCE.createGiveTaskPlayersItemsAction();
+			action.getItems().addAll(items);
+			action.setCopy(true);
+			task.getFinishActions().add(action);
 		}
 		return game;
 	}
