@@ -796,13 +796,22 @@ public interface OsmPackage extends EPackage {
 	int WAY___GET_TAG_DEFAULTS = OSM_ELEMENT___GET_TAG_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WAY___GET_LAT_LONG = OSM_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Way</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WAY_OPERATION_COUNT = OSM_ELEMENT_OPERATION_COUNT + 0;
+	int WAY_OPERATION_COUNT = OSM_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.osm.impl.NodeRefImpl <em>Node Ref</em>}' class.
@@ -1060,13 +1069,22 @@ public interface OsmPackage extends EPackage {
 	int RELATION___GET_TAG_DEFAULTS = OSM_ELEMENT___GET_TAG_DEFAULTS;
 
 	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RELATION___GET_LAT_LONG = OSM_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Relation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RELATION_OPERATION_COUNT = OSM_ELEMENT_OPERATION_COUNT + 0;
+	int RELATION_OPERATION_COUNT = OSM_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.osm.impl.MemberImpl <em>Member</em>}' class.
@@ -1085,7 +1103,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMBER__REFERENCE = 0;
+	int MEMBER__REFERENCE = GEO_LOCATED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -1094,7 +1112,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMBER__TYPE = 1;
+	int MEMBER__TYPE = GEO_LOCATED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Role</b></em>' attribute.
@@ -1103,7 +1121,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMBER__ROLE = 2;
+	int MEMBER__ROLE = GEO_LOCATED_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Member</em>' class.
@@ -1112,7 +1130,16 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMBER_FEATURE_COUNT = 3;
+	int MEMBER_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MEMBER___GET_LAT_LONG = GEO_LOCATED___GET_LAT_LONG;
 
 	/**
 	 * The number of operations of the '<em>Member</em>' class.
@@ -1121,7 +1148,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MEMBER_OPERATION_COUNT = 0;
+	int MEMBER_OPERATION_COUNT = GEO_LOCATED_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.osm.impl.BoundsImpl <em>Bounds</em>}' class.
@@ -1140,7 +1167,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS__MIN_LATITUTE = 0;
+	int BOUNDS__MIN_LATITUTE = GEO_LOCATED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Min Longitude</b></em>' attribute.
@@ -1149,7 +1176,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS__MIN_LONGITUDE = 1;
+	int BOUNDS__MIN_LONGITUDE = GEO_LOCATED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Max Latitude</b></em>' attribute.
@@ -1158,7 +1185,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS__MAX_LATITUDE = 2;
+	int BOUNDS__MAX_LATITUDE = GEO_LOCATED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Max Longitude</b></em>' attribute.
@@ -1167,7 +1194,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS__MAX_LONGITUDE = 3;
+	int BOUNDS__MAX_LONGITUDE = GEO_LOCATED_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Bounds</em>' class.
@@ -1176,7 +1203,16 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS_FEATURE_COUNT = 4;
+	int BOUNDS_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOUNDS___GET_LAT_LONG = GEO_LOCATED___GET_LAT_LONG;
 
 	/**
 	 * The number of operations of the '<em>Bounds</em>' class.
@@ -1185,7 +1221,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOUNDS_OPERATION_COUNT = 0;
+	int BOUNDS_OPERATION_COUNT = GEO_LOCATED_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link no.hal.pg.osm.impl.OSMImpl <em>OSM</em>}' class.
@@ -1204,7 +1240,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__NODES = 0;
+	int OSM__NODES = GEO_LOCATED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Ways</b></em>' containment reference list.
@@ -1213,7 +1249,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__WAYS = 1;
+	int OSM__WAYS = GEO_LOCATED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Relations</b></em>' containment reference list.
@@ -1222,7 +1258,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__RELATIONS = 2;
+	int OSM__RELATIONS = GEO_LOCATED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Bounds</b></em>' containment reference.
@@ -1231,7 +1267,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__BOUNDS = 3;
+	int OSM__BOUNDS = GEO_LOCATED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -1240,7 +1276,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__VERSION = 4;
+	int OSM__VERSION = GEO_LOCATED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Generator</b></em>' attribute.
@@ -1249,7 +1285,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__GENERATOR = 5;
+	int OSM__GENERATOR = GEO_LOCATED_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Notes</b></em>' containment reference list.
@@ -1258,7 +1294,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__NOTES = 6;
+	int OSM__NOTES = GEO_LOCATED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Meta Data</b></em>' containment reference list.
@@ -1267,7 +1303,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__META_DATA = 7;
+	int OSM__META_DATA = GEO_LOCATED_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Copyright</b></em>' attribute.
@@ -1276,7 +1312,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM__COPYRIGHT = 8;
+	int OSM__COPYRIGHT = GEO_LOCATED_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>OSM</em>' class.
@@ -1285,7 +1321,16 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM_FEATURE_COUNT = 9;
+	int OSM_FEATURE_COUNT = GEO_LOCATED_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Get Lat Long</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OSM___GET_LAT_LONG = GEO_LOCATED___GET_LAT_LONG;
 
 	/**
 	 * The number of operations of the '<em>OSM</em>' class.
@@ -1294,7 +1339,7 @@ public interface OsmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OSM_OPERATION_COUNT = 0;
+	int OSM_OPERATION_COUNT = GEO_LOCATED_OPERATION_COUNT + 0;
 
 
 	/**

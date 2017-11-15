@@ -4,8 +4,6 @@ package no.hal.pg.osm;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>OSM</b></em>'.
@@ -30,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model extendedMetaData="name='osm'"
  * @generated
  */
-public interface OSM extends EObject {
+public interface OSM extends GeoLocated {
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.osm.Node}.

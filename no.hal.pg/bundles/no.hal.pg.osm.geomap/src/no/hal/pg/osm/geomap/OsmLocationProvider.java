@@ -1,7 +1,5 @@
 package no.hal.pg.osm.geomap;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.nebula.widgets.geomap.PointD;
 import org.eclipse.nebula.widgets.geomap.jface.LocationProvider;
 
@@ -12,30 +10,15 @@ import no.hal.pg.osm.geoutil.LatLong;
 
 public class OsmLocationProvider implements LocationProvider {
 
-	protected PointD getLonLat(Object element, int distance) {
+	@Override
+	public PointD getLonLat(Object element) {
 		if (element instanceof GeoLocated) {
 			LatLong latLong = ((GeoLocated) element).getLatLong();
 			if (latLong != null) {
 				return new PointD(latLong.longitude, latLong.latitude);
 			}
-		} else if (element instanceof EObject && distance > 0) {
-			EObject eObject = (EObject) element;
-			for (EReference ref : eObject.eClass().getEAllReferences()) {
-				if (! (ref.isContainer() || ref.isContainment())) {
-					Object value = eObject.eGet(ref);
-					PointD point = getLonLat(value, distance - 1);
-					if (point != null) {
-						return point;
-					}
-				}
-			}
 		}
 		return null;
-	}
-	
-	@Override
-	public PointD getLonLat(Object element) {
-		return getLonLat(element, 1);
 	}
 
 	@Override

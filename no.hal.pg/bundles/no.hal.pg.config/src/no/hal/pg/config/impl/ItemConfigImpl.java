@@ -11,7 +11,6 @@ import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.runtime.Item;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -32,7 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements ItemConfig {
 	/**
-	 * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference.
+	 * The cached value of the '{@link #getLocation() <em>Location</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLocation()
@@ -66,6 +65,14 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * @generated
 	 */
 	public GeoLocated getLocation() {
+		if (location != null && location.eIsProxy()) {
+			InternalEObject oldLocation = (InternalEObject)location;
+			location = (GeoLocated)eResolveProxy(oldLocation);
+			if (location != oldLocation) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ConfigPackage.ITEM_CONFIG__LOCATION, oldLocation, location));
+			}
+		}
 		return location;
 	}
 
@@ -74,14 +81,8 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLocation(GeoLocated newLocation, NotificationChain msgs) {
-		GeoLocated oldLocation = location;
-		location = newLocation;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ConfigPackage.ITEM_CONFIG__LOCATION, oldLocation, newLocation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public GeoLocated basicGetLocation() {
+		return location;
 	}
 
 	/**
@@ -90,17 +91,10 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * @generated
 	 */
 	public void setLocation(GeoLocated newLocation) {
-		if (newLocation != location) {
-			NotificationChain msgs = null;
-			if (location != null)
-				msgs = ((InternalEObject)location).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.ITEM_CONFIG__LOCATION, null, msgs);
-			if (newLocation != null)
-				msgs = ((InternalEObject)newLocation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ConfigPackage.ITEM_CONFIG__LOCATION, null, msgs);
-			msgs = basicSetLocation(newLocation, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ITEM_CONFIG__LOCATION, newLocation, newLocation));
+		GeoLocated oldLocation = location;
+		location = newLocation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ConfigPackage.ITEM_CONFIG__LOCATION, oldLocation, location));
 	}
 
 	/**
@@ -120,24 +114,11 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ConfigPackage.ITEM_CONFIG__LOCATION:
-				return basicSetLocation(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ConfigPackage.ITEM_CONFIG__LOCATION:
-				return getLocation();
+				if (resolve) return getLocation();
+				return basicGetLocation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

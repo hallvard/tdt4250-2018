@@ -113,13 +113,22 @@ public interface ConfigPackage extends EPackage {
 	int GAME_CONFIG__ITEM_PROXIES = 4;
 
 	/**
+	 * The feature id for the '<em><b>Locations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_CONFIG__LOCATIONS = 5;
+
+	/**
 	 * The number of structural features of the '<em>Game Config</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_CONFIG_FEATURE_COUNT = 5;
+	int GAME_CONFIG_FEATURE_COUNT = 6;
 
 	/**
 	 * The number of operations of the '<em>Game Config</em>' class.
@@ -260,7 +269,7 @@ public interface ConfigPackage extends EPackage {
 	int ITEM_CONFIG__DESCRIPTION = ABSTRACT_CONFIG__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Location</b></em>' containment reference.
+	 * The feature id for the '<em><b>Location</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -324,7 +333,7 @@ public interface ConfigPackage extends EPackage {
 	int INFO_ITEM_CONFIG__DESCRIPTION = ITEM_CONFIG__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Location</b></em>' containment reference.
+	 * The feature id for the '<em><b>Location</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -672,6 +681,17 @@ public interface ConfigPackage extends EPackage {
 	EReference getGameConfig_ItemProxies();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.config.GameConfig#getLocations <em>Locations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Locations</em>'.
+	 * @see no.hal.pg.config.GameConfig#getLocations()
+	 * @see #getGameConfig()
+	 * @generated
+	 */
+	EReference getGameConfig_Locations();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.config.AbstractConfig <em>Abstract Config</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -734,10 +754,10 @@ public interface ConfigPackage extends EPackage {
 	EClass getItemConfig();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link no.hal.pg.config.ItemConfig#getLocation <em>Location</em>}'.
+	 * Returns the meta object for the reference '{@link no.hal.pg.config.ItemConfig#getLocation <em>Location</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Location</em>'.
+	 * @return the meta object for the reference '<em>Location</em>'.
 	 * @see no.hal.pg.config.ItemConfig#getLocation()
 	 * @see #getItemConfig()
 	 * @generated
@@ -977,6 +997,14 @@ public interface ConfigPackage extends EPackage {
 		EReference GAME_CONFIG__ITEM_PROXIES = eINSTANCE.getGameConfig_ItemProxies();
 
 		/**
+		 * The meta object literal for the '<em><b>Locations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GAME_CONFIG__LOCATIONS = eINSTANCE.getGameConfig_Locations();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.config.impl.AbstractConfigImpl <em>Abstract Config</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1031,7 +1059,7 @@ public interface ConfigPackage extends EPackage {
 		EClass ITEM_CONFIG = eINSTANCE.getItemConfig();
 
 		/**
-		 * The meta object literal for the '<em><b>Location</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Location</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

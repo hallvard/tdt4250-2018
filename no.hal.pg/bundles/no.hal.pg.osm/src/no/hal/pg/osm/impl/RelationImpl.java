@@ -2,8 +2,10 @@
  */
 package no.hal.pg.osm.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
+import no.hal.pg.osm.GeoLocated;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import no.hal.pg.osm.Member;
 import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.osm.Relation;
+import no.hal.pg.osm.geoutil.LatLong;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,11 +66,22 @@ public class RelationImpl extends OSMElementImpl implements Relation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Member> getMembers() {
 		if (members == null) {
 			members = new EObjectContainmentEList<Member>(Member.class, this, OsmPackage.RELATION__MEMBERS);
 		}
 		return members;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public LatLong getLatLong() {
+		return WayImpl.getLatLong(getMembers()); 
 	}
 
 	/**
@@ -142,6 +156,36 @@ public class RelationImpl extends OSMElementImpl implements Relation {
 				return members != null && !members.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == GeoLocated.class) {
+			switch (baseOperationID) {
+				case OsmPackage.GEO_LOCATED___GET_LAT_LONG: return OsmPackage.RELATION___GET_LAT_LONG;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case OsmPackage.RELATION___GET_LAT_LONG:
+				return getLatLong();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //RelationImpl

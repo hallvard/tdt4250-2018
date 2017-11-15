@@ -17,6 +17,8 @@
         eType="#//TaskProxy" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="itemProxies" upperBound="-1"
         eType="#//ItemProxy" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractConfig" abstract="true">
     <eTypeParameters name="T"/>
@@ -41,8 +43,7 @@
     <eOperations name="createItem" eType="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Item">
       <eParameters name="proxy" eType="#//ItemProxy"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="ecore:EClass ../../no.hal.pg.osm/model/osm.ecore#//GeoLocated"/>
     <eGenericSuperTypes eClassifier="#//AbstractConfig">
       <eTypeArguments eClassifier="ecore:EClass ../../no.hal.pg.runtime/model/runtime.ecore#//Item"/>
     </eGenericSuperTypes>

@@ -2,6 +2,7 @@
  */
 package no.hal.pg.config;
 
+import no.hal.pg.osm.GeoLocated;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link no.hal.pg.config.GameConfig#getItems <em>Items</em>}</li>
  *   <li>{@link no.hal.pg.config.GameConfig#getTaskProxies <em>Task Proxies</em>}</li>
  *   <li>{@link no.hal.pg.config.GameConfig#getItemProxies <em>Item Proxies</em>}</li>
+ *   <li>{@link no.hal.pg.config.GameConfig#getLocations <em>Locations</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.config.ConfigPackage#getGameConfig()
@@ -106,5 +108,21 @@ public interface GameConfig extends EObject {
 	 * @generated
 	 */
 	EList<ItemProxy> getItemProxies();
+
+	/**
+	 * Returns the value of the '<em><b>Locations</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.osm.GeoLocated}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Locations</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Locations</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getGameConfig_Locations()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<GeoLocated> getLocations();
 
 } // GameDef

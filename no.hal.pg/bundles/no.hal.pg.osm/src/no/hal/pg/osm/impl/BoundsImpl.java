@@ -2,13 +2,16 @@
  */
 package no.hal.pg.osm.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import no.hal.pg.osm.Bounds;
 import no.hal.pg.osm.OsmPackage;
+import no.hal.pg.osm.geoutil.LatLong;
 
 /**
  * <!-- begin-user-doc -->
@@ -131,6 +134,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getMinLatitute() {
 		return minLatitute;
 	}
@@ -140,6 +144,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinLatitute(float newMinLatitute) {
 		float oldMinLatitute = minLatitute;
 		minLatitute = newMinLatitute;
@@ -152,6 +157,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getMinLongitude() {
 		return minLongitude;
 	}
@@ -161,6 +167,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMinLongitude(float newMinLongitude) {
 		float oldMinLongitude = minLongitude;
 		minLongitude = newMinLongitude;
@@ -173,6 +180,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getMaxLatitude() {
 		return maxLatitude;
 	}
@@ -182,6 +190,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxLatitude(float newMaxLatitude) {
 		float oldMaxLatitude = maxLatitude;
 		maxLatitude = newMaxLatitude;
@@ -194,6 +203,7 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public float getMaxLongitude() {
 		return maxLongitude;
 	}
@@ -203,11 +213,22 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMaxLongitude(float newMaxLongitude) {
 		float oldMaxLongitude = maxLongitude;
 		maxLongitude = newMaxLongitude;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.BOUNDS__MAX_LONGITUDE, oldMaxLongitude, maxLongitude));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public LatLong getLatLong() {
+		return new LatLong((getMinLatitute() + getMaxLatitude()) / 2, (getMinLongitude() + getMaxLongitude()) / 2);
 	}
 
 	/**
@@ -296,6 +317,20 @@ public class BoundsImpl extends MinimalEObjectImpl.Container implements Bounds {
 				return maxLongitude != MAX_LONGITUDE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case OsmPackage.BOUNDS___GET_LAT_LONG:
+				return getLatLong();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

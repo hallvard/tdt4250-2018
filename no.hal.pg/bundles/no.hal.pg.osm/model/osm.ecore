@@ -38,7 +38,7 @@
     </eAnnotations>
     <eOperations name="getLatLong" eType="#//LatLong"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Way" eSuperTypes="#//OSMElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Way" eSuperTypes="#//OSMElement #//GeoLocated">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
         eType="#//NodeRef" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -110,7 +110,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Relation" eSuperTypes="#//OSMElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Relation" eSuperTypes="#//OSMElement #//GeoLocated">
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
         eType="#//Member" containment="true">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -119,7 +119,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Member">
+  <eClassifiers xsi:type="ecore:EClass" name="Member" eSuperTypes="#//GeoLocated">
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//OSMElement">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="ref"/>
@@ -129,7 +129,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Bounds">
+  <eClassifiers xsi:type="ecore:EClass" name="Bounds" eSuperTypes="#//GeoLocated">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLatitute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="name" value="minlat"/>
@@ -155,7 +155,7 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OSM">
+  <eClassifiers xsi:type="ecore:EClass" name="OSM" eSuperTypes="#//GeoLocated">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="osm"/>
     </eAnnotations>

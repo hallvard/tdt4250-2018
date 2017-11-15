@@ -19,6 +19,7 @@ import no.hal.pg.config.ItemProxy;
 import no.hal.pg.config.PlayerRole;
 import no.hal.pg.config.TaskConfig;
 import no.hal.pg.config.TaskProxy;
+import no.hal.pg.osm.GeoLocated;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,6 +34,7 @@ import no.hal.pg.config.TaskProxy;
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getItems <em>Items</em>}</li>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getTaskProxies <em>Task Proxies</em>}</li>
  *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getItemProxies <em>Item Proxies</em>}</li>
+ *   <li>{@link no.hal.pg.config.impl.GameConfigImpl#getLocations <em>Locations</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,6 +89,16 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * @ordered
 	 */
 	protected EList<ItemProxy> itemProxies;
+
+	/**
+	 * The cached value of the '{@link #getLocations() <em>Locations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLocations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<GeoLocated> locations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -173,6 +185,18 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<GeoLocated> getLocations() {
+		if (locations == null) {
+			locations = new EObjectContainmentEList<GeoLocated>(GeoLocated.class, this, ConfigPackage.GAME_CONFIG__LOCATIONS);
+		}
+		return locations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -186,6 +210,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				return ((InternalEList<?>)getTaskProxies()).basicRemove(otherEnd, msgs);
 			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
 				return ((InternalEList<?>)getItemProxies()).basicRemove(otherEnd, msgs);
+			case ConfigPackage.GAME_CONFIG__LOCATIONS:
+				return ((InternalEList<?>)getLocations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -208,6 +234,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				return getTaskProxies();
 			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
 				return getItemProxies();
+			case ConfigPackage.GAME_CONFIG__LOCATIONS:
+				return getLocations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -241,6 +269,10 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				getItemProxies().clear();
 				getItemProxies().addAll((Collection<? extends ItemProxy>)newValue);
 				return;
+			case ConfigPackage.GAME_CONFIG__LOCATIONS:
+				getLocations().clear();
+				getLocations().addAll((Collection<? extends GeoLocated>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -268,6 +300,9 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
 				getItemProxies().clear();
 				return;
+			case ConfigPackage.GAME_CONFIG__LOCATIONS:
+				getLocations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -290,6 +325,8 @@ public class GameConfigImpl extends MinimalEObjectImpl.Container implements Game
 				return taskProxies != null && !taskProxies.isEmpty();
 			case ConfigPackage.GAME_CONFIG__ITEM_PROXIES:
 				return itemProxies != null && !itemProxies.isEmpty();
+			case ConfigPackage.GAME_CONFIG__LOCATIONS:
+				return locations != null && !locations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

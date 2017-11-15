@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Way extends OSMElement {
+public interface Way extends OSMElement, GeoLocated {
 	/**
 	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.osm.NodeRef}.

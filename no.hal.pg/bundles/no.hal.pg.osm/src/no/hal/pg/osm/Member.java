@@ -2,8 +2,6 @@
  */
 package no.hal.pg.osm;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Member</b></em>'.
@@ -22,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Member extends EObject {
+public interface Member extends GeoLocated {
 	/**
 	 * Returns the value of the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -2,6 +2,7 @@
  */
 package no.hal.pg.osm.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -22,6 +23,7 @@ import no.hal.pg.osm.OSM;
 import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.osm.Relation;
 import no.hal.pg.osm.Way;
+import no.hal.pg.osm.geoutil.LatLong;
 
 /**
  * <!-- begin-user-doc -->
@@ -192,7 +194,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	@Override
 	public EList<Node> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectContainmentEList<Node>(Node.class, this, OsmPackage.OSM__NODES);
+			nodes = new EObjectContainmentEList<>(Node.class, this, OsmPackage.OSM__NODES);
 		}
 		return nodes;
 	}
@@ -205,7 +207,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	@Override
 	public EList<Way> getWays() {
 		if (ways == null) {
-			ways = new EObjectContainmentEList<Way>(Way.class, this, OsmPackage.OSM__WAYS);
+			ways = new EObjectContainmentEList<>(Way.class, this, OsmPackage.OSM__WAYS);
 		}
 		return ways;
 	}
@@ -218,7 +220,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	@Override
 	public EList<Relation> getRelations() {
 		if (relations == null) {
-			relations = new EObjectContainmentEList<Relation>(Relation.class, this, OsmPackage.OSM__RELATIONS);
+			relations = new EObjectContainmentEList<>(Relation.class, this, OsmPackage.OSM__RELATIONS);
 		}
 		return relations;
 	}
@@ -322,7 +324,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	@Override
 	public EList<Note> getNotes() {
 		if (notes == null) {
-			notes = new EObjectContainmentEList<Note>(Note.class, this, OsmPackage.OSM__NOTES);
+			notes = new EObjectContainmentEList<>(Note.class, this, OsmPackage.OSM__NOTES);
 		}
 		return notes;
 	}
@@ -335,7 +337,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	@Override
 	public EList<MetaData> getMetaData() {
 		if (metaData == null) {
-			metaData = new EObjectContainmentEList<MetaData>(MetaData.class, this, OsmPackage.OSM__META_DATA);
+			metaData = new EObjectContainmentEList<>(MetaData.class, this, OsmPackage.OSM__META_DATA);
 		}
 		return metaData;
 	}
@@ -345,6 +347,7 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCopyright() {
 		return copyright;
 	}
@@ -354,11 +357,22 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCopyright(String newCopyright) {
 		String oldCopyright = copyright;
 		copyright = newCopyright;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.OSM__COPYRIGHT, oldCopyright, copyright));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public LatLong getLatLong() {
+		return (getBounds() != null ? getBounds().getLatLong() : null);
 	}
 
 	/**
@@ -527,6 +541,20 @@ public class OSMImpl extends MinimalEObjectImpl.Container implements OSM {
 				return COPYRIGHT_EDEFAULT == null ? copyright != null : !COPYRIGHT_EDEFAULT.equals(copyright);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case OsmPackage.OSM___GET_LAT_LONG:
+				return getLatLong();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -223,6 +223,15 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getGameConfig_Locations() {
+		return (EReference)gameConfigEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractConfig() {
 		return abstractConfigEClass;
 	}
@@ -450,6 +459,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		createEReference(gameConfigEClass, GAME_CONFIG__ITEMS);
 		createEReference(gameConfigEClass, GAME_CONFIG__TASK_PROXIES);
 		createEReference(gameConfigEClass, GAME_CONFIG__ITEM_PROXIES);
+		createEReference(gameConfigEClass, GAME_CONFIG__LOCATIONS);
 
 		abstractConfigEClass = createEClass(ABSTRACT_CONFIG);
 		createEAttribute(abstractConfigEClass, ABSTRACT_CONFIG__NAME);
@@ -506,9 +516,9 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		OsmPackage theOsmPackage = (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		RuntimePackage theRuntimePackage = (RuntimePackage)EPackage.Registry.INSTANCE.getEPackage(RuntimePackage.eNS_URI);
-		OsmPackage theOsmPackage = (OsmPackage)EPackage.Registry.INSTANCE.getEPackage(OsmPackage.eNS_URI);
 
 		// Create type parameters
 		addETypeParameter(abstractConfigEClass, "T");
@@ -554,6 +564,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEReference(getGameConfig_Items(), this.getItemConfig(), null, "items", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGameConfig_TaskProxies(), this.getTaskProxy(), null, "taskProxies", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getGameConfig_ItemProxies(), this.getItemProxy(), null, "itemProxies", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameConfig_Locations(), theOsmPackage.getGeoLocated(), null, "locations", null, 0, -1, GameConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractConfigEClass, AbstractConfig.class, "AbstractConfig", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractConfig_Name(), theEcorePackage.getEString(), "name", null, 0, 1, AbstractConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -567,7 +578,7 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEOperation(op, g1);
 
 		initEClass(itemConfigEClass, ItemConfig.class, "ItemConfig", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getItemConfig_Location(), theOsmPackage.getGeoLocated(), null, "location", null, 0, 1, ItemConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItemConfig_Location(), theOsmPackage.getGeoLocated(), null, "location", null, 0, 1, ItemConfig.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = initEOperation(getItemConfig__CreateItem__ItemProxy(), theRuntimePackage.getItem(), "createItem", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getItemProxy(), "proxy", 0, 1, IS_UNIQUE, IS_ORDERED);

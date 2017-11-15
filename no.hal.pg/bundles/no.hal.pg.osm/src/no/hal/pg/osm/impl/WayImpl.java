@@ -2,18 +2,22 @@
  */
 package no.hal.pg.osm.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.NodeRef;
 import no.hal.pg.osm.OsmPackage;
 import no.hal.pg.osm.Way;
+import no.hal.pg.osm.geoutil.LatLong;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,11 +67,38 @@ public class WayImpl extends OSMElementImpl implements Way {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<NodeRef> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectContainmentEList<NodeRef>(NodeRef.class, this, OsmPackage.WAY__NODES);
 		}
 		return nodes;
+	}
+
+	static LatLong getLatLong(Iterable<? extends EObject> elements) {
+		double lat = 0.0, lon = 0.0;
+		int count = 0;
+		for (EObject element : elements) {
+			if (element instanceof GeoLocated) {
+				LatLong latLong = ((GeoLocated) element).getLatLong();
+				if (latLong != null) {
+					lat += latLong.latitude;
+					lon += latLong.longitude;
+					count++;
+				}
+			}
+		}
+		return (count > 0 ? new LatLong(lat / count, lon / count) : null); 
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public LatLong getLatLong() {
+		return getLatLong(getNodes()); 
 	}
 
 	/**
@@ -142,6 +173,36 @@ public class WayImpl extends OSMElementImpl implements Way {
 				return nodes != null && !nodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == GeoLocated.class) {
+			switch (baseOperationID) {
+				case OsmPackage.GEO_LOCATED___GET_LAT_LONG: return OsmPackage.WAY___GET_LAT_LONG;
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case OsmPackage.WAY___GET_LAT_LONG:
+				return getLatLong();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //WayImpl

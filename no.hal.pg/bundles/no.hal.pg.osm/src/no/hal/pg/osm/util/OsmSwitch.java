@@ -101,6 +101,7 @@ public class OsmSwitch<T> extends Switch<T> {
 				Way way = (Way)theEObject;
 				T result = caseWay(way);
 				if (result == null) result = caseOSMElement(way);
+				if (result == null) result = caseGeoLocated(way);
 				if (result == null) result = caseTags(way);
 				if (result == null) result = caseTagged(way);
 				if (result == null) result = defaultCase(theEObject);
@@ -144,6 +145,7 @@ public class OsmSwitch<T> extends Switch<T> {
 				Relation relation = (Relation)theEObject;
 				T result = caseRelation(relation);
 				if (result == null) result = caseOSMElement(relation);
+				if (result == null) result = caseGeoLocated(relation);
 				if (result == null) result = caseTags(relation);
 				if (result == null) result = caseTagged(relation);
 				if (result == null) result = defaultCase(theEObject);
@@ -152,18 +154,21 @@ public class OsmSwitch<T> extends Switch<T> {
 			case OsmPackage.MEMBER: {
 				Member member = (Member)theEObject;
 				T result = caseMember(member);
+				if (result == null) result = caseGeoLocated(member);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case OsmPackage.BOUNDS: {
 				Bounds bounds = (Bounds)theEObject;
 				T result = caseBounds(bounds);
+				if (result == null) result = caseGeoLocated(bounds);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case OsmPackage.OSM: {
 				OSM osm = (OSM)theEObject;
 				T result = caseOSM(osm);
+				if (result == null) result = caseGeoLocated(osm);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

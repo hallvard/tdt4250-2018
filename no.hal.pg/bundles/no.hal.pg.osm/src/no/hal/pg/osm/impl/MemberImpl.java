@@ -2,15 +2,19 @@
  */
 package no.hal.pg.osm.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import no.hal.pg.osm.GeoLocated;
 import no.hal.pg.osm.Member;
 import no.hal.pg.osm.OSMElement;
 import no.hal.pg.osm.OsmPackage;
+import no.hal.pg.osm.geoutil.LatLong;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,6 +106,7 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public OSMElement getReference() {
 		if (reference != null && reference.eIsProxy()) {
 			InternalEObject oldReference = (InternalEObject)reference;
@@ -128,6 +133,7 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReference(OSMElement newReference) {
 		OSMElement oldReference = reference;
 		reference = newReference;
@@ -140,6 +146,7 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getType() {
 		return type;
 	}
@@ -149,6 +156,7 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(String newType) {
 		String oldType = type;
 		type = newType;
@@ -161,6 +169,7 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRole() {
 		return role;
 	}
@@ -170,11 +179,22 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRole(String newRole) {
 		String oldRole = role;
 		role = newRole;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, OsmPackage.MEMBER__ROLE, oldRole, role));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public LatLong getLatLong() {
+		return (getReference() instanceof GeoLocated ? ((GeoLocated) getReference()).getLatLong() : null);
 	}
 
 	/**
@@ -254,6 +274,20 @@ public class MemberImpl extends MinimalEObjectImpl.Container implements Member {
 				return ROLE_EDEFAULT == null ? role != null : !ROLE_EDEFAULT.equals(role);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case OsmPackage.MEMBER___GET_LAT_LONG:
+				return getLatLong();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

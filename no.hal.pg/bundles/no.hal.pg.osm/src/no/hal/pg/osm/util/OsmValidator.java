@@ -238,7 +238,17 @@ public class OsmValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateWay(Way way, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(way, diagnostics, context);
+		if (!validate_NoCircularContainment(way, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(way, diagnostics, context);
+		if (result || diagnostics != null) result &= validateGeoLocated_validCoordinates(way, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -302,7 +312,17 @@ public class OsmValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRelation(Relation relation, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(relation, diagnostics, context);
+		if (!validate_NoCircularContainment(relation, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(relation, diagnostics, context);
+		if (result || diagnostics != null) result &= validateGeoLocated_validCoordinates(relation, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -311,7 +331,17 @@ public class OsmValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMember(Member member, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(member, diagnostics, context);
+		if (!validate_NoCircularContainment(member, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(member, diagnostics, context);
+		if (result || diagnostics != null) result &= validateGeoLocated_validCoordinates(member, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -320,7 +350,17 @@ public class OsmValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateBounds(Bounds bounds, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(bounds, diagnostics, context);
+		if (!validate_NoCircularContainment(bounds, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(bounds, diagnostics, context);
+		if (result || diagnostics != null) result &= validateGeoLocated_validCoordinates(bounds, diagnostics, context);
+		return result;
 	}
 
 	/**
@@ -329,7 +369,17 @@ public class OsmValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOSM(OSM osm, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(osm, diagnostics, context);
+		if (!validate_NoCircularContainment(osm, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(osm, diagnostics, context);
+		if (result || diagnostics != null) result &= validateGeoLocated_validCoordinates(osm, diagnostics, context);
+		return result;
 	}
 
 	/**

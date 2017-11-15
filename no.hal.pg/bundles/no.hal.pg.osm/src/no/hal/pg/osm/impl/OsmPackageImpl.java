@@ -907,10 +907,15 @@ public class OsmPackageImpl extends EPackageImpl implements OsmPackage {
 		geoLocationEClass.getESuperTypes().add(this.getGeoLocated());
 		geoLatLongEClass.getESuperTypes().add(this.getGeoLocated());
 		wayEClass.getESuperTypes().add(this.getOSMElement());
+		wayEClass.getESuperTypes().add(this.getGeoLocated());
 		nodeRefEClass.getESuperTypes().add(this.getGeoLocated());
 		osmElementEClass.getESuperTypes().add(this.getTags());
 		tagsEClass.getESuperTypes().add(this.getTagged());
 		relationEClass.getESuperTypes().add(this.getOSMElement());
+		relationEClass.getESuperTypes().add(this.getGeoLocated());
+		memberEClass.getESuperTypes().add(this.getGeoLocated());
+		boundsEClass.getESuperTypes().add(this.getGeoLocated());
+		osmEClass.getESuperTypes().add(this.getGeoLocated());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

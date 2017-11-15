@@ -2,8 +2,6 @@
  */
 package no.hal.pg.osm;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Bounds</b></em>'.
@@ -23,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Bounds extends EObject {
+public interface Bounds extends GeoLocated {
 	/**
 	 * Returns the value of the '<em><b>Min Latitute</b></em>' attribute.
 	 * <!-- begin-user-doc -->
