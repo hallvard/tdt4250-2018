@@ -3,6 +3,7 @@ package no.hal.pg.runtime.tests;
 import java.io.IOException;
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -17,6 +18,7 @@ import no.hal.pg.app.AppFactory;
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameApp;
 import no.hal.pg.app.GameView;
+import no.hal.pg.app.ItemView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.app.util.ViewFactoryUtil;
 import no.hal.pg.runtime.Game;
@@ -69,15 +71,38 @@ public class AppTest {
 		Assert.assertEquals(player, taskView.getUser());
 	}
 	
-	@Test
-	public void testTaskViewDescription() {
+	protected GameView<Task<?>> getGameView() {
 		Collection<EObject> rootObjects = loadRootObjects();
 		Assert.assertTrue(rootObjects.iterator().hasNext());
 		Assert.assertTrue(rootObjects.iterator().next() instanceof GameView<?>);
 		GameView<Task<?>> gameView = (GameView<Task<?>>) rootObjects.iterator().next();
+		return gameView;
+	}
+	
+	@Test
+	public void testTaskViewDescription() {
+		GameView<Task<?>> gameView = getGameView();
 		for (TaskView<Task<?>> taskView : gameView.getTaskViews()) {
 			Assert.assertEquals(taskView.getModel().getDescription(), taskView.getDescription());
 		}
+	}
+
+	@Test
+	public void testItemViewDescription() {
+		GameView<Task<?>> gameView = getGameView();
+		for (ItemView itemView : gameView.getAllItemViews()) {
+			Assert.assertEquals(itemView.getModel().getDescription(), itemView.getDescription());
+		}
+	}
+
+	@Test
+	public void testGameViewItemViews() {
+		GameView<Task<?>> gameView = getGameView();
+		EList<ItemView> allItemViews = gameView.getAllItemViews();
+		Assert.assertEquals(2, allItemViews.size());
+		EList<ItemView> itemViews = gameView.getItemViews();
+		Assert.assertEquals(1, itemViews.size());
+		allItemViews.containsAll(itemViews);
 	}
 
 	@Test

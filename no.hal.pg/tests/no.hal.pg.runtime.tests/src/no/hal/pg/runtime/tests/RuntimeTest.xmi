@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<runtime:Runtime xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:arc="platform:/plugin/no.hal.pg.arc/model/arc.ecore"
-	xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore"
-	xmlns:exampletask-runtime="platform:/plugin/no.hal.pg.exampletask.runtime/model/exampletask.ecore"
-	xsi:schemaLocation="platform:/plugin/no.hal.pg.arc/model/arc.ecore ../../../../../../../no.hal.pg.arc/model/arc.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore  platform:/plugin/no.hal.pg.exampletask.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.exampletask.runtime/model/exampletask.ecore">
+<runtime:Runtime xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:arc="platform:/plugin/no.hal.pg.arc/model/arc.ecore" xmlns:exampletask-runtime="platform:/plugin/no.hal.pg.exampletask.runtime/model/exampletask.ecore" xmlns:runtime="platform:/plugin/no.hal.pg.runtime/model/runtime.ecore" xsi:schemaLocation="platform:/plugin/no.hal.pg.arc/model/arc.ecore ../../../../../../../no.hal.pg.arc/model/arc.ecore platform:/plugin/no.hal.pg.runtime/model/runtime.ecore ../../../../../../../no.hal.pg.runtime/model/runtime.ecore">
   <actors xsi:type="arc:Person" name="Hallvard Trætteberg">
     <ids>hal@ntnu.no</ids>
   </actors>
   <games>
-    <players person="//@actors.0"/>
+    <players person="//@actors.0">
+      <items xsi:type="runtime:InfoItem" description="Item 2"/>
+    </players>
+    <items xsi:type="runtime:InfoItem" description="Item 1"/>
     <tasks xsi:type="exampletask-runtime:ExampleTask" players="//@games.0/@players.0"/>
     <tasks xsi:type="exampletask-runtime:ExampleTask" players="//@games.0/@players.0">
       <startConditions xsi:type="runtime:IsTaskStartedCondition" context="//@games.0/@tasks.0"/>
