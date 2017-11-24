@@ -33,6 +33,8 @@ location oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.pde.core
 	org.eclipse.update.configurator
 	org.eclipse.pde.build
+	org.eclipse.pde
+	org.eclipse.osgi.compatibility.state
 
 	org.eclipse.eef.ext.widgets.reference
 	org.eclipse.eef.core.ext.widgets.reference
