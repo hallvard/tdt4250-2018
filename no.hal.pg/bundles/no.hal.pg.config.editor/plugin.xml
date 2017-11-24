@@ -30,11 +30,11 @@
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
    </extension>
-   
+<!--
    <extension point="org.eclipse.emfforms.editor.toolbarActions">
    		<action name="LoadResource" toolbarAction="no.hal.pg.config.actions.LoadResourceToolbarAction"/>
    </extension>
-
+-->
    <extension point="org.eclipse.emfforms.editor.toolbarActions">
    		<action name="CreateGameToolbarAction" toolbarAction="no.hal.pg.config.actions.CreateGameToolbarAction"/>
    </extension>

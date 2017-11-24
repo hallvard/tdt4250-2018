@@ -15,13 +15,18 @@ import no.hal.pg.config.GameConfig;
 
 public abstract class ConfigAction extends Action implements ISelectionChangedListener {
 
+	protected final Object context;
 	protected final ISelectionProvider selectionProvider;
 	
-	protected ConfigAction(ISelectionProvider selectionProvider) {
+	protected ConfigAction(Object context, ISelectionProvider selectionProvider) {
+		this.context = context;
 		this.selectionProvider = selectionProvider;
 		updateEnabled();
 		// not supported!
 //		selectionProvider.addSelectionChangedListener(this);
+	}
+	protected ConfigAction(ISelectionProvider selectionProvider) {
+		this(null, selectionProvider);
 	}
 
 	@Override
@@ -50,7 +55,7 @@ public abstract class ConfigAction extends Action implements ISelectionChangedLi
 			EObject eObject = (EObject) object;
 			while (eObject != null) {
 				if (eObject instanceof GameConfig) {
-					return (GameConfig) object;					
+					return (GameConfig) eObject;					
 				}
 				eObject = eObject.eContainer();
 			}
@@ -60,7 +65,8 @@ public abstract class ConfigAction extends Action implements ISelectionChangedLi
 	
 	@Override
 	public void run() {
-		GameConfig gameConfig = getGameConfig(((IStructuredSelection) selectionProvider.getSelection()).getFirstElement());
+		Object selection = ((IStructuredSelection) selectionProvider.getSelection()).getFirstElement();
+		GameConfig gameConfig = getGameConfig(selection != null ? selection : context);
 		run(gameConfig);
 	}
 
