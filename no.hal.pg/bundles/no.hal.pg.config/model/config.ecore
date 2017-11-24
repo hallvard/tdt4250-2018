@@ -77,6 +77,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="PlayerRole">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="playerCount" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//ItemConfig" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemProxies" upperBound="-1"
+        eType="#//ItemProxy" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ItemProxy">
     <eGenericSuperTypes eClassifier="#//Proxy">

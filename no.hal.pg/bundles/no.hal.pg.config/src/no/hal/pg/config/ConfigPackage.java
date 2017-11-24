@@ -543,13 +543,31 @@ public interface ConfigPackage extends EPackage {
 	int PLAYER_ROLE__PLAYER_COUNT = 1;
 
 	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER_ROLE__ITEMS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Item Proxies</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLAYER_ROLE__ITEM_PROXIES = 3;
+
+	/**
 	 * The number of structural features of the '<em>Player Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLAYER_ROLE_FEATURE_COUNT = 2;
+	int PLAYER_ROLE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Player Role</em>' class.
@@ -914,6 +932,28 @@ public interface ConfigPackage extends EPackage {
 	EAttribute getPlayerRole_PlayerCount();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.config.PlayerRole#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see no.hal.pg.config.PlayerRole#getItems()
+	 * @see #getPlayerRole()
+	 * @generated
+	 */
+	EReference getPlayerRole_Items();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.config.PlayerRole#getItemProxies <em>Item Proxies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Item Proxies</em>'.
+	 * @see no.hal.pg.config.PlayerRole#getItemProxies()
+	 * @see #getPlayerRole()
+	 * @generated
+	 */
+	EReference getPlayerRole_ItemProxies();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.config.ItemProxy <em>Item Proxy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1185,6 +1225,22 @@ public interface ConfigPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute PLAYER_ROLE__PLAYER_COUNT = eINSTANCE.getPlayerRole_PlayerCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAYER_ROLE__ITEMS = eINSTANCE.getPlayerRole_Items();
+
+		/**
+		 * The meta object literal for the '<em><b>Item Proxies</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLAYER_ROLE__ITEM_PROXIES = eINSTANCE.getPlayerRole_ItemProxies();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.config.impl.ItemProxyImpl <em>Item Proxy</em>}' class.

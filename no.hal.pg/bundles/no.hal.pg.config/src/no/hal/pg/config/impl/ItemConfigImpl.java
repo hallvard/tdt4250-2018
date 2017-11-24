@@ -64,6 +64,7 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GeoLocated getLocation() {
 		if (location != null && location.eIsProxy()) {
 			InternalEObject oldLocation = (InternalEObject)location;
@@ -90,6 +91,7 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLocation(GeoLocated newLocation) {
 		GeoLocated oldLocation = location;
 		location = newLocation;
@@ -102,6 +104,7 @@ public abstract class ItemConfigImpl extends AbstractConfigImpl<Item> implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Item createItem(ItemProxy proxy) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT

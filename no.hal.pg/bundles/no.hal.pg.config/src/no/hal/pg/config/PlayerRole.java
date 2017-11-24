@@ -2,6 +2,7 @@
  */
 package no.hal.pg.config;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link no.hal.pg.config.PlayerRole#getName <em>Name</em>}</li>
  *   <li>{@link no.hal.pg.config.PlayerRole#getPlayerCount <em>Player Count</em>}</li>
+ *   <li>{@link no.hal.pg.config.PlayerRole#getItems <em>Items</em>}</li>
+ *   <li>{@link no.hal.pg.config.PlayerRole#getItemProxies <em>Item Proxies</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.config.ConfigPackage#getPlayerRole()
@@ -73,5 +76,37 @@ public interface PlayerRole extends EObject {
 	 * @generated
 	 */
 	void setPlayerCount(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Items</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.ItemConfig}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Items</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Items</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getPlayerRole_Items()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ItemConfig> getItems();
+
+	/**
+	 * Returns the value of the '<em><b>Item Proxies</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.config.ItemProxy}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Item Proxies</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Item Proxies</em>' containment reference list.
+	 * @see no.hal.pg.config.ConfigPackage#getPlayerRole_ItemProxies()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ItemProxy> getItemProxies();
 
 } // PlayerRole

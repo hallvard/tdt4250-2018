@@ -421,6 +421,24 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getPlayerRole_Items() {
+		return (EReference)playerRoleEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlayerRole_ItemProxies() {
+		return (EReference)playerRoleEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getItemProxy() {
 		return itemProxyEClass;
 	}
@@ -488,6 +506,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		playerRoleEClass = createEClass(PLAYER_ROLE);
 		createEAttribute(playerRoleEClass, PLAYER_ROLE__NAME);
 		createEAttribute(playerRoleEClass, PLAYER_ROLE__PLAYER_COUNT);
+		createEReference(playerRoleEClass, PLAYER_ROLE__ITEMS);
+		createEReference(playerRoleEClass, PLAYER_ROLE__ITEM_PROXIES);
 
 		itemProxyEClass = createEClass(ITEM_PROXY);
 	}
@@ -600,6 +620,8 @@ public class ConfigPackageImpl extends EPackageImpl implements ConfigPackage {
 		initEClass(playerRoleEClass, PlayerRole.class, "PlayerRole", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPlayerRole_Name(), theEcorePackage.getEString(), "name", null, 0, 1, PlayerRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPlayerRole_PlayerCount(), theEcorePackage.getEInt(), "playerCount", null, 0, 1, PlayerRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlayerRole_Items(), this.getItemConfig(), null, "items", null, 0, -1, PlayerRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlayerRole_ItemProxies(), this.getItemProxy(), null, "itemProxies", null, 0, -1, PlayerRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemProxyEClass, ItemProxy.class, "ItemProxy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
