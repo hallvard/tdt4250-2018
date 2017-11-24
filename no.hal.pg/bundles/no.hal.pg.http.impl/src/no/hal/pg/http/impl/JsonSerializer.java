@@ -69,16 +69,16 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 		return null;
 	}
 	
-	private Stack<EObject> occurStack;
+	private Stack<EObject> occurStack = new Stack<EObject>();
 
 	@Override
 	public void serialize(Object object, Writer writer) throws Exception {
 		try {
-			this.occurStack = new Stack<EObject>();
+			this.occurStack.clear();
 			ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
 			objectWriter.writeValue(writer, object);
 		} finally {
-			this.occurStack = null;
+			this.occurStack.clear();
 		}
 	}
 	
@@ -126,7 +126,9 @@ public class JsonSerializer extends StdSerializer<EObject> implements IResponseS
 			}
 		} finally {
 //			System.err.println("Exception while serializing " + eObject + ":" + e);
-			occurStack.pop();
+			if (! occurStack.isEmpty()) {
+				occurStack.pop();
+			}
 		}
 	}
 
