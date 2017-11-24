@@ -294,15 +294,6 @@ public interface RuntimePackage extends EPackage {
 	int EXAMPLE_TASK_VIEW__MODEL = AppPackage.TASK_VIEW__MODEL;
 
 	/**
-	 * The feature id for the '<em><b>Game View</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXAMPLE_TASK_VIEW__GAME_VIEW = AppPackage.TASK_VIEW__GAME_VIEW;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

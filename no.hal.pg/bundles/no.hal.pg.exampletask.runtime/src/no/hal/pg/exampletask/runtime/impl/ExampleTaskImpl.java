@@ -149,7 +149,7 @@ public class ExampleTaskImpl extends ResettableTaskImpl<Boolean> implements Exam
 	 */
 	@Override
 	public boolean isAnsweredCorrectly() {
-		return Boolean.valueOf(isCorrectAnswer()).equals(getResult());
+		return Boolean.TRUE.equals(getResult());
 	}
 
 	/**
