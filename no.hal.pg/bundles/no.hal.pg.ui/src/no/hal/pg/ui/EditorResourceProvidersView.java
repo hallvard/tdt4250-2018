@@ -28,8 +28,7 @@ import no.hal.pg.http.impl.ResourceProvider;
 
 public class EditorResourceProvidersView extends AbstractSelectionView {
 
-	private Map<IEditingDomainProvider, String> resources = new HashMap<>();
-	private Map<String, ResourceProvider> resourceProviders = new HashMap<>();
+	private Map<IEditingDomainProvider, ResourceProvider> resourceProviders = new HashMap<>();
 	private Map<ResourceProvider, ServiceRegistration<IResourceProvider>> resourceRegistrations = new HashMap<>();
 
 	protected Resource getResource(IEditingDomainProvider element) {
@@ -67,7 +66,7 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 		nameColumn.setLabelProvider(new CellLabelProvider() {
 			@Override
 			public void update(ViewerCell cell) {
-				cell.setText(resources.get(cell.getElement()));
+				cell.setText(resourceProviders.get(cell.getElement()).getName());
 			}
 		});
 		nameColumn.setEditingSupport(new EditingSupport(viewer) {
@@ -79,7 +78,7 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 			}
 			@Override
 			protected Object getValue(Object element) {
-				return resources.get(element);
+				return resourceProviders.get(element).getName();
 			}
 			
 			@Override
@@ -111,29 +110,32 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 			@Override
 			public boolean isChecked(Object element) {
 				IEditingDomainProvider editingDomainProvider = (IEditingDomainProvider) element;
-				return hasResourceProvider(editingDomainProvider);
+				return resourceProviders.containsKey(editingDomainProvider) && resourceRegistrations.containsKey(resourceProviders.get(editingDomainProvider));
 			}
 		});
 		this.viewer.addCheckStateListener(new ICheckStateListener() {
 			@Override
 			public void checkStateChanged(CheckStateChangedEvent event) {
 				if (event.getChecked()) {
-					addResourceProvider((IEditingDomainProvider) event.getElement());
+					registerResourceProvider((IEditingDomainProvider) event.getElement());
 				} else {
-					removeResourceProvider((IEditingDomainProvider) event.getElement());					
+					unregisterResourceProvider((IEditingDomainProvider) event.getElement());					
 				}
 			}
 		});
 		IEditorPart editor = getViewSite().getWorkbenchWindow().getActivePage().getActiveEditor();
-		if (editor instanceof IEditingDomainProvider) {
+		IEditingDomainProvider editingDomainProvider = getAdapter(editor, IEditingDomainProvider.class);
+		if (editingDomainProvider != null) {
 			addResource((IEditingDomainProvider) editor);
 		}
-		this.viewer.setInput(resources);
+		this.viewer.setInput(resourceProviders);
 	}
-	
+
 	@Override
 	protected void updateView() {
-		viewer.refresh();
+		if (! viewer.getControl().isDisposed()) {
+			viewer.refresh();
+		}
 	}
 
 	protected void updateView(IEditingDomainProvider editingDomainProvider) {
@@ -142,76 +144,77 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 
 	@Override
 	public void partActivated(IWorkbenchPart part) {
-		super.partActivated(part);
 		if (part instanceof IEditingDomainProvider) {
 			addResource((IEditingDomainProvider) part);
 		}
+		super.partActivated(part);
 	}
 
 	@Override
 	public void partClosed(IWorkbenchPart part) {
-		super.partClosed(part);
 		if (part instanceof IEditingDomainProvider) {
 			removeResource((IEditingDomainProvider) part);
 		}
+		super.partClosed(part);
 	}
 
 	protected void addResource(IEditingDomainProvider editingDomainProvider) {
-		Resource resource = getResource(editingDomainProvider);
-		if (resource != null) {
-			resources.put(editingDomainProvider, ResourceProvider.defaultName(resource.getURI()));
+		if (! resourceProviders.containsKey(editingDomainProvider)) {
+			Resource resource = getResource(editingDomainProvider);
+			if (resource != null) {
+				resourceProviders.put(editingDomainProvider, new ResourceProvider(resource));
+			}
 		}
 	}
 
 	protected void removeResource(IEditingDomainProvider editingDomainProvider) {
-		Resource resource = getResource(editingDomainProvider);
-		if (resource != null) {
-			if (hasResourceProvider(editingDomainProvider)) {
-				removeResourceProvider(editingDomainProvider);
-			}
-			resources.remove(editingDomainProvider);
+		if (resourceProviders.containsKey(editingDomainProvider)) {
+			unregisterResourceProvider(editingDomainProvider);
+			resourceProviders.remove(editingDomainProvider);
 		}
 		updateView(editingDomainProvider);
 	}
 	
-	protected boolean hasResourceProvider(IEditingDomainProvider editingDomainProvider) {
-		return resourceProviders.containsKey(resources.get(editingDomainProvider));
-	}
-
 	protected void changeResourceName(IEditingDomainProvider editingDomainProvider, String newName) {
-		if (hasResourceProvider(editingDomainProvider)) {
-			removeResourceProvider(editingDomainProvider);
-			resources.put(editingDomainProvider, newName);
-			addResourceProvider(editingDomainProvider);					
-		} else {
-			resources.put(editingDomainProvider, newName);
-			updateView(editingDomainProvider);
+		ResourceProvider resourceProvider = resourceProviders.get(editingDomainProvider);
+		if (resourceProvider != null) {
+			if (resourceRegistrations.containsKey(resourceProvider)) {
+				unregisterResourceProvider(editingDomainProvider);
+				resourceProvider.setName(newName);
+				registerResourceProvider(editingDomainProvider);					
+			} else {
+				resourceProvider.setName(newName);
+				updateView();
+			}
 		}
 	}
 
-	protected void addResourceProvider(IEditingDomainProvider editingDomainProvider) {
-		Resource resource = getResource(editingDomainProvider);
-		if (resource != null) {
-			ResourceProvider resourceProvider = new ResourceProvider(resource);
-			String name = resources.get(editingDomainProvider);
-			resourceProvider.setName(name);
+	public void registerResourceProvider(IWorkbenchPart part) {
+		IEditingDomainProvider editingDomainProvider = getAdapter(part, IEditingDomainProvider.class);
+		if (resourceProviders.containsKey(editingDomainProvider)) {
+			registerResourceProvider(editingDomainProvider);
+		}
+	}
+	
+	protected void registerResourceProvider(IEditingDomainProvider editingDomainProvider) {
+		ResourceProvider resourceProvider = resourceProviders.get(editingDomainProvider);
+		if (resourceProvider != null && (! resourceRegistrations.containsKey(resourceProvider))) {
 			// register IResourceProvider, so it will be served by the ResourceServlet
 			ServiceRegistration<IResourceProvider> serviceRegistration = FrameworkUtil.getBundle(getClass()).getBundleContext().registerService(IResourceProvider.class, resourceProvider, null);
 			resourceRegistrations.put(resourceProvider, serviceRegistration);
-			String key = name;
-			resourceProviders.put(key, resourceProvider);
 		}
 		updateView(editingDomainProvider);
 	}
 
-	protected void removeResourceProvider(IEditingDomainProvider editingDomainProvider) {
-		String key = resources.get(editingDomainProvider);
-		ResourceProvider resourceProvider = resourceProviders.get(key);
-		ServiceRegistration<IResourceProvider> serviceRegistration = resourceRegistrations.get(resourceProvider);
-		// unregister IResourceProvider, so it no longer will be servered by the ResourceServlet
-		serviceRegistration.unregister();
-		resourceProviders.remove(key);
-		updateView(editingDomainProvider);
+	protected void unregisterResourceProvider(IEditingDomainProvider editingDomainProvider) {
+		ResourceProvider resourceProvider = resourceProviders.get(editingDomainProvider);
+		if (resourceProvider != null && resourceRegistrations.containsKey(resourceProvider)) {
+			ServiceRegistration<IResourceProvider> serviceRegistration = resourceRegistrations.get(resourceProvider);
+			// unregister IResourceProvider, so it no longer will be servered by the ResourceServlet
+			serviceRegistration.unregister();
+			resourceRegistrations.remove(resourceProvider);
+			updateView(editingDomainProvider);
+		}
 	}
 
 	@Override
