@@ -6,11 +6,13 @@ this.props:
 	dataUrl: the url that returns the current Game object
 	player: { person : { } }
 	taskViews: [ ]
+	itemViews: [ ]
 }
 this.state:
 {
 	player: { person : { } }
 	taskViews: [ ]
+	itemViews: [ ]
 }
 */
 
@@ -51,9 +53,28 @@ class GameView extends React.Component {
       		"table", { className: "taskList" },
       		React.createElement("tbody", null, taskRows)
     		);
+
+  		var itemRows = this.state.itemViews.map(function(item, idx) {
+      		return React.createElement(
+          		"tr", { key: idx },
+    	    			React.createElement(
+    	      			"td", { className: "itemItem" },
+    		    			React.createElement(ItemView, { dataUrl: dataUrl + '/itemViews/' + idx, item: item, itemNum: (idx + 1) })
+    	 			)
+          	);
+  		});
+    		var itemList = React.createElement(
+      		"table", { className: "itemList" },
+      		React.createElement("tbody", null, itemRows)
+    		);
+
 	    	return React.createElement("div", { className: "game" },
-	    		React.createElement("h2", null, "Tasks"),
-	    		taskList
+	    		React.createElement("table", null,
+	    			React.createElement("tr", null,
+	    				React.createElement("td", null, React.createElement("h2", null, "Tasks"), taskList),
+	    				React.createElement("td", null, React.createElement("h2", null, "Items"), itemList),
+				)
+			)
     		);
   	}
 }

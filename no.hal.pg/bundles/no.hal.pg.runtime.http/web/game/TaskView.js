@@ -1,4 +1,4 @@
-// React component for Task
+// React component for TaskView
 
 /*
 this.props:

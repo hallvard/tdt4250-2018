@@ -21,3 +21,10 @@ a:link {
 .finishedTask {
 	background-color: lightgreen
 }
+
+.itemList {
+	font-size: 200%
+}
+.item {
+	background-color: lightgrey
+}
