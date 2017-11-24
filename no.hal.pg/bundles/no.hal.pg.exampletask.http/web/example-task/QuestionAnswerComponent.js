@@ -3,7 +3,7 @@
 /*
 this.props:
 {
-	serviceUrl: the url that returns the current ExampleTask object
+	dataUrl: the url that returns the current ExampleTask object
 }
 this.state:
 {
@@ -12,45 +12,48 @@ this.state:
 }
 */
 
-var QComponent = React.createClass({
-	displayName : "Question component",
+class QuestionAnswerComponent extends React.Component {
 
-	getInitialState : function() {
-		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl, false, function(response) {
-			AppHelper.log("Question: " + response.question, AppHelper.LOGGING_INFO);
-			comp.setState({
-				question : response.question
-			});
-		});
-		return {
-			question : this.props.question
-		};
-	},
+	constructor(props) {
+		super(props);
+		this.state = props;
+		this.testSubmitValue = this.testSubmitValue.bind(this);
+		this.navigateReturnUrl = this.navigateReturnUrl.bind(this);
+	}
 
-	testSubmitValue : function(value) {
+	displayName() {
+		return "Question component";
+	}
+
+	testSubmitValue(value) {
 		var comp = this;
-		AppHelper.loadData(this.props.serviceUrl + '/proposeAnswer?proposal=' + value, false, function(response) {
-			AppHelper.log("Accepted: " + response, AppHelper.LOGGING_INFO);
+		AppUtils.loadData(this.props.dataUrl + '/proposeAnswer?proposal=' + value, false, false, function(response) {
+			AppUtils.log("Accepted: " + response, AppUtils.LOGGING_INFO);
 			comp.setState({
 				accepted: response
 			})
 		});
-	},
+	}
 
-	render : function render() {
+	navigateReturnUrl() {
+		if (typeof this.props.returnUrl !== 'undefined') {
+			window.location.href = this.props.returnUrl;
+		}
+	}	
+
+	render() {
 		var submit = this.testSubmitValue, accepted = this.state.accepted;
 		return React.createElement("div", null,
 				React.createElement("h2", null, this.state.question),
-				React.createElement("div", null,
-					React.createElement("button",
-							{ onClick : function() { submit(true); } },
-							"Yes"),
-					React.createElement("button",
-							{ onClick : function() { submit(false); } },
-							"No")
-					),
-				React.createElement("h2", null, (typeof accepted === 'boolean' ? (accepted ? "Correct" : "Incorrect") : ""))
+				(typeof accepted === 'boolean' ? 
+					React.createElement("h2", null, (accepted ? "Correct" : "Incorrect")) :
+					React.createElement("div", null,
+						React.createElement("button", { onClick : function() { submit(true); }}, "Yes"),
+						React.createElement("button", { onClick : function() { submit(false); }}, "No")
+					)
+				),
+				React.createElement("button", { className: "back", onClick: this.navigateReturnUrl }, "Back to task list"),
+				
 		);
 	}
-});
+}
