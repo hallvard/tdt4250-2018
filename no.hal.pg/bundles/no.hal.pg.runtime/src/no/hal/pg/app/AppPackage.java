@@ -243,13 +243,31 @@ public interface AppPackage extends EPackage {
 	int GAME_VIEW__TASK_VIEWS = VIEW1_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>All Item Views</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_VIEW__ALL_ITEM_VIEWS = VIEW1_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Item Views</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GAME_VIEW__ITEM_VIEWS = VIEW1_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Game View</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GAME_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 2;
+	int GAME_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Game View</em>' class.
@@ -382,22 +400,13 @@ public interface AppPackage extends EPackage {
 	int TASK_VIEW__MODEL = VIEW1__MODEL;
 
 	/**
-	 * The feature id for the '<em><b>Game View</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_VIEW__GAME_VIEW = VIEW1_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__DESCRIPTION = VIEW1_FEATURE_COUNT + 1;
+	int TASK_VIEW__DESCRIPTION = VIEW1_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
@@ -406,7 +415,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__ENABLED = VIEW1_FEATURE_COUNT + 2;
+	int TASK_VIEW__ENABLED = VIEW1_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Started</b></em>' attribute.
@@ -415,7 +424,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__STARTED = VIEW1_FEATURE_COUNT + 3;
+	int TASK_VIEW__STARTED = VIEW1_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Finished</b></em>' attribute.
@@ -424,7 +433,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW__FINISHED = VIEW1_FEATURE_COUNT + 4;
+	int TASK_VIEW__FINISHED = VIEW1_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Task View</em>' class.
@@ -433,7 +442,7 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 5;
+	int TASK_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Start</em>' operation.
@@ -455,6 +464,61 @@ public interface AppPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link no.hal.pg.app.impl.ItemViewImpl <em>Item View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see no.hal.pg.app.impl.ItemViewImpl
+	 * @see no.hal.pg.app.impl.AppPackageImpl#getItemView()
+	 * @generated
+	 */
+	int ITEM_VIEW = 7;
+
+	/**
+	 * The feature id for the '<em><b>User</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_VIEW__USER = VIEW1__USER;
+
+	/**
+	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_VIEW__MODEL = VIEW1__MODEL;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_VIEW__DESCRIPTION = VIEW1_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Item View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_VIEW_FEATURE_COUNT = VIEW1_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Item View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_VIEW_OPERATION_COUNT = VIEW1_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -462,7 +526,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapView()
 	 * @generated
 	 */
-	int MAP_VIEW = 7;
+	int MAP_VIEW = 8;
 
 	/**
 	 * The feature id for the '<em><b>Latitude</b></em>' attribute.
@@ -553,7 +617,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getAbstractGeoLocationView()
 	 * @generated
 	 */
-	int ABSTRACT_GEO_LOCATION_VIEW = 8;
+	int ABSTRACT_GEO_LOCATION_VIEW = 9;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -608,7 +672,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getMapMarkerOptions()
 	 * @generated
 	 */
-	int MAP_MARKER_OPTIONS = 9;
+	int MAP_MARKER_OPTIONS = 10;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -663,7 +727,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocatedView()
 	 * @generated
 	 */
-	int GEO_LOCATED_VIEW = 10;
+	int GEO_LOCATED_VIEW = 11;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -727,7 +791,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoLocationView()
 	 * @generated
 	 */
-	int GEO_LOCATION_VIEW = 11;
+	int GEO_LOCATION_VIEW = 12;
 
 	/**
 	 * The feature id for the '<em><b>Lat Long</b></em>' attribute.
@@ -800,7 +864,7 @@ public interface AppPackage extends EPackage {
 	 * @see no.hal.pg.app.impl.AppPackageImpl#getGeoPolyline()
 	 * @generated
 	 */
-	int GEO_POLYLINE = 12;
+	int GEO_POLYLINE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Locations</b></em>' reference list.
@@ -945,6 +1009,28 @@ public interface AppPackage extends EPackage {
 	EReference getGameView_TaskViews();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link no.hal.pg.app.GameView#getAllItemViews <em>All Item Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>All Item Views</em>'.
+	 * @see no.hal.pg.app.GameView#getAllItemViews()
+	 * @see #getGameView()
+	 * @generated
+	 */
+	EReference getGameView_AllItemViews();
+
+	/**
+	 * Returns the meta object for the reference list '{@link no.hal.pg.app.GameView#getItemViews <em>Item Views</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Item Views</em>'.
+	 * @see no.hal.pg.app.GameView#getItemViews()
+	 * @see #getGameView()
+	 * @generated
+	 */
+	EReference getGameView_ItemViews();
+
+	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.App <em>App</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -995,17 +1081,6 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTaskView();
-
-	/**
-	 * Returns the meta object for the container reference '{@link no.hal.pg.app.TaskView#getGameView <em>Game View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Game View</em>'.
-	 * @see no.hal.pg.app.TaskView#getGameView()
-	 * @see #getTaskView()
-	 * @generated
-	 */
-	EReference getTaskView_GameView();
 
 	/**
 	 * Returns the meta object for the attribute '{@link no.hal.pg.app.TaskView#getDescription <em>Description</em>}'.
@@ -1060,6 +1135,27 @@ public interface AppPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getTaskView__Start();
+
+	/**
+	 * Returns the meta object for class '{@link no.hal.pg.app.ItemView <em>Item View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Item View</em>'.
+	 * @see no.hal.pg.app.ItemView
+	 * @generated
+	 */
+	EClass getItemView();
+
+	/**
+	 * Returns the meta object for the attribute '{@link no.hal.pg.app.ItemView#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see no.hal.pg.app.ItemView#getDescription()
+	 * @see #getItemView()
+	 * @generated
+	 */
+	EAttribute getItemView_Description();
 
 	/**
 	 * Returns the meta object for class '{@link no.hal.pg.app.MapView <em>Map View</em>}'.
@@ -1364,6 +1460,22 @@ public interface AppPackage extends EPackage {
 		EReference GAME_VIEW__TASK_VIEWS = eINSTANCE.getGameView_TaskViews();
 
 		/**
+		 * The meta object literal for the '<em><b>All Item Views</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GAME_VIEW__ALL_ITEM_VIEWS = eINSTANCE.getGameView_AllItemViews();
+
+		/**
+		 * The meta object literal for the '<em><b>Item Views</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GAME_VIEW__ITEM_VIEWS = eINSTANCE.getGameView_ItemViews();
+
+		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.AppImpl <em>App</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1410,14 +1522,6 @@ public interface AppPackage extends EPackage {
 		EClass TASK_VIEW = eINSTANCE.getTaskView();
 
 		/**
-		 * The meta object literal for the '<em><b>Game View</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK_VIEW__GAME_VIEW = eINSTANCE.getTaskView_GameView();
-
-		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1456,6 +1560,24 @@ public interface AppPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation TASK_VIEW___START = eINSTANCE.getTaskView__Start();
+
+		/**
+		 * The meta object literal for the '{@link no.hal.pg.app.impl.ItemViewImpl <em>Item View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see no.hal.pg.app.impl.ItemViewImpl
+		 * @see no.hal.pg.app.impl.AppPackageImpl#getItemView()
+		 * @generated
+		 */
+		EClass ITEM_VIEW = eINSTANCE.getItemView();
+
+		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM_VIEW__DESCRIPTION = eINSTANCE.getItemView_Description();
 
 		/**
 		 * The meta object literal for the '{@link no.hal.pg.app.impl.MapViewImpl <em>Map View</em>}' class.

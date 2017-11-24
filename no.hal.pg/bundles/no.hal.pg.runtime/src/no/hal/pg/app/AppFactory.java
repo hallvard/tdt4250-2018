@@ -51,6 +51,15 @@ public interface AppFactory extends EFactory {
 	<T extends Task<?>> TaskView<T> createTaskView();
 
 	/**
+	 * Returns a new object of class '<em>Item View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Item View</em>'.
+	 * @generated
+	 */
+	ItemView createItemView();
+
+	/**
 	 * Returns a new object of class '<em>Map View</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

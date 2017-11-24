@@ -100,6 +100,10 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 				return createTaskViewAdapter();
 			}
 			@Override
+			public Adapter caseItemView(ItemView object) {
+				return createItemViewAdapter();
+			}
+			@Override
 			public Adapter caseMapView(MapView object) {
 				return createMapViewAdapter();
 			}
@@ -246,6 +250,20 @@ public class AppAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTaskViewAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link no.hal.pg.app.ItemView <em>Item View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see no.hal.pg.app.ItemView
+	 * @generated
+	 */
+	public Adapter createItemViewAdapter() {
 		return null;
 	}
 

@@ -41,10 +41,22 @@
     </eTypeParameters>
     <eStructuralFeatures xsi:type="ecore:EReference" name="player" eType="ecore:EClass runtime.ecore#//Player"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskViews" upperBound="-1"
-        containment="true" eOpposite="#//TaskView/gameView">
+        containment="true">
       <eGenericType eClassifier="#//TaskView">
         <eTypeArguments eTypeParameter="#//GameView/T"/>
       </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allItemViews" upperBound="-1"
+        eType="#//ItemView" containment="true">
+      <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
+        <details key="exclude" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="itemViews" upperBound="-1"
+        eType="#//ItemView" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="no.hal.pg.http.impl.JsonSerializer">
+        <details key="include" value="true"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eGenericSuperTypes eClassifier="#//View1">
       <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
@@ -97,11 +109,6 @@
         <eTypeArguments/>
       </eGenericType>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="gameView" eOpposite="#//GameView/taskViews">
-      <eGenericType eClassifier="#//GameView">
-        <eTypeArguments eTypeParameter="#//TaskView/T"/>
-      </eGenericType>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -113,6 +120,14 @@
     <eGenericSuperTypes eClassifier="#//View1">
       <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
       <eTypeArguments eTypeParameter="#//TaskView/T"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ItemView">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eGenericSuperTypes eClassifier="#//View1">
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Player"/>
+      <eTypeArguments eClassifier="ecore:EClass runtime.ecore#//Item"/>
     </eGenericSuperTypes>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MapView" eSuperTypes="../../no.hal.pg.osm/model/osm.ecore#//GeoLocation">

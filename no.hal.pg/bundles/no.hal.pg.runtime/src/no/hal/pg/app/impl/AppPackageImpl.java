@@ -11,6 +11,7 @@ import no.hal.pg.app.GameView;
 import no.hal.pg.app.GeoLocatedView;
 import no.hal.pg.app.GeoLocationView;
 import no.hal.pg.app.GeoPolyline;
+import no.hal.pg.app.ItemView;
 import no.hal.pg.app.MapMarkerOptions;
 import no.hal.pg.app.MapView;
 import no.hal.pg.app.TaskView;
@@ -90,6 +91,13 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	private EClass taskViewEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass itemViewEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -295,6 +303,24 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getGameView_AllItemViews() {
+		return (EReference)gameViewEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getGameView_ItemViews() {
+		return (EReference)gameViewEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getApp() {
 		return appEClass;
 	}
@@ -340,17 +366,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTaskView_GameView() {
-		return (EReference)taskViewEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getTaskView_Description() {
-		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -359,7 +376,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	public EAttribute getTaskView_Enabled() {
-		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -368,7 +385,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	public EAttribute getTaskView_Started() {
-		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -377,7 +394,7 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 * @generated
 	 */
 	public EAttribute getTaskView_Finished() {
-		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)taskViewEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -387,6 +404,24 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 */
 	public EOperation getTaskView__Start() {
 		return taskViewEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getItemView() {
+		return itemViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getItemView_Description() {
+		return (EAttribute)itemViewEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -592,6 +627,8 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		gameViewEClass = createEClass(GAME_VIEW);
 		createEReference(gameViewEClass, GAME_VIEW__PLAYER);
 		createEReference(gameViewEClass, GAME_VIEW__TASK_VIEWS);
+		createEReference(gameViewEClass, GAME_VIEW__ALL_ITEM_VIEWS);
+		createEReference(gameViewEClass, GAME_VIEW__ITEM_VIEWS);
 
 		appEClass = createEClass(APP);
 		createEReference(appEClass, APP__MODEL);
@@ -600,12 +637,14 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		gameAppEClass = createEClass(GAME_APP);
 
 		taskViewEClass = createEClass(TASK_VIEW);
-		createEReference(taskViewEClass, TASK_VIEW__GAME_VIEW);
 		createEAttribute(taskViewEClass, TASK_VIEW__DESCRIPTION);
 		createEAttribute(taskViewEClass, TASK_VIEW__ENABLED);
 		createEAttribute(taskViewEClass, TASK_VIEW__STARTED);
 		createEAttribute(taskViewEClass, TASK_VIEW__FINISHED);
 		createEOperation(taskViewEClass, TASK_VIEW___START);
+
+		itemViewEClass = createEClass(ITEM_VIEW);
+		createEAttribute(itemViewEClass, ITEM_VIEW__DESCRIPTION);
 
 		mapViewEClass = createEClass(MAP_VIEW);
 		createEAttribute(mapViewEClass, MAP_VIEW__ZOOM);
@@ -728,6 +767,12 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType(taskViewEClass_T);
 		g1.getETypeArguments().add(g2);
 		taskViewEClass.getEGenericSuperTypes().add(g1);
+		g1 = createEGenericType(this.getView1());
+		g2 = createEGenericType(theRuntimePackage.getPlayer());
+		g1.getETypeArguments().add(g2);
+		g2 = createEGenericType(theRuntimePackage.getItem());
+		g1.getETypeArguments().add(g2);
+		itemViewEClass.getEGenericSuperTypes().add(g1);
 		mapViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocation());
 		abstractGeoLocationViewEClass.getESuperTypes().add(theOsmPackage.getGeoLocated());
 		geoLocatedViewEClass.getESuperTypes().add(this.getAbstractGeoLocationView());
@@ -754,7 +799,9 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g1 = createEGenericType(this.getTaskView());
 		g2 = createEGenericType(gameViewEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getGameView_TaskViews(), g1, this.getTaskView_GameView(), "taskViews", null, 0, -1, GameView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameView_TaskViews(), g1, null, "taskViews", null, 0, -1, GameView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameView_AllItemViews(), this.getItemView(), null, "allItemViews", null, 0, -1, GameView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGameView_ItemViews(), this.getItemView(), null, "itemViews", null, 0, -1, GameView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(appEClass, App.class, "App", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(appEClass_M);
@@ -765,10 +812,6 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		initEClass(gameAppEClass, GameApp.class, "GameApp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(taskViewEClass, TaskView.class, "TaskView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getGameView());
-		g2 = createEGenericType(taskViewEClass_T);
-		g1.getETypeArguments().add(g2);
-		initEReference(getTaskView_GameView(), g1, this.getGameView_TaskViews(), "gameView", null, 0, 1, TaskView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Description(), ecorePackage.getEString(), "description", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Enabled(), ecorePackage.getEBoolean(), "enabled", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTaskView_Started(), ecorePackage.getEBoolean(), "started", null, 0, 1, TaskView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -779,6 +822,9 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 		g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
+
+		initEClass(itemViewEClass, ItemView.class, "ItemView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getItemView_Description(), ecorePackage.getEString(), "description", null, 0, 1, ItemView.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(mapViewEClass, MapView.class, "MapView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMapView_Zoom(), ecorePackage.getEInt(), "zoom", "10", 0, 1, MapView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -824,6 +870,18 @@ public class AppPackageImpl extends EPackageImpl implements AppPackage {
 	 */
 	protected void createNoAnnotations() {
 		String source = "no.hal.pg.http.impl.JsonSerializer";	
+		addAnnotation
+		  (getGameView_AllItemViews(), 
+		   source, 
+		   new String[] {
+			 "exclude", "true"
+		   });	
+		addAnnotation
+		  (getGameView_ItemViews(), 
+		   source, 
+		   new String[] {
+			 "include", "true"
+		   });	
 		addAnnotation
 		  (getGeoPolyline_Locations(), 
 		   source, 

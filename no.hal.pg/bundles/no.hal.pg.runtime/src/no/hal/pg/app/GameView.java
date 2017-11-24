@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link no.hal.pg.app.GameView#getPlayer <em>Player</em>}</li>
  *   <li>{@link no.hal.pg.app.GameView#getTaskViews <em>Task Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.GameView#getAllItemViews <em>All Item Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.GameView#getItemViews <em>Item Views</em>}</li>
  * </ul>
  *
  * @see no.hal.pg.app.AppPackage#getGameView()
@@ -54,7 +56,6 @@ public interface GameView<T extends Task<?>> extends View1<Player, Game<T>> {
 	/**
 	 * Returns the value of the '<em><b>Task Views</b></em>' containment reference list.
 	 * The list contents are of type {@link no.hal.pg.app.TaskView}<code>&lt;T&gt;</code>.
-	 * It is bidirectional and its opposite is '{@link no.hal.pg.app.TaskView#getGameView <em>Game View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Task Views</em>' containment reference list isn't clear,
@@ -63,10 +64,43 @@ public interface GameView<T extends Task<?>> extends View1<Player, Game<T>> {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Task Views</em>' containment reference list.
 	 * @see no.hal.pg.app.AppPackage#getGameView_TaskViews()
-	 * @see no.hal.pg.app.TaskView#getGameView
-	 * @model opposite="gameView" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<TaskView<T>> getTaskViews();
+
+	/**
+	 * Returns the value of the '<em><b>All Item Views</b></em>' containment reference list.
+	 * The list contents are of type {@link no.hal.pg.app.ItemView}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>All Item Views</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>All Item Views</em>' containment reference list.
+	 * @see no.hal.pg.app.AppPackage#getGameView_AllItemViews()
+	 * @model containment="true"
+	 *        annotation="no.hal.pg.http.impl.JsonSerializer exclude='true'"
+	 * @generated
+	 */
+	EList<ItemView> getAllItemViews();
+
+	/**
+	 * Returns the value of the '<em><b>Item Views</b></em>' reference list.
+	 * The list contents are of type {@link no.hal.pg.app.ItemView}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Item Views</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Item Views</em>' reference list.
+	 * @see no.hal.pg.app.AppPackage#getGameView_ItemViews()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="no.hal.pg.http.impl.JsonSerializer include='true'"
+	 * @generated
+	 */
+	EList<ItemView> getItemViews();
 
 } // GameView

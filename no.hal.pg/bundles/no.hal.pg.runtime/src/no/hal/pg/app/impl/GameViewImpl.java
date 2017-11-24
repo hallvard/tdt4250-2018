@@ -2,17 +2,23 @@
  */
 package no.hal.pg.app.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
 import no.hal.pg.app.AppPackage;
 import no.hal.pg.app.GameView;
+import no.hal.pg.app.ItemView;
 import no.hal.pg.app.TaskView;
 import no.hal.pg.runtime.Game;
 import no.hal.pg.runtime.Player;
@@ -28,6 +34,8 @@ import no.hal.pg.runtime.Task;
  * <ul>
  *   <li>{@link no.hal.pg.app.impl.GameViewImpl#getPlayer <em>Player</em>}</li>
  *   <li>{@link no.hal.pg.app.impl.GameViewImpl#getTaskViews <em>Task Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.GameViewImpl#getAllItemViews <em>All Item Views</em>}</li>
+ *   <li>{@link no.hal.pg.app.impl.GameViewImpl#getItemViews <em>Item Views</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +60,16 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 	 * @ordered
 	 */
 	protected EList<TaskView<T>> taskViews;
+
+	/**
+	 * The cached value of the '{@link #getAllItemViews() <em>All Item Views</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAllItemViews()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ItemView> allItemViews;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,12 +144,12 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public EList<TaskView<T>> getTaskViews() {
 		if (taskViews == null) {
-			taskViews = new EObjectContainmentWithInverseEList<TaskView<T>>(TaskView.class, this, AppPackage.GAME_VIEW__TASK_VIEWS, AppPackage.TASK_VIEW__GAME_VIEW);
+			taskViews = new EObjectContainmentEList<TaskView<T>>(TaskView.class, this, AppPackage.GAME_VIEW__TASK_VIEWS);
 		}
 		return taskViews;
 	}
@@ -141,14 +159,28 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AppPackage.GAME_VIEW__TASK_VIEWS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskViews()).basicAdd(otherEnd, msgs);
+	public EList<ItemView> getAllItemViews() {
+		if (allItemViews == null) {
+			allItemViews = new EObjectContainmentEList<ItemView>(ItemView.class, this, AppPackage.GAME_VIEW__ALL_ITEM_VIEWS);
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+		return allItemViews;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public EList<ItemView> getItemViews() {
+		List<ItemView> itemViews = new ArrayList<ItemView>();
+		for (ItemView itemView : getAllItemViews()) {
+			if (itemView.getModel().getOwner() == getUser()) {
+				itemViews.add(itemView);
+			}
+		}
+		return ECollections.unmodifiableEList(itemViews);
 	}
 
 	/**
@@ -161,6 +193,8 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 		switch (featureID) {
 			case AppPackage.GAME_VIEW__TASK_VIEWS:
 				return ((InternalEList<?>)getTaskViews()).basicRemove(otherEnd, msgs);
+			case AppPackage.GAME_VIEW__ALL_ITEM_VIEWS:
+				return ((InternalEList<?>)getAllItemViews()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -178,6 +212,10 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 				return basicGetPlayer();
 			case AppPackage.GAME_VIEW__TASK_VIEWS:
 				return getTaskViews();
+			case AppPackage.GAME_VIEW__ALL_ITEM_VIEWS:
+				return getAllItemViews();
+			case AppPackage.GAME_VIEW__ITEM_VIEWS:
+				return getItemViews();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,6 +236,10 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 				getTaskViews().clear();
 				getTaskViews().addAll((Collection<? extends TaskView<T>>)newValue);
 				return;
+			case AppPackage.GAME_VIEW__ALL_ITEM_VIEWS:
+				getAllItemViews().clear();
+				getAllItemViews().addAll((Collection<? extends ItemView>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -216,6 +258,9 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 			case AppPackage.GAME_VIEW__TASK_VIEWS:
 				getTaskViews().clear();
 				return;
+			case AppPackage.GAME_VIEW__ALL_ITEM_VIEWS:
+				getAllItemViews().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -232,6 +277,10 @@ public class GameViewImpl<T extends Task<?>> extends View1Impl<Player, Game<T>> 
 				return player != null;
 			case AppPackage.GAME_VIEW__TASK_VIEWS:
 				return taskViews != null && !taskViews.isEmpty();
+			case AppPackage.GAME_VIEW__ALL_ITEM_VIEWS:
+				return allItemViews != null && !allItemViews.isEmpty();
+			case AppPackage.GAME_VIEW__ITEM_VIEWS:
+				return !getItemViews().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

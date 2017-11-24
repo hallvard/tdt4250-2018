@@ -4,19 +4,16 @@ package no.hal.pg.runtime.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
-import no.hal.pg.runtime.AbstractCondition;
-import no.hal.pg.runtime.RuntimePackage;
-
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import no.hal.pg.runtime.AbstractCondition;
+import no.hal.pg.runtime.RuntimePackage;
 
 /**
  * <!-- begin-user-doc -->
