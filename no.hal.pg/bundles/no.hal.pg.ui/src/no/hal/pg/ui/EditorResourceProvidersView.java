@@ -66,7 +66,8 @@ public class EditorResourceProvidersView extends AbstractSelectionView {
 		nameColumn.setLabelProvider(new CellLabelProvider() {
 			@Override
 			public void update(ViewerCell cell) {
-				cell.setText(resourceProviders.get(cell.getElement()).getName());
+				ResourceProvider resourceProvider = resourceProviders.get(cell.getElement());
+				cell.setText(resourceProvider != null ? resourceProvider.getName() : "?");
 			}
 		});
 		nameColumn.setEditingSupport(new EditingSupport(viewer) {
