@@ -1,6 +1,6 @@
 target "e4"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.e4.ui.services
 	org.eclipse.e4.core.contexts
 	org.eclipse.e4.core.di
@@ -22,8 +22,13 @@ location oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.e4.ui.workbench.addons.swt
 	org.eclipse.e4.ui.workbench.renderers.swt
 	org.w3c.css.sac
+	org.apache.batik.constants
 	org.apache.batik.util
 	org.apache.batik.css
+	org.apache.batik.i18n
+	org.apache.commons.logging
+	org.apache.commons.io
+	org.apache.xmlgraphics
 	org.eclipse.e4.ui.css.core
 	org.eclipse.e4.ui.css.swt
 	org.eclipse.e4.ui.css.swt.theme

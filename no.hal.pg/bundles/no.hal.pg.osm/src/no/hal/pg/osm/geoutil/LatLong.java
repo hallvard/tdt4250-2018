@@ -1,7 +1,6 @@
 package no.hal.pg.osm.geoutil;
 
 import no.hal.pg.osm.GeoLocated;
-import no.hal.pg.osm.GeoLocation;
 
 public class LatLong {
 	

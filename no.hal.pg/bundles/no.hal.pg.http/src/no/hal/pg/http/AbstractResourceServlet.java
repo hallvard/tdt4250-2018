@@ -22,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.osgi.service.log.LogService;
+import org.osgi.service.log.Logger;
+import org.osgi.service.log.LoggerFactory;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,12 +64,18 @@ public abstract class AbstractResourceServlet extends HttpServlet { // WebSocket
 		return null;
 	}
 
-	public abstract LogService getLogger();
-
-	protected void log(int severity, String message) {
-		if (getLogger() != null) {
-			getLogger().log(severity, message);
+	protected abstract LoggerFactory getLoggerFactory();
+	
+	protected Logger logger;
+	
+	public Logger getLogger() {
+		LoggerFactory loggerFactory = getLoggerFactory();
+		if (logger == null && loggerFactory != null) {
+			logger = loggerFactory.getLogger(this.getClass());
+		} else if (loggerFactory == null) {
+			logger = null;
 		}
+		return logger;
 	}
 	
 	@Override
@@ -114,8 +121,8 @@ public abstract class AbstractResourceServlet extends HttpServlet { // WebSocket
 		}
 		String resourceProviderName = segments.get(0);
 		IResourceProvider resourceProvider = getResourceProvider(resourceProviderName);
-		if (resourceProvider == null) {
-			log(LogService.LOG_INFO, "No resource provider for " + resourceProviderName);				
+		if (resourceProvider == null && getLogger() != null) {
+			getLogger().info("No resource provider for " + resourceProviderName);				
 			throw new ServletException("The resource identifier " + resourceProviderName + " is not recognized");
 		}
 		List<String> resourcePath = segments.subList(1, segments.size());
@@ -124,7 +131,9 @@ public abstract class AbstractResourceServlet extends HttpServlet { // WebSocket
 			op = segments.get(segments.size() - 1);
 			resourcePath = segments.subList(1, segments.size() - 1);
 		}
-		log(LogService.LOG_INFO, "Handling " + resourcePath + " + " + op + " with " + resourceProvider);
+		if (getLogger() != null) {
+			getLogger().info("Handling " + resourcePath + " + " + op + " with " + resourceProvider);
+		}
 		EObject context = (EObject) EcoreUtil.getObjectByType(resourceProvider.getRootObjects(), EcorePackage.eINSTANCE.getEObject());
 		AuthenticationHandler<?> authenticationHandler = null;
 		try {
@@ -142,13 +151,17 @@ public abstract class AbstractResourceServlet extends HttpServlet { // WebSocket
 			}
 		} catch (UnauthorizedException ue) {
 			String message = "Unauthorized, " + (authenticationHandler != null ? "forcing authentication" : "but no authentication handler") + ": " + ue.getMessage();
-			log(LogService.LOG_INFO, message);
+			if (getLogger() != null) {
+				getLogger().info(message);
+			}
 			if (authenticationHandler != null) {
 				authenticationHandler.forceAuthentication(resp, ue.getMessage(), resourceProvider.getName());
 			}
 		} catch (Exception e) {
 			String message = "Exception during request handling: " + e.getMessage();
-			log(LogService.LOG_WARNING, message);
+			if (getLogger() != null) {
+				getLogger().warn(message);
+			}
 			throw new ServletException(e);
 		}
 		return null;

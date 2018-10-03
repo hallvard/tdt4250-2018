@@ -16,15 +16,16 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.component.annotations.ServiceScope;
-import org.osgi.service.log.LogService;
+import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
+import org.osgi.service.log.LoggerFactory;
 
 import no.hal.pg.http.auth.AuthenticationHandler;
 
 // OSGi Http Whiteboard, 140.4 in Enterprise R6 specification
 @Component(
 		property={
-				"osgi.http.whiteboard.servlet.name:String=data",
-				"osgi.http.whiteboard.servlet.pattern:String=/data/*"
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_NAME + ":String=data",
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN + ":String=/data/*"
 				},
 		scope=ServiceScope.PROTOTYPE
 		)
@@ -72,13 +73,13 @@ public class DataServlet extends AbstractResourceServlet implements Servlet {
 	}
 
 	@Reference(policy=ReferencePolicy.DYNAMIC)
-	protected volatile LogService logger;
+	private volatile LoggerFactory loggerFactory;
 	
 	@Override
-	public LogService getLogger() {
-		return logger;
+	protected LoggerFactory getLoggerFactory() {
+		return loggerFactory;
 	}
-	
+
 	@Override
 	protected void doHelper(HttpServletRequest req, RequestData requestData, Writer responseWriter) throws Exception {
 		Object result = getPathObject(requestData);

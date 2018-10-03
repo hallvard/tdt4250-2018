@@ -1,9 +1,6 @@
 package no.hal.pg.runtime.http.tests;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
 import org.junit.Assert;
@@ -11,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -52,7 +48,7 @@ public class ResourceProviderQlTest extends AbstractHttpRequestTest {
 	}
 
 	protected void testIgnore(HttpURLConnection con) throws IOException {
-		JsonNode jsonNode = getJsonNode(con);
+		getJsonNode(con);
 	}
 
 	protected void testGame(HttpURLConnection con) throws IOException {

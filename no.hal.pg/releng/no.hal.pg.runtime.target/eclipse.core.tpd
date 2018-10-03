@@ -1,6 +1,6 @@
 target "eclipse.core"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.core.jobs
 	org.eclipse.core.contenttype
 	org.eclipse.core.expressions

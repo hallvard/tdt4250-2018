@@ -1,6 +1,6 @@
 target "eclipse.ui"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 
 	org.eclipse.core.databinding
 	org.eclipse.core.databinding.property

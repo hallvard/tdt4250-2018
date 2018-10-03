@@ -1,6 +1,6 @@
 target "sirius"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 
 	org.eclipse.emf.edit.feature.group
 	org.eclipse.emf.ecore.edit.feature.group
@@ -47,6 +47,7 @@ location oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.sirius.specifier.feature.group
 	org.eclipse.sirius.properties.feature.feature.group
 	org.eclipse.sirius.specifier.properties.feature.feature.group
+	org.eclipse.sirius.ext.ide
 }
 
 environment macosx cocoa x86_64

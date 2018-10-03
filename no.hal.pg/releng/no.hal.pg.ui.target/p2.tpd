@@ -1,6 +1,6 @@
 target "p2"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	org.tukaani.xz
 	org.eclipse.equinox.p2.core
 	org.eclipse.equinox.p2.metadata

@@ -12,15 +12,16 @@ import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.annotations.ReferencePolicy;
 import org.osgi.service.component.annotations.ServiceScope;
-import org.osgi.service.log.LogService;
+import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
+import org.osgi.service.log.LoggerFactory;
 
 import no.hal.pg.http.auth.AuthenticationHandler;
 
 // OSGi Http Whiteboard, 140.4 in Enterprise R6 specification
 @Component(
 		property={
-				"osgi.http.whiteboard.servlet.name:String=app",
-				"osgi.http.whiteboard.servlet.pattern:String=/app/*",
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_NAME + ":String=app",
+				HttpWhiteboardConstants.HTTP_WHITEBOARD_SERVLET_PATTERN + ":String=/app/*"
 				},
 		scope=ServiceScope.PROTOTYPE
 		)
@@ -62,11 +63,11 @@ public class AppServlet extends AbstractResourceServlet implements Servlet {
 	}
 
 	@Reference(policy=ReferencePolicy.DYNAMIC)
-	protected volatile LogService logger;
+	private volatile LoggerFactory loggerFactory;
 	
 	@Override
-	public LogService getLogger() {
-		return logger;
+	protected LoggerFactory getLoggerFactory() {
+		return loggerFactory;
 	}
 
 	@Reference(policy=ReferencePolicy.DYNAMIC)

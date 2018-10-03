@@ -1,6 +1,6 @@
 target "equinox"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.equinox.console
 	org.apache.felix.gogo.runtime
 	org.apache.felix.gogo.shell

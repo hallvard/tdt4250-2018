@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/170" xmi:id="_twjhoML4EeeYYvmui3p9rh" name="GameConfig" ecorePath="/no.hal.pg.config/model/config.ecore">
+<org.eclipse.emf.ecp.view.model:View xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.emf.ecp.view.model="http://org/eclipse/emf/ecp/view/model/1170" xmi:id="_Snq7wKoWEeiHKbSpchPRqw" name="GameConfig">
   <rootEClass href="../../../plugin/no.hal.pg.config/model/config.ecore#//GameConfig"/>
+  <ecorePaths>/no.hal.pg.config/model/config.ecore</ecorePaths>
 </org.eclipse.emf.ecp.view.model:View>

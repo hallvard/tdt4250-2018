@@ -1,7 +1,8 @@
 target "http"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	javax.servlet
 	org.eclipse.equinox.http.servlet
 	org.eclipse.equinox.http.jetty
+	org.slf4j.api
 }

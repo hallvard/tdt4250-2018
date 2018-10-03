@@ -7,7 +7,7 @@
    </service>
    <reference cardinality="0..n" field="authenticationHandlers" interface="no.hal.pg.http.auth.AuthenticationHandler" name="authenticationHandlers" policy="dynamic"/>
    <reference cardinality="0..n" field="configs" interface="no.hal.pg.http.AppConfig" name="configs" policy="dynamic"/>
-   <reference cardinality="1..1" field="logger" interface="org.osgi.service.log.LogService" name="logger" policy="dynamic"/>
+   <reference cardinality="1..1" field="loggerFactory" interface="org.osgi.service.log.LoggerFactory" name="loggerFactory" policy="dynamic"/>
    <reference cardinality="1..1" field="requestPathResolver" interface="no.hal.pg.http.IRequestPathResolver" name="requestPathResolver" policy="dynamic"/>
    <reference cardinality="0..n" field="resourceProviders" interface="no.hal.pg.http.IResourceProvider" name="resourceProviders" policy="dynamic"/>
    <implementation class="no.hal.pg.http.AppServlet"/>

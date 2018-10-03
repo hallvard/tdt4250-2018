@@ -10,8 +10,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-maven-plugin-version>1.0.0</tycho-maven-plugin-version>
-		<tycho-version>1.0.0</tycho-version>
+		<tycho-maven-plugin-version>1.2.0</tycho-maven-plugin-version>
+		<tycho-version>1.2.0</tycho-version>
 		<!-- 
 		<xtextVersion>2.12.0</xtextVersion>
 		<xtend-maven-plugin-version>2.12.0</xtend-maven-plugin-version>
@@ -36,7 +36,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
-					<executionEnvironment>JavaSE-1.7</executionEnvironment>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					<target>
 						<artifact>
 							<groupId>no.hal.pg</groupId>

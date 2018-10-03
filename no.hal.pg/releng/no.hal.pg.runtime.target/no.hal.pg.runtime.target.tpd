@@ -5,6 +5,7 @@ include "equinox.console.tpd"
 include "eclipse.core.tpd"
 
 include "emf.core.tpd"
+include "aql.tpd"
 
 include "junit.tpd"
 

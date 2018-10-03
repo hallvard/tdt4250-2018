@@ -1,6 +1,6 @@
 target "equinox"
 
-location oxygen "http://download.eclipse.org/releases/oxygen" {
+location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.osgi
 	org.eclipse.equinox.common
 	org.eclipse.equinox.app
@@ -8,6 +8,7 @@ location oxygen "http://download.eclipse.org/releases/oxygen" {
 	org.eclipse.equinox.preferences
 	org.eclipse.equinox.security
 	org.eclipse.equinox.launcher
+	org.eclipse.equinox.log.stream
 	org.eclipse.osgi.services
 	org.eclipse.osgi.util
 	org.eclipse.equinox.cm

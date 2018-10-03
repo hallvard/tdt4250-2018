@@ -6,7 +6,7 @@ Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: no.hal.pg.app,
  no.hal.pg.app.impl,
  no.hal.pg.app.util,
@@ -14,11 +14,11 @@ Export-Package: no.hal.pg.app,
  no.hal.pg.runtime.impl,
  no.hal.pg.runtime.util
 Require-Bundle: org.eclipse.core.runtime;resolution:=optional,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
  no.hal.pg.arc;visibility:=reexport,
  no.hal.pg.osm;visibility:=reexport,
- no.hal.pg.runtime;visibility:=reexport
+ no.hal.pg.runtime;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport
 Import-Package: no.hal.pg.arc,
  no.hal.pg.arc.impl,
  no.hal.pg.arc.util,

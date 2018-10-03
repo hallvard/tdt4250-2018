@@ -59,7 +59,7 @@ public abstract class AbstractHttpRequestTest {
 		addAuthorization(con);
 		return con;
 	}
-	
+
 	protected HttpURLConnection postRequest(String urlPath, String contentType, String body) throws IOException {
 		HttpURLConnection con = (HttpURLConnection) new URL(urlString + urlPath).openConnection();
 		con.setRequestMethod("POST");

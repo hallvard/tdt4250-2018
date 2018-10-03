@@ -12,6 +12,8 @@
     </extension>
 
    <extension point="org.eclipse.emf.ecp.view.model.provider.xmi.file">
+<file filePath="viewmodels/GameConfig.view"/>
+
 		<file filePath="viewmodels/GameConfig.view"/>
    </extension>
 

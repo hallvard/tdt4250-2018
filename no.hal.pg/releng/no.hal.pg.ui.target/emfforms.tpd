@@ -1,6 +1,6 @@
 target "emfforms"
 
-location emfforms "http://download.eclipse.org/ecp/releases/releases_115/" {
+location emfforms "http://download.eclipse.org/ecp/releases/releases_117/" {
 
 	org.eclipse.emf.ecp.emfforms.runtime.feature.feature.group
 	org.eclipse.emfforms.editor.feature.source.feature.group

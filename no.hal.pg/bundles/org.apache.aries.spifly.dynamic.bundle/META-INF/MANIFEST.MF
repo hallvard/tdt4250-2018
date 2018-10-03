@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Apache Aries SPI Fly Dynamic Weaving Bundle
+Bundle-SymbolicName: org.apache.aries.spifly.dynamic.bundle
+Bundle-Version: 1.0.14
+Bundle-Vendor: The Apache Software Foundation
+Automatic-Module-Name: org.apache.aries.spifly.dynamic.bundle
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Activator: org.apache.aries.spifly.dynamic.DynamicWeavingActivato
+ r
+Bundle-ClassPath: libs/org.apache.aries.spifly.dynamic.bundle-1.0.14.jar
+ ,libs/asm-all-5.0.4.jar,libs/org.apache.aries.util-1.1.1.jar
+Embed-Dependency: org.apache.aries.spifly.*;scope=compile;inline=true
+Export-Package: org.apache.aries.spifly;version="1.0.14";uses:="org.osgi
+ .framework,org.osgi.util.tracker",org.apache.aries.spifly.dynamic;versi
+ on="1.0.14";uses:="org.apache.aries.spifly,org.objectweb.asm,org.osgi.f
+ ramework,org.osgi.framework.hooks.weaving",org.apache.aries.spifly.weav
+ er;version="1.0.14"
+Implementation-Title: Apache Aries
+Implementation-Version: 1.0.14
+Import-Package: org.osgi.framework;version="[1.6,2)",org.osgi.framework.
+ hooks.weaving;version="[1.0,2)",org.osgi.framework.wiring;version="[1.0
+ ,2)",org.osgi.util.tracker;version="[1.5,2)"
+Provide-Capability: osgi.extender;osgi.extender="osgi.serviceloader.regi
+ strar";version:Version="1.0",osgi.extender;osgi.extender="osgi.servicel
+ oader.processor";version:Version="1.0"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"

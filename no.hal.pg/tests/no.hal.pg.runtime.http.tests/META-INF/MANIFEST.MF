@@ -5,7 +5,7 @@ Bundle-SymbolicName: no.hal.pg.runtime.http.tests
 Bundle-Version: 0.0.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: no.hal
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: no.hal.pg.runtime.http.tests
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
@@ -18,10 +18,15 @@ Require-Bundle: org.eclipse.emf.ecore,
  com.fasterxml.jackson.core.jackson-databind;bundle-version="2.9.0",
  no.hal.pg.http.graphql;bundle-version="0.0.1",
  no.hal.pg.exampletask.runtime;bundle-version="0.0.1",
- no.hal.pg.exampletask.http;bundle-version="0.0.1"
+ no.hal.pg.exampletask.http;bundle-version="0.0.1",
+ org.slf4j.api;bundle-version="1.7.2",
+ org.apache.aries.spifly.dynamic.bundle
 Bundle-ActivationPolicy: lazy
 Import-Package: org.junit;version="4.12.0",
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations
+Provide-Capability: osgi.extender;osgi.extender="osgi.serviceloader.registrar";
+ version:Version="1.0",osgi.extender;osgi.extender="osgi.serviceloader.processor";
+ version:Version="1.0";uses:="org.apache.aries.spifly"
 Service-Component: OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeTestResourceProvider.xml,
  OSGI-INF/no.hal.pg.runtime.http.tests.RuntimeQlTestResourceProvider.xml

@@ -36,8 +36,9 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 				testGame(con1);
 				break;
 			} catch (Exception e) {
+				System.out.println(con1.getResponseMessage());
 				if (attemptsLeft <= 0) {
-					Assert.fail(e.getMessage() + " for " + urlString);
+					Assert.fail(e + " for " + urlString);
 				}
 				try {
 					Thread.sleep(500);
@@ -51,8 +52,6 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 		testExampleTaskFinished(getRequest("/games/0/tasks/0"));
 	}
 
-	private boolean useOwnReader = true;
-	
 	protected void testGame(HttpURLConnection con) throws IOException {
 		InputStream input = con.getInputStream();
 		JsonNode jsonNode = getJsonNode(con);
@@ -60,6 +59,7 @@ public class ResourceProviderTest extends AbstractHttpRequestTest {
 		ArrayNode rootNode = checkArrayNode(jsonNode, 1);
 		ObjectNode gameNode = checkObjectNode(rootNode.get(0)); // empty lists don't serialize: "players", "items"
 		checkArrayNode(gameNode.get("tasks"), 5);
+		input.close();
 	}
 
 	protected void testExampleTask(HttpURLConnection con) throws IOException {

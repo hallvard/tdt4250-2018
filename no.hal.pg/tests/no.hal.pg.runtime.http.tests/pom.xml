@@ -30,10 +30,10 @@
 					<useUIHarness>false</useUIHarness>
 					<argLine>-Dorg.osgi.service.http.port=8085</argLine>
 					<showEclipseLog>true</showEclipseLog>
+					
 					<dependencies>
-
 				      <dependency>
-				        <type>p2-installable-unit</type>
+				        <type>eclipse-plugin</type>
 				        <artifactId>org.eclipse.equinox.http.jetty</artifactId>
 				      </dependency>
 				    </dependencies>
@@ -51,6 +51,11 @@
 					  </bundle>
 					  <bundle>
 					    <id>org.apache.felix.scr</id>
+					    <level>4</level>
+					    <autoStart>true</autoStart>
+					  </bundle>
+					  <bundle>
+					    <id>org.eclipse.equinox.ds</id>
 					    <level>4</level>
 					    <autoStart>true</autoStart>
 					  </bundle>
