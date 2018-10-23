@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/no.hal.pg.runtime.platform.feature_0.0.1.qualifier.jar" id="no.hal.pg.runtime.platform.feature" version="0.0.1.qualifier">
+      <category name="no.hal.pg.runtime.category"/>
+   </feature>
+   <feature url="features/no.hal.pg.runtime.dependencies.feature_0.0.1.qualifier.jar" id="no.hal.pg.runtime.dependencies.feature" version="0.0.1.qualifier">
+      <category name="no.hal.pg.runtime.category"/>
+   </feature>
+   <feature url="features/no.hal.pg.runtime.feature_0.0.1.qualifier.jar" id="no.hal.pg.runtime.feature" version="0.0.1.qualifier">
+      <category name="no.hal.pg.runtime.category"/>
+   </feature>
+   <category-def name="no.hal.pg.runtime.category" label="Pg Runtime"/>
+</site>

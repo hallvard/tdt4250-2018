@@ -3,4 +3,5 @@ target "emf.core"
 location photon "http://download.eclipse.org/releases/photon" {
 	org.antlr.runtime [4.3.0,5.0.0)
 	org.eclipse.acceleo.query
+	org.eclipse.acceleo.annotations
 }

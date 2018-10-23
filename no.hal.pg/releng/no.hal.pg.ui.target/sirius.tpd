@@ -31,7 +31,6 @@ location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.jdt.launching
 	org.eclipse.ant.core
 	org.eclipse.pde.core
-	org.eclipse.update.configurator
 	org.eclipse.pde.build
 	org.eclipse.pde
 	org.eclipse.osgi.compatibility.state

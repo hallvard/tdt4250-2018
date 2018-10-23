@@ -1,0 +1,209 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>no.hal.pg.runtime.docker</artifactId>
+  <name>no.hal.pg.runtime.docker</name>
+  <packaging>jar</packaging>
+
+  <parent>
+    <groupId>no.hal.pg</groupId>
+    <artifactId>no.hal.pg.releng</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  
+  	<dependencies>
+		<dependency>
+			<groupId>no.hal.pg</groupId>
+			<artifactId>no.hal.pg.runtime.http.tests</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+  	<build>
+		<testSourceDirectory>src</testSourceDirectory>
+  	
+		<plugins>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>target/equinox</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+					</filesets>
+				</configuration>
+				<executions>
+					<!-- clean equinox folder -->
+					<execution>
+						<id>auto-clean</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<executions>
+					<!-- copy equinox folder -->
+					<execution>
+						<id>copy-runtime-template</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/equinox</outputDirectory>
+							<resources>
+								<resource>
+									<directory>equinox</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+
+					<!-- copy plugins from repository -->
+					<execution>
+						<id>copy-runtime-plugins</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/equinox/plugins</outputDirectory>
+							<resources>
+								<resource>
+									<directory>../no.hal.pg.runtime.repository/target/repository/plugins</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.21.0</version>
+				<configuration>
+					<images>
+						<!-- A single's image configuration -->
+						<image>
+							<name>runtime/equinox</name>
+							<build>
+								<from>java:8</from>
+								<maintainer>Hallvard Traetteberg</maintainer>
+								<tags>
+									<tag>${project.version}</tag>
+								</tags>
+								<assembly>
+									<name>runtime</name>
+									<inline>
+										<fileSets>
+											<fileSet>
+												<directory>target/equinox</directory>
+												<useDefaultExcludes>false</useDefaultExcludes>
+												<outputDirectory>equinox</outputDirectory>
+												<filtered>false</filtered>
+											</fileSet>
+										</fileSets>
+									</inline>
+								</assembly>
+								<workdir>runtime/equinox</workdir>
+								<cmd>/bin/sh ./start.sh</cmd>
+							</build>
+							<run>
+								<env>
+									<equinox.logDir>logs</equinox.logDir>
+								</env>
+								<ports>
+									<port>${runtime.host}:${runtime.port}:8084</port>
+								</ports>
+								<wait>
+				                  <!-- The plugin waits until this URL is reachable via HTTP ... -->
+				                  <http>
+				                    <url>http://${runtime.host}:${runtime.port}/data</url>
+				                    <method>GET</method>
+				                  	<!-- 500 means server error, hopefully due to missing resource name -->
+				                    <status>500</status>
+				                  </http>
+				                  <time>10000</time>
+				                  <shutdown>500</shutdown>
+				               </wait>
+				               <log>
+				               		<enabled>true</enabled>
+				               </log>
+							</run>
+						</image>
+					</images>
+				</configuration>
+
+				<!-- Connect start/stop to pre- and post-integration-test phase -->
+				<executions>
+					<execution>
+						<id>build-image-and-start-container</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<!-- "build" should be used to create the images with the artifact -->
+							<goal>build</goal>
+							<goal>start</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>stop-container</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<systemPropertyVariables>
+		            <!-- Needs to be repeated here (the following two lines strangely doesn't work when the next line is omitted although)
+		                 Maven, you little sneaky beast ... -->
+						<runtime.host>${runtime.host}</runtime.host>
+
+						<!-- Map maven variables to system properties so they can be used in the test classes -->
+						<runtime.port>${runtime.port}</runtime.port>
+					</systemPropertyVariables>
+          		</configuration>
+          		<executions>
+		          <execution>
+		            <goals>
+		              <goal>integration-test</goal>
+		              <goal>verify</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+			</plugin>
+			
+		</plugins>
+	</build>
+</project>

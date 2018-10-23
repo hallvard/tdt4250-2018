@@ -17,3 +17,7 @@ location photon "http://download.eclipse.org/releases/photon" {
 	org.eclipse.equinox.ds
 	org.eclipse.equinox.event
 }
+
+location oxygen "http://download.eclipse.org/releases/oxygen" {
+	org.eclipse.update.configurator [3.3.400,3.4.0)
+}

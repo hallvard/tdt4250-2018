@@ -57,7 +57,13 @@
 		<module>../../bundles/no.hal.pg.exampletask.config.viewmodel</module>
 
 		<module>../../bundles/no.hal.pg.config.diagram</module>
-
 		<module>../no.hal.pg.repository</module>
+
+		<module>../../features/no.hal.pg.runtime.dependencies.feature</module>
+		<module>../../features/no.hal.pg.runtime.platform.feature</module>
+		<module>../no.hal.pg.runtime.repository</module>
+
+		<module>../no.hal.pg.runtime.docker</module>
+
 	</modules>
 </project>
