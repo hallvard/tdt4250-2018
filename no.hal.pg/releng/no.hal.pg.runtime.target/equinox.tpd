@@ -19,5 +19,6 @@ location photon "http://download.eclipse.org/releases/photon" {
 }
 
 location oxygen "http://download.eclipse.org/releases/oxygen" {
+	// Need version older than 3.4, see https://github.com/diffplug/goomph/issues/69
 	org.eclipse.update.configurator [3.3.400,3.4.0)
 }
